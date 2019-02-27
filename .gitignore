@@ -34,3 +34,5 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+config/database.yml
+oauth2id.sublime-workspace

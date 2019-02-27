@@ -10,7 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
+//= require vali-admin/docs/js/popper.min
+//= require vali-admin/docs/js/bootstrap.min
+//= require vali-admin/docs/js/plugins/bootstrap-notify.min
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require cable
+//= require_self
+//= require main
+
+$.notifyDefaults({
+  allow_dismiss: true,
+  delay: 15000
+});
