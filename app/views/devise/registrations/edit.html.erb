@@ -1,0 +1,64 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-edit"></i> <%= t('form.edit') -%> <%= t("activerecord.models.#{resource_name}") -%></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="tile">
+        <h3 class="tile-title"><%= t('user.change_profile') -%></h3>
+        <div class="tile-body">
+          <form class="form-horizontal">
+            <div class="form-group row">
+              <label class="control-label col-md-5"><%= t('user.email') -%></label>
+              <div class="col-md-7">
+                <%= f.email_field :email, placeholder: 'Enter email address', class: 'form-control col-md-8' %>
+              </div>
+            </div>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="form-group row">
+              <label class="control-label col-md-5">confirmed?</label>
+              <div class="col-md-7">
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              </div>
+            </div>
+            <% end %>
+            <div class="form-group row">
+              <label class="control-label col-md-5"><%= t('user.password') -%><br /><i>(<%= t('user.leave_blank_hint') -%>)</i></label>
+              <div class="col-md-7">
+                <%= f.password_field :password, autocomplete: 'off', class: 'form-control col-md-8' %>
+                <% if @minimum_password_length %>
+                  <em><%= @minimum_password_length %> <%= t('user.characters_minimum') -%></em>
+                <% end %>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-md-5"><%= t('user.password_confirmation') -%></label>
+              <div class="col-md-7">
+                <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control col-md-8' %>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-md-5"><%= t('user.current_password') -%><br /><i>(<%= t('user.need_current_password_hint') -%>)</i></label>
+              <div class="col-md-7">
+                <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control col-md-8' %>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="tile-footer">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+              <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+                <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('form.update') -%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+<% end %>
+    </div>
+  </div>
+</main>

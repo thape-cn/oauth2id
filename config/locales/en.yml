@@ -1,33 +1,39 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
-  hello: "Hello world"
+  user:
+    username: "Username"
+    email: "Email"
+    change_your_password: "Change your password"
+    change_my_password: "Change my password"
+    change_profile: "Change Profile"
+    new_password: "New password"
+    current_password: "New password"
+    confirm_new_password: "Confirm new password"
+    password: "Password"
+    password_confirmation: "Password confirmation"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
+    stay_signed_in: "Stay Signed in"
+    forgot_password: "Forgot Password ?"
+    back_to_login: "Back to Login"
+    characters_minimum: "characters minimum"
+    leave_blank_hint: "leave blank if you don't want to change it"
+    need_current_password_hint: "we need your current password to confirm your changes"
+    resend_unlock_instructions: "Resend unlock instructions"
+    resend_confirmation: "Resend confirmation ?"
+    resend_confirmation_instructions: "Resend confirmation instructions"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Email is blank"
+            password:
+              blank: "Password is blank"
+    models:
+      user: "User"
+  form:
+    edit: "Edit"
+    update: "Update"
+    reset: "Reset"

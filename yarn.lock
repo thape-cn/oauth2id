@@ -6518,6 +6518,11 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
+vali-admin@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/vali-admin/-/vali-admin-2.4.1.tgz#92d54117ef0688f5855670b07c5ff6efebe2b9a3"
+  integrity sha512-Tx08vNevFf5DhWCXHGLH3NaN4YSXVq+NKDIUiJYFhgQSdn2J3q30NHrWPkjEW7pfzrxLWedGD44H6eihoe1cOA==
+
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"

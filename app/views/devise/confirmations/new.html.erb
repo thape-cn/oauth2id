@@ -1,0 +1,19 @@
+<section class="login-content">
+  <div class="logo">
+    <h1>Oauth2</h1>
+  </div>
+  <div class="login-box flipped">
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'forget-form' }) do |f| %>
+    <h3 class="login-head"><%= t('user.resend_confirmation') -%></h3>
+    <div class="form-group">
+      <label class="control-label"><%= t('user.email') -%></label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'form-control' %>
+    </div>
+    <div class="form-group btn-container">
+      <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block') do %>
+        <i class="fa fa-unlock fa-lg fa-fw"></i><%= t('user.resend_confirmation_instructions') -%>
+      <% end %>
+    </div>
+<% end %>
+  </div>
+</section>

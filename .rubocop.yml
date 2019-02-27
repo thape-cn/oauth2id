@@ -1,0 +1,34 @@
+---
+AllCops:
+  TargetRubyVersion: 2.6
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+ClassLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/LineLength:
+  Max: 115
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/StringLiterals:
+  Exclude:
+    - 'db/schema.rb'

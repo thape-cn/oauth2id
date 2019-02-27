@@ -1,0 +1,28 @@
+<section class="login-content">
+  <div class="logo">
+    <h1>Oauth2</h1>
+  </div>
+  <div class="login-box">
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'login-form' }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+    <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i><%= t('user.change_your_password') -%></h3>
+    <div class="form-group">
+      <label class="control-label"><%= t('user.new_password') -%>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> <%= t('user.characters_minimum') -%>)</em><br />
+        <% end %>
+      </label>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'off', class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label class="control-label"><%= t('user.confirm_new_password') -%></label>
+      <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
+    </div>
+    <div class="form-group btn-container">
+      <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block') do %>
+        <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('user.change_my_password') -%>
+      <% end %>
+    </div>
+<% end %>
+  </div>
+</section>
