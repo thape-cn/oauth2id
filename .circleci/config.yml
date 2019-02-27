@@ -1,0 +1,70 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/ruby:2.6.1-node-browsers
+        environment: # environment variables for primary container
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+
+    working_directory: ~/oauth2
+
+    steps:
+      - checkout
+
+      # Which version of bundler? should keep same as Gemfile.lock
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - harman-vendor-bundle-v2-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      # Store bundle cache
+      - save_cache:
+          key: harman-vendor-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - harman-vendor-yarn-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: harman-vendor-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Restore DB config
+          command: cp config/database.yml.sample config/database.yml
+
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+
+      # run tests!
+      - run:
+          name: run tests
+          command: bin/rails test:system test
+
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test/reports
