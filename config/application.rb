@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Bundler.require(:ci) if ENV['CIRCLECI']
 
 module Oauth2id
   class Application < Rails::Application
