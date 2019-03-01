@@ -9,7 +9,12 @@
                                 "config/credentials.yml.enc", "db/oauth2id_*.sqlite3",]
     },
     {
-      "path": "./node_modules/vali-admin"
+      "path": "./node_modules/vali-admin",
+      "folder_exclude_patterns": [".github"],
+      "file_exclude_patterns": ["docs/js/plugins/fullcalendar.min.js",
+                                "docs/js/bootstrap.min.js",
+                                "docs/js/popper.min.js",
+                                "docs/js/jquery-3.2.1.min.js"]
     }
   ],
     "settings":
