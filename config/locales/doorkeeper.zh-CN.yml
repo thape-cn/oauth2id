@@ -1,0 +1,133 @@
+zh-CN:
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: '应用名称'
+        redirect_uri: '重定向 URI'
+        scopes: '权限范围'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: '不能包含网址片段（#）'
+              invalid_uri: '必须是有效的 URI 格式'
+              relative_uri: '必须是绝对的 URI 地址'
+              secured_uri: '必须是 HTTPS/SSL 的 URI 地址'
+              forbidden_uri: 'is forbidden by the server.'
+            scopes:
+              not_match_configured: "doesn't match configured on the server."
+
+  doorkeeper:
+    applications:
+      confirmations:
+        destroy: '确定要删除应用吗？'
+      buttons:
+        edit: '编辑'
+        destroy: '删除'
+        submit: '提交'
+        cancel: '取消'
+        authorize: '授权'
+      form:
+        error: '抱歉! 提交信息的时候遇到了下面的错误'
+      help:
+        confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
+        redirect_uri: '每行只能有一个 URI'
+        native_redirect_uri: '本地测试请使用 %{native_redirect_uri}'
+        scopes: '用空格分割权限范围，留空则使用默认设置'
+      edit:
+        title: '修改应用'
+      index:
+        title: '你的应用'
+        new: '创建新应用'
+        name: '名称'
+        callback_url: '回调 URL'
+        actions: 'Actions'
+        confidential: 'Confidential?'
+        confidentiality:
+          'yes': '是'
+          'no': '沒有'
+      new:
+        title: '创建新应用'
+      show:
+        title: '应用：%{name}'
+        application_id: '应用 UID'
+        secret: '应用密钥'
+        scopes: '权限范围'
+        confidential: 'Confidential'
+        callback_urls: '回调 URL'
+        actions: '操作'
+
+    authorizations:
+      buttons:
+        authorize: '同意授权'
+        deny: '拒绝授权'
+      error:
+        title: '发生错误'
+      new:
+        title: '需要授权'
+        prompt: '授权 %{client_name} 使用你的帐户？'
+        able_to: '此应用将能够'
+      show:
+        title: '授权代码'
+
+    authorized_applications:
+      confirmations:
+        revoke: '确定要撤销对此应用的授权吗？'
+      buttons:
+        revoke: '撤销授权'
+      index:
+        title: '已授权的应用'
+        application: '应用'
+        created_at: '授权时间'
+        date_format: "%Y-%m-%d %H:%M:%S"
+
+    errors:
+      messages:
+        # Common error messages
+        invalid_request: '请求缺少必要的参数，或者参数值、格式不正确。'
+        invalid_redirect_uri: '无效的登录回调地址。'
+        unauthorized_client: '未授权的应用，请求无法执行。'
+        access_denied: '资源所有者或服务器拒绝了请求。'
+        invalid_scope: '请求的权限范围无效、未知或格式不正确。'
+        server_error: '服务器异常，无法处理请求。'
+        temporarily_unavailable: '服务器维护中或负载过高，暂时无法处理请求。'
+
+        #configuration error messages
+        credential_flow_not_configured: '由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。'
+        resource_owner_authenticator_not_configured: '由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。'
+
+        # Access grant errors
+        unsupported_response_type: '服务器不支持这种响应类型。'
+
+        # Access token errors
+        invalid_client: '由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。'
+        invalid_grant: '授权方式无效、过期或已被撤销、与授权请求中的回调地址不一致，或使用了其他应用的回调地址。'
+        unsupported_grant_type: '服务器不支持此类型的授权方式。'
+
+        invalid_token:
+          revoked: "访问令牌已被吊销"
+          expired: "访问令牌已过期"
+          unknown: "访问令牌无效"
+
+    flash:
+      applications:
+        create:
+          notice: '应用创建成功。'
+        destroy:
+          notice: '应用删除成功。'
+        update:
+          notice: '应用修改成功。'
+      authorized_applications:
+        destroy:
+          notice: '已成功撤销对此应用的授权。'
+
+    layouts:
+      admin:
+        title: 'Doorkeeper'
+        nav:
+          oauth2_provider: 'OAuth2 提供商'
+          applications: '应用'
+          home: '首页'
+      application:
+        title: '需要 OAuth 认证'
