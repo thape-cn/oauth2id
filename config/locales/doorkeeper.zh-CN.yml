@@ -14,9 +14,9 @@ zh-CN:
               invalid_uri: '必须是有效的 URI 格式'
               relative_uri: '必须是绝对的 URI 地址'
               secured_uri: '必须是 HTTPS/SSL 的 URI 地址'
-              forbidden_uri: 'is forbidden by the server.'
+              forbidden_uri: '被服务器禁止。'
             scopes:
-              not_match_configured: "doesn't match configured on the server."
+              not_match_configured: '不匹配服务器上的配置。'
 
   doorkeeper:
     applications:
@@ -31,7 +31,7 @@ zh-CN:
       form:
         error: '抱歉! 提交信息的时候遇到了下面的错误'
       help:
-        confidential: 'Application will be used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential.'
+        confidential: '应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。'
         redirect_uri: '每行只能有一个 URI'
         native_redirect_uri: '本地测试请使用 %{native_redirect_uri}'
         scopes: '用空格分割权限范围，留空则使用默认设置'
@@ -42,7 +42,7 @@ zh-CN:
         new: '创建新应用'
         name: '名称'
         callback_url: '回调 URL'
-        actions: 'Actions'
+        actions: '动作'
         confidential: 'Confidential?'
         confidentiality:
           'yes': '是'
@@ -82,6 +82,9 @@ zh-CN:
         created_at: '授权时间'
         date_format: "%Y-%m-%d %H:%M:%S"
 
+    pre_authorization:
+      status: '预授权'
+
     errors:
       messages:
         # Common error messages
@@ -90,12 +93,14 @@ zh-CN:
         unauthorized_client: '未授权的应用，请求无法执行。'
         access_denied: '资源所有者或服务器拒绝了请求。'
         invalid_scope: '请求的权限范围无效、未知或格式不正确。'
+        invalid_code_challenge_method: 'The code challenge method must be plain or S256.'
         server_error: '服务器异常，无法处理请求。'
         temporarily_unavailable: '服务器维护中或负载过高，暂时无法处理请求。'
 
         #configuration error messages
         credential_flow_not_configured: '由于 Doorkeeper.configure.resource_owner_from_credentials 尚未配置，应用验证授权流程失败。'
         resource_owner_authenticator_not_configured: '由于 Doorkeeper.configure.resource_owner_authenticator 尚未配置，查找资源所有者失败。'
+        admin_authenticator_not_configured: '由于 Doorkeeper.configure.admin_authenticator 尚未配置，禁止访问管理员面板。'
 
         # Access grant errors
         unsupported_response_type: '服务器不支持这种响应类型。'
