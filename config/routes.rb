@@ -6,5 +6,7 @@ Rails.application.routes.draw do
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
   resources :vendors, only: :index
+  get '/me' => 'home#me'
+  get '/profiles' => 'home#profiles'
   root to: 'home#index'
 end
