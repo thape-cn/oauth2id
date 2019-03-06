@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
-gem 'doorkeeper'
+gem 'doorkeeper-openid_connect'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

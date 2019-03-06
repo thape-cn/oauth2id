@@ -1,0 +1,23 @@
+---
+zh-CN:
+  doorkeeper:
+    scopes:
+      openid: '验证您的帐户'
+      profile: '查看您的个人资料信息'
+      email: '查看您的电子邮件地址'
+      address: '查看您的实际地址'
+      phone: '查看您的电话号码'
+    errors:
+      messages:
+        login_required: '授权服务器需要用户进行身份验证'
+        consent_required: '授权服务器需要用户同意'
+        interaction_required: '授权服务器需要最终用户交互'
+        account_selection_required: '授权服务器需要用户来选择帐户'
+    openid_connect:
+      errors:
+        messages:
+          # Configuration error messages
+          resource_owner_from_access_token_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.resource_owner_from_access_token missing configuration.'
+          auth_time_from_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.auth_time_from_resource_owner missing configuration.'
+          reauthenticate_resource_owner_not_configured: 'Failure due to Doorkeeper::OpenidConnect.configure.reauthenticate_resource_owner missing configuration.'
+          subject_not_configured: 'ID Token generation failed due to Doorkeeper::OpenidConnect.configure.subject missing configuration.'
