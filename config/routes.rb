@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  use_doorkeeper_openid_connect
   use_doorkeeper
+  use_doorkeeper_openid_connect
   devise_for :users, controllers: { sessions: 'user/sessions',
                                     passwords: 'user/passwords',
                                     confirmations: 'user/confirmations',
