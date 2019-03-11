@@ -1,5 +1,5 @@
 Doorkeeper::OpenidConnect.configure do
-  issuer 'https://oauth2id.test/'
+  issuer 'https://oauth2id.dev/'
 
   signing_key Rails.application.credentials.oauth2id_signing_key!
 
