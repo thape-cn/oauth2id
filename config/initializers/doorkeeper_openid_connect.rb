@@ -2,7 +2,7 @@ Doorkeeper::OpenidConnect.configure do
   if Rails.env.development?
     issuer 'https://oauth2id.test/'
   else
-    issuer 'https://sso-id.com/'
+    issuer Rails.application.credentials.oauth2id_issuer!
   end
 
   signing_key Rails.application.credentials.oauth2id_signing_key!
