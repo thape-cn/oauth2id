@@ -7,8 +7,8 @@ set :repo_url, 'git@github.com:thape-cn/oauth2id.git'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/scschub
-# set :deploy_to, "/var/www/scschub"
+# Default deploy_to directory is /var/www/oauth2id
+# set :deploy_to, "/var/www/oauth2id"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -21,7 +21,7 @@ set :repo_url, 'git@github.com:thape-cn/oauth2id.git'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, *%w[puma.rb config/database.yml config/master.key db/oauth2id_staging.sqlite3]
+append :linked_files, *%w[puma.rb config/database.yml config/master.key db/oauth2id_prod.sqlite3]
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'node_modules'
