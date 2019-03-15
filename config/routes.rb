@@ -6,7 +6,7 @@ Rails.application.routes.draw do
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
-  resources :vendors, only: :index
+  resources :employees, only: :index
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'
