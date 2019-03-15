@@ -107,15 +107,15 @@
       <% end %>
       <ul class="app-menu">
         <li>
-          <%= link_to root_path, class: 'app-menu__item active' do %>
+          <%= link_to root_path, class: "app-menu__item #{params[:controller] == 'home' && params[:action] == 'index' ? 'active' : ''}" do %>
             <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span>
           <% end %>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Vendors</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview <%= (params[:controller] == 'employees') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Employees Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
-              <%= link_to vendors_path, class: 'treeview-item' do %>
-                <i class="icon fa fa-circle-o"></i> Vendor List</a>
+              <%= link_to employees_path, class: "treeview-item #{params[:controller] == 'employees' && params[:action] == 'index' ? 'active' : ''}" do %>
+                <i class="icon fa fa-circle-o"></i> Employee List</a>
               <% end %>
             </li>
           </ul>
