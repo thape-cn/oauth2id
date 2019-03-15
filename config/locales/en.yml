@@ -1,5 +1,16 @@
 ---
 en:
+  ui:
+    have_new_notification: "You have %{count} new notifications."
+    see_all_notifications: "See all notifications."
+    dashboard: "Dashboard"
+    employees: "Employees"
+    employees_management: "Employees Management"
+    employee_list: "Employee List"
+    employees_description: "Motivated Employees Are Key To Your Company's Success."
+    settings: "Settings"
+    profile: "Profile"
+    logout: "Logout"
   user:
     username: "Username"
     username_placeholder: "Your perfer account name"
@@ -32,7 +43,10 @@ en:
               blank: "Email is blank"
             password:
               blank: "Password is blank"
+            current_password:
+              blank: "Current password is blank"
             username:
+              blank: "用户名为空"
               exclusion: "Some username is reserved"
     models:
       user: "User"

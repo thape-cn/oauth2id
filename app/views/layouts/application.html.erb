@@ -27,7 +27,7 @@
           <%# Notification Menu %>
           <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
             <ul class="app-notification dropdown-menu dropdown-menu-right">
-              <li class="app-notification__title">You have 4 new notifications.</li>
+              <li class="app-notification__title"><%= t('ui.have_new_notification', count: 4) -%></li>
               <div class="app-notification__content">
                 <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                     <div>
@@ -62,7 +62,7 @@
                       </div></a></li>
                 </div>
               </div>
-              <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+              <li class="app-notification__footer"><a href="#"><%= t('ui.see_all_notifications') -%></a></li>
             </ul>
           </li>
           <%# User Menu %>
@@ -70,17 +70,17 @@
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
               <li>
                 <%= link_to edit_user_registration_path, class: 'dropdown-item' do -%>
-                  <i class="fa fa-cog fa-lg"></i> Settings
+                  <i class="fa fa-cog fa-lg"></i> <%= t('ui.settings') -%>
                 <% end %>
               </li>
               <li>
                 <%= link_to edit_user_registration_path, class: 'dropdown-item' do -%>
-                  <i class="fa fa-user fa-lg"></i> Profile
+                  <i class="fa fa-user fa-lg"></i> <%= t('ui.profile') -%>
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
-                  <i class="fa fa-sign-out fa-lg"></i> Logout
+                  <i class="fa fa-sign-out fa-lg"></i> <%= t('ui.logout') -%>
                 <% end %>
               </li>
             </ul>
@@ -108,14 +108,14 @@
       <ul class="app-menu">
         <li>
           <%= link_to root_path, class: "app-menu__item #{params[:controller] == 'home' && params[:action] == 'index' ? 'active' : ''}" do %>
-            <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span>
+            <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label"><%= t('ui.dashboard') -%></span>
           <% end %>
         </li>
-        <li class="treeview <%= (params[:controller] == 'employees') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Employees Management</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview <%= (params[:controller] == 'employees') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.employees_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li>
               <%= link_to employees_path, class: "treeview-item #{params[:controller] == 'employees' && params[:action] == 'index' ? 'active' : ''}" do %>
-                <i class="icon fa fa-circle-o"></i> Employee List</a>
+                <i class="icon fa fa-circle-o"></i> <%= t('ui.employee_list') -%></a>
               <% end %>
             </li>
           </ul>
