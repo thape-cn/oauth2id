@@ -2,6 +2,7 @@
 en:
   doorkeeper:
     scopes:
+      public: 'Authenticate your account'
       openid: 'Authenticate your account'
       profile: 'View your profile information'
       email: 'View your email address'
