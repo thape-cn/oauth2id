@@ -2,6 +2,7 @@
 zh-CN:
   doorkeeper:
     scopes:
+      public: '验证您的帐户'
       openid: '验证您的帐户'
       profile: '查看您的个人资料信息'
       email: '查看您的电子邮件地址'
