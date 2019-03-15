@@ -2,6 +2,7 @@
 en:
   user:
     username: "Username"
+    username_placeholder: "Your perfer account name"
     email: "Email"
     change_your_password: "Change your password"
     change_my_password: "Change my password"
@@ -31,6 +32,8 @@ en:
               blank: "Email is blank"
             password:
               blank: "Password is blank"
+            username:
+              exclusion: "Some username is reserved"
     models:
       user: "User"
   form:

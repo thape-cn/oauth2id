@@ -13,6 +13,8 @@ class User < ApplicationRecord
                            foreign_key: :resource_owner_id,
                            dependent: :delete_all # or :destroy if you need callbacks
 
+  validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
+
   def gravatarurl
     hash = Digest::MD5.hexdigest(email)
     "http://www.gravatar.com/avatar/#{hash}"

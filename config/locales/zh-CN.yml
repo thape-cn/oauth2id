@@ -2,6 +2,7 @@
 zh-CN:
   user:
     username: "用户名"
+    username_placeholder: "希望显示的用户名"
     email: "电子邮件"
     change_your_password: "更改您的密码"
     change_my_password: "更改我的密码"
@@ -31,6 +32,8 @@ zh-CN:
               blank: "电子邮件为空"
             password:
               blank: "密码为空"
+            username:
+              exclusion: "一些用户名是保留的"
     models:
       user: "用户"
   form:
