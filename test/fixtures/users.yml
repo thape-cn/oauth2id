@@ -1,5 +1,6 @@
 ---
 eric:
+  username: "Eric Guo"
   email: "eric@cloud-mes.com"
   confirmed_at: <%= Time.zone.now %>
   # password: 123456

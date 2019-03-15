@@ -100,7 +100,7 @@
         <div class="app-sidebar__user">
           <img class="app-sidebar__user-avatar" src="<%= current_user.gravatarurl -%>" alt="User Image">
           <div>
-            <p class="app-sidebar__user-name">John Doe</p>
+            <p class="app-sidebar__user-name"><%= current_user.username -%></p>
             <p class="app-sidebar__user-designation">Frontend Developer</p>
           </div>
         </div>
