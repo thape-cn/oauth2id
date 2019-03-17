@@ -6,7 +6,7 @@
       "folder_exclude_patterns": [".circleci", ".bundle",".idea","tmp",".capistrano","log","tmp",
                                   "public/assets","coverage","public/packs"],
       "file_exclude_patterns": ["*.sublime-workspace",".byebug_history",".DS_Store",
-                                "config/credentials.yml.enc", "db/oauth2id_*.sqlite3",]
+                                "config/credentials.yml.enc", "db/oauth2id_*.sqlite3"]
     },
     {
       "path": "./node_modules/vali-admin",
@@ -14,7 +14,9 @@
       "file_exclude_patterns": ["docs/js/plugins/fullcalendar.min.js",
                                 "docs/js/bootstrap.min.js",
                                 "docs/js/popper.min.js",
-                                "docs/js/jquery-3.2.1.min.js"]
+                                "docs/js/jquery-3.2.1.min.js",
+                                "docs/js/plugins/jquery.dataTables.min.js",
+                                "docs/js/plugins/dataTables.bootstrap.min.js"]
     }
   ],
     "settings":

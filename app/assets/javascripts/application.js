@@ -15,6 +15,8 @@
 //= require vali-admin/docs/js/popper.min
 //= require vali-admin/docs/js/bootstrap.min
 //= require vali-admin/docs/js/plugins/bootstrap-notify.min
+//= require datatables/media/js/jquery.dataTables.js
+//= require vali-admin/docs/js/plugins/dataTables.bootstrap.min
 //= require activestorage
 //= require turbolinks
 //= require cable
