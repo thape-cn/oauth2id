@@ -11,6 +11,9 @@ gem 'sqlite3', '~> 1.3.13'
 gem 'puma', '~> 3.11'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'ajax-datatables-rails'
+
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
