@@ -1,0 +1,19 @@
+---
+oauth_app_test:
+  name: "Test"
+  uid: "6b36653e4aa01d42cb7080afd774d5eb89f513936b16644706db0007bd2712ab"
+  secret: "c739ebd9095c6f1d8e0a82ab67237e6be792233e54d3b4a1f255075105257ff9"
+  redirect_uri: "https://oauth2id-test.test/users/auth/doorkeeper/callback"
+  confidential: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+oauth_app_omniauth:
+  name: "omniauth openid connect demo"
+  uid: "f9178706ede11ee18069d7c5629ed2db9165c32572c14fbfbf2ba3bf6e8eede1"
+  secret: "72adb7e4945d461151de74a962a03abcaebfe4445664cc87629fef6b3159dc28"
+  redirect_uri: "https://omniauth-openid-connect-demo.test/auth/openid_connect/callback"
+  scopes: "openid"
+  confidential: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
