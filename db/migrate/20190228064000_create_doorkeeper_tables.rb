@@ -64,5 +64,13 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[5.2]
       :oauth_applications,
       column: :application_id
     )
+
+    # Enable pkce
+    add_column :oauth_access_grants, :code_challenge, :string, null: true
+    add_column :oauth_access_grants, :code_challenge_method, :string, null: true
+
+    # Add doorkeeper foreign key
+    add_foreign_key :oauth_access_grants, :users, column: :resource_owner_id
+    add_foreign_key :oauth_access_tokens, :users, column: :resource_owner_id
   end
 end
