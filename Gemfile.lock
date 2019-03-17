@@ -88,6 +88,7 @@ GEM
       json-jwt (~> 1.6)
     erubi (1.8.0)
     execjs (2.7.0)
+    ffaker (2.10.0)
     ffi (1.10.0)
     ffi (1.10.0-java)
     ffi (1.10.0-x64-mingw32)
@@ -257,6 +258,7 @@ DEPENDENCIES
   chromedriver-helper
   devise
   doorkeeper-openid_connect
+  ffaker
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
