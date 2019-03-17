@@ -1,7 +1,17 @@
 ---
 eric:
+  id: 1
   username: "Eric Guo"
   email: "eric@cloud-mes.com"
   confirmed_at: <%= Time.zone.now %>
   # password: 123456
   encrypted_password: '$2a$11$I3DE/JkhWB03DUC.LFaoEuwVRU7Kk474udMsmF/AiX5IAxm5CoXcS'
+
+<% (2..60).each do |digit| %>
+user_<%= digit %>:
+  id: <%= digit %>
+  username: <%= FFaker::NameCN.name %>
+  email: <%= FFaker::Internet.email %>
+  encrypted_password: '$2a$11$I3DE/JkhWB03DUC.LFaoEuwVRU7Kk474udMsmF/AiX5IAxm5CoXcS'
+  confirmed_at: <%= Time.zone.now %>
+<% end %>
