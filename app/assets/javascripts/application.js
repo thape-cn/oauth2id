@@ -21,6 +21,7 @@
 //= require turbolinks
 //= require cable
 //= require_self
+//= require employees
 //= require main
 
 $.notifyDefaults({

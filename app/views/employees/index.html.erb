@@ -11,6 +11,21 @@
   </div>
   <div class="row">
     <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-body">
+          <table id="users-datatable" class="table table-hover table-bordered" data-source="<%= employees_path(format: :json) -%>">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </main>
