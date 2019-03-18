@@ -8,6 +8,8 @@ en:
     employees_management: "Employees Management"
     employee_list: "Employee List"
     employees_description: "Motivated Employees Are Key To Your Company's Success."
+    applications_management: "Applications Management"
+    applications_list: "Applications List"
     settings: "Settings"
     profile: "Profile"
     logout: "Logout"
