@@ -6,6 +6,7 @@
       <div>
         <p class="app-sidebar__user-name"><%= current_user.username -%></p>
         <p class="app-sidebar__user-designation">Frontend Developer</p>
+        <small><%= policy(User).system_role_name -%></small>
       </div>
     </div>
   <% end %>
