@@ -4,4 +4,17 @@
       <h1><i class="fa fa-dashboard"></i> <%= t('ui.my_application_list') -%></h1>
     </div>
   </div>
+
+  <div class="row">
+    <% @applications.each do |application| -%>
+      <div class="col-md-6 col-lg-4">
+        <div class="widget-small <%= application.div_class -%> coloured-icon">
+          <i class="icon fa <%= application.icon -%> fa-3x"></i>
+          <div class="info">
+            <h4><%= application.name -%></h4>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </main>
