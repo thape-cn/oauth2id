@@ -44,6 +44,13 @@
   </div>
 
   <div class="col-md-4">
+    <div class="widget-small <%= @application.div_class -%> coloured-icon">
+      <i class="icon fa <%= @application.icon -%> fa-3x"></i>
+      <div class="info">
+        <h4><%= @application.name -%></h4>
+      </div>
+    </div>
+
     <h3><%= t('.actions') %></h3>
 
     <p><%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary' %></p>

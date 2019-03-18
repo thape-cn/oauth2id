@@ -5,6 +5,8 @@ oauth_app_test:
   secret: "c739ebd9095c6f1d8e0a82ab67237e6be792233e54d3b4a1f255075105257ff9"
   redirect_uri: "https://oauth2id-test.test/users/auth/doorkeeper/callback"
   confidential: true
+  div_class: "danger"
+  icon: "fa-users"
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -15,6 +17,8 @@ oauth_app_omniauth:
   redirect_uri: "https://omniauth-openid-connect-demo.test/auth/openid_connect/callback"
   scopes: "openid"
   confidential: true
+  div_class: "info"
+  icon: "fa-thumbs-o-up"
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -25,5 +29,7 @@ oauth_app_aspnet_mvc:
   redirect_uri: "https://localhost:44348/signin-oidc"
   scopes: "openid profile"
   confidential: true
+  div_class: "warning"
+  icon: "fa-files-o"
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
