@@ -12,23 +12,10 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-  <%= link_to t('doorkeeper.layouts.admin.nav.oauth2_provider'), oauth_applications_path, class: 'navbar-brand' %>
-
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= 'active' if request.path == oauth_applications_path %>">
-        <%= link_to t('doorkeeper.layouts.admin.nav.applications'), oauth_applications_path, class: 'nav-link' %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t('doorkeeper.layouts.admin.nav.home'), root_path, class: 'nav-link' %>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+  <body class="app sidebar-mini rtl" data-notice="<%= j notice -%>" data-alert="<%= j alert || devise_error_messages -%>">
+    <%= render 'shared/navbar' %>
     <%= render 'shared/sidebar_menu' %>
+
     <%= yield %>
   </body>
 </html>
