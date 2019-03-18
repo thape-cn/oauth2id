@@ -3,7 +3,7 @@ zh-CN:
   ui:
     have_new_notification: "您有%{count}个新通知。"
     see_all_notifications: "查看所有通知。"
-    dashboard: "仪表板"
+    my_application_list: "我的应用程序"
     employees: "员工"
     employees_management: "员工管理"
     employee_list: "员工名单"
