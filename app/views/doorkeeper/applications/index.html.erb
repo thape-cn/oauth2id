@@ -1,8 +1,17 @@
-<div class="border-bottom mb-4">
-  <h1><%= t('.title') %></h1>
-</div>
-
-<p><%= link_to t('.new'), new_oauth_application_path, class: 'btn btn-success' %></p>
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> <%= t('.title') %></h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="<%= oauth_applications_path -%>"><%= t('.title') -%></a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-body">
 
 <table class="table table-striped">
   <thead>
@@ -36,3 +45,8 @@
   <% end %>
   </tbody>
 </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

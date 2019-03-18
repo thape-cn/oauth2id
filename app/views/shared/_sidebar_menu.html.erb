@@ -24,5 +24,19 @@
         </li>
       </ul>
     </li>
+    <li class="treeview <%= (params[:controller] == 'doorkeeper/applications') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.applications_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to oauth_applications_path, class: "treeview-item #{params[:controller] == 'doorkeeper/applications' && params[:action] == 'index' ? 'active' : ''}" do %>
+            <i class="icon fa fa-circle-o"></i> <%= t('ui.applications_list') -%></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_oauth_application_path, class: "treeview-item #{params[:controller] == 'doorkeeper/applications' && params[:action] == 'new' ? 'active' : ''}" do %>
+            <i class="icon fa fa-circle-o"></i> <%= t('doorkeeper.applications.new.title') -%></a>
+          <% end %>
+        </li>
+      </ul>
+    </li>
   </ul>
 </aside>

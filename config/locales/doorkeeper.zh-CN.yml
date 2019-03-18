@@ -39,7 +39,7 @@ zh-CN:
       edit:
         title: '修改应用'
       index:
-        title: '你的应用'
+        title: '可单点登录的应用'
         new: '创建新应用'
         name: '名称'
         callback_url: '回调 URL'
