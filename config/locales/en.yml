@@ -40,6 +40,10 @@ en:
   activerecord:
     errors:
       models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              blank: "redirect_uri can not be blank"
         user:
           attributes:
             email:

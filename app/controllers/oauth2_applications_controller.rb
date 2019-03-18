@@ -1,0 +1,49 @@
+class Oauth2ApplicationsController < ApplicationController
+  # after_action :verify_authorized
+  before_action :set_application, only: %i[update]
+
+  def create
+    @application = Doorkeeper::Application.new(application_params)
+
+    if @application.save
+      flash[:notice] = I18n.t(:notice, scope: %i[doorkeeper flash applications create])
+
+      respond_to do |format|
+        format.html { redirect_to oauth_application_url(@application) }
+        format.json { render json: @application }
+      end
+    else
+      respond_to do |format|
+        format.html { render 'doorkeeper/applications/new' }
+        format.json { render json: { errors: @application.errors.full_messages }, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    if @application.update(application_params)
+      flash[:notice] = I18n.t(:notice, scope: %i[doorkeeper flash applications update])
+
+      respond_to do |format|
+        format.html { redirect_to oauth_application_url(@application) }
+        format.json { render json: @application }
+      end
+    else
+      respond_to do |format|
+        format.html { render 'doorkeeper/applications/edit' }
+        format.json { render json: { errors: @application.errors.full_messages }, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  private
+
+  def set_application
+    @application = Doorkeeper::Application.find(params[:id])
+  end
+
+  def application_params
+    params.require(:doorkeeper_application)
+      .permit(:name, :redirect_uri, :scopes, :confidential, :icon, :div_class)
+  end
+end

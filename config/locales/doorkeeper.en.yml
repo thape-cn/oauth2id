@@ -6,6 +6,8 @@ en:
         name: 'Name'
         redirect_uri: 'Redirect URI'
         scopes: 'Scopes'
+        icon: 'Icon'
+        div_class: 'tag DIV class'
     errors:
       models:
         doorkeeper/application:
@@ -36,6 +38,8 @@ en:
         redirect_uri: 'Use one line per URI'
         native_redirect_uri: 'Use %{native_redirect_uri} if you want to add localhost URIs for development purposes'
         scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
+        icon: "Display application fontawesome icon name, select <a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>here</a>."
+        div_class: "Contain the Application icon div class name"
       edit:
         title: 'Edit application'
       index:

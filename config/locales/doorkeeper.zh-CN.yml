@@ -6,6 +6,8 @@ zh-CN:
         name: '应用名称'
         redirect_uri: '重定向 URI'
         scopes: '权限范围'
+        icon: '图标'
+        div_class: 'tag DIV class'
     errors:
       models:
         doorkeeper/application:
@@ -36,6 +38,8 @@ zh-CN:
         redirect_uri: '每行只能有一个 URI'
         native_redirect_uri: '本地测试请使用 %{native_redirect_uri}'
         scopes: '用空格分割权限范围，留空则使用默认设置'
+        icon: "显示应用程序fontawesome图标名称，<a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>点击</a>选择。"
+        div_class: "显示应用的div class名字"
       edit:
         title: '修改应用'
       index:
