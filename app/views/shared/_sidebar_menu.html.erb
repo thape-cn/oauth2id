@@ -16,6 +16,7 @@
         <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label"><%= t('ui.dashboard') -%></span>
       <% end %>
     </li>
+  <% if policy(User).index? %>
     <li class="treeview <%= (params[:controller] == 'employees') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.employees_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
         <li>
@@ -25,6 +26,7 @@
         </li>
       </ul>
     </li>
+  <% end -%>
     <li class="treeview <%= (params[:controller] == 'doorkeeper/applications') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.applications_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
         <li>

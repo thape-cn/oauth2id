@@ -17,13 +17,13 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    user.admin?
+    user&.admin?
   end
 
   def system_role_name
     return unless user.present?
 
-    if user.admin?
+    if user&.admin?
       ActionController::Base.helpers.content_tag :p, I18n.t('ui.system_administrator'), class: 'app-sidebar__user-designation'
     end
   end
