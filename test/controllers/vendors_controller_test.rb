@@ -7,7 +7,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show index if sign in' do
-    sign_in users(:eric)
+    sign_in users(:user_eric)
     get employees_url
     assert_response :success
   end
