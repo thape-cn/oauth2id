@@ -1,4 +1,9 @@
 class UserDatatable < AjaxDatatablesRails::ActiveRecord
+  def initialize(params, opts = {})
+    @users = opts[:users]
+    super
+  end
+
   def view_columns
     # Declare strings in this format: ModelName.column_name
     # or in aliased_join_table.column_name format
@@ -18,6 +23,6 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
-    User.all
+    @users
   end
 end
