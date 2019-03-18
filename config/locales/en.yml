@@ -3,7 +3,7 @@ en:
   ui:
     have_new_notification: "You have %{count} new notifications."
     see_all_notifications: "See all notifications."
-    dashboard: "Dashboard"
+    my_application_list: "My application"
     employees: "Employees"
     employees_management: "Employees Management"
     employee_list: "Employee List"
