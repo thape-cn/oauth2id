@@ -17,3 +17,13 @@ oauth_app_omniauth:
   confidential: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
+
+oauth_app_aspnet_mvc:
+  name: "MVC oidc(OpenID Connect) Sample"
+  uid: "a79acc19c5ddd565007918d7e3a61cd490de86e5ec9179f445802285b4750999"
+  secret: "214e85448c1f3c276797ab49e3817804c9555a39b4cc025fa00a135206d8b19d"
+  redirect_uri: "https://omniauth-openid-connect-demo.test/"
+  scopes: "openid"
+  confidential: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
