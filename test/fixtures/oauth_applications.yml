@@ -1,5 +1,6 @@
 ---
 oauth_app_test:
+  id: 1
   name: "Test"
   uid: "6b36653e4aa01d42cb7080afd774d5eb89f513936b16644706db0007bd2712ab"
   secret: "c739ebd9095c6f1d8e0a82ab67237e6be792233e54d3b4a1f255075105257ff9"
@@ -11,6 +12,7 @@ oauth_app_test:
   updated_at: <%= Time.zone.now %>
 
 oauth_app_omniauth:
+  id: 2
   name: "omniauth openid connect demo"
   uid: "f9178706ede11ee18069d7c5629ed2db9165c32572c14fbfbf2ba3bf6e8eede1"
   secret: "72adb7e4945d461151de74a962a03abcaebfe4445664cc87629fef6b3159dc28"
@@ -23,6 +25,7 @@ oauth_app_omniauth:
   updated_at: <%= Time.zone.now %>
 
 oauth_app_aspnet_mvc:
+  id: 3
   name: "MVC oidc(OpenID Connect) Sample"
   uid: "a79acc19c5ddd565007918d7e3a61cd490de86e5ec9179f445802285b4750999"
   secret: "214e85448c1f3c276797ab49e3817804c9555a39b4cc025fa00a135206d8b19d"
