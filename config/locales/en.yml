@@ -1,6 +1,8 @@
 ---
 en:
   ui:
+    update: "Update"
+    update_success: "Successfully updated"
     have_new_notification: "You have %{count} new notifications."
     see_all_notifications: "See all notifications."
     my_application_list: "My application"
@@ -13,6 +15,12 @@ en:
     system_administrator: "System Administrator"
     settings: "Settings"
     profile: "Profile"
+    profile_description: "The higher your profile, the more people want you."
+    title: "Title"
+    title_placeholder: "Title as here"
+    gender: "Gender"
+    male: "Male"
+    female: "Female"
     logout: "Logout"
   user:
     username: "Username"
