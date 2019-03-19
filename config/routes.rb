@@ -8,6 +8,11 @@ Rails.application.routes.draw do
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
   resources :employees, only: :index
+  resource :setting, only: :update do
+    member do
+      get :profile
+    end
+  end
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'

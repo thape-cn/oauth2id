@@ -1,6 +1,8 @@
 ---
 zh-CN:
   ui:
+    update: "更新"
+    update_success: "更新成功"
     have_new_notification: "您有%{count}个新通知。"
     see_all_notifications: "查看所有通知。"
     my_application_list: "我的应用程序"
@@ -12,7 +14,13 @@ zh-CN:
     applications_list: "应用列表"
     system_administrator: "系统管理员"
     settings: "设置"
-    profile: "档案"
+    profile: "详细资料"
+    profile_description: "您的个人资料越突出，人们就越想要您。"
+    title: "称谓"
+    title_placeholder: "希望别人如何称呼您？"
+    gender: "性别"
+    male: "男"
+    female: "女"
     logout: "登出"
   user:
     username: "用户名"

@@ -5,7 +5,7 @@
       <img class="app-sidebar__user-avatar" src="<%= current_user.gravatarurl -%>" alt="User Image">
       <div>
         <p class="app-sidebar__user-name"><%= current_user.username -%></p>
-        <p class="app-sidebar__user-designation">Frontend Developer</p>
+        <p class="app-sidebar__user-designation"><%= current_user.profile&.title -%></p>
         <small><%= policy(User).system_role_name -%></small>
       </div>
     </div>

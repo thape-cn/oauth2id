@@ -1,0 +1,61 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-edit"></i> <%= t('ui.profile') -%></h1>
+      <p><%= t('ui.profile_description') -%></p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item">
+        <a href="<%= profile_setting_path -%>">
+          <%= t('ui.profile') -%>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <%= form_for @profile, url: setting_path, method: :put do |f| %>
+        <input type="hidden" name="by" value="profile" />
+        <div class="tile">
+          <div class="tile-body">
+            <form class="form-horizontal">
+              <div class="form-group row">
+                <label class="control-label col-md-3"><%= t('ui.title') -%></label>
+                <div class="col-md-8">
+                  <%= f.text_field :title, class: 'form-control', placeholder: t('ui.title_placeholder') %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-md-3"><%= t('ui.gender') -%></label>
+                <div class="col-md-9">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <%= f.radio_button :gender, true, class: 'form-check-input' %>
+                      <%= t('ui.male') -%>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <%= f.radio_button :gender, false, class: 'form-check-input' %>
+                      <%= t('ui.female') -%>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tile-footer">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-3">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fa fa-fw fa-lg fa-check-circle"></i><%= t('ui.update') -%>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
