@@ -3,7 +3,7 @@ class Oauth2ApplicationsController < ApplicationController
   before_action :set_application, only: %i[update]
 
   def create
-    @application = Doorkeeper::Application.new(application_params)
+    @application = DoorkeeperApplication.new(application_params)
     authorize @application
 
     if @application.save
@@ -42,7 +42,7 @@ class Oauth2ApplicationsController < ApplicationController
   private
 
   def set_application
-    @application = Doorkeeper::Application.find(params[:id])
+    @application = DoorkeeperApplication.find(params[:id])
   end
 
   def application_params

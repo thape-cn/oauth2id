@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_060701) do
+ActiveRecord::Schema.define(version: 2019_03_19_075636) do
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 2019_03_19_060701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "user_allowed_applications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "oauth_application_id"
+    t.boolean "enable", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["oauth_application_id"], name: "index_user_allowed_applications_on_oauth_application_id"
+    t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

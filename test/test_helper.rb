@@ -4,6 +4,7 @@ require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
+    set_fixture_class :oauth_applications => DoorkeeperApplication
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
