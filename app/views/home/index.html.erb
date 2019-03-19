@@ -11,7 +11,9 @@
         <div class="widget-small <%= application.div_class -%> coloured-icon">
           <i class="icon fa <%= application.icon -%> fa-3x"></i>
           <div class="info">
-            <h4><%= application.name -%></h4>
+            <%= link_to oauth_authorization_path(client_id: application.uid, redirect_uri: application.redirect_uri.split[0], response_type: 'code', scope: application.scopes), target: '_blank' do %>
+              <h4><%= application.name -%></h4>
+            <% end %>
           </div>
         </div>
       </div>
