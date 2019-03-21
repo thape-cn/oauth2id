@@ -22,6 +22,7 @@
             <tbody>
       <%= f.fields_for :user_allowed_applications do |ua_f| %>
               <tr>
+                <%= ua_f.hidden_field :oauth_application_id -%>
                 <td><%= ua_f.object.oauth_application.name -%></td>
                 <td><%= ua_f.check_box :enable %></td>
               </tr>
