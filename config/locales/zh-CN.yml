@@ -13,6 +13,7 @@ zh-CN:
     applications_management: "应用管理"
     applications_list: "应用列表"
     can_grant_applications: "可以授予访问权限的应用程序"
+    can_not_grant_applications: "无法授予应用程序访问权限"
     allow_access: "允许访问"
     system_administrator: "系统管理员"
     settings: "设置"

@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :user_allowed_applications
   accepts_nested_attributes_for :user_allowed_applications
+  has_many :oauth_applications, through: :user_allowed_applications
 
   validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
 
