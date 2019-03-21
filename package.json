@@ -2,12 +2,13 @@
   "name": "oauth2id",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.6.0",
+    "@rails/webpacker": "^4.0.1",
     "datatables": "^1.10.18",
     "stimulus": "^1.1.1",
     "vali-admin": "^2.4.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack": "^4.28.4",
+    "webpack-dev-server": "^3.2.1"
   }
 }
