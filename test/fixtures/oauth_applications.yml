@@ -21,6 +21,7 @@ oauth_app_omniauth:
   confidential: true
   div_class: "info"
   icon: "fa-thumbs-o-up"
+  login_url: "https://omniauth-openid-connect-demo.test/auth/openid_connect"
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 

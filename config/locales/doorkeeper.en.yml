@@ -40,6 +40,7 @@ en:
         scopes: 'Separate scopes with spaces. Leave blank to use the default scopes.'
         icon: "Display application fontawesome icon name, select <a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>here</a>."
         div_class: "Contain the Application icon div class name"
+        login_url: "SSO Login URL"
       edit:
         title: 'Edit application'
       index:

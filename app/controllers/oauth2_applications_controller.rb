@@ -47,6 +47,6 @@ class Oauth2ApplicationsController < ApplicationController
 
   def application_params
     params.require(:doorkeeper_application)
-      .permit(:name, :redirect_uri, :scopes, :confidential, :icon, :div_class)
+      .permit(:name, :redirect_uri, :scopes, :confidential, :icon, :div_class, :login_url)
   end
 end
