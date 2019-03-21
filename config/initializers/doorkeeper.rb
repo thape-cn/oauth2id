@@ -3,8 +3,22 @@ Doorkeeper.configure do
   orm :active_record
 
   # This block will be called to check whether the resource owner is authenticated or not.
-  resource_owner_authenticator do
-    current_user || warden.authenticate!(:scope => :user)
+  resource_owner_authenticator do |routes|
+    client_id = routes.params[:client_id]
+
+    if current_user
+      authenticate_application = DoorkeeperApplication.find_by!(uid: client_id)
+      allowed_application = current_user
+        .user_allowed_applications.find_by(enable: true, oauth_application_id: authenticate_application.id)
+
+      if allowed_application
+        current_user
+      else
+        raise Doorkeeper::Errors::DoorkeeperError.new(I18n.t('ui.can_not_grant_applications'))
+      end
+    else
+      warden.authenticate!(:scope => :user)
+    end
   end
 
   # In this flow, a token is requested in exchange for the resource owner credentials (email and password)
