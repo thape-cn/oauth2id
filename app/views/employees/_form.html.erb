@@ -11,6 +11,24 @@
           </div>
         </form>
       <% end %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('ui.can_grant_applications') %></th>
+                <th><%= t('ui.allow_access') %></th>
+              </tr>
+            </thead>
+            <tbody>
+      <%= f.fields_for :user_allowed_applications do |ua_f| %>
+              <tr>
+                <td><%= ua_f.object.oauth_application.name -%></td>
+                <td><%= ua_f.check_box :enable %></td>
+              </tr>
+      <% end %>
+            </tbody>
+          </table>
+        </div>
     </div>
     <div class="tile-footer">
       <div class="row">

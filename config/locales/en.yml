@@ -12,6 +12,8 @@ en:
     employees_description: "Motivated Employees Are Key To Your Company's Success."
     applications_management: "Applications Management"
     applications_list: "Applications List"
+    can_grant_applications: "Applications can grant to access"
+    allow_access: "Allow Access"
     system_administrator: "System Administrator"
     settings: "Settings"
     profile: "Profile"
