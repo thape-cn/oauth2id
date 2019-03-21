@@ -14,6 +14,8 @@ class User < ApplicationRecord
                            dependent: :delete_all # or :destroy if you need callbacks
 
   has_one :profile
+  accepts_nested_attributes_for :profile
+
   has_many :user_allowed_applications
 
   validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
