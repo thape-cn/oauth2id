@@ -40,6 +40,7 @@ zh-CN:
         scopes: '用空格分割权限范围，留空则使用默认设置'
         icon: "显示应用程序fontawesome图标名称，<a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>点击</a>选择。"
         div_class: "显示应用的div class名字"
+        login_url: "SSO登录URL"
       edit:
         title: '修改应用'
       index:
