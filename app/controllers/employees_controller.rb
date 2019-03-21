@@ -15,6 +15,7 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    @user.profile || @user.build_profile
   end
 
   def update
@@ -33,6 +34,6 @@ class EmployeesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(profile_attributes: [:id, :title])
+    params.require(:user).permit(profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable])
   end
 end
