@@ -20,6 +20,14 @@ class UserPolicy < ApplicationPolicy
     user&.admin?
   end
 
+  def edit?
+    user&.admin?
+  end
+
+  def update?
+    edit?
+  end
+
   def system_role_name
     return unless user.present?
 

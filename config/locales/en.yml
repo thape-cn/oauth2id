@@ -45,6 +45,7 @@ en:
     resend_unlock_instructions: "Resend unlock instructions"
     resend_confirmation: "Resend confirmation ?"
     resend_confirmation_instructions: "Resend confirmation instructions"
+    edit_user_access: "Edit User Access"
   activerecord:
     errors:
       models:
