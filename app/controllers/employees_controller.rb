@@ -16,6 +16,10 @@ class EmployeesController < ApplicationController
 
   def edit
     @user.profile || @user.build_profile
+    need_append_application_ids = DoorkeeperApplication.pluck(:id) - @user.user_allowed_applications.pluck(:oauth_application_id)
+    need_append_application_ids.each do |application_id|
+      @user.user_allowed_applications.build(oauth_application_id: application_id, enable: false)
+    end
   end
 
   def update
@@ -34,6 +38,6 @@ class EmployeesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable])
+    params.require(:user).permit(profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable, :oauth_application_id])
   end
 end
