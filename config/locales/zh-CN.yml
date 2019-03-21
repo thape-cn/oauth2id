@@ -45,6 +45,7 @@ zh-CN:
     resend_unlock_instructions: "重新发送解锁说明"
     resend_confirmation: "重新发送确认 ？"
     resend_confirmation_instructions: "重新发送确认说明"
+    edit_user_access: "编辑用户访问权限"
   activerecord:
     errors:
       models:

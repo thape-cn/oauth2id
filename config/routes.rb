@@ -7,7 +7,7 @@ Rails.application.routes.draw do
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
-  resources :employees, only: :index
+  resources :employees, only: %i[index edit update]
   resource :setting, only: :update do
     member do
       get :profile

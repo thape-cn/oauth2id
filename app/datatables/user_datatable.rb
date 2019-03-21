@@ -1,6 +1,12 @@
 class UserDatatable < AjaxDatatablesRails::ActiveRecord
+  extend Forwardable
+
+  def_delegator :@view, :edit_employee_path
+  def_delegator :@view, :link_to
+
   def initialize(params, opts = {})
     @users = opts[:users]
+    @view = opts[:view_context]
     super
   end
 
@@ -17,7 +23,7 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   def data
     records.map do |record|
       { id: record.id,
-        username: record.username,
+        username: link_to(record.username, edit_employee_path(record)),
         email: record.email }
     end
   end
