@@ -19,7 +19,7 @@ class SettingsController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:title, :gender)
+    params.require(:profile).permit(:title, :gender, :phone)
   end
 
   def update_profile

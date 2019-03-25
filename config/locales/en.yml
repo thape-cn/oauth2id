@@ -24,6 +24,8 @@ en:
     gender: "Gender"
     male: "Male"
     female: "Female"
+    phone: "Phone"
+    phone_placeholder: "Phone as here"
     logout: "Logout"
   user:
     username: "Username"
