@@ -23,6 +23,9 @@ class User < ApplicationRecord
   has_many :department_users, dependent: :destroy
   has_many :departments, through: :department_users
 
+  has_many :position_users, dependent: :destroy
+  has_many :positions, through: :position_users
+
   validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
 
   def gravatarurl
