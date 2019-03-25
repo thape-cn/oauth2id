@@ -42,10 +42,16 @@ Doorkeeper::OpenidConnect.configure do
   # Example claims:
   claims do
     normal_claim :name, scope: :openid do |resource_owner|
-      'Name will be here'
+      resource_owner.username
     end
     normal_claim :email, scope: :openid do |resource_owner|
       resource_owner.email
+    end
+    normal_claim :gender, scope: :openid do |resource_owner|
+      profile = resource_owner.profile
+      if profile.present?
+        profile.gender ? 'Male' : 'Femail'
+      end
     end
   end
 end
