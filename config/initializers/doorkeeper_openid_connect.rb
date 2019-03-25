@@ -56,5 +56,18 @@ Doorkeeper::OpenidConnect.configure do
     normal_claim :phone_number, scope: :phone do |resource_owner|
       resource_owner.profile&.phone
     end
+
+    normal_claim :yunxuetang, scope: :yunxuetang do |resource_owner|
+      departments = resource_owner.departments.collect do |department|
+        { id: department.id, name: department.name }
+      end
+      positions = resource_owner.positions.collect do |position|
+        { id: position.id, name: position.name, functional_category: position.functional_category }
+      end
+      {
+        departments: departments,
+        positions: positions
+      }
+    end
   end
 end
