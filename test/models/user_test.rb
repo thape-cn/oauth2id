@@ -5,5 +5,6 @@ class UserTest < ActiveSupport::TestCase
     user_eric = users(:user_eric)
     assert user_eric.valid?
     assert_equal user_eric.departments.count, 3
+    assert_equal user_eric.positions.count, 2
   end
 end

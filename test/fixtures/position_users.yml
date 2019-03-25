@@ -1,0 +1,15 @@
+---
+position_dev_manager_eric:
+  position: position_dev_manager
+  user_id: 1  # user_eric
+  main_position: true
+
+position_rails_developer_eric:
+  position: position_rails_developer
+  user_id: 1  # user_eric
+  main_position: false
+
+position_strategic_development_supervisor_demo:
+  position: position_strategic_development_supervisor
+  user_id: 2  # user_demo
+  main_position: true
