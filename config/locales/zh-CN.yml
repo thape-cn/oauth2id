@@ -24,6 +24,8 @@ zh-CN:
     gender: "性别"
     male: "男"
     female: "女"
+    phone: "电话"
+    phone_placeholder: "手机或者座机？"
     logout: "登出"
   user:
     username: "用户名"
