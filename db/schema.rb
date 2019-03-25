@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_032912) do
+ActiveRecord::Schema.define(version: 2019_03_25_021944) do
+
+  create_table "department_users", force: :cascade do |t|
+    t.integer "department_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_department_users_on_department_id"
+    t.index ["user_id"], name: "index_department_users_on_user_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "position"
+    t.integer "managed_by_department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer "resource_owner_id", null: false

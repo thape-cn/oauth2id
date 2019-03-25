@@ -1,0 +1,45 @@
+---
+thape_architectural_design_group:
+  name: 天华建筑设计集团
+  position: 1
+  managed_by_department:
+
+thape_it_department:
+  name: 流程与信息部
+  position: 3
+  managed_by_department: thape_architectural_design_group
+
+thape_workflow_group:
+  name: 流程管理
+  position: 1
+  managed_by_department: thape_it_department
+
+thape_dev_group:
+  name: 开发和数据
+  position: 2
+  managed_by_department: thape_it_department
+
+thape_app_online_group:
+  name: 应用实施
+  position: 3
+  managed_by_department: thape_it_department
+
+thape_hardware_group:
+  name: 基础架构与运维
+  position: 4
+  managed_by_department: thape_it_department
+
+thape_operation_group:
+  name: 运营
+  position: 5
+  managed_by_department: thape_it_department
+
+thape_strategic_dev_department:
+  name: 战略发展部
+  position: 1
+  managed_by_department: thape_architectural_design_group
+
+thape_public_relation_department:
+  name: 品牌公关部
+  position: 2
+  managed_by_department: thape_architectural_design_group

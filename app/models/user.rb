@@ -20,6 +20,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_allowed_applications
   has_many :oauth_applications, through: :user_allowed_applications
 
+  has_many :department_users, dependent: :destroy
+  has_many :departments, through: :department_users
+
   validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
 
   def gravatarurl
