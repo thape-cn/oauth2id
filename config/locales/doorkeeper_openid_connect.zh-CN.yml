@@ -8,6 +8,9 @@ zh-CN:
       email: '查看您的电子邮件地址'
       address: '查看您的实际地址'
       phone: '查看您的电话号码'
+      departments: "查看您所属的部门"
+      positions: "查看您的工作职位"
+      main_position: "查看您的主要工作岗位"
     errors:
       messages:
         login_required: '授权服务器需要用户进行身份验证'
