@@ -8,6 +8,9 @@ en:
       email: 'View your email address'
       address: 'View your physical address'
       phone: 'View your phone number'
+      departments: "View your belongs to departments"
+      positions: "View your working positions"
+      main_position: "View your main working position"
     errors:
       messages:
         login_required: 'The authorization server requires end-user authentication'
