@@ -7,6 +7,15 @@ GIT
       railties (>= 5)
 
 GIT
+  remote: https://github.com/Eric-Guo/devise_ldap_authenticatable
+  revision: d7e23a0c3aa6f7acdeeee57ddc1ac2f3196489d8
+  branch: search_by_ldap_attr
+  specs:
+    devise_ldap_authenticatable (0.8.7)
+      devise (>= 3.4.1)
+      net-ldap (>= 0.17.0)
+
+GIT
   remote: https://github.com/Eric-Guo/wechat
   revision: c25f567785cc37d6d4714f31133d64c0f7537aa3
   branch: main
@@ -220,6 +229,7 @@ GEM
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.4.2)
+    net-ldap (0.17.0)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
@@ -378,6 +388,7 @@ DEPENDENCIES
   dalli
   devise
   devise-jwt
+  devise_ldap_authenticatable!
   doorkeeper!
   doorkeeper-openid_connect!
   ffaker

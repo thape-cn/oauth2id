@@ -26,8 +26,13 @@ Doorkeeper.configure do
 
   # In this flow, a token is requested in exchange for the resource owner credentials (email and password)
   resource_owner_from_credentials do |_routes|
-    user = User.find_for_database_authentication(email: params[:email])
-    user&.valid_for_authentication? { user.valid_password?(params[:password]) } && user
+    if Rails.env.test?
+      user = User.find_for_database_authentication(email: params[:email])
+      user&.valid_for_authentication? { user.valid_password?(params[:password]) } && user
+    else
+      user = User.find_for_ldap_authentication(email: params[:email])
+      user&.valid_ldap_authentication?(params[:password]) && user
+    end
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
