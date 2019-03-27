@@ -1,6 +1,6 @@
 module FeatureToggles
   def self.allow_user_signup?
-    ENV.fetch('ALLOW_USER_SIGNUP', 'true') == 'true'
+    ENV.fetch('ALLOW_USER_SIGNUP', 'false') == 'true'
   end
 
   def self.allow_admin_grant_admin?

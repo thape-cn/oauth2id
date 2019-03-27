@@ -1,11 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable,
-         :jwt_authenticatable, jwt_revocation_strategy: self
+  include_devise_modules = if Rails.env.test?
+                             %i[database_authenticatable
+                                registerable
+                                recoverable rememberable trackable validatable
+                                confirmable lockable jwt_authenticatable]
+                           else
+                             %i[ldap_authenticatable
+                                recoverable rememberable trackable validatable
+                                lockable jwt_authenticatable]
+                           end
+  devise(*include_devise_modules, jwt_revocation_strategy: self)
 
   has_many :access_grants, class_name: 'Doorkeeper::AccessGrant',
                            foreign_key: :resource_owner_id,
@@ -48,5 +54,12 @@ class User < ApplicationRecord
 
   def expired_jwts
     allowlisted_jwts.where('exp <= ?', Time.now)
+  end
+
+  # Will be called at gem devise_ldap_authenticatable, lib/devise_ldap_authenticatable/model.rb:107
+  def ldap_before_save
+    li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
+    self.username = li[:samaccountname].first.to_s
+    self.email = li[:mail].first.to_s
   end
 end
