@@ -8,6 +8,15 @@ GIT
       warden-jwt_auth (~> 0.10)
 
 GIT
+  remote: https://github.com/Eric-Guo/devise_ldap_authenticatable
+  revision: d7e23a0c3aa6f7acdeeee57ddc1ac2f3196489d8
+  branch: search_by_ldap_attr
+  specs:
+    devise_ldap_authenticatable (0.8.7)
+      devise (>= 3.4.1)
+      net-ldap (>= 0.17.0)
+
+GIT
   remote: https://github.com/Eric-Guo/doorkeeper
   revision: d0b8a91554001de8614b978b45d478d0ea894cca
   branch: main
@@ -258,6 +267,7 @@ GEM
     net-imap (0.5.12)
       date
       net-protocol
+    net-ldap (0.18.0)
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
@@ -484,6 +494,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt!
+  devise_ldap_authenticatable!
   digest (~> 3.2)
   doorkeeper!
   doorkeeper-openid_connect!
