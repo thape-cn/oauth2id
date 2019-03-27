@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
+# bundle config local.devise_ldap_authenticatable /Users/guochunzhong/git/oss/devise_ldap_authenticatable/
+gem 'devise_ldap_authenticatable', git: 'https://github.com/Eric-Guo/devise_ldap_authenticatable', branch: :search_by_ldap_attr
 gem 'doorkeeper-openid_connect'
 gem 'pundit'
 

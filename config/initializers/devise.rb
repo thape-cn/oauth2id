@@ -280,4 +280,19 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  # ==> LDAP Configuration
+  # config.ldap_logger = true
+  # config.ldap_create_user = false
+  # config.ldap_update_password = true
+  # config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  # config.ldap_check_group_membership = false
+  # config.ldap_check_group_membership_without_admin = false
+  # config.ldap_check_attributes = false
+  # config.ldap_check_attributes_presence = false
+  # config.ldap_use_admin_to_bind = false
+  # config.ldap_ad_group_check = false
+
+  # ==> Advanced LDAP Configuration
+  # config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login},#{ldap.base}" }
 end

@@ -1,9 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+  include_devise_modules = if Rails.env.test?
+    %i[database_authenticatable registerable recoverable
+       rememberable trackable validatable confirmable lockable]
+  else
+    %i[ldap_authenticatable registerable recoverable
+       rememberable trackable validatable confirmable lockable]
+  end
+  devise *include_devise_modules
 
   has_many :access_grants, class_name: 'Doorkeeper::AccessGrant',
                            foreign_key: :resource_owner_id,
