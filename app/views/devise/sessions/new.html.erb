@@ -9,8 +9,8 @@
           <i class="fa fa-lg fa-fw fa-user"></i><%= t('user.sign_in') -%>
         </h3>
         <div class="form-group">
-          <label class="control-label"><%= t('user.email') -%></label>
-          <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Email', class: 'form-control' %>
+          <label class="control-label"><%= t('user.samaccountname') -%></label>
+          <%= f.text_field :username, autofocus: true, class: 'form-control' %>
         </div>
         <div class="form-group">
           <label class="control-label"><%= t('user.password') -%></label>
