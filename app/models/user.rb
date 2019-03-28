@@ -5,8 +5,8 @@ class User < ApplicationRecord
     %i[database_authenticatable registerable recoverable
        rememberable trackable validatable confirmable lockable]
   else
-    %i[ldap_authenticatable registerable recoverable
-       rememberable trackable validatable confirmable lockable]
+    %i[ldap_authenticatable recoverable
+       rememberable trackable validatable lockable]
   end
   devise *include_devise_modules
 
@@ -31,10 +31,17 @@ class User < ApplicationRecord
   has_many :position_users, dependent: :destroy
   has_many :positions, through: :position_users
 
-  validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
+  validates :username, presence: true, exclusion: { in: %w[admin] }
 
   def gravatarurl
     hash = Digest::MD5.hexdigest(email)
     "https://www.gravatar.com/avatar/#{hash}"
+  end
+
+  # Will be called at gem devise_ldap_authenticatable, lib/devise_ldap_authenticatable/model.rb:107
+  def ldap_before_save
+    li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
+    self.username = li[:samaccountname].first.to_s
+    self.email = li[:mail].first.to_s
   end
 end

@@ -53,11 +53,6 @@
       <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
         <ul class="dropdown-menu settings-menu dropdown-menu-right">
           <li>
-            <%= link_to edit_user_registration_path, class: 'dropdown-item' do -%>
-              <i class="fa fa-cog fa-lg"></i> <%= t('ui.settings') -%>
-            <% end %>
-          </li>
-          <li>
             <%= link_to profile_setting_path, class: 'dropdown-item' do -%>
               <i class="fa fa-user fa-lg"></i> <%= t('ui.profile') -%>
             <% end %>
@@ -72,7 +67,6 @@
     <% else %>
       <li class="app-login-box">
         <a class="btn btn-dark" href="<%= new_user_session_path -%>"><%= t('user.sign_in') -%></a>
-        <a class="btn btn-light" href="<%= new_user_registration_path -%>"><%= t('user.sign_up') -%></a>
       </li>
     <% end %>
   </ul>

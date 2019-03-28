@@ -31,6 +31,7 @@ en:
     username: "Username"
     username_placeholder: "Your perfer account name"
     email: "Email"
+    samaccountname: "Login Windows user name"
     change_your_password: "Change your password"
     change_my_password: "Change my password"
     change_profile: "Change Profile"
