@@ -17,6 +17,9 @@ gem 'ajax-datatables-rails'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
+# Host ourself instead of relay on CDN
+gem 'font-awesome-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
