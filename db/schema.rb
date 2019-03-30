@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_062621) do
+ActiveRecord::Schema.define(version: 2019_03_30_063723) do
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(version: 2019_03_25_062621) do
     t.datetime "updated_at", null: false
     t.index ["oauth_application_id"], name: "index_user_allowed_applications_on_oauth_application_id"
     t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
+  end
+
+  create_table "user_sign_in_histories", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "sign_in_at"
+    t.string "user_agent"
+    t.string "sign_in_ip"
+    t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
