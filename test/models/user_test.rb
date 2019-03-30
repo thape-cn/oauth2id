@@ -6,5 +6,6 @@ class UserTest < ActiveSupport::TestCase
     assert user_eric.valid?
     assert_equal user_eric.departments.count, 3
     assert_equal user_eric.positions.count, 2
+    assert_equal user_eric.user_sign_in_histories.count, 2
   end
 end

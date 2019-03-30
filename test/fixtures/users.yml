@@ -17,7 +17,16 @@ user_demo:
   encrypted_password: '$2a$11$I3DE/JkhWB03DUC.LFaoEuwVRU7Kk474udMsmF/AiX5IAxm5CoXcS'
   admin: true
 
-<% (3..60).each do |digit| %>
+user_shin:
+  id: 3
+  username: "Shin Zhang"
+  email: "shinrake@gmail.com"
+  confirmed_at: <%= Time.zone.now %>
+  # password: 123456
+  encrypted_password: '$2a$11$I3DE/JkhWB03DUC.LFaoEuwVRU7Kk474udMsmF/AiX5IAxm5CoXcS'
+  admin: true
+
+<% (4..60).each do |digit| %>
 user_<%= digit %>:
   id: <%= digit %>
   username: <%= FFaker::NameCN.name %>
