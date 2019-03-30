@@ -1,5 +1,6 @@
 module ApplicationHelper
   def devise_error_messages
+    return flash[:alert] if flash[:alert].present?
     return '' unless defined?(resource) && resource.errors.present?
 
     messages = resource.errors.full_messages.join('，')
