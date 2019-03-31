@@ -28,6 +28,8 @@ zh-CN:
     phone_placeholder: "手机或者座机？"
     logout: "登出"
     admin_action: "管理员操作"
+    overview: "概览"
+    sign_in_histories: "登录历史"
   user:
     username: "用户名"
     username_placeholder: "希望显示的用户名"
@@ -52,6 +54,7 @@ zh-CN:
     resend_confirmation: "重新发送确认 ？"
     resend_confirmation_instructions: "重新发送确认说明"
     edit_user_access: "编辑用户访问权限"
+    show_user: "查看用户信息"
   activerecord:
     errors:
       models:

@@ -20,6 +20,14 @@ class UserPolicy < ApplicationPolicy
     user&.admin?
   end
 
+  def show?
+    user&.admin?
+  end
+
+  def sign_in_histories?
+    user&.admin?
+  end
+
   def edit?
     user&.admin?
   end

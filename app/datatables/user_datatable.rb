@@ -1,6 +1,7 @@
 class UserDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
+  def_delegator :@view, :employee_path
   def_delegator :@view, :edit_employee_path
   def_delegator :@view, :link_to
   def_delegator :@view, :fa_icon
@@ -25,7 +26,7 @@ class UserDatatable < AjaxDatatablesRails::ActiveRecord
   def data
     records.map do |record|
       { id: record.id,
-        username: record.username,
+        username: link_to(record.username,employee_path(record)),
         email: record.email,
         admin_action: link_to(fa_icon('edit'), edit_employee_path(record)) }
     end

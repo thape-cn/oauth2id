@@ -7,7 +7,11 @@ Rails.application.routes.draw do
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
-  resources :employees, only: %i[index edit update]
+  resources :employees, only: %i[index edit update show] do
+    member do
+      get :sign_in_histories
+    end
+  end
   resource :setting, only: :update do
     member do
       get :profile
