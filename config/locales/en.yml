@@ -28,6 +28,8 @@ en:
     phone_placeholder: "Phone as here"
     logout: "Logout"
     admin_action: "Admin action"
+    overview: "Overview"
+    sign_in_histories: "Sign in histories"
   user:
     username: "Username"
     username_placeholder: "Your perfer account name"
@@ -52,6 +54,7 @@ en:
     resend_confirmation: "Resend confirmation ?"
     resend_confirmation_instructions: "Resend confirmation instructions"
     edit_user_access: "Edit User Access"
+    show_user: "Show User Information"
   activerecord:
     errors:
       models:

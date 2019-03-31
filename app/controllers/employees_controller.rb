@@ -14,6 +14,13 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def sign_in_histories
+    render :show
+  end
+
   def edit
     @user.profile || @user.build_profile
     need_append_application_ids = DoorkeeperApplication.pluck(:id) - @user.user_allowed_applications.pluck(:oauth_application_id)
