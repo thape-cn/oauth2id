@@ -9,7 +9,8 @@ document.addEventListener("turbolinks:load", function() {
     "columns": [
       {"data": "id"},
       {"data": "username"},
-      {"data": "email"}
+      {"data": "email"},
+      {"data": "admin_action", bSortable: false}
     ],
     stateSave: true,
     stateSaveCallback: function(settings, data) {
