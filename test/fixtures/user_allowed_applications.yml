@@ -9,6 +9,11 @@ user_demo_use_oauth_app_test:
   oauth_application_id: 1  # oauth_app_test
   enable: true
 
+user_shin_use_oauth_app_test:
+  user_id: 3  # user_shin
+  oauth_application_id: 1  # oauth_app_test
+  enable: true
+
 user_eric_use_oauth_app_omniauth:
   user_id: 1  # user_eric
   oauth_application_id: 2  # oauth_app_omniauth
@@ -16,6 +21,11 @@ user_eric_use_oauth_app_omniauth:
 
 user_demo_use_oauth_app_omniauth:
   user_id: 2  # user_demo
+  oauth_application_id: 2  # oauth_app_omniauth
+  enable: true
+
+user_shin_use_oauth_app_omniauth:
+  user_id: 3  # user_shin
   oauth_application_id: 2  # oauth_app_omniauth
   enable: true
 
@@ -27,4 +37,24 @@ user_eric_use_oauth_app_aspnet_mvc:
 user_demo_use_oauth_app_aspnet_mvc:
   user_id: 2  # user_demo
   oauth_application_id: 3  # oauth_app_aspnet_mvc
+  enable: true
+
+user_shin_use_oauth_app_aspnet_mvc:
+  user_id: 3  # user_shin
+  oauth_application_id: 3  # oauth_app_aspnet_mvc
+  enable: true
+
+user_eric_use_oauth_app_yxt_oauth2:
+  user_id: 1  # user_eric
+  oauth_application_id: 4  # oauth_app_yxt_oauth2
+  enable: true
+
+user_demo_use_oauth_app_yxt_oauth2:
+  user_id: 2  # user_demo
+  oauth_application_id: 4  # oauth_app_yxt_oauth2
+  enable: true
+
+user_shin_use_oauth_app_yxt_oauth2:
+  user_id: 3  # user_shin
+  oauth_application_id: 4  # oauth_app_yxt_oauth2
   enable: true

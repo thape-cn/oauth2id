@@ -37,3 +37,15 @@ oauth_app_aspnet_mvc:
   icon: "fa-files-o"
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
+
+oauth_app_yxt_oauth2:
+  id: 4
+  name: "云学堂测试"
+  uid: "c48f2e58d0563d3bc4ddaee93a79487e6e077e058b031348f3ec813533c7658f"
+  secret: "0b907e3018de9ace7b06e78c20ea8db0d38cc7a2aaaa9956ac1517c809028bc3"
+  redirect_uri: "https://api.yunxuetang.com.cn/qidacustomapi/v1/tianhua/userssologin"
+  confidential: true
+  div_class: "primary"
+  icon: "fa-graduation-cap"
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
