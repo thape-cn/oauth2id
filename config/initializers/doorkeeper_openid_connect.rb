@@ -54,7 +54,7 @@ Doorkeeper::OpenidConnect.configure do
     normal_claim :gender, scope: :openid do |resource_owner|
       profile = resource_owner.profile
       if profile.present?
-        profile.gender ? 'Male' : 'Femail'
+        profile.gender ? 'Male' : 'Female'
       end
     end
     normal_claim :phone_number, scope: :phone do |resource_owner|
