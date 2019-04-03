@@ -117,6 +117,10 @@ GEM
       activemodel (= 7.2.3.1)
       activesupport (= 7.2.3.1)
       timeout (>= 0.4.0)
+    activerecord-oracle_enhanced-adapter (7.2.0)
+      activerecord (~> 7.2.0)
+      ruby-oci8
+      ruby-plsql (>= 0.6.0)
     activestorage (7.2.3.1)
       actionpack (= 7.2.3.1)
       activejob (= 7.2.3.1)
@@ -386,6 +390,8 @@ GEM
       rbs (>= 3, < 5)
     ruby-lsp-rails (0.4.8)
       ruby-lsp (>= 0.26.0, < 0.27.0)
+    ruby-oci8 (2.2.14)
+    ruby-plsql (0.8.0)
     rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -492,6 +498,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter
   ajax-datatables-rails
   bcrypt_pbkdf
   bootsnap (>= 1.18.4)
@@ -527,6 +534,7 @@ DEPENDENCIES
   rails-i18n
   ruby-lsp
   ruby-lsp-rails
+  ruby-oci8
   saml_idp!
   sassc-rails
   selenium-webdriver (= 4.26.0)
