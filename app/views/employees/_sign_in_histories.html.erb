@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row m-3">
+    <div class="col-md-12">
+      <table id="users-sign-in-histories-datatable" class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th><%= t('ui.sign_in_at') -%></th>
+            <th><%= t('ui.user_agent') -%></th>
+            <th><%= t('ui.sign_in_ip') -%></th>
+          </tr>
+        </thead>
+        <tbody>
+<% @user.user_sign_in_histories.each do |sign_in_history| %>
+          <tr>
+            <td><%= sign_in_history.sign_in_at -%></td>
+            <td><%= sign_in_history.user_agent -%></td>
+            <td><%= sign_in_history.sign_in_ip -%></td>
+          </tr>
+<% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -30,6 +30,11 @@ zh-CN:
     admin_action: "管理员操作"
     overview: "概览"
     sign_in_histories: "登录历史"
+    sign_in_at: "登录时间"
+    user_agent: "浏览器 User agent"
+    sign_in_ip: "登录IP"
+    user_info: "用户信息"
+    department: "部门"
   user:
     username: "用户名"
     username_placeholder: "希望显示的用户名"

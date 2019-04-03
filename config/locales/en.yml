@@ -30,6 +30,11 @@ en:
     admin_action: "Admin action"
     overview: "Overview"
     sign_in_histories: "Sign in histories"
+    sign_in_at: "Sign in at"
+    user_agent: "User agent"
+    sign_in_ip: "Sign in IP"
+    user_info: "User Info"
+    department: "Department"
   user:
     username: "Username"
     username_placeholder: "Your perfer account name"
