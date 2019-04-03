@@ -97,6 +97,9 @@ GEM
     activerecord (6.1.4)
       activemodel (= 6.1.4)
       activesupport (= 6.1.4)
+    activerecord-oracle_enhanced-adapter (6.1.4)
+      activerecord (~> 6.1.0)
+      ruby-plsql (>= 0.6.0)
     activestorage (6.1.4)
       actionpack (= 6.1.4)
       activejob (= 6.1.4)
@@ -289,6 +292,8 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    ruby-oci8 (2.2.9)
+    ruby-plsql (0.7.1)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -378,6 +383,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter
   ajax-datatables-rails
   bootsnap (>= 1.1.0)
   byebug
@@ -403,6 +409,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.1.4)
   rails-i18n
+  ruby-oci8
   saml_idp!
   sassc-rails
   selenium-webdriver

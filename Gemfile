@@ -9,6 +9,9 @@ gem 'rails-i18n'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'activerecord-oracle_enhanced-adapter'
+gem 'ruby-oci8'
+
 # Use Puma as the app server
 gem 'puma'
 # Use jquery as the JavaScript library
