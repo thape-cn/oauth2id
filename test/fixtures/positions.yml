@@ -1,16 +1,16 @@
 ---
 position_dev_manager:
   name: 开发经理
-  functional_category: 集团-信息化
+  functional_category: 主管级-集团-信息化
 
 position_rails_developer:
   name: Rails 开发者
-  functional_category: 集团-信息化
+  functional_category: 主管级-集团-信息化
 
 position_first_level_assistant_planner:
   name: 一级助理规划师
-  functional_category: 子公司-规划
+  functional_category: 员工层-公司-规划
 
 position_strategic_development_supervisor:
   name: 战略发展主管
-  functional_category: 集团-战略管理
+  functional_category: 见习主管级集团-集团-战略管理
