@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '>= 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 7.0.8'
 gem 'rails-i18n'
 # `config/initializers/mail_starttls_patch.rb` has also been patched to
 # fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
@@ -13,6 +13,9 @@ gem 'mail', '= 2.8.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.7'
+gem 'activerecord-oracle_enhanced-adapter'
+gem 'ruby-oci8'
+
 # Use Puma as the app server
 gem 'puma'
 # Use jquery as the JavaScript library
