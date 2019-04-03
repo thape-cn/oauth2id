@@ -118,6 +118,10 @@ GEM
       activemodel (= 7.1.4)
       activesupport (= 7.1.4)
       timeout (>= 0.4.0)
+    activerecord-oracle_enhanced-adapter (7.1.0)
+      activerecord (~> 7.1.0)
+      ruby-oci8
+      ruby-plsql (>= 0.6.0)
     activestorage (7.1.4)
       actionpack (= 7.1.4)
       activejob (= 7.1.4)
@@ -276,7 +280,7 @@ GEM
     net-imap (0.4.16)
       date
       net-protocol
-    net-ldap (0.18.0)
+    net-ldap (0.19.0)
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
@@ -367,6 +371,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.3.8)
+    ruby-oci8 (2.2.14)
+    ruby-plsql (0.8.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -465,6 +471,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter
   ajax-datatables-rails
   bcrypt_pbkdf
   bootsnap (>= 1.17.0)
@@ -494,8 +501,9 @@ DEPENDENCIES
   pagy
   puma
   pundit
-  rails (~> 7.1.2)
+  rails (~> 7.1.4)
   rails-i18n
+  ruby-oci8
   saml_idp!
   sassc-rails
   selenium-webdriver (>= 4.14.0)
