@@ -13,6 +13,8 @@ class User < ApplicationRecord
                            end
   devise(*include_devise_modules, jwt_revocation_strategy: self)
 
+  attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
+
   has_many :access_grants, class_name: 'Doorkeeper::AccessGrant',
                            foreign_key: :resource_owner_id,
                            dependent: :delete_all # or :destroy if you need callbacks
@@ -61,5 +63,12 @@ class User < ApplicationRecord
     li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
     self.username = li[:samaccountname].first.to_s
     self.email = li[:mail].first.to_s
+  end
+
+  protected
+
+  def password_required?
+    return false if skip_password_validation
+    super
   end
 end
