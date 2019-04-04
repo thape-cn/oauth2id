@@ -23,3 +23,11 @@ test:
 production:
   <<: *default
   database: db/oauth2id_prod.sqlite3
+
+nc_uap:
+  adapter: oracle_enhanced
+  database: <%= Rails.application.credentials.nc_uap_database! %>
+  username: <%= Rails.application.credentials.nc_uap_username! %>
+  password: <%= Rails.application.credentials.nc_uap_password! %>
+  pool: 2
+  timeout: 5000
