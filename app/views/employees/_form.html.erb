@@ -4,7 +4,7 @@
       <%= f.fields_for :profile do |pf| %>
         <form class="form-horizontal">
           <div class="form-group row">
-            <label class="control-label col-md-3"><%= t('ui.title') -%></label>
+            <label class="control-label col-md-3"><%= t('user.title') -%></label>
             <div class="col-md-8">
               <%= pf.text_field :title, class: 'form-control', placeholder: t('ui.title_placeholder') %>
             </div>

@@ -1,13 +1,24 @@
 <div class="container">
   <div class="row m-3">
-    <div class="col">
-      <h2><%= t('ui.user_info') -%></h2>
-
-      <p><%= t('user.username') -%>: <%= @user.username -%></p>
-      <p><%= t('user.email') -%>: <%= @user.email -%></p>
-
-      <h3><%= t('ui.department') -%></h3>
-
-    </div>
+      <div class="card m-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= t('ui.user_info') -%></h5>
+          <p class="card-text"><%= t('user.username') -%>: <%= @user.username -%></p>
+          <p class="card-text"><%= t('user.email') -%>: <%= @user.email -%></p>
+        </div>
+      </div>
+      <div class="card m-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= t('ui.profile') -%></h5>
+          <% @user.profile&.custom_attributes.each do |key, value| %>
+            <p class="card-text"><%= t("user.#{key}") -%>: <%= value -%></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card m-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= t('ui.department') -%></h5>
+        </div>
+      </div>
   </div>
 </div>
