@@ -19,7 +19,6 @@ zh-CN:
     settings: "设置"
     profile: "详细资料"
     profile_description: "您的个人资料越突出，人们就越想要您。"
-    title: "称谓"
     title_placeholder: "希望别人如何称呼您？"
     gender: "性别"
     male: "男"
@@ -60,6 +59,11 @@ zh-CN:
     resend_confirmation_instructions: "重新发送确认说明"
     edit_user_access: "编辑用户访问权限"
     show_user: "查看用户信息"
+    title: "称谓"
+    gender: "性别"
+    phone: "电话"
+    clerk_code: "员工号"
+    chinese_name: "中文姓名"
   activerecord:
     errors:
       models:

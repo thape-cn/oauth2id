@@ -19,7 +19,6 @@ en:
     settings: "Settings"
     profile: "Profile"
     profile_description: "The higher your profile, the more people want you."
-    title: "Title"
     title_placeholder: "Title as here"
     gender: "Gender"
     male: "Male"
@@ -60,6 +59,11 @@ en:
     resend_confirmation_instructions: "Resend confirmation instructions"
     edit_user_access: "Edit User Access"
     show_user: "Show User Information"
+    title: "Title"
+    gender: "Gender"
+    phone: "Phone"
+    clerk_code: "Clerk Code"
+    chinese_name: "Chinese Name"
   activerecord:
     errors:
       models:
