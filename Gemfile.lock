@@ -48,6 +48,14 @@ GIT
       nokogiri (>= 1.6.2)
       uuid (>= 2.3)
 
+GIT
+  remote: https://github.com/thape-cn/yxt-api
+  revision: 207e02fec715b1653b97ec588094f89fc015176e
+  branch: master
+  specs:
+    yxt-api (0.0.4)
+      http (>= 2.0.3, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -426,6 +434,7 @@ DEPENDENCIES
   webpacker
   wechat!
   xmlenc
+  yxt-api!
 
 RUBY VERSION
    ruby 3.0.0p0
