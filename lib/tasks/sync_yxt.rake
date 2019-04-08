@@ -53,6 +53,34 @@ namespace :sync_yxt do
     puts res.body.to_s
   end
 
+  desc 'Sync the users to YXT'
+  task sync_users: :environment do
+    puts 'Sync the users'
+    User.all.find_in_batches(batch_size: 200) do |users|
+      puts "users: #{users.pluck(:id)}"
+      users = users.collect do |u|
+        main_position = u.position_users.find_by(main_position: true)&.position
+        main_position = u.positions.first if main_position.nil?
+
+        {
+          ID: u.id,
+          UserName: u.username,
+          Password: '',
+          CnName: u&.profile&.chinese_name,
+          Sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
+          Mobile: '',
+          Mail: u.email,
+          OrgOuCode: u.departments.first&.id,
+          PostionNo: main_position&.id,
+          Birthday: '',
+          Entrytime: ''
+        }
+      end
+      res = Yxt.sync_users(users)
+      puts res.body.to_s
+    end
+  end
+
   def yxt_department(managed_by_department_ids)
     Department.where(managed_by_department_id: managed_by_department_ids).collect do |d|
       {
