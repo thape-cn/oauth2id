@@ -40,6 +40,19 @@ namespace :sync_yxt do
     puts res.body.to_s
   end
 
+  desc 'Sync the position to YXT'
+  task sync_positions: :environment do
+    puts 'Sync the positions'
+    positions = Position.all.collect do |p|
+      {
+        pNames: "#{p.functional_category};#{p.name}",
+        pNo: p.id
+      }
+    end
+    res = Yxt.sync_position(positions)
+    puts res.body.to_s
+  end
+
   def yxt_department(managed_by_department_ids)
     Department.where(managed_by_department_id: managed_by_department_ids).collect do |d|
       {
