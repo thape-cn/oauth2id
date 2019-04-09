@@ -9,9 +9,10 @@ class NcUap < ApplicationRecord
   def self.nc_users
     NcUap.connection.select_rows("
 select convert(bd_psndoc.name,'ZHS16GBK', 'UTF8') name, hi_psnjob.clerkcode, bd_psndoc.email,
-       hi_psnjob.pk_dept, hi_psnjob.pk_post
+       hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name
 from bd_psndoc
 inner join hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+left join om_joblevel on om_joblevel.pk_joblevel = hi_psnjob.pk_jobgrade
 where hi_psnjob.ismainjob = 'Y'
   and hi_psnjob.lastflag = 'Y'
   and hi_psnjob.endflag = 'N'
