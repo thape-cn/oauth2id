@@ -5,6 +5,8 @@ class Position < ApplicationRecord
   has_many :position_allowed_applications, dependent: :destroy
   has_many :oauth_applications, through: :position_allowed_applications
 
+  belongs_to :department, optional: true
+
   def allowed_application_ids
     @allowed_application_ids ||= position_allowed_applications.collect(&:oauth_application_id)
   end
