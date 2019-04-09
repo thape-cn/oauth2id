@@ -139,9 +139,14 @@ ORDER BY org_orgs.code
   end
 
   def self.sync_managed_by_department_with_fatherorg
-    Department.where.not(nc_pk_fatherorg: '~').each do |department|
+    Department.all.each do |department|
       parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
-      department.update(managed_by_department_id: parent_department.id)
+      if parent_department.blank?
+        parent_department = Department.find_by(name: department.company_name)
+      end
+      if department.id != parent_department&.id
+        department.update(managed_by_department_id: parent_department&.id)
+      end
     end
   end
 
