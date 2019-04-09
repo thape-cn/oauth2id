@@ -42,6 +42,18 @@ namespace :sync_yxt do
     puts res.body.to_s
   end
 
+  desc 'Sync the 4nd level departments'
+  task sync_4nd_level_departments: :environment do
+    puts 'Sync the 4nd level departments'
+    root_department_ids = Department.where(managed_by_department_id: nil).pluck(:id)
+    first_level_department_ids = Department.where(managed_by_department_id: root_department_ids).pluck(:id)
+    second_level_department_ids = Department.where(managed_by_department_id: first_level_department_ids).pluck(:id)
+    third_level_department_ids = Department.where(managed_by_department_id: second_level_department_ids).pluck(:id)
+    fourth_level_departments = yxt_department(third_level_department_ids)
+    res = Yxt.sync_ous(fourth_level_departments)
+    puts res.body.to_s
+  end
+
   desc 'Sync the position to YXT'
   task sync_positions: :environment do
     puts 'Sync the positions'
