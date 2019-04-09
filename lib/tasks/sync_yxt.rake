@@ -73,7 +73,9 @@ namespace :sync_yxt do
           OrgOuCode: u.departments.first&.id,
           PostionNo: main_position&.id,
           Birthday: '',
-          Entrytime: ''
+          Entrytime: '',
+          Spare1: main_position&.functional_category,
+          Spare2: u&.profile&.job_level
         }
       end
       res = Yxt.sync_users(users)
