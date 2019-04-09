@@ -39,11 +39,16 @@ where hi_psnjob.ismainjob = 'Y'
       birthdate = u[7]
       entry_company_date = u[8]
       puts "Import user: #{chinese_name}"
+
       user = User.find_or_create_by!(email: email.downcase) do |user|
         user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
         user.skip_password_validation = true
-        byebug if !user.valid?
       end
+      user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
+      user.skip_password_validation = true
+      byebug unless user.valid?
+      user.save
+
       profile = user.profile || user.build_profile
       profile.chinese_name = chinese_name
       profile.gender = (sex == 2 ? 0 : sex) # Femail is 0 in oauth2id
@@ -65,7 +70,7 @@ where hi_psnjob.ismainjob = 'Y'
 
   def self.nc_positions
     NcUap.connection.select_rows("
-select om_post.postname，om_post.pk_post, om_postseries.postseriesname
+select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT
 from NC6337.om_post om_post
 left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
 ")
@@ -77,10 +82,17 @@ left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_posts
       post_name = p[0]
       pk_post = p[1]
       postseriesname = p[2]
-      Position.find_or_create_by!(nc_pk_post: pk_post) do |position|
+      pk_dept = p[3]
+
+      position = Position.find_or_create_by!(nc_pk_post: pk_post) do |position|
         position.name = post_name
         position.functional_category = postseriesname
+        position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
       end
+      position.name = post_name
+      position.functional_category = postseriesname
+      position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
+      position.save
     end
   end
 
@@ -107,7 +119,7 @@ ORDER BY org_orgs.code
       company_name = d[4]
       enablestate = d[5]
       hrcanceled = d[6]
-      Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
+      department = Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
         department.name = dept_name
         department.dept_code = dept_code
         department.nc_pk_fatherorg = pk_fatherorg
@@ -115,6 +127,13 @@ ORDER BY org_orgs.code
         department.enablestate = enablestate
         department.hrcanceled = hrcanceled
       end
+      department.name = dept_name
+      department.dept_code = dept_code
+      department.nc_pk_fatherorg = pk_fatherorg
+      department.company_name = company_name
+      department.enablestate = enablestate
+      department.hrcanceled = hrcanceled
+      department.save
     end
   end
 
