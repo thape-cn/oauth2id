@@ -8,12 +8,12 @@ class NcUap < ApplicationRecord
 
   def self.nc_users
     NcUap.connection.select_rows("
-select convert(bd_psndoc.name,'ZHS16GBK', 'UTF8') name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email,
+select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email,
        hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name, bd_psndoc.birthdate, hi_psnorg.begindate
-from bd_psndoc
-inner join hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-left join om_joblevel on om_joblevel.pk_joblevel = hi_psnjob.pk_jobgrade
-left join hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
+from NC6337.bd_psndoc bd_psndoc
+inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel = hi_psnjob.pk_jobgrade
+left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
 where hi_psnjob.ismainjob = 'Y'
   and hi_psnjob.lastflag = 'Y'
   and hi_psnjob.endflag = 'N'
@@ -65,10 +65,9 @@ where hi_psnjob.ismainjob = 'Y'
 
   def self.nc_positions
     NcUap.connection.select_rows("
-select CONVERT(om_post.postname,'ZHS16GBK', 'UTF8')，om_post.pk_post,
-       CONVERT(om_postseries.postseriesname,'ZHS16GBK', 'UTF8')
-from om_post
-left join om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
+select om_post.postname，om_post.pk_post, om_postseries.postseriesname
+from NC6337.om_post om_post
+left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
 ")
   end
 
@@ -87,10 +86,11 @@ left join om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
 
   def self.nc_departments
     NcUap.connection.select_rows("
-SELECT CONVERT(org_dept.NAME,'ZHS16GBK', 'UTF8'), org_dept.code,
-       org_dept.pk_dept, org_dept.pk_fatherorg, CONVERT(org_orgs.name,'ZHS16GBK', 'UTF8'),
+SELECT org_dept.NAME, org_dept.code,
+       org_dept.pk_dept, org_dept.pk_fatherorg, org_orgs.name,
        org_dept.enablestate, org_dept.hrcanceled
-FROM org_dept INNER JOIN org_orgs on org_dept.pk_org=org_orgs.pk_org
+FROM NC6337.org_dept org_dept
+INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
 -- WHERE org_dept.enablestate = '2'
 --  AND org_dept.hrcanceled = 'N'
 ORDER BY org_orgs.code
