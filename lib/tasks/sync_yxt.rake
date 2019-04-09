@@ -44,8 +44,13 @@ namespace :sync_yxt do
   task sync_positions: :environment do
     puts 'Sync the positions'
     positions = Position.all.collect do |p|
+      prefix = if p.department.present?
+        "#{p.department.name};#{p.functional_category}"
+      else
+        p.functional_category
+      end
       {
-        pNames: "#{p.functional_category};#{p.name}",
+        pNames: "#{prefix};#{p.name}",
         pNo: p.id
       }
     end
@@ -72,8 +77,8 @@ namespace :sync_yxt do
           Mail: u.email,
           OrgOuCode: u.departments.first&.id,
           PostionNo: main_position&.id,
-          Birthday: '',
-          Entrytime: '',
+          Birthday: u&.profile&.birthdate,
+          Entrytime: u&.profile&.entry_company_date,
           Spare1: main_position&.functional_category,
           Spare2: u&.profile&.job_level
         }
