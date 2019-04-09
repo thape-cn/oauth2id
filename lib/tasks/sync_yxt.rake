@@ -1,6 +1,8 @@
 namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
-  task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments, :sync_2nd_level_departments, :sync_3rd_level_departments]
+  task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
+    :sync_2nd_level_departments, :sync_3rd_level_departments,
+    :sync_positions, :sync_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -43,19 +45,22 @@ namespace :sync_yxt do
   desc 'Sync the position to YXT'
   task sync_positions: :environment do
     puts 'Sync the positions'
-    positions = Position.all.collect do |p|
-      prefix = if p.department.present?
-        "#{p.department.name};#{p.functional_category}"
-      else
-        p.functional_category
+    Position.all.find_in_batches(batch_size: 1000) do |positions|
+      puts "positions: #{positions.pluck(:id)}"
+      pos = positions.collect do |p|
+        prefix = if p.department.present?
+          "#{p.department.company_name}-#{p.department.name};#{p.functional_category}"
+        else
+          p.functional_category
+        end
+        {
+          pNames: "#{prefix};#{p.name}",
+          pNo: p.id
+        }
       end
-      {
-        pNames: "#{prefix};#{p.name}",
-        pNo: p.id
-      }
+      res = Yxt.sync_position(pos)
+      puts res.body.to_s
     end
-    res = Yxt.sync_position(positions)
-    puts res.body.to_s
   end
 
   desc 'Sync the users to YXT'
