@@ -99,7 +99,7 @@ left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_posts
   def self.nc_departments
     NcUap.connection.select_rows("
 SELECT org_dept.NAME, org_dept.code,
-       org_dept.pk_dept, org_dept.pk_fatherorg, org_orgs.name,
+       org_dept.pk_dept, org_orgs.pk_org, org_dept.pk_fatherorg, org_orgs.name,
        org_dept.enablestate, org_dept.hrcanceled
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
@@ -115,14 +115,15 @@ ORDER BY org_orgs.code
       dept_name = d[0]
       dept_code = d[1]
       pk_dept = d[2]
-      pk_fatherorg = d[3]
-      company_name = d[4]
-      enablestate = d[5]
-      hrcanceled = d[6]
+      pk_org = d[3]
+      pk_fatherorg = d[4]
+      company_name = d[5]
+      enablestate = d[6]
+      hrcanceled = d[7]
       department = Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
         department.name = dept_name
         department.dept_code = dept_code
-        department.nc_pk_fatherorg = pk_fatherorg
+        department.nc_pk_fatherorg = (pk_fatherorg == '~') ? pk_org : pk_fatherorg
         department.company_name = company_name
         department.enablestate = enablestate
         department.hrcanceled = hrcanceled
@@ -142,5 +143,37 @@ ORDER BY org_orgs.code
       parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
       department.update(managed_by_department_id: parent_department.id)
     end
+  end
+
+  def self.upserts_orgs_as_departments
+    org_depts = NcUap.nc_orgs
+    org_depts.each do |d|
+      org_name = d[0]
+      org_code = d[1]
+      pk_org = d[2]
+      pk_fatherorg = d[3] == '0001A110000000007I8I' ? nil : d[3]
+      enablestate = d[4]
+      department = Department.find_or_create_by!(nc_pk_dept: pk_org) do |department|
+        department.name = org_name
+        department.dept_code = org_code
+        department.nc_pk_fatherorg = pk_fatherorg
+        department.company_name = org_name
+        department.enablestate = enablestate
+      end
+      department.name = org_name
+      department.dept_code = org_code
+      department.nc_pk_fatherorg = pk_fatherorg
+      department.company_name = org_name
+      department.enablestate = enablestate
+      department.save
+    end
+  end
+
+  def self.nc_orgs
+    NcUap.connection.select_rows("
+select org_orgs.name, org_orgs.code, org_orgs.pk_org, org_orgs.pk_fatherorg, org_orgs.enablestate
+from NC6337.org_orgs org_orgs
+where org_orgs.pk_org != '0001A110000000007I8I'
+")
   end
 end
