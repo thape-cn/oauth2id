@@ -1,6 +1,12 @@
 namespace :sync_nc_uap do
   desc "Sync department, positions and users data with NC UAP"
-  task :all => [:sync_departments, :sync_positions, :sync_users]
+  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users]
+
+  desc 'Sync orgs with NC UAP'
+  task sync_orgs: :environment do
+    puts 'Upserts the orgs'
+    NcUap.upserts_orgs_as_departments
+  end
 
   desc 'Sync department with NC UAP'
   task sync_departments: :environment do
