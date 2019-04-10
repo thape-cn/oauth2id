@@ -8,6 +8,7 @@ oauth_app_test:
   confidential: true
   div_class: "danger"
   icon: "fa-users"
+  allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -22,6 +23,7 @@ oauth_app_omniauth:
   div_class: "info"
   icon: "fa-thumbs-o-up"
   login_url: "https://omniauth-openid-connect-demo.test/auth/openid_connect"
+  allow_login_by_default: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -35,6 +37,7 @@ oauth_app_aspnet_mvc:
   confidential: true
   div_class: "warning"
   icon: "fa-files-o"
+  allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -47,5 +50,6 @@ oauth_app_yxt_oauth2:
   confidential: true
   div_class: "primary"
   icon: "fa-graduation-cap"
+  allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
