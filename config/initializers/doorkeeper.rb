@@ -11,7 +11,7 @@ Doorkeeper.configure do
       allowed_application = current_user
         .user_allowed_applications.find_by(enable: true, oauth_application_id: authenticate_application.id)
 
-      if allowed_application
+      if allowed_application || authenticate_application.allow_login_by_default?
         current_user
       else
         raise Doorkeeper::Errors::DoorkeeperError.new(I18n.t('ui.can_not_grant_applications'))

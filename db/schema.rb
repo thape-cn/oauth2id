@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_063723) do
+ActiveRecord::Schema.define(version: 2019_04_10_012044) do
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_063723) do
     t.string "icon", default: "fa-star"
     t.string "div_class", default: "primary"
     t.string "login_url"
+    t.boolean "allow_login_by_default", default: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
@@ -149,6 +150,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_063723) do
     t.datetime "updated_at", null: false
     t.boolean "admin"
     t.string "username"
+    t.string "remember_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

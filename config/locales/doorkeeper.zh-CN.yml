@@ -41,6 +41,7 @@ zh-CN:
         icon: "显示应用程序fontawesome图标名称，<a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>点击</a>选择。"
         div_class: "显示应用的div class名字"
         login_url: "SSO登录URL"
+        allow_login_by_default: "默认允许登录"
       edit:
         title: '修改应用'
       index:
