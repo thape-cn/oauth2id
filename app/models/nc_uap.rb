@@ -103,8 +103,8 @@ SELECT org_dept.NAME, org_dept.code,
        org_dept.enablestate, org_dept.hrcanceled
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
---WHERE org_dept.enablestate = '2'
---  AND org_dept.hrcanceled = 'N'
+WHERE org_dept.enablestate = '2'
+  AND org_dept.hrcanceled = 'N'
 ORDER BY org_orgs.code
 ")
   end
