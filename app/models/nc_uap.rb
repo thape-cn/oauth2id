@@ -58,7 +58,7 @@ where hi_psnjob.ismainjob = 'Y'
       profile.entry_company_date = entry_company_date
       profile.save
 
-      user_department = Department.find_by(nc_pk_dept: pk_dept)
+      user_department = Department.find_by!(nc_pk_dept: pk_dept)
       DepartmentUser.find_or_create_by!(user_id: user.id, department_id: user_department.id)
 
       if pk_post != '~'
@@ -103,7 +103,7 @@ SELECT org_dept.NAME, org_dept.code,
        org_dept.enablestate, org_dept.hrcanceled
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
--- WHERE org_dept.enablestate = '2'
+--WHERE org_dept.enablestate = '2'
 --  AND org_dept.hrcanceled = 'N'
 ORDER BY org_orgs.code
 ")
@@ -142,7 +142,7 @@ ORDER BY org_orgs.code
     Department.all.each do |department|
       parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
       if parent_department.blank?
-        parent_department = Department.find_by(name: department.company_name)
+        parent_department = Department.find_by(company_name: department.company_name)
       end
       if department.id != parent_department&.id
         department.update(managed_by_department_id: parent_department&.id)
@@ -157,28 +157,28 @@ ORDER BY org_orgs.code
       org_code = d[1]
       pk_org = d[2]
       pk_fatherorg = d[3] == '0001A110000000007I8I' ? nil : d[3]
-      enablestate = d[4]
+      company_name = d[4]
       department = Department.find_or_create_by!(nc_pk_dept: pk_org) do |department|
         department.name = org_name
         department.dept_code = org_code
         department.nc_pk_fatherorg = pk_fatherorg
-        department.company_name = org_name
-        department.enablestate = enablestate
+        department.company_name = company_name
+        department.enablestate = '2'
       end
       department.name = org_name
       department.dept_code = org_code
       department.nc_pk_fatherorg = pk_fatherorg
-      department.company_name = org_name
-      department.enablestate = enablestate
+      department.company_name = company_name
+      department.enablestate = '2'
       department.save
     end
   end
 
   def self.nc_orgs
     NcUap.connection.select_rows("
-select org_orgs.name, org_orgs.code, org_orgs.pk_org, org_orgs.pk_fatherorg, org_orgs.enablestate
-from NC6337.org_orgs org_orgs
-where org_orgs.pk_org != '0001A110000000007I8I'
+SELECT V_ORGS_ALL.name, V_ORGS_ALL.code, V_ORGS_ALL.pk_ORG, V_ORGS_ALL.pk_FATHERORG, V_ORGS_ALL.DEF1
+FROM NC6337.V_ORGS_ALL V_ORGS_ALL
+where V_ORGS_ALL.pk_org != '0001A110000000007I8I'
 ")
   end
 end
