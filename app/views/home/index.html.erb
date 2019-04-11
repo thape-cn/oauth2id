@@ -11,7 +11,7 @@
         <div class="widget-small <%= application.div_class -%> coloured-icon">
           <i class="icon fa <%= application.icon -%> fa-3x"></i>
           <div class="info">
-            <% if application.login_url %>
+            <% if application.login_url.present? %>
               <%= link_to application.login_url, target: '_blank' do %>
                 <h4><%= application.name -%></h4>
               <% end %>
