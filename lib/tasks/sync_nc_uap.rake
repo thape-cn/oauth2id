@@ -5,7 +5,7 @@ namespace :sync_nc_uap do
   desc 'Sync orgs with NC UAP'
   task sync_orgs: :environment do
     puts 'Upserts the orgs'
-    NcUap.upserts_orgs_as_departments
+    NcUap.upserts_orgs_as_departments_all
   end
 
   desc 'Sync department with NC UAP'
@@ -13,6 +13,9 @@ namespace :sync_nc_uap do
     puts 'Upserts the departments'
     NcUap.upserts_departments
     puts 'Sync managed by departments with fatherorg'
+    NcUap.sync_managed_by_department_with_fatherorg
+    NcUap.clean_empty_2nd_level_deparment
+    NcUap.upserts_missing_orgs_as_departments
     NcUap.sync_managed_by_department_with_fatherorg
   end
 
