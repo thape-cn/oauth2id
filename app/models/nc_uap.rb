@@ -98,14 +98,14 @@ left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_posts
 
   def self.nc_departments
     NcUap.connection.select_rows("
-SELECT org_dept.NAME, org_dept.code,
+SELECT distinct org_dept.NAME, org_dept.code,
        org_dept.pk_dept, org_orgs.pk_org, org_dept.pk_fatherorg, org_orgs.name,
        org_dept.enablestate, org_dept.hrcanceled
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
+INNER JOIN NC6337.bd_psndoc on bd_psndoc.pk_ORG=org_orgs.pk_org
 WHERE org_dept.enablestate = '2'
   AND org_dept.hrcanceled = 'N'
-ORDER BY org_orgs.code
 ")
   end
 
@@ -123,7 +123,7 @@ ORDER BY org_orgs.code
       department = Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
         department.name = dept_name
         department.dept_code = dept_code
-        department.nc_pk_fatherorg = (pk_fatherorg == '~') ? pk_org : pk_fatherorg
+        department.nc_pk_fatherorg = pk_fatherorg
         department.company_name = company_name
         department.enablestate = enablestate
         department.hrcanceled = hrcanceled
