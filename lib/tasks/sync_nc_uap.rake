@@ -14,7 +14,6 @@ namespace :sync_nc_uap do
     NcUap.upserts_departments
     puts 'Sync managed by departments with fatherorg'
     NcUap.sync_managed_by_department_with_fatherorg
-    NcUap.clean_empty_2nd_level_deparment
     NcUap.upserts_missing_orgs_as_departments
     NcUap.sync_managed_by_department_with_fatherorg
   end
