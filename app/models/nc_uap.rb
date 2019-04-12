@@ -150,10 +150,6 @@ ORDER BY org_orgs.code
     end
   end
 
-  def self.clean_empty_2nd_level_deparment
-    Department.where(nc_pk_fatherorg: nil).delete_all
-  end
-
   def self.upserts_orgs_as_departments_all
     org_depts = NcUap.nc_orgs_all
     org_depts.each do |d|
