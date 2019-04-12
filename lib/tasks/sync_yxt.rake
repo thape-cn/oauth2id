@@ -111,6 +111,7 @@ namespace :sync_yxt do
         ID: d.id,
         ParentID: d.managed_by_department_id,
         OuName: d.name,
+        OrderIndex: d.dept_code.gsub(/[^0-9,.]/, ""),
         Description: d.dept_code,
         Users: []
       }
