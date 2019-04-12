@@ -142,7 +142,7 @@ ORDER BY org_orgs.code
     Department.all.each do |department|
       parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
       if parent_department.blank?
-        parent_department = Department.find_by(company_name: department.company_name)
+        parent_department = Department.find_by(name: department.company_name)
       end
       if department.id != parent_department&.id
         department.update(managed_by_department_id: parent_department&.id)
@@ -150,8 +150,12 @@ ORDER BY org_orgs.code
     end
   end
 
-  def self.upserts_orgs_as_departments
-    org_depts = NcUap.nc_orgs
+  def self.clean_empty_2nd_level_deparment
+    Department.where(nc_pk_fatherorg: nil).delete_all
+  end
+
+  def self.upserts_orgs_as_departments_all
+    org_depts = NcUap.nc_orgs_all
     org_depts.each do |d|
       org_name = d[0]
       org_code = d[1]
@@ -174,11 +178,50 @@ ORDER BY org_orgs.code
     end
   end
 
-  def self.nc_orgs
+  def self.nc_orgs_all
     NcUap.connection.select_rows("
 SELECT V_ORGS_ALL.name, V_ORGS_ALL.code, V_ORGS_ALL.pk_ORG, V_ORGS_ALL.pk_FATHERORG, V_ORGS_ALL.DEF1
 FROM NC6337.V_ORGS_ALL V_ORGS_ALL
 where V_ORGS_ALL.pk_org != '0001A110000000007I8I'
 ")
+  end
+
+  def self.upserts_missing_orgs_as_departments
+    org_depts = NcUap.nc_orgs_missing
+    org_depts.each do |d|
+      org_name = d[0]
+      org_code = d[1]
+      pk_org = d[2]
+      pk_fatherorg = d[3] == '0001A110000000007I8I' ? nil : d[3]
+      enablestate = d[4]
+      department = Department.find_or_create_by!(nc_pk_dept: pk_org) do |department|
+        department.name = org_name
+        department.dept_code = org_code
+        department.nc_pk_fatherorg = pk_fatherorg
+        department.company_name = org_name
+        department.enablestate = enablestate
+      end
+      department.name = org_name
+      department.dept_code = org_code
+      department.nc_pk_fatherorg = pk_fatherorg
+      department.company_name = org_name
+      department.enablestate = enablestate
+      department.save
+    end
+  end
+
+  def self.nc_orgs_missing
+    NcUap.connection.select_rows("
+select org_orgs.name, org_orgs.code, org_orgs.pk_org, org_orgs.pk_fatherorg, org_orgs.enablestate
+from NC6337.org_orgs org_orgs
+where org_orgs.pk_org != '0001A110000000007I8I'
+  and org_orgs.name in ('#{self.get_need_import_company_name.join("','")}')
+")
+  end
+
+  private
+
+  def self.get_need_import_company_name
+    Department.where(nc_pk_fatherorg: '~', managed_by_department_id: nil).pluck(:company_name)
   end
 end
