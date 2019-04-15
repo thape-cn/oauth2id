@@ -78,7 +78,7 @@ namespace :sync_yxt do
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
-    User.all.order(:id).find_in_batches(batch_size: 200) do |users|
+    User.all.order(:id).find_in_batches(batch_size: 100) do |users|
       puts "users: #{users.pluck(:id)}"
       users = users.collect do |u|
         main_position = u.position_users.find_by(main_position: true)&.position
