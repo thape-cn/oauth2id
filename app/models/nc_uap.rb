@@ -141,7 +141,7 @@ WHERE org_dept.enablestate = '2'
   def self.sync_managed_by_department_with_fatherorg
     Department.all.each do |department|
       parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
-      if parent_department.blank?
+      if parent_department.blank? && department.company_name != '天华集团' # pk_org: '0001A110000000007I8I'
         parent_department = Department.find_by(name: department.company_name)
       end
       if department.id != parent_department&.id
@@ -218,6 +218,6 @@ where org_orgs.pk_org != '0001A110000000007I8I'
   private
 
   def self.get_need_import_company_name
-    Department.where(nc_pk_fatherorg: '~', managed_by_department_id: nil).pluck(:company_name)
+    Department.where(nc_pk_fatherorg: '~', managed_by_department_id: nil).pluck(:company_name) - ['天华集团']
   end
 end
