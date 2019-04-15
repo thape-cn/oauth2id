@@ -112,8 +112,12 @@ SELECT distinct org_dept.NAME, org_dept.code,
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
 INNER JOIN NC6337.bd_psndoc on bd_psndoc.pk_ORG=org_orgs.pk_org
+inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
 WHERE org_dept.enablestate = '2'
   AND org_dept.hrcanceled = 'N'
+  AND hi_psnjob.ismainjob = 'Y'
+  and hi_psnjob.lastflag = 'Y'
+  and hi_psnjob.endflag = 'N'
 ")
   end
 
