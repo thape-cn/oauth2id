@@ -60,8 +60,8 @@ namespace :sync_yxt do
     Position.all.order(:id).find_in_batches(batch_size: 1000) do |positions|
       puts "positions: #{positions.pluck(:id)}"
       pos = positions.collect do |p|
-        prefix = if p.department.present?
-          "#{p.department.company_name}-#{p.department.name};#{p.functional_category}"
+        prefix = if p.company_name.present?
+          "#{p.company_name};#{p.functional_category}"
         else
           p.functional_category
         end
