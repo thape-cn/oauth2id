@@ -28,5 +28,6 @@ namespace :sync_nc_uap do
   task sync_users: :environment do
     puts 'Upserts the users'
     NcUap.upserts_users
+    NcUap.clean_no_user_positions
   end
 end

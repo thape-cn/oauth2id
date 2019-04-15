@@ -72,6 +72,10 @@ where hi_psnjob.ismainjob = 'Y'
     end
   end
 
+  def self.clean_no_user_positions
+    Position.where.not(nc_pk_post: nil).delete_all
+  end
+
   def self.nc_positions
     NcUap.connection.select_rows("
 select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT
