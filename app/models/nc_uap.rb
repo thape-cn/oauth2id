@@ -223,6 +223,7 @@ where V_ORGS_ALL.pk_org != '0001A110000000007I8I'
 select org_orgs.name, org_orgs.code, org_orgs.pk_org, org_orgs.pk_fatherorg, org_orgs.enablestate
 from NC6337.org_orgs org_orgs
 where org_orgs.pk_org != '0001A110000000007I8I'
+  and org_orgs.enablestate = '2'
   and org_orgs.name in ('#{self.get_need_import_company_name.join("','")}')
 ")
   end
