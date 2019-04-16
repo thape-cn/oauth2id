@@ -61,11 +61,11 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/yxt-api
-  revision: 207e02fec715b1653b97ec588094f89fc015176e
+  revision: f4684bfcf25585f713d0abbb3a37f8bfa7e27f4e
   branch: master
   specs:
-    yxt-api (0.0.4)
-      http (>= 2.0.3, < 5)
+    yxt-api (0.0.5)
+      http (>= 2.0.3, < 6)
 
 GEM
   remote: https://rubygems.org/
