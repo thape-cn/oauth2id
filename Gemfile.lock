@@ -50,11 +50,11 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/yxt-api
-  revision: 207e02fec715b1653b97ec588094f89fc015176e
+  revision: c2dadafa6ef470b8bd93ce0626ef4c0eb342187b
   branch: master
   specs:
-    yxt-api (0.0.4)
-      http (>= 2.0.3, < 5)
+    yxt-api (0.0.5)
+      http (>= 2.0.3, < 6)
 
 GEM
   remote: https://rubygems.org/
@@ -240,6 +240,7 @@ GEM
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.4.2)
+    mysql2 (0.5.3)
     net-ldap (0.17.0)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
@@ -413,6 +414,7 @@ DEPENDENCIES
   listen
   minitest
   minitest-ci
+  mysql2
   puma
   pundit
   rails (~> 6.1.4)

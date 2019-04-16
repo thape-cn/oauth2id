@@ -9,6 +9,10 @@ gem 'rails-i18n'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+# Thape using mysql as production
+gem 'mysql2'
+# Use Oracle to fetch NC data
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'ruby-oci8'
 
