@@ -19,6 +19,7 @@ class DoorkeeperController < ApplicationController
     main_position = if main_position.present?
       { id: main_position.id, name: main_position.name, functional_category: main_position.functional_category }
     end
+    entry_company_date = profile&.entry_company_date || Date.today
     me_hash = {
       sub: resource_owner.id,
       name: resource_owner.username,
@@ -26,7 +27,8 @@ class DoorkeeperController < ApplicationController
       gender: profile&.gender ? 'Male' : 'Female',
       departments: departments,
       positions: positions,
-      main_position: main_position
+      main_position: main_position,
+      entry_company_date: entry_company_date
     }
     render json: me_hash
   end
