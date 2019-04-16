@@ -3,7 +3,7 @@ class CreateDepartments < ActiveRecord::Migration[5.2]
     create_table :departments do |t|
       t.string :name, null: false
       t.integer :position
-      t.references :managed_by_department, foreign_key: true
+      t.integer :managed_by_department_id, foreign_key: true
 
       t.timestamps null: false
     end
