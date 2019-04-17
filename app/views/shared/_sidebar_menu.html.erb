@@ -24,6 +24,11 @@
             <i class="icon fa fa-circle-o"></i> <%= t('ui.employee_list') -%>
           <% end %>
         </li>
+        <li>
+          <%= link_to report_employees_path(format: :csv), class: "treeview-item #{params[:controller] == 'employees' && params[:action] == 'report' ? 'active' : ''}" do %>
+            <i class="icon fa fa-circle-o"></i> <%= t('ui.employee_report') -%>
+          <% end %>
+        </li>
       </ul>
     </li>
   <% end -%>
