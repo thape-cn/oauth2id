@@ -23,6 +23,7 @@ class DoorkeeperController < ApplicationController
     me_hash = {
       sub: resource_owner.id,
       name: resource_owner.username,
+      chinese_name: profile&.chinese_name,
       email: resource_owner.email,
       gender: profile&.gender ? 'Male' : 'Female',
       departments: departments,
