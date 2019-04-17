@@ -8,6 +8,8 @@ class CreateDepartments < ActiveRecord::Migration[5.2]
       t.timestamps null: false
     end
 
+    add_index :departments, :managed_by_department_id
+
     create_table :department_users do |t|
       t.references :department, null: false
       t.references :user, null: false
