@@ -53,3 +53,16 @@ oauth_app_yxt_oauth2:
   allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
+
+oauth_app_boran_oauth2:
+  id: 5
+  name: "泊冉SSO测试"
+  uid: "f941c66007ae9a17d4905aab2f5cd60e6c70a66f6fe93f5f1be814eccbfa3487"
+  secret: "ca422b21c50f6fc70cb077179a0081a3535eaf0dfed6dbd3f8de4cbbc75565ca"
+  redirect_uri: "http://172.16.1.160:8080/THua/thLogin"
+  confidential: true
+  div_class: "warning"
+  icon: "fa-files-o"
+  allow_login_by_default: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
