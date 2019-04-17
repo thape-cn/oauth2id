@@ -25,3 +25,15 @@ In order to make [httpclient](https://github.com/nahi/httpclient/issues/335) als
 ```bash
 cp /usr/local/etc/openssl/cert.pem /usr/local/lib/ruby/gems/2.6.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
 ```
+
+
+# Open ID Connect signing_key
+
+Just following [doorkeeper-openid_connect gem readme](https://github.com/doorkeeper-gem/doorkeeper-openid_connect#configuration):
+
+```bash
+openssl genpkey -algorithm RSA -out oauth2id_oidc_private_key.pem -pkeyopt rsa_keygen_bits:2048
+openssl rsa -pubout -in oauth2id_oidc_private_key.pem -out oauth2id_oidc_public_key.pem
+```
+
+Notice replace oauth2id with your new site name, notice you can get public key from [/oauth/discovery/keys](https://oauth2id.dev/oauth/discovery/keys) as well.
