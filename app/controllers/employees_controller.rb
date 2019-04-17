@@ -23,13 +23,15 @@ class EmployeesController < ApplicationController
       format.csv do
         render_csv_header :user_report.to_s
         csv_res = CSV.generate do |csv|
-          csv << ['ID', 'User Name', 'eMail', 'Title']
+          csv << ['ID', 'User Name', 'eMail', 'Title', 'Department', 'Position']
           policy_scope(User).order(id: :asc).find_each do |user|
             values = []
             values << user.id
             values << user.username
             values << user.email
             values << user.profile&.title
+            values << user.departments.pluck(:name).join(';')
+            values << user.positions.pluck(:name).join(';')
             csv << values
           end
         end
