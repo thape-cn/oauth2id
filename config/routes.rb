@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     member do
       get :sign_in_histories
     end
+    collection do
+      get :report
+    end
   end
   resource :setting, only: :update do
     member do

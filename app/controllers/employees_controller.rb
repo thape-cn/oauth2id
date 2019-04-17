@@ -1,6 +1,8 @@
+require 'csv'
+
 class EmployeesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user_and_authorized, except: :index
+  before_action :set_user_and_authorized, except: %i[index report]
   after_action :verify_authorized
   after_action :verify_policy_scoped, only: :index
 
@@ -11,6 +13,28 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: UserDatatable.new(params, users: users, view_context: view_context) }
+    end
+  end
+
+  def report
+    authorize User
+
+    respond_to do |format|
+      format.csv do
+        render_csv_header :user_report.to_s
+        csv_res = CSV.generate do |csv|
+          csv << ['ID', 'User Name', 'eMail', 'Title']
+          policy_scope(User).order(id: :asc).find_each do |user|
+            values = []
+            values << user.id
+            values << user.username
+            values << user.email
+            values << user.profile&.title
+            csv << values
+          end
+        end
+        send_data "\xEF\xBB\xBF" << csv_res
+      end
     end
   end
 

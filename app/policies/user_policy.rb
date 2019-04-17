@@ -20,6 +20,10 @@ class UserPolicy < ApplicationPolicy
     user&.admin?
   end
 
+  def report?
+    user&.admin?
+  end
+
   def show?
     user&.admin?
   end
