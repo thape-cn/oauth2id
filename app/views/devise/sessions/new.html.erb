@@ -21,7 +21,7 @@
             <% if devise_mapping.rememberable? -%>
               <div class="animated-checkbox">
                 <label>
-                  <%= f.check_box :remember_me %><span class="label-text"><%= t('user.stay_signed_in') -%></span>
+                  <%= f.check_box :remember_me, checked: true %><span class="label-text"><%= t('user.stay_signed_in') -%></span>
                 </label>
               </div>
             <% end -%>

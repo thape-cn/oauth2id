@@ -48,7 +48,7 @@ zh-CN:
     username_placeholder: "希望显示的用户名"
     email: "电子邮件"
     email_placeholder: "输入电子邮件"
-    samaccountname: "登录Windows的用户名（不是邮箱）"
+    samaccountname: "Windows用户名（例: zhangsan）"
     change_your_password: "更改您的密码"
     change_my_password: "更改我的密码"
     change_profile: "更改档案"
