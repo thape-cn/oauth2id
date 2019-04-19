@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'doorkeeper-openid_connect'
+# bundle config local.saml_idp /Users/guochunzhong/git/sso/saml_idp/
+gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :master
+# Encrypted Assertions require the xmlenc gem in saml_idp
+# gem 'xmlenc'
 gem 'pundit'
 
 # Use ActiveStorage variant
