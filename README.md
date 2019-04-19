@@ -27,7 +27,9 @@ cp /usr/local/etc/openssl/cert.pem /usr/local/lib/ruby/gems/2.6.0/gems/httpclien
 ```
 
 
-# Open ID Connect signing_key
+# Generate signing key
+
+## Open ID Connect
 
 Just following [doorkeeper-openid_connect gem readme](https://github.com/doorkeeper-gem/doorkeeper-openid_connect#configuration):
 
@@ -37,3 +39,12 @@ openssl rsa -pubout -in oauth2id_oidc_private_key.pem -out oauth2id_oidc_public_
 ```
 
 Notice replace oauth2id with your new site name, notice you can get public key from [/oauth/discovery/keys](https://oauth2id.dev/oauth/discovery/keys) as well.
+
+
+## SAML 2.0
+
+```bash
+openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 -keyout oauth2id_saml_key.key -out oauth2id_saml_cert.crt
+# Show SHA1 Fingerprint
+openssl x509 -in oauth2id_saml_cert.crt -noout -sha256 -fingerprint
+```

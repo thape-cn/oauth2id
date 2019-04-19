@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   use_doorkeeper
   use_doorkeeper_openid_connect
   resources :oauth2_applications, only: %i[update create]
+
+  get '/saml/auth' => 'saml_idp#create'
+  get '/saml/metadata' => 'saml_idp#show'
+  post '/saml/auth' => 'saml_idp#create'
+
   devise_for :users, controllers: { sessions: 'user/sessions',
                                     passwords: 'user/passwords',
                                     confirmations: 'user/confirmations',
