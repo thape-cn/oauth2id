@@ -1,5 +1,5 @@
 class SamlIdpController < SamlIdp::IdpController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :logout_response]
 
   # override create and make sure to set both "GET" and "POST" requests to /saml/auth to #create
   def create
@@ -13,10 +13,32 @@ class SamlIdpController < SamlIdp::IdpController
     end
   end
 
+  def logout_response
+    rexml = REXML::Document.new(params["SAMLResponse"])
+    node = REXML::XPath.first(
+      rexml,
+      "/p:LogoutResponse",
+      { "p" => "urn:oasis:names:tc:SAML:2.0:protocol" }
+    )
+    destination = node.nil? ? root_path : node.attributes['Destination']
+    redirect_to destination
+  end
+
   # NOT USED def idp_authenticate(email, password)
 
   def idp_make_saml_response(found_user) # not using params intentionally
-    encode_response found_user
+    encode_response found_user, encryption: {
+      cert: saml_request.service_provider.cert,
+      block_encryption: 'aes256-cbc',
+      key_transport: 'rsa-oaep-mgf1p'
+    }
   end
   private :idp_make_saml_response
+
+  def idp_logout
+    decode_request params[:SAMLRequest]
+    user = User.find_by email: saml_request.name_id
+    sign_out user
+  end
+  private :idp_logout
 end
