@@ -19,7 +19,9 @@ SamlIdp.configure do |config|
   service_providers = {
     "https://saml-example.test/saml/metadata" => {
       fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
-      metadata_url: "https://saml-example.test/saml/metadata"
+      metadata_url: "https://saml-example.test/saml/metadata",
+      assertion_consumer_logout_service_url: "https://saml-example.test/saml/logout",
+      cert: Base64.encode64(Rails.application.credentials.saml_sp_cert!)
     },
   }
 
