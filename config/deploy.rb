@@ -7,8 +7,8 @@ set :repo_url, 'git@github.com:thape-cn/oauth2id.git'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/scschub
-# set :deploy_to, "/var/www/scschub"
+# Default deploy_to directory is /var/www/oauth2id
+# set :deploy_to, "/var/www/oauth2id"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
