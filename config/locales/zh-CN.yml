@@ -55,7 +55,7 @@ zh-CN:
     new_password: "新密码"
     current_password: "当前密码"
     confirm_new_password: "确认新密码"
-    password: "登录Windows的密码"
+    password: "开机密码"
     password_confirmation: "确认密码"
     sign_in: "登录"
     sign_up: "注册"
