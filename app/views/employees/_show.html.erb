@@ -10,7 +10,7 @@
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.profile') -%></h5>
-          <% @user.profile&.custom_attributes.each do |key, value| %>
+          <% @user.profile&.custom_attributes&.each do |key, value| %>
             <p class="card-text"><%= t("user.#{key}") -%>: <%= value -%></p>
           <% end %>
         </div>
