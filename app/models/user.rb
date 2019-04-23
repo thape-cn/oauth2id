@@ -27,7 +27,7 @@ class User < ApplicationRecord
   has_many :positions, through: :position_users
   has_many :user_sign_in_histories, -> { order(id: :desc) }, dependent: :restrict_with_error
 
-  validates :username, presence: true, exclusion: { in: %w[admin guochunzhong] }
+  validates :username, presence: true, exclusion: { in: %w[admin] }
 
   def gravatarurl
     hash = Digest::MD5.hexdigest(email)
