@@ -1,2 +1,4 @@
-// https://sb.sb/blog/css-cdn/#6-旧域名替换
-@import url(https://fonts.loli.net/css?family=Niconne);
+@font-face {
+  font-family: 'Niconne';
+  src: url(asset-path('Niconne-Regular.ttf'));
+}
