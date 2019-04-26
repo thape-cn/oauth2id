@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_012044) do
+ActiveRecord::Schema.define(version: 2019_04_26_005405) do
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_012044) do
   create_table "user_sign_in_histories", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "sign_in_at"
-    t.string "user_agent"
+    t.text "user_agent"
     t.string "sign_in_ip"
     t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
   end
