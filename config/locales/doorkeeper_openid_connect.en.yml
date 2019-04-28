@@ -11,6 +11,8 @@ en:
       departments: "View your belongs to departments"
       positions: "View your working positions"
       main_position: "View your main working position"
+      clerk_code: "View your clerk code"
+      chinese_name: "View your chinese name"
     errors:
       messages:
         login_required: 'The authorization server requires end-user authentication'
