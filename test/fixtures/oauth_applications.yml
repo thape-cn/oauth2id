@@ -66,3 +66,17 @@ oauth_app_boran_oauth2:
   allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
+
+oauth_app_cybros_oidc:
+  id: 6
+  name: "Cybros"
+  uid: "ske--S5OaJLsWWPLiau40C2eukE3mMcho4tKsl2ubo4"
+  secret: "xDDi0ZwvH53sIEECH7zDtcNa39MsYln4dkfstbPkRQ8"
+  redirect_uri: "https://portal.test/auth/openid_connect/callback"
+  scopes: "openid departments positions main_position"
+  confidential: true
+  div_class: "warning"
+  icon: "fa-files-o"
+  allow_login_by_default: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
