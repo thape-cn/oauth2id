@@ -61,6 +61,14 @@ Doorkeeper::OpenidConnect.configure do
       resource_owner.profile&.phone
     end
 
+    normal_claim :clerk_code, scope: :clerk_code do |resource_owner|
+      resource_owner.profile&.clerk_code
+    end
+
+    normal_claim :chinese_name, scope: :chinese_name do |resource_owner|
+      resource_owner.profile&.chinese_name
+    end
+
     normal_claim :departments, scope: :departments do |resource_owner|
       resource_owner.departments.collect do |department|
         { id: department.id, name: department.name }
