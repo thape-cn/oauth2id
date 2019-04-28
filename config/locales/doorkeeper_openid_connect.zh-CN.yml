@@ -11,6 +11,8 @@ zh-CN:
       departments: "查看您所属的部门"
       positions: "查看您的工作职位"
       main_position: "查看您的主要工作岗位"
+      clerk_code: "查看您的工号"
+      chinese_name: "查看您的中文姓名"
     errors:
       messages:
         login_required: '授权服务器需要用户进行身份验证'
