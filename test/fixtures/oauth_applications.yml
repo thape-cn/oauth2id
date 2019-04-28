@@ -78,7 +78,7 @@ oauth_app_cybros_oidc:
   uid: "ske--S5OaJLsWWPLiau40C2eukE3mMcho4tKsl2ubo4"
   secret: "xDDi0ZwvH53sIEECH7zDtcNa39MsYln4dkfstbPkRQ8"
   redirect_uri: "https://portal.test/auth/openid_connect/callback"
-  scopes: "openid departments positions main_position"
+  scopes: "openid departments positions main_position clerk_code chinese_name"
   confidential: true
   div_class: "warning"
   icon: "fa-files-o"
