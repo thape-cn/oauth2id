@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "^4.0.1",
     "datatables": "^1.10.18",
+    "jqtree": "^1.4.10",
     "stimulus": "^1.1.1",
     "vali-admin": "^2.4.1"
   },

@@ -3580,10 +3580,22 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+jqtree@^1.4.10:
+  version "1.4.10"
+  resolved "https://registry.npm.taobao.org/jqtree/download/jqtree-1.4.10.tgz#ef3a348773f820e0844f05e9cd905da989ea1f4d"
+  integrity sha1-7zo0h3P4IOCETwXpzZBdqYnqH00=
+  dependencies:
+    jquery ">=1.9"
+
 jquery@>=1.7:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
   integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
+
+jquery@>=1.9:
+  version "3.4.1"
+  resolved "https://registry.npm.taobao.org/jquery/download/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha1-cU8fjZ3eS9+lV2S6N+8hRjDYDvI=
 
 js-base64@^2.1.8:
   version "2.5.1"

@@ -17,6 +17,7 @@
 //= require vali-admin/docs/js/plugins/bootstrap-notify.min
 //= require datatables/media/js/jquery.dataTables.js
 //= require vali-admin/docs/js/plugins/dataTables.bootstrap.min
+//= require jqtree/tree.jquery
 //= require activestorage
 //= require turbolinks
 //= require cable

@@ -27,6 +27,11 @@ Rails.application.routes.draw do
       get :profile
     end
   end
+  resource :departments, only: [] do
+    collection do
+      get :data
+    end
+  end
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'
