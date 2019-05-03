@@ -50,4 +50,9 @@ document.addEventListener("turbolinks:load", function() {
     $('.login-box').toggleClass('flipped');
     return false;
   });
+
+  $('#tree-department').tree({
+      closedIcon: $('<i class="icon fa fa-arrow-circle-right"></i>'),
+      openedIcon: $('<i class="icon fa fa-arrow-circle-down"></i>')
+  });
 })
