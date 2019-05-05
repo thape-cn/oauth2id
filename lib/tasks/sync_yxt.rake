@@ -2,7 +2,7 @@ namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
     :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4nd_level_departments,
-    :sync_5nd_level_departments, :sync_positions, :sync_users]
+    :sync_5nd_level_departments, :sync_positions, :sync_users, :disable_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -91,7 +91,7 @@ namespace :sync_yxt do
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
-    User.all.order(:id).find_in_batches(batch_size: 100) do |users|
+    User.where(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
       puts "users: #{users.pluck(:id)}"
       users = users.collect do |u|
         main_position = u.position_users.find_by(main_position: true)&.position
@@ -114,6 +114,17 @@ namespace :sync_yxt do
         }
       end
       res = Yxt.sync_users(users)
+      puts res.body.to_s
+    end
+  end
+
+  desc 'Disable locked users to YXT'
+  task disable_users: :environment do
+    puts 'Disable users'
+    User.where.not(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
+      puts "users: #{users.pluck(:id)}"
+      userNames = users.pluck(:username)
+      res = Yxt.disable_users(userNames)
       puts res.body.to_s
     end
   end
