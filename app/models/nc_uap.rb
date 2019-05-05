@@ -6,6 +6,37 @@ class NcUap < ApplicationRecord
     true
   end
 
+  def self.nc_leaved_users
+    NcUap.connection.select_rows("
+select bd_psndoc.email, to_date(hi_psnjob.ENDDATE, 'YYYY-mm-dd')
+FROM NC6337.bd_psndoc bd_psndoc
+INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+WHERE hi_psnjob.ismainjob = 'Y'
+  AND hi_psnjob.lastflag = 'Y'
+  AND hi_psnjob.endflag = 'Y'
+  AND bd_psndoc.email is not null
+  AND bd_psndoc.email like '%@thape.com.cn'
+  AND hi_psnjob.ENDDATE is not null
+  AND to_date(hi_psnjob.ENDDATE, 'YYYY-mm-dd') < sysdate
+ORDER BY hi_psnjob.ENDDATE
+")
+  end
+
+  def self.lock_leaved_users
+    users = NcUap.nc_leaved_users
+    users.each do |u|
+      email = u[0]
+      leaved_company_date = u[1]
+      puts "Locking user: #{email}"
+
+      user = User.find_by(email: email.downcase)
+      if user.present?
+        user.locked_at = leaved_company_date
+        user.save(validate: false)
+      end
+    end
+  end
+
   def self.nc_users
     NcUap.connection.select_rows("
 select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email,
