@@ -9,6 +9,8 @@ document.addEventListener("turbolinks:load", function() {
     "columns": [
       {"data": "id"},
       {"data": "username"},
+      {"data": "chinese_name"},
+      {"data": "clerk_code"},
       {"data": "email"},
       {"data": "admin_action", bSortable: false}
     ],
@@ -40,6 +42,8 @@ document.addEventListener("turbolinks:load", function() {
           "columns": [
             {"data": "id"},
             {"data": "username"},
+            {"data": "chinese_name"},
+            {"data": "clerk_code"},
             {"data": "email"},
             {"data": "admin_action", bSortable: false}
           ],
