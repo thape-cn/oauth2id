@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
                                 .references(:department_users)
             else
               policy_scope(User)
-            end
+            end.left_joins(:profile).references(:profile)
     respond_to do |format|
       format.html
       format.json { render json: UserDatatable.new(params, users: users, view_context: view_context) }
@@ -31,11 +31,13 @@ class EmployeesController < ApplicationController
       format.csv do
         render_csv_header :user_report.to_s
         csv_res = CSV.generate do |csv|
-          csv << ['ID', 'User Name', 'eMail', 'Title', 'Department', 'Position']
+          csv << ['ID', 'User Name', 'Chinese Name', 'Clerk Code', 'eMail', 'Title', 'Department', 'Position']
           policy_scope(User).order(id: :asc).find_each do |user|
             values = []
             values << user.id
             values << user.username
+            values << user.profile.chinese_name
+            values << user.profile.clerk_code
             values << user.email
             values << user.profile&.title
             values << user.departments.pluck(:name).join(';')
