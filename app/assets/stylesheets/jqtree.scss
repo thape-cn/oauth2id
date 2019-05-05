@@ -2,7 +2,19 @@ ul.jqtree-tree {
     list-style: none outside;
     margin-left: 0;
     margin-bottom: 0;
-    padding: 0;
+    padding: 5px 5px 5px 20px;
+    font-size: 1em;
+    @if $sidebar-accent == dark { color: $sidebar-dark-link-color }
+    @if $sidebar-accent == light { color: $sidebar-light-link-color }
+    &.active,
+    &:hover,
+    &:focus {
+        background: darken($sidebar-color, 10);
+        text-decoration: none;
+        @if $sidebar-accent == dark { color: $sidebar-dark-link-color }
+        @if $sidebar-accent == light { color: $primary-color }
+    }
+    .icon { margin-right: 5px; }
 }
 
     ul.jqtree-tree ul.jqtree_common {
@@ -25,7 +37,8 @@ ul.jqtree-tree {
 
     ul.jqtree-tree .jqtree-toggler {
         border-bottom: none;
-        color: #333;
+        @if $sidebar-accent == dark { color: $sidebar-dark-link-color }
+        @if $sidebar-accent == light { color: $sidebar-light-link-color }
         text-decoration: none;
         vertical-align: middle;
     }
@@ -120,8 +133,7 @@ ul.jqtree-tree {
 
     ul.jqtree-tree li.jqtree-selected > .jqtree-element,
     ul.jqtree-tree li.jqtree-selected > .jqtree-element:hover {
-        background-color: #97BDD6;
-        background: linear-gradient(#BEE0F5, #89AFCA);
+        background: darken($sidebar-color, 10);
         text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
