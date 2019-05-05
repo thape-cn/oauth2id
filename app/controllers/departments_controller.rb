@@ -2,6 +2,10 @@ class DepartmentsController < ApplicationController
   before_action :authenticate_user!
 
   def data
-    render json: [{name: 'Test1', id: 1, load_on_demand: true},{name: 'Test2', id: 2, load_on_demand: true}]
+    managed_by_department_id = params[:node]
+    departments = Department.where(managed_by_department_id: managed_by_department_id).collect do |d|
+      { name: d.name, id: d.id, load_on_demand: d.managed_departments.count > 0 }
+    end
+    render json: departments
   end
 end
