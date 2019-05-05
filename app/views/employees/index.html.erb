@@ -7,6 +7,7 @@
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
       <li class="breadcrumb-item"><a href="<%= employees_path -%>"><%= t('ui.employees') -%></a></li>
+      <li class="breadcrumb-item"><a href="<%= report_employees_path(format: :csv) -%>"><%= t('ui.employee_report') -%></a></li>
     </ul>
   </div>
   <div class="row">
