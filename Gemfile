@@ -82,6 +82,8 @@ gem 'yxt-api', git: 'https://github.com/thape-cn/yxt-api', branch: :master
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+gem 'whenever', require: false
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.18.4', require: false
 
