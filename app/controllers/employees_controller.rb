@@ -9,7 +9,12 @@ class EmployeesController < ApplicationController
   def index
     authorize User
 
-    users = policy_scope(User)
+    users = if params[:dept_id].present?
+      policy_scope(User).joins(:department_users)
+        .where(department_users: {department_id: params[:dept_id]}).references(:department_users)
+    else
+      policy_scope(User)
+    end
     respond_to do |format|
       format.html
       format.json { render json: UserDatatable.new(params, users: users, view_context: view_context) }
