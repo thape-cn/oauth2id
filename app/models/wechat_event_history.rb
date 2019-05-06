@@ -1,0 +1,2 @@
+class WechatEventHistory < ApplicationRecord
+end

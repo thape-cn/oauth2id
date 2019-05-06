@@ -1,0 +1,48 @@
+---
+wechat_event_history_batch_job_result:
+  create_time: 1425284517
+  event: batch_job_result
+  change_type: sync_user
+  job_id: S0MrnndvRG5fadSlLwiBqiDDbM143UqTmKP3152FZk4
+
+wechat_event_history_change_contact_create_user:
+  create_time: 1403610513
+  event: change_contact
+  change_type: create_user
+  user_id: zhangsan
+
+wechat_event_history_change_contact_update_user:
+  create_time: 1403610513
+  event: change_contact
+  change_type: update_user
+  user_id: zhangsan001
+
+wechat_event_history_change_contact_delete_user:
+  create_time: 1403610513
+  event: change_contact
+  change_type: delete_user
+  user_id: zhangsan
+
+wechat_event_history_change_contact_create_party:
+  create_time: 1403610513
+  event: change_contact
+  change_type: create_party
+  party_id: 2
+
+wechat_event_history_change_contact_update_party:
+  create_time: 1403610513
+  event: change_contact
+  change_type: update_party
+  party_id: 2
+
+wechat_event_history_change_contact_delete_party:
+  create_time: 1403610513
+  event: change_contact
+  change_type: delete_party
+  party_id: 2
+
+wechat_event_history_change_contact_update_tag:
+  create_time: 1403610513
+  event: change_contact
+  change_type: update_tag
+  tag_id: 1
