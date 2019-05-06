@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_005405) do
+ActiveRecord::Schema.define(version: 2019_05_06_061527) do
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -155,6 +155,19 @@ ActiveRecord::Schema.define(version: 2019_04_26_005405) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
+
+  create_table "wechat_event_histories", force: :cascade do |t|
+    t.integer "create_time"
+    t.string "event"
+    t.string "change_type"
+    t.string "job_id"
+    t.string "user_id"
+    t.string "party_id"
+    t.string "tag_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
