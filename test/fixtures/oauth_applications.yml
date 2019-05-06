@@ -80,3 +80,16 @@ oauth_app_cybros_oidc:
   allow_login_by_default: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
+
+oauth_app_report_oauth2:
+  id: 7
+  name: "报表应用"
+  uid: "1WlzSRpcg-ROnp3PYG29Qr7gRZ-cdnbuDSPmxrYOKgI"
+  secret: "okTygwpf43S7U6BmNB84AHczEnKNt96fg1RA8W-e3Gw"
+  redirect_uri: "http://172.16.1.159/default.aspx"
+  confidential: true
+  div_class: "warning"
+  icon: "fa-files-o"
+  allow_login_by_default: true
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
