@@ -1,0 +1,25 @@
+default: &default
+  corpid: <%= Rails.application.credentials.wechat_corpid! %>
+  corpsecret: <%= Rails.application.credentials.wechat_corpsecret! %>
+  agentid: <%= Rails.application.credentials.wechat_agentid! %>
+  token: <%= Rails.application.credentials.wechat_token! %>
+  encrypt_mode: true
+  encoding_aes_key: <%= Rails.application.credentials.wechat_aes_key! %>
+
+production:
+  <<: *default
+  trusted_domain_fullname: "https://sso.thape.com.cn"
+  access_token: "/var/www/oauth2id/shared/tmp/sso_thape_access_token"
+  jsapi_ticket: "/var/www/oauth2id/shared/tmp/sso_thape_jsapi_ticket"
+
+staging:
+  <<: *default
+  trusted_domain_fullname: "https://oauth2id.dev"
+  access_token: "/var/www/oauth2id/shared/tmp/oauth2id_dev_access_token"
+  jsapi_ticket: "/var/www/oauth2id/shared/tmp/oauth2id_dev_jsapi_ticket"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
