@@ -9,9 +9,10 @@ class EmployeesController < ApplicationController
   def index
     authorize User
 
-    users = if params[:dept_id].present?
+    dept = Department.find_by(id: params[:dept_id])
+    users = if dept.present?
       policy_scope(User).joins(:department_users)
-        .where(department_users: {department_id: params[:dept_id]}).references(:department_users)
+        .where(department_users: {department_id: dept.all_managed_department_ids}).references(:department_users)
     else
       policy_scope(User)
     end
