@@ -42,6 +42,7 @@ en:
         div_class: "Contain the Application icon div class name"
         login_url: "SSO Login URL"
         allow_login_by_default: "Allow login by default"
+        superapp: "Skip the user authorization step."
       edit:
         title: 'Edit application'
       index:

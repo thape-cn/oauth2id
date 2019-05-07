@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_061527) do
+ActiveRecord::Schema.define(version: 2019_05_07_070509) do
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_061527) do
     t.string "div_class", default: "primary"
     t.string "login_url"
     t.boolean "allow_login_by_default", default: false
+    t.boolean "superapp", default: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 

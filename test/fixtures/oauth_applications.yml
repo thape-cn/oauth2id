@@ -9,6 +9,7 @@ oauth_app_test:
   div_class: "danger"
   icon: "fa-users"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -24,6 +25,7 @@ oauth_app_omniauth:
   icon: "fa-thumbs-o-up"
   login_url: "https://omniauth-openid-connect-demo.test/auth/openid_connect"
   allow_login_by_default: false
+  superapp: true
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -38,6 +40,7 @@ oauth_app_aspnet_mvc:
   div_class: "warning"
   icon: "fa-files-o"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -51,6 +54,7 @@ oauth_app_yxt_oauth2:
   div_class: "primary"
   icon: "fa-graduation-cap"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -64,6 +68,7 @@ oauth_app_boran_oauth2:
   div_class: "warning"
   icon: "fa-files-o"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -78,6 +83,7 @@ oauth_app_cybros_oidc:
   div_class: "warning"
   icon: "fa-files-o"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
@@ -91,5 +97,6 @@ oauth_app_report_oauth2:
   div_class: "warning"
   icon: "fa-files-o"
   allow_login_by_default: true
+  superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
