@@ -42,6 +42,7 @@ zh-CN:
         div_class: "显示应用的div class名字"
         login_url: "SSO登录URL"
         allow_login_by_default: "默认允许登录"
+        superapp: "跳过用户授权步骤。"
       edit:
         title: '修改应用'
       index:

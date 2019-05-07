@@ -96,6 +96,17 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <%= f.label :superapp, class: 'col-sm-2 form-check-label font-weight-bold' %>
+    <div class="col-sm-10">
+      <%= f.check_box :superapp, class: "checkbox #{ 'is-invalid' if application.errors[:superapp].present? }" %>
+      <%= doorkeeper_errors_for application, :superapp %>
+      <span class="form-text text-secondary">
+        <%= t('doorkeeper.applications.help.superapp') %>
+      </span>
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit t('doorkeeper.applications.buttons.submit'), class: 'btn btn-primary' %>
