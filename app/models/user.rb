@@ -65,6 +65,11 @@ class User < ApplicationRecord
     self.email = li[:mail].first.to_s
   end
 
+  def after_ldap_authentication
+    li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
+    return fail(:invalid) if li[:mail].blank?
+  end
+
   protected
 
   def password_required?
