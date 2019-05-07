@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 2adcd4b3ad30cfe74930dec3ed8c7f4fdb1e6ec9
+  revision: 40d701cd44fe728cd730537ab6a063151e233138
   branch: master
   specs:
     wechat (0.11.1)
@@ -159,7 +159,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.2.0)
     json (2.2.0-java)
-    json-jwt (1.10.0)
+    json-jwt (1.10.1)
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
