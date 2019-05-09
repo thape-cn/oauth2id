@@ -104,7 +104,7 @@ namespace :sync_yxt do
           CnName: u&.profile&.chinese_name,
           userno: u&.profile&.clerk_code,
           Sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
-          Mobile: '',
+          Mobile: u&.profile&.phone,
           Mail: u.email,
           OrgOuCode: u.departments.first&.id,
           PostionNo: main_position&.id,
