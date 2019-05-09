@@ -39,7 +39,7 @@ ORDER BY hi_psnjob.ENDDATE
 
   def self.nc_users
     NcUap.connection.select_rows("
-select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email,
+select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_psndoc.mobile,
        hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name, bd_psndoc.birthdate, hi_psnorg.begindate
 from NC6337.bd_psndoc bd_psndoc
 inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
@@ -64,11 +64,12 @@ where hi_psnjob.ismainjob = 'Y'
       sex = u[1]
       clerk_code = u[2]
       email = u[3]
-      pk_dept = u[4]
-      pk_post = u[5]
-      job_level = u[6]
-      birthdate = u[7]
-      entry_company_date = u[8]
+      mobile = u[4]
+      pk_dept = u[5]
+      pk_post = u[6]
+      job_level = u[7]
+      birthdate = u[8]
+      entry_company_date = u[9]
       puts "Import user: #{chinese_name}"
 
       user = User.find_or_create_by!(email: email.downcase) do |user|
@@ -84,6 +85,7 @@ where hi_psnjob.ismainjob = 'Y'
       profile.chinese_name = chinese_name
       profile.gender = (sex == 2 ? 0 : sex) # Femail is 0 in oauth2id
       profile.clerk_code = clerk_code
+      profile.phone = mobile
       profile.job_level = job_level
       profile.birthdate = birthdate
       profile.entry_company_date = entry_company_date
