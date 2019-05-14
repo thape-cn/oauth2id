@@ -87,12 +87,12 @@ oauth_app_cybros_oidc:
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
 
-oauth_app_report_oauth2:
+oauth_app_pataho_bi_oauth2:
   id: 7
-  name: "报表应用"
+  name: "pataho BI"
   uid: "1WlzSRpcg-ROnp3PYG29Qr7gRZ-cdnbuDSPmxrYOKgI"
   secret: "okTygwpf43S7U6BmNB84AHczEnKNt96fg1RA8W-e3Gw"
-  redirect_uri: "http://172.16.1.159/default.aspx"
+  redirect_uri: "http://localhost:19752/Default.aspx"
   confidential: true
   div_class: "warning"
   icon: "fa-files-o"
