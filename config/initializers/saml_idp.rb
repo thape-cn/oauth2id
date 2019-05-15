@@ -23,6 +23,12 @@ SamlIdp.configure do |config|
       assertion_consumer_logout_service_url: "https://saml-example.test/saml/logout",
       cert: Base64.encode64(Rails.application.credentials.saml_sp_cert!)
     },
+    "www.successfactors.com" => {
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      metadata_url: "https://oauth2id.dev/shanghaitiT1_metadata.xml",
+      assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaitiT1",
+      cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
+    },
   }
 
   # `identifier` is the entity_id or issuer of the Service Provider,
@@ -50,6 +56,7 @@ SamlIdp.configure do |config|
 
   # Find ServiceProvider metadata_url and fingerprint based on our settings
   config.service_provider.finder = ->(issuer_or_entity_id) do
+    Rails.logger.debug "Find ServiceProvider issuer_or_entity_id: #{issuer_or_entity_id}"
     service_providers[issuer_or_entity_id]
   end
 end
