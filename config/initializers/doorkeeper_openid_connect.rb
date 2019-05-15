@@ -80,7 +80,7 @@ Doorkeeper::OpenidConnect.configure do
 
     normal_claim :departments, scope: :departments do |resource_owner|
       resource_owner.departments.collect do |department|
-        { id: department.id, name: department.name }
+        { id: department.id, name: department.name, company_name: department.company_name }
       end
     end
 
