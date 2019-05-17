@@ -8,29 +8,41 @@ class NcUap < ApplicationRecord
 
   def self.nc_leaved_users
     NcUap.connection.select_rows("
-select bd_psndoc.email, to_date(hi_psnjob.ENDDATE, 'YYYY-mm-dd')
-FROM NC6337.bd_psndoc bd_psndoc
-INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+select hi_psnjob.clerkcode, hi_psnjob.ENDDATE
+FROM NC6337.hi_psnjob hi_psnjob
 WHERE hi_psnjob.ismainjob = 'Y'
   AND hi_psnjob.lastflag = 'Y'
   AND hi_psnjob.endflag = 'Y'
-  AND bd_psndoc.email is not null
-  AND bd_psndoc.email like '%@thape.com.cn'
   AND hi_psnjob.ENDDATE is not null
   AND to_date(hi_psnjob.ENDDATE, 'YYYY-mm-dd') < sysdate
 ORDER BY hi_psnjob.ENDDATE
 ")
   end
 
+  def self.nc_is_transfer_position?(clerk_code, begin_date)
+    NcUap.connection.select_rows("
+select hi_psnjob.clerkcode, hi_psnorg.begindate
+from NC6337.bd_psndoc bd_psndoc
+inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
+WHERE hi_psnjob.ismainjob = 'Y'
+  AND hi_psnjob.lastflag = 'Y'
+  AND hi_psnjob.endflag = 'Y'
+  AND hi_psnjob.clerkcode = '#{clerk_code}'
+  AND hi_psnorg.begindate = '#{begin_date}'
+").present?
+  end
+
   def self.lock_leaved_users
     users = NcUap.nc_leaved_users
     users.each do |u|
-      email = u[0]
+      clerk_code = u[0]
       leaved_company_date = u[1]
-      puts "Locking user: #{email}"
+      puts "Locking user: #{clerk_code}, #{leaved_company_date}"
 
-      user = User.find_by(email: email.downcase)
-      if user.present?
+      profile = Profile.find_by(clerk_code: clerk_code)
+      user = profile&.user
+      if user.present? && !NcUap.nc_is_transfer_position?(clerk_code, leaved_company_date)
         user.locked_at = leaved_company_date
         user.save(validate: false)
       end
