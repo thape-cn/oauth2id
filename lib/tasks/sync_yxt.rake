@@ -142,4 +142,20 @@ namespace :sync_yxt do
       }
     end
   end
+
+  desc 'Disable all non-Shanghai users'
+  task disable_non_shanghai_users: :environment do
+    all_shanghai_department_ids = Department.find(644).all_managed_department_ids
+    exclude_department_1 = Department.find(36).all_managed_department_ids
+    exclude_department_2 = Department.find(191).all_managed_department_ids
+    exclude_department_3 = Department.find(467).all_managed_department_ids
+    enable_department_ids = all_shanghai_department_ids - exclude_department_1 - exclude_department_2 - exclude_department_3
+    disable_department_ids = Department.pluck(:id) - enable_department_ids
+    puts "Disable department ids: #{disable_department_ids}"
+    User.joins(:department_users).where(department_users: { department_id: disable_department_ids }, locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
+      userNames = users.pluck(:username)
+      res = Yxt.disable_users(userNames)
+      puts res.body.to_s
+    end
+  end
 end
