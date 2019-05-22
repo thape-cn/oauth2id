@@ -8,29 +8,20 @@ class NcUap < ApplicationRecord
 
   def self.nc_leaved_users
     NcUap.connection.select_rows("
-select hi_psnjob.clerkcode, hi_psnjob.ENDDATE
-FROM NC6337.hi_psnjob hi_psnjob
-WHERE hi_psnjob.ismainjob = 'Y'
-  AND hi_psnjob.lastflag = 'Y'
-  AND hi_psnjob.endflag = 'Y'
-  AND hi_psnjob.ENDDATE is not null
-  AND to_date(hi_psnjob.ENDDATE, 'YYYY-mm-dd') < sysdate
-ORDER BY hi_psnjob.ENDDATE
+select a.clerkcode, a.begindate
+from NC6337.hi_psnjob a
+where a.pk_psnjob in (select tt.pk_psnjob
+  from (select b.begindate,
+    b.clerkcode,
+    b.pk_psnjob,
+    row_number() over(partition by b.pk_psndoc order by b.begindate desc) rn
+    from NC6337.hi_psnjob b) tt
+  where tt.rn = '1')
+and a.lastflag = 'Y'
+and a.ismainjob = 'Y'
+and a.endflag = 'Y'
+order by a.clerkcode
 ")
-  end
-
-  def self.nc_is_transfer_position?(clerk_code, begin_date)
-    NcUap.connection.select_rows("
-select hi_psnjob.clerkcode, hi_psnorg.begindate
-from NC6337.bd_psndoc bd_psndoc
-inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
-WHERE hi_psnjob.ismainjob = 'Y'
-  AND hi_psnjob.lastflag = 'Y'
-  AND hi_psnjob.endflag = 'Y'
-  AND hi_psnjob.clerkcode = '#{clerk_code}'
-  AND hi_psnorg.begindate = '#{begin_date}'
-").present?
   end
 
   def self.lock_leaved_users
@@ -42,7 +33,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
 
       profile = Profile.find_by(clerk_code: clerk_code)
       user = profile&.user
-      if user.present? && !NcUap.nc_is_transfer_position?(clerk_code, leaved_company_date)
+      if user.present?
         user.locked_at = leaved_company_date
         user.save(validate: false)
       end
