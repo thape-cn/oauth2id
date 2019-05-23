@@ -19,6 +19,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.department') -%></h5>
           <% @user.departments.each do |department| %>
+            <p class="card-text small"><%= department.company_name -%></p>
             <p class="card-text"><%= department.name -%></p>
           <% end %>
         </div>
