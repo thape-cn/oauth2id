@@ -95,7 +95,7 @@ namespace :sync_yxt do
       puts "users: #{users.pluck(:id)}"
       users = users.collect do |u|
         main_position = u.position_users.find_by(main_position: true)&.position
-        main_position = u.positions.first if main_position.nil?
+        main_position = u.positions.last if main_position.nil?
 
         {
           ID: u.id,
@@ -106,7 +106,7 @@ namespace :sync_yxt do
           Sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
           Mobile: u&.profile&.phone,
           Mail: u.email,
-          OrgOuCode: u.departments.first&.id,
+          OrgOuCode: u.departments.last&.id,
           PostionNo: main_position&.id,
           Birthday: u&.profile&.birthdate,
           Entrytime: u&.profile&.entry_company_date,
