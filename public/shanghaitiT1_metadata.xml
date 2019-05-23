@@ -27,12 +27,12 @@
 
 <md:SingleLogoutService Location="https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaitiT1" ResponseLocation="https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirectResponse?company=shanghaitiT1" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"/>
 
-<md:AssertionConsumerService Location="https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaitiT1" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" index="0"/>
+<md:AssertionConsumerService Location="https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaitiT1" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" isDefault="true" index="0"/>
 
 </md:SPSSODescriptor>
 
 
--<md:Organization>
+<md:Organization>
 
 <md:OrganizationName xml:lang="en">SuccessFactors</md:OrganizationName>
 
