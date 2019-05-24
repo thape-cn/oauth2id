@@ -29,7 +29,6 @@ SamlIdp.configure do |config|
     },
     "www.successfactors.com" => {
       fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
-      metadata_url: "https://oauth2id.dev/shanghaitiT1_metadata.xml",
       response_hosts: ["performancemanager15.sapsf.cn"],
       acs_url: 'https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaitiT1',
       assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaitiT1",
