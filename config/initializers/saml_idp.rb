@@ -11,9 +11,13 @@ SamlIdp.configure do |config|
 
   # NameIDFormat
   config.name_id.formats = {
-    email_address: -> (principal) { principal.email },
-    transient: -> (principal) { principal.id },
-    persistent: -> (p) { p.id },
+    "1.1" => {
+      unspecified: -> (principal) { principal.email },
+    },
+    "2.0" => {
+      transient: -> (principal) { principal.email_address },
+      persistent: -> (p) { p.id },
+    },
   }
 
   service_providers = {
