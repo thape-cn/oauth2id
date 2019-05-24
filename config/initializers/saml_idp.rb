@@ -11,9 +11,13 @@ SamlIdp.configure do |config|
 
   # NameIDFormat
   config.name_id.formats = {
-    email_address: -> (principal) { principal.email },
-    transient: -> (principal) { principal.id },
-    persistent: -> (p) { p.id },
+    "1.1" => {
+      unspecified: -> (principal) { principal.email },
+    },
+    "2.0" => {
+      transient: -> (principal) { principal.email_address },
+      persistent: -> (p) { p.id },
+    },
   }
 
   service_providers = {
@@ -22,6 +26,13 @@ SamlIdp.configure do |config|
       metadata_url: "https://saml-example.test/saml/metadata",
       assertion_consumer_logout_service_url: "https://saml-example.test/saml/logout",
       cert: Base64.encode64(Rails.application.credentials.saml_sp_cert!)
+    },
+    "www.successfactors.com" => {
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      response_hosts: ["performancemanager15.sapsf.cn"],
+      acs_url: 'https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaitiT1',
+      assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaitiT1",
+      cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
     },
   }
 
@@ -50,6 +61,7 @@ SamlIdp.configure do |config|
 
   # Find ServiceProvider metadata_url and fingerprint based on our settings
   config.service_provider.finder = ->(issuer_or_entity_id) do
+    Rails.logger.debug "Find ServiceProvider issuer_or_entity_id: #{issuer_or_entity_id}"
     service_providers[issuer_or_entity_id]
   end
 end
