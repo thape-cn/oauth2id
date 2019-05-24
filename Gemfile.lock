@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/saml_idp
-  revision: 7c3ac55c9d4cf64ecc30cfda099c77be1ed6ab25
+  revision: bf34746a5bbd4af3f223c7ebc8458ac98335b9f0
   branch: master
   specs:
     saml_idp (0.8.0)
@@ -101,13 +101,13 @@ GEM
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 3.4)
-    capybara (3.19.1)
+    capybara (3.21.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      regexp_parser (~> 1.2)
+      regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
@@ -130,10 +130,10 @@ GEM
     erubi (1.8.0)
     execjs (2.7.0)
     ffaker (2.11.0)
-    ffi (1.10.0)
-    ffi (1.10.0-java)
-    ffi (1.10.0-x64-mingw32)
-    ffi (1.10.0-x86-mingw32)
+    ffi (1.11.1)
+    ffi (1.11.1-java)
+    ffi (1.11.1-x64-mingw32)
+    ffi (1.11.1-x86-mingw32)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
@@ -150,7 +150,7 @@ GEM
     http_parser.rb (0.6.0-java)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.9.0)
+    jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
@@ -237,12 +237,12 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    regexp_parser (1.4.0)
+    regexp_parser (1.5.1)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
     ruby_dep (1.5.0)
-    rubyzip (1.2.2)
+    rubyzip (1.2.3)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -252,7 +252,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.2)
+    selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
     simplecov (0.16.1)
@@ -306,7 +306,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webdrivers (3.9.1)
+    webdrivers (3.9.4)
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
