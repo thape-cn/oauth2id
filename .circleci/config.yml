@@ -19,8 +19,8 @@ jobs:
 
       # Which version of bundler? should keep same as Gemfile.lock
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: install bundler v1.17.3
+          command: gem install bundle -v 1.17.3 && bundle -v
 
       # Restore bundle cache
       - restore_cache:
