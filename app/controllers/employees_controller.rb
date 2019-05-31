@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
         render_csv_header :user_report.to_s
         csv_res = CSV.generate do |csv|
           csv << ['ID', 'User Name', 'Chinese Name', 'Clerk Code', 'eMail', 'Title', 'Department', 'Position']
-          policy_scope(User).order(id: :asc).find_each do |user|
+          policy_scope(User).where(locked_at: nil).order(id: :asc).find_each do |user|
             values = []
             values << user.id
             values << user.username
