@@ -34,8 +34,8 @@ class EmployeesController < ApplicationController
             values = []
             values << user.id
             values << user.username
-            values << user.profile.chinese_name
-            values << user.profile.clerk_code
+            values << user.profile&.chinese_name
+            values << user.profile&.clerk_code
             values << user.email
             values << user.profile&.title
             values << user.departments.pluck(:name).join(';')
