@@ -32,6 +32,7 @@ SamlIdp.configure do |config|
       response_hosts: ["performancemanager15.sapsf.cn"],
       acs_url: 'https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaiti',
       assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaiti",
+      login_url: 'https://performancemanager15.sapsf.cn/login?company=shanghaiti&loginMethod=SSO',
       cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
     },
   }
