@@ -10,7 +10,7 @@
       <div class="widget-small info coloured-icon">
         <i class="icon fa fa-handshake-o fa-3x"></i>
         <div class="info">
-          <%= link_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:acs_url], target: '_blank' do %>
+          <%= link_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url], target: '_blank' do %>
             <h4>Success Factor</h4>
           <% end %>
         </div>
