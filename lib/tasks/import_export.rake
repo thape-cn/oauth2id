@@ -29,7 +29,7 @@ namespace :import_export do
         values << u.profile&.clerk_code
         values << u.profile&.chinese_name
         combine_deparments = u.departments.collect do |department|
-          "#{department.name}@#{department.company_name}"
+          "#{department.id}@#{department.name}@#{department.company_name}"
         end.join(';')
         values << combine_deparments
         csv << values
