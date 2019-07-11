@@ -65,9 +65,9 @@ where hi_psnjob.ismainjob = 'Y'
     users.each do |u|
       chinese_name = u[0]
       sex = u[1]
-      clerk_code = u[2]
-      email = u[3]
-      mobile = u[4]
+      clerk_code = u[2]&.strip
+      email = u[3]&.strip
+      mobile = u[4]&.strip
       pk_dept = u[5]
       pk_post = u[6]
       job_level = u[7]
