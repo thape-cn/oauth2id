@@ -1,4 +1,4 @@
-namespace :import_new_employee do
+namespace :import_export do
   desc "Create new users from CSV"
   task :import_from_csv, [:csv_file_path] => [:environment] do |task, args|
     csv_file_path = args[:csv_file_path]
