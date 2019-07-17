@@ -25,7 +25,7 @@ Metrics/BlockLength:
 Style/Documentation:
   Enabled: false
 
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Exclude:
     - 'db/schema.rb'
 
