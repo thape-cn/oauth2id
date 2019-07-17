@@ -24,6 +24,10 @@ order by a.clerkcode
 ")
   end
 
+  def self.enable_all_users
+    User.where.not(locked_at: nil).update_all(locked_at: nil)
+  end
+
   def self.lock_leaved_users
     users = NcUap.nc_leaved_users
     users.each do |u|
