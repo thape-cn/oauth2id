@@ -20,6 +20,7 @@ where a.pk_psnjob in (select tt.pk_psnjob
 and a.lastflag = 'Y'
 and a.ismainjob = 'Y'
 and a.endflag = 'Y'
+and a.pk_hrorg in (select org.pk_hrorg from NC6337.hi_psnorg org where org.lastflag = 'Y')
 order by a.clerkcode
 ")
   end
