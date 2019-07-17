@@ -30,6 +30,7 @@ namespace :sync_nc_uap do
     NcUap.upserts_users
     NcUap.clean_no_user_positions
     puts 'Lock the leaved users'
+    NcUap.enable_all_users
     NcUap.lock_leaved_users
   end
 end
