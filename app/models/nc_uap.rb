@@ -16,7 +16,7 @@ where a.pk_psnjob in (select tt.pk_psnjob
     b.pk_psnjob,
     row_number() over(partition by b.pk_psndoc order by b.begindate desc) rn
     from NC6337.hi_psnjob b) tt
-  where tt.rn = '1')
+  where tt.rn = 1)
 and a.lastflag = 'Y'
 and a.ismainjob = 'Y'
 and a.endflag = 'Y'
