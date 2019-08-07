@@ -10,5 +10,8 @@ class User::SessionsController < Devise::SessionsController
           .create(sign_in_at: Time.current,
                   user_agent: request.user_agent, sign_in_ip: request.remote_ip)
     end
+  rescue Exception => e
+    Rails.logger.debug e
+    redirect_to new_user_session_path, alert: "Error creating session"
   end
 end
