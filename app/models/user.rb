@@ -67,6 +67,8 @@ class User < ApplicationRecord
 
   def after_ldap_authentication
     li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
+    desk_phone = li[:telephonenumber].first.to_s
+    update_columns(desk_phone: desk_phone)
     return fail(:invalid) if li[:mail].blank?
   end
 
