@@ -94,7 +94,8 @@ namespace :sync_yxt do
     User.where(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
       puts "users: #{users.pluck(:id)}"
       users = users.collect do |u|
-        main_position = u.positions.last
+        main_position = u.position_users.find_by(main_position: true)&.position
+        main_position = u.positions.last if main_position.nil?
 
         {
           ID: u.id,
