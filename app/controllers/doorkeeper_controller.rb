@@ -15,7 +15,7 @@ class DoorkeeperController < ApplicationController
       { id: position.id, name: position.name, functional_category: position.functional_category }
     end
     main_position = resource_owner.position_users.find_by(main_position: true)&.position
-    main_position = resource_owner.positions.last if main_position.nil?
+    main_position = resource_owner.position_users.last&.position if main_position.nil?
     main_position = if main_position.present?
       { id: main_position.id, name: main_position.name, functional_category: main_position.functional_category }
     end
