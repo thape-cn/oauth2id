@@ -95,7 +95,7 @@ namespace :sync_yxt do
       puts "users: #{users.pluck(:id)}"
       users = users.collect do |u|
         main_position = u.position_users.find_by(main_position: true)&.position
-        main_position = u.positions.last if main_position.nil?
+        main_position = u.position_users.last&.position if main_position.nil?
 
         {
           ID: u.id,
