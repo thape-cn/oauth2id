@@ -2,7 +2,7 @@ namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
     :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4nd_level_departments,
-    :sync_5nd_level_departments, :sync_positions, :sync_users, :enable_all_users, :disable_users]
+    :sync_5nd_level_departments, :sync_positions, :enable_all_users, :sync_users, :disable_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
