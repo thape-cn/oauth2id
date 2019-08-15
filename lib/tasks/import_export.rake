@@ -24,7 +24,7 @@ namespace :import_export do
         values = []
         values << u.email
         main_position = u.position_users.find_by(main_position: true)&.position
-        main_position = u.positions.last if main_position.nil?
+        main_position = u.position_users.last&.position if main_position.nil?
         values << main_position&.name
         values << u.profile&.clerk_code
         values << u.profile&.chinese_name
