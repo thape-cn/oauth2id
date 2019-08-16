@@ -26,6 +26,7 @@ class DoorkeeperController < ApplicationController
       chinese_name: profile&.chinese_name,
       clerk_code: profile&.clerk_code,
       email: resource_owner.email,
+      desk_phone: resource_owner.desk_phone,
       gender: profile&.gender ? 'Male' : 'Female',
       departments: departments,
       positions: positions,
