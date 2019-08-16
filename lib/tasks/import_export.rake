@@ -1,6 +1,6 @@
 namespace :import_export do
-  desc "Create new users from CSV"
-  task :import_from_csv, [:csv_file_path] => [:environment] do |task, args|
+  desc 'Create new users from CSV'
+  task :import_from_csv, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
     CSV.foreach(csv_file_path, headers: true) do |row|
       chinese_name = row['姓名']
@@ -15,11 +15,11 @@ namespace :import_export do
     end
   end
 
-  desc "Export CSV the user list for Cybros"
-  task :export_for_cybros, [:csv_file_path] => [:environment] do |task, args|
+  desc 'Export CSV the user list for Cybros'
+  task :export_for_cybros, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
-    CSV.open(csv_file_path, "w") do |csv|
-      csv << ["email", "position_title", "clerk_code", "chinese_name", "combine_departments"]
+    CSV.open(csv_file_path, 'w') do |csv|
+      csv << %w[email position_title clerk_code chinese_name desk_phone combine_departments]
       User.order(id: :asc).find_each do |u|
         values = []
         values << u.email
@@ -28,6 +28,7 @@ namespace :import_export do
         values << main_position&.name
         values << u.profile&.clerk_code
         values << u.profile&.chinese_name
+        values << u.desk_phone
         combine_deparments = u.departments.collect do |department|
           "#{department.id}@#{department.name}@#{department.company_name}"
         end.join(';')
