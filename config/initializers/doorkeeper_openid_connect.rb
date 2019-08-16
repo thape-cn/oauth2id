@@ -61,6 +61,10 @@ Doorkeeper::OpenidConnect.configure do
       resource_owner.profile&.phone
     end
 
+    normal_claim :desk_phone, scope: :phone do |resource_owner|
+      resource_owner.desk_phone
+    end
+
     normal_claim :clerk_code, scope: :clerk_code do |resource_owner|
       resource_owner.profile&.clerk_code
     end
