@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
+         :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+         :confirmable, :lockable,
+         :jwt_authenticatable, jwt_revocation_strategy: self
 
   has_many :access_grants, class_name: 'Doorkeeper::AccessGrant',
                            foreign_key: :resource_owner_id,
@@ -32,5 +34,19 @@ class User < ApplicationRecord
   def gravatarurl
     hash = Digest::MD5.hexdigest(email)
     "https://www.gravatar.com/avatar/#{hash}"
+  end
+
+  include Devise::JWT::RevocationStrategies::Whitelist
+
+  def self.find_for_jwt_authentication(sub)
+    find_by(email: sub)
+  end
+
+  def jwt_subject
+    email
+  end
+
+  def expired_jwts
+    whitelisted_jwts.where('exp <= ?', Time.now)
   end
 end

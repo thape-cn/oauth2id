@@ -1,0 +1,74 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> <%= t('.title') %></h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="<%= jwts_path -%>"><%= t('.title') -%></a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-title-w-btn">
+          <h3 class="title"><%= t('.your_jwts_list') %></h3>
+          <p>
+            <%= link_to clean_expired_jwts_jwts_path, method: :delete, remote: true, class: 'btn btn-secondary icon-btn' do %>
+              <i class="fa fa-trash"></i><%= t('.clean_expired_jwts') %></a>
+            <% end %>
+          </p>
+        </div>
+        <div class="tile-body">
+          <%= form_tag jwts_path, class: 'form-inline' do -%>
+            <div class="form-group">
+              <label class="mr-1"><%= t(".form.aud") -%>：</label>
+              <%= text_field_tag "aud", nil, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <label class="mr-1"><%= t(".form.exp_hours") -%>：</label>
+              <%= text_field_tag "exp_hours", nil, class: 'form-control' %>
+            </div>
+            <div><%= submit_tag t(".actions.create"), class: 'btn btn-primary' %></div>
+          <% end -%>
+          <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+              <th><%= t(".table.jti") %></th>
+              <th><%= t(".table.aud") %></th>
+              <th><%= t(".table.exp") %></th>
+              <th><%= t(".table.exp_relative") %></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @whitelisted_jwts.each do |jwt| %>
+              <tr>
+                <td>
+                  <% if jwt.exp <= Time.now %>
+                    <del><%= jwt.jti -%></del>
+                  <% else %>
+                    <%= jwt.jti -%>
+                  <% end %>
+                </td>
+                <td><%= jwt.aud -%></td>
+                <td><%= jwt.exp.in_time_zone -%></td>
+                <td>
+                  <% if jwt.exp <= Time.now %>
+                    <del><%= time_ago_in_words jwt.exp -%></del>
+                  <% else %>
+                    <%= time_ago_in_words jwt.exp -%>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to t(".actions.delete"), jwt_path(jwt), method: :delete, data: { confirm: '你确定要删除吗？' } %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

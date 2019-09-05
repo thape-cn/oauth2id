@@ -6,6 +6,7 @@ en:
     have_new_notification: "You have %{count} new notifications."
     see_all_notifications: "See all notifications."
     my_application_list: "My application"
+    my_jwts_list: "My JWT grants"
     employees: "Employees"
     employees_management: "Employees Management"
     employee_list: "Employee List"
@@ -65,6 +66,27 @@ en:
     phone: "Phone"
     clerk_code: "Clerk Code"
     chinese_name: "Chinese Name"
+  jwts:
+    index:
+      title: "Management application and its JWT authorization"
+      your_jwts_list: "Your JWT authorization list"
+      clean_expired_jwts: "Clean expired JWTs"
+      form:
+        aud: "Audience"
+        exp_hours: "Expiration hours"
+      actions:
+        create: "Create"
+      table:
+        jti: "JWT ID"
+        aud: "Audience"
+        exp: "Token expire time"
+        exp_relative: "Token relative expire time"
+    create:
+      created: "New JWT Token created, please record down the token and it will only appears this time! Bearer %{jwt}"
+    destroy:
+      deleted: "Deleted"
+    clean_expired_jwts:
+      done: "All expired jwts is cleaned."
   activerecord:
     errors:
       models:
