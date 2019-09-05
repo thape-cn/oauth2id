@@ -1,4 +1,7 @@
 class User::SessionsController < Devise::SessionsController
+  protect_from_forgery with: :null_session, if: -> { request.format.json? }
+  skip_before_action :verify_signed_out_user, if: -> { request.format.json? }
+  respond_to :json, if: -> { request.format.json? }
   layout 'sessions'
 
   def create

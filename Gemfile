@@ -5,6 +5,8 @@ ruby '~>  2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
+gem 'rails-i18n', '~> 5.1'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
@@ -36,12 +38,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
+gem 'devise-jwt'
 gem 'doorkeeper-openid_connect'
+gem 'pundit'
+
 # bundle config local.saml_idp /Users/guochunzhong/git/sso/saml_idp/
 gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :master
 # Encrypted Assertions require the xmlenc gem in saml_idp
 gem 'xmlenc'
-gem 'pundit'
 
 # bundle config local.wechat /Users/guochunzhong/git/oss/wechat/
 gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :master

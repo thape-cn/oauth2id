@@ -3,7 +3,8 @@
     <h1>Oauth2</h1>
   </div>
   <div class="login-box">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>
+<%= form_with(model: resource, as: resource_name, url: session_path(resource_name),
+  id: 'user-sign-in', class: 'login-form', local: false) do |f| %>
     <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i><%= t('user.sign_in') -%></h3>
     <div class="form-group">
       <label class="control-label"><%= t('user.email') -%></label>
