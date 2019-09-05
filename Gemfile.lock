@@ -197,6 +197,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chronic (0.10.2)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crass (1.0.6)
@@ -275,7 +276,7 @@ GEM
     llhttp-ffi (0.5.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.5)
+    logger (1.6.6)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -295,6 +296,7 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.8.0)
     mutex_m (0.3.0)
+    mysql2 (0.5.6)
     net-imap (0.5.6)
       date
       net-protocol
@@ -342,7 +344,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.9)
+    rack (3.1.10)
     rack-proxy (0.7.7)
       rack
     rack-session (2.1.0)
@@ -388,18 +390,18 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rbs (3.6.1)
+    rbs (3.8.1)
       logger
     rdoc (6.12.0)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
-    reline (0.5.12)
+    reline (0.6.0)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.0)
-    ruby-lsp (0.23.9)
+    ruby-lsp (0.23.11)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 4)
@@ -431,7 +433,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.11812)
+    sorbet-runtime (0.5.11829)
     spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -440,8 +442,6 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.3)
-      mini_portile2 (~> 2.8.0)
     sqlite3 (1.7.3-aarch64-linux)
     sqlite3 (1.7.3-arm-linux)
     sqlite3 (1.7.3-arm64-darwin)
@@ -455,7 +455,7 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
       ostruct
-    stringio (3.1.2)
+    stringio (3.1.3)
     systemu (2.6.5)
     terser (1.2.5)
       execjs (>= 0.3.0, < 3)
@@ -491,6 +491,8 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xmlenc (0.8.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -540,6 +542,7 @@ DEPENDENCIES
   mail (= 2.8.1)
   minitest
   minitest-ci
+  mysql2
   nokogiri (~> 1.17.2)
   pagy
   puma
@@ -562,6 +565,7 @@ DEPENDENCIES
   web-console
   webpacker (~> 5.4.4)
   wechat!
+  whenever
   xmlenc
   yxt-api!
 
