@@ -6,6 +6,7 @@ zh-CN:
     have_new_notification: "您有%{count}个新通知。"
     see_all_notifications: "查看所有通知。"
     my_application_list: "我的应用程序"
+    my_jwts_list: "我的JWT授权应用"
     employees: "员工"
     employees_management: "员工管理"
     employee_list: "员工名单"
@@ -65,6 +66,28 @@ zh-CN:
     phone: "电话"
     clerk_code: "员工号"
     chinese_name: "中文姓名"
+  jwts:
+    index:
+      title: "管理应用程序及其JWT授权"
+      your_jwts_list: "您的JWT授权列表"
+      clean_expired_jwts: "清理已经过期的JWT"
+      form:
+        aud: "Audience"
+        exp_hours: "过期时间(小时)"
+      actions:
+        create: "创建"
+      table:
+        jti: "JWT ID"
+        aud: "Audience"
+        exp: "token 过期时间"
+        exp_relative: "相对过期时间"
+    create:
+      created: "新的JWT令牌创建，请记下这个令牌，次令牌只会出现一次！Bearer %{jwt}"
+    destroy:
+      deleted: "已删除"
+    clean_expired_jwts:
+      done: "所有已经过期的JWT已经清理。"
+
   activerecord:
     errors:
       models:

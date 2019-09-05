@@ -37,6 +37,17 @@ Rails.application.routes.draw do
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'
+
+  resources :jwts, only: %i[index create destroy] do
+    collection do
+      delete :clean_expired_jwts
+    end
+  end
+
+  namespace :api do
+    match 'me' => 'application#user_info', via: :options
+  end
+
   # To make turbolink still works in client app
   match '/oauth/authorize' => 'doorkeeper#options_authorize', via: :options
 
