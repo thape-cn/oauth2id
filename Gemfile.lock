@@ -68,7 +68,7 @@ GIT
       http (>= 2.0.3, < 6)
 
 GEM
-  remote: https://rubygems.org/
+  remote: https://gems.ruby-china.com/
   specs:
     actioncable (7.2.3.1)
       actionpack (= 7.2.3.1)
