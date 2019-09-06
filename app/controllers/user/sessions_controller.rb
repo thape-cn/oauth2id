@@ -9,6 +9,12 @@ class User::SessionsController < Devise::SessionsController
       user.user_sign_in_histories
           .create(sign_in_at: Time.current,
                   user_agent: request.user_agent, sign_in_ip: request.remote_ip)
+      whitelisted_jwts_attributes = user.whitelisted_jwts.last.attributes.except('id', 'user_id')
+      sync_white_jwts_attrs = whitelisted_jwts_attributes.merge(email: user.email)
+
+      Rails.logger.debug "sync_white_jwts_attrs: #{sync_white_jwts_attrs}"
+      response = HTTP.options(Rails.application.credentials.sync_white_jwts_url!, json: sync_white_jwts_attrs)
+      Rails.logger.debug response
     end
   rescue Exception => e
     Rails.logger.debug e
