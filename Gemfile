@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'doorkeeper', '~> 5.1.0'
 gem 'doorkeeper-openid_connect'
 gem 'pundit'
 
