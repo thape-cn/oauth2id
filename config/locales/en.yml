@@ -36,6 +36,7 @@ en:
     sign_in_ip: "Sign in IP"
     user_info: "User Info"
     department: "Department"
+    enable_javascript_to_login: "Refresh & enable javascript to login"
   user:
     username: "Username"
     username_placeholder: "Your perfer account name"
