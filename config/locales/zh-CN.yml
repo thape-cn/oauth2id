@@ -36,6 +36,7 @@ zh-CN:
     sign_in_ip: "登录IP"
     user_info: "用户信息"
     department: "部门"
+    enable_javascript_to_login: "刷新页面并启用javascript来登录"
   user:
     username: "用户名"
     username_placeholder: "希望显示的用户名"
