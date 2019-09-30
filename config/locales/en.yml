@@ -37,6 +37,7 @@ en:
     user_info: "User Info"
     department: "Department"
     enable_javascript_to_login: "Refresh & enable javascript to login"
+    doing_signing: "Signing..."
   user:
     username: "Username"
     username_placeholder: "Your perfer account name"
