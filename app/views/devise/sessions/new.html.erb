@@ -29,7 +29,8 @@
           </div>
         </div>
         <div class="form-group btn-container">
-          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled', disabled: true, id: 'user-sign-in-btn') do %>
+          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled',
+                         disabled: true, id: 'user-sign-in-btn', data: { disable: t('ui.doing_signing')}) do %>
             <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('user.sign_in') -%>
           <% end %>
           <p class="text-center" id="user-sign-in-hint"><%= t('ui.enable_javascript_to_login') %></p>
