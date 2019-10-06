@@ -10,7 +10,7 @@ gem 'rails-i18n', '~> 5.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
-gem 'puma', '~> 4.1.1'
+gem 'puma', '~> 4.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -18,6 +18,7 @@ gem 'ajax-datatables-rails'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails'
+gem 'sprockets', '< 4'
 
 # Host ourself instead of relay on CDN
 gem 'font-awesome-rails'
