@@ -12,6 +12,8 @@ en:
     employee_list: "Employee List"
     employee_report: "Export Report"
     employees_description: "Motivated Employees Are Key To Your Company's Success."
+    duplicate_employees: "Duplicate employees"
+    duplicate_employees_description: "Duplicate employees description"
     applications_management: "Applications Management"
     applications_list: "Applications List"
     can_grant_applications: "Applications can grant to access"
@@ -69,6 +71,7 @@ en:
     phone: "Phone"
     clerk_code: "Clerk Code"
     chinese_name: "Chinese Name"
+    account_counts: "Account Count"
   jwts:
     index:
       title: "Management application and its JWT authorization"

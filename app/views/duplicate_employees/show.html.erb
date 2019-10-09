@@ -1,0 +1,47 @@
+<main class="app-content">
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i> <%= t('ui.duplicate_employees') -%></h1>
+      <p><%= t('ui.duplicate_employees_description') -%></p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="<%= duplicate_employees_path -%>"><%= t('ui.duplicate_employees') -%></a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tile">
+        <div class="tile-body">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th><%= t('user.chinese_name') -%></th>
+                <th><%= t('user.clerk_code') -%></th>
+                <th><%= t('user.account_counts') -%></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @profiles.each_with_index do |p, index| %>
+                <% du = Profile.where(chinese_name: p.chinese_name, clerk_code: p.clerk_code) %>
+                <% next if du.collect(&:user).all? { |u| u.locked_at.present? } %>
+                <% next if du.collect(&:user).one? { |u| u.locked_at.nil? } %>
+                <tr>
+                  <td><%= index %></td>
+                  <td><%= p.chinese_name %></td>
+                  <td><%= p.clerk_code %></td>
+                  <td>
+                    <% du.each do |d| %>
+                      <%= link_to d.user.username, employee_path(d.user) %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

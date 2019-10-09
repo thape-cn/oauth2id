@@ -12,6 +12,8 @@ zh-CN:
     employee_list: "员工名单"
     employee_report: "导出报表"
     employees_description: "有动力的员工是公司成功的关键。"
+    duplicate_employees: "重复的员工"
+    duplicate_employees_description: "员工有重复账号是因为没有合并账号功能。"
     applications_management: "应用管理"
     applications_list: "应用列表"
     can_grant_applications: "可以授予访问权限的应用程序"
@@ -69,6 +71,7 @@ zh-CN:
     phone: "电话"
     clerk_code: "员工号"
     chinese_name: "中文姓名"
+    account_counts: "账号数量"
   jwts:
     index:
       title: "管理应用程序及其JWT授权"

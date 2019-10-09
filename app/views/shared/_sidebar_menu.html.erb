@@ -40,11 +40,16 @@
     </li>
   <% end -%>
   <% if policy(User).index? %>
-    <li class="treeview <%= (params[:controller] == 'employees') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.employees_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
+    <li class="treeview <%= (['employees','duplicate_employees'].include? params[:controller]) ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.employees_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
         <li>
           <%= link_to employees_path, class: "treeview-item #{params[:controller] == 'employees' && params[:action] == 'index' ? 'active' : ''}" do %>
             <i class="icon fa fa-circle-o"></i> <%= t('ui.employee_list') -%>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to duplicate_employees_path, class: "treeview-item #{params[:controller] == 'duplicate_employees' && params[:action] == 'show' ? 'active' : ''}" do %>
+            <i class="icon fa fa-circle-o"></i> <%= t('ui.duplicate_employees') -%>
           <% end %>
         </li>
       </ul>

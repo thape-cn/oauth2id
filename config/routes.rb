@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       get :report
     end
   end
+
+  resource :duplicate_employees, only: %i[show]
+
   resource :setting, only: :update do
     member do
       get :profile
