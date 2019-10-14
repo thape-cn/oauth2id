@@ -21,6 +21,7 @@ and a.lastflag = 'Y'
 and a.ismainjob = 'Y'
 and a.endflag = 'Y'
 and a.pk_hrorg in (select org.pk_hrorg from NC6337.hi_psnorg org where org.lastflag = 'Y')
+and a.clerkcode not in ('011129')
 order by a.clerkcode
 ")
   end
