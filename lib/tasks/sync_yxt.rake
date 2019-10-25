@@ -133,12 +133,12 @@ namespace :sync_yxt do
   def yxt_department(managed_by_department_ids)
     Department.where(managed_by_department_id: managed_by_department_ids).collect do |d|
       {
-        ID: d.id,
-        ParentID: d.managed_by_department_id,
-        OuName: d.name,
-        OrderIndex: d.dept_code.gsub(/[^0-9,.]/, ""),
-        Description: d.dept_code,
-        Users: []
+        id: d.id,
+        parentId: d.managed_by_department_id,
+        ouName: d.name,
+        orderIndex: d.dept_code.gsub(/[^0-9,.]/, ""),
+        description: d.dept_code,
+        users: []
       }
     end
   end
