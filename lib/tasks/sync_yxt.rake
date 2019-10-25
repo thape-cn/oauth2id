@@ -88,6 +88,14 @@ namespace :sync_yxt do
     end
   end
 
+  desc 'Sync job level to YXT'
+  task sync_job_levels: :environment do
+    puts 'Sync job levels'
+    job_levels = Profile.where.not(job_level: nil).select(:job_level).distinct.pluck(:job_level).collect { |j| { id: j, name: j } }
+    res = Yxt.upd_grade(job_levels)
+    puts res.body.to_s
+  end
+
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
