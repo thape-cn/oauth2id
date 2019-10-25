@@ -106,20 +106,21 @@ namespace :sync_yxt do
         main_position = u.position_users.last&.position if main_position.nil?
 
         {
-          ID: u.id,
-          UserName: u.username,
-          Password: '',
-          CnName: u&.profile&.chinese_name,
-          userno: u&.profile&.clerk_code,
-          Sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
-          Mobile: u&.profile&.phone,
-          Mail: u.email,
-          OrgOuCode: u.departments.last&.id,
-          PostionNo: main_position&.id,
-          Birthday: u&.profile&.birthdate,
-          Entrytime: u&.profile&.entry_company_date,
-          Spare1: main_position&.functional_category,
-          Spare2: u&.profile&.job_level
+          id: u.id,
+          userName: u.username,
+          password: '',
+          cnName: u&.profile&.chinese_name || u.username,
+          userNo: u&.profile&.clerk_code,
+          sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
+          mobile: u&.profile&.phone,
+          mail: u.email,
+          orgOuCode: u.departments.last&.id,
+          postionNo: main_position&.id,
+          birthday: u&.profile&.birthdate,
+          entrytime: u&.profile&.entry_company_date,
+          spare1: main_position&.functional_category,
+          spare2: u&.profile&.job_level,
+          gradeName: u&.profile&.job_level
         }
       end
       res = Yxt.sync_users(users)
