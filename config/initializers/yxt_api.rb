@@ -5,5 +5,5 @@ if Rails.env.development?
 else
   Yxt.apikey     = Rails.application.credentials.yxt_apikey!
   Yxt.secretkey  = Rails.application.credentials.yxt_secretkey!
-  Yxt.base_url = 'https://apic1.yunxuetang.cn'
+  Yxt.base_url = 'https://api-qidac1.yunxuetang.cn'
 end
