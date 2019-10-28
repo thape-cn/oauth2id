@@ -21,7 +21,7 @@ every :day, at: '12:22am', roles: [:db] do
   rake "sync_nc_uap:all"
 end
 
-every :day, at: '12:32am', roles: [:db] do
+every :day, at: '12:42am', roles: [:db] do
   rake "sync_yxt:all"
 end
 
