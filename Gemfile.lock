@@ -479,6 +479,7 @@ DEPENDENCIES
   minitest
   minitest-ci
   mysql2
+  net-sftp
   pagy
   puma
   pundit
