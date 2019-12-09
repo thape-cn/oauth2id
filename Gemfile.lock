@@ -68,7 +68,7 @@ GIT
       http (>= 2.0.3, < 6)
 
 GEM
-  remote: https://gems.ruby-china.com/
+  remote: https://rubygems.org/
   specs:
     actioncable (7.2.3)
       actionpack (= 7.2.3)
@@ -192,11 +192,13 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     cgi (0.5.1)
+    chronic (0.10.2)
     concurrent-ruby (1.3.6)
-    connection_pool (2.5.5)
+    connection_pool (3.0.2)
     crass (1.0.6)
     csv (3.3.5)
-    dalli (3.2.8)
+    dalli (4.1.0)
+      logger
     date (3.5.1)
     debug (1.11.1)
       irb (~> 1.10)
@@ -209,6 +211,7 @@ GEM
       warden (~> 1.2.3)
     digest (3.2.1)
     docile (1.4.1)
+    domain_name (0.6.20240107)
     drb (2.2.3)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -221,8 +224,7 @@ GEM
       logger
       zeitwerk (~> 2.6)
     ed25519 (1.4.0)
-    erb (4.0.4)
-      cgi (>= 0.3.3)
+    erb (6.0.1)
     erubi (1.13.1)
     execjs (2.10.0)
     ffaker (2.25.0)
@@ -232,11 +234,22 @@ GEM
     ffi (1.17.3-x86-linux-gnu)
     ffi (1.17.3-x86_64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
+    ffi-compiler (1.3.2)
+      ffi (>= 1.15.5)
+      rake
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
     http-2 (1.1.1)
+    http (5.3.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.5.0)
+    http-cookie (1.1.0)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
     httpx (1.7.1)
       http-2 (>= 1.0.0)
     i18n (1.14.8)
@@ -261,6 +274,9 @@ GEM
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.5.1)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     logger (1.7.0)
     loofah (2.25.0)
       crass (~> 1.0.2)
@@ -277,14 +293,19 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.0.1)
+      prism (~> 1.5)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
-    net-imap (0.5.13)
+    mysql2 (0.5.7)
+      bigdecimal
+    net-imap (0.6.2)
       date
       net-protocol
-    net-ldap (0.18.0)
+    net-ldap (0.20.0)
+      base64
+      ostruct
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
@@ -482,6 +503,8 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.1.2)
+      chronic (>= 0.6.3)
     xmlenc (0.8.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -491,7 +514,7 @@ GEM
       nokogiri (~> 1.11)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.4)
 
 PLATFORMS
   aarch64-linux
@@ -531,6 +554,8 @@ DEPENDENCIES
   mail
   minitest
   minitest-ci
+  mysql2
+  net-sftp
   nokogiri (~> 1.17.2)
   pagy (~> 9.4.0)
   puma
@@ -553,6 +578,7 @@ DEPENDENCIES
   web-console
   webpacker (~> 5.4.4)
   wechat!
+  whenever
   xmlenc
   yxt-api!
 
