@@ -1,3 +1,5 @@
+require 'net/sftp'
+
 namespace :sync_sf do
   desc 'Generate CSV file from hcm_psndoc'
   task :generate_hcm_psndoc_csv, [:csv_file_path] => [:environment] do |_task, args|
@@ -66,6 +68,19 @@ namespace :sync_sf do
 
         csv << values
       end
+    end
+  end
+
+  desc 'Upload CSV file to production'
+  task :upload_csv_to_production, [:csv_file_path] => [:environment] do |_task, args|
+    csv_file_path = args[:csv_file_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
+    host = Rails.application.credentials.sf_sftp_host!
+    username = Rails.application.credentials.sf_sftp_username!
+    password = Rails.application.credentials.sf_sftp_password!
+
+    Net::SFTP.start(host, username, :password => password) do |sftp|
+      # upload a file or directory to the remote host
+      sftp.upload!(csv_file_path, "/test/#{csv_file_path}")
     end
   end
 end
