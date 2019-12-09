@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: ab6cf0b86265cf83ef368634537062b0c5285fb8
+  revision: 343b8145c2401d0a4354a3194001c913ab8624b5
   branch: main
   specs:
     wechat (1.0.1)
@@ -68,7 +68,7 @@ GIT
       http (>= 2.0.3, < 6)
 
 GEM
-  remote: https://gems.ruby-china.com/
+  remote: https://rubygems.org/
   specs:
     actioncable (7.1.5.2)
       actionpack (= 7.1.5.2)
@@ -197,6 +197,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chronic (0.10.2)
     concurrent-ruby (1.3.5)
     connection_pool (2.5.4)
     crass (1.0.6)
@@ -213,6 +214,7 @@ GEM
       warden (~> 1.2.3)
     digest (3.2.0)
     docile (1.4.1)
+    domain_name (0.6.20240107)
     drb (2.2.3)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -235,11 +237,22 @@ GEM
     ffi (1.17.2-x86-linux-gnu)
     ffi (1.17.2-x86_64-darwin)
     ffi (1.17.2-x86_64-linux-gnu)
+    ffi-compiler (1.3.2)
+      ffi (>= 1.15.5)
+      rake
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
     http-2 (1.1.1)
+    http (5.3.1)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.5.0)
+    http-cookie (1.1.0)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
     httpx (1.6.2)
       http-2 (>= 1.0.0)
     i18n (1.14.7)
@@ -263,6 +276,9 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.5.1)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -283,6 +299,8 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.8.0)
     mutex_m (0.3.0)
+    mysql2 (0.5.7)
+      bigdecimal
     net-imap (0.5.10)
       date
       net-protocol
@@ -481,6 +499,8 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xmlenc (0.8.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -530,6 +550,8 @@ DEPENDENCIES
   mail (= 2.8.1)
   minitest
   minitest-ci
+  mysql2
+  net-sftp
   nokogiri (~> 1.17.2)
   pagy
   puma
@@ -552,6 +574,7 @@ DEPENDENCIES
   web-console
   webpacker (~> 5.4.4)
   wechat!
+  whenever
   xmlenc
   yxt-api!
 
