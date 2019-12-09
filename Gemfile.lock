@@ -68,7 +68,7 @@ GIT
       http (>= 2.0.3, < 6)
 
 GEM
-  remote: https://gems.ruby-china.com/
+  remote: https://rubygems.org/
   specs:
     actioncable (7.1.5.1)
       actionpack (= 7.1.5.1)
@@ -546,6 +546,7 @@ DEPENDENCIES
   minitest
   minitest-ci
   mysql2
+  net-sftp
   nokogiri (~> 1.17.2)
   pagy
   puma
