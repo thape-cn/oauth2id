@@ -1,6 +1,10 @@
 require 'net/sftp'
 
 namespace :sync_sf do
+  desc "Upload all data to SF"
+  task :all => [:generate_hcm_psndoc_csv, :upload_thapeemployee_csv_to_production,
+    :generate_hcm_background_csv, :upload_background_csv_to_production]
+
   desc 'Generate CSV file from hcm_psndoc'
   task :generate_hcm_psndoc_csv, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
