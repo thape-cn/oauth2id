@@ -71,16 +71,63 @@ namespace :sync_sf do
     end
   end
 
-  desc 'Upload CSV file to production'
-  task :upload_csv_to_production, [:csv_file_path] => [:environment] do |_task, args|
-    csv_file_path = args[:csv_file_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
+  desc 'Upload thapeemployee CSV file to production'
+  task :upload_thapeemployee_csv_to_production, [:thapeemployee_csv_path] => [:environment] do |_task, args|
+    thapeemployee_csv_path = args[:thapeemployee_csv_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
     host = Rails.application.credentials.sf_sftp_host!
     username = Rails.application.credentials.sf_sftp_username!
     password = Rails.application.credentials.sf_sftp_password!
 
     Net::SFTP.start(host, username, :password => password) do |sftp|
       # upload a file or directory to the remote host
-      sftp.upload!(csv_file_path, "/test/#{csv_file_path}")
+      sftp.upload!(thapeemployee_csv_path, "/test/#{thapeemployee_csv_path}")
+    end
+  end
+
+  desc 'Generate CSV file from hcm_background'
+  task :generate_hcm_background_csv, [:csv_file_path] => [:environment] do |_task, args|
+    csv_file_path = args[:csv_file_path] ||"Background_#{Time.now.strftime("%m%d%Y")}.csv"
+
+    CSV.open(csv_file_path, 'w') do |csv|
+      csv << %w[^UserID ^AssignmentId education startDate endDate
+        academic school schoolqualification degree educationalsystem
+        major way effectiveDate custcountry highest]
+      NcHcmBackground.all.each do |b|
+        values = []
+        values << b.attributes['^UserId']
+        values << b.attributes['^AssignmentId']
+        values << b.education
+        values << b.startDate
+        values << b.endDate
+
+        values << b.academic
+        values << b.school
+        values << b.schoolqualification
+        values << b.degree
+        values << b.educationalsystem
+
+        values << b.major
+        values << b.way
+        values << b.effectiveDate
+        values << b.custcountry
+        values << b.highest
+
+
+        csv << values
+      end
+    end
+  end
+
+  desc 'Upload background CSV file to production'
+  task :upload_background_csv_to_production, [:background_csv_path] => [:environment] do |_task, args|
+    background_csv_path = args[:background_csv_path] ||"Background_#{Time.now.strftime("%m%d%Y")}.csv"
+    host = Rails.application.credentials.sf_sftp_host!
+    username = Rails.application.credentials.sf_sftp_username!
+    password = Rails.application.credentials.sf_sftp_password!
+
+    Net::SFTP.start(host, username, :password => password) do |sftp|
+      # upload a file or directory to the remote host
+      sftp.upload!(background_csv_path, "/test/#{background_csv_path}")
     end
   end
 end
