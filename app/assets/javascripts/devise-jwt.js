@@ -23,6 +23,8 @@ document.addEventListener("turbolinks:load", function() {
       type: "warning"
     });
     console.log(detail);
+    // Reset cookie so user will success after one try.
+    document.cookie = "_oauth2id_session=;path=/";
   });
   $("#user-sign-in-btn").prop('disabled', false).removeClass('disabled');
   $("#user-sign-in-hint").hide();
