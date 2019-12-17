@@ -22,6 +22,7 @@ document.addEventListener("turbolinks:load", function() {
     },{
       type: "warning"
     });
+    console.log(detail);
   });
   $("#user-sign-in-btn").prop('disabled', false).removeClass('disabled');
   $("#user-sign-in-hint").hide();
