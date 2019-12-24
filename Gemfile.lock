@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 987607736af3f5cf8dbb0f456d7a8a6e22e382e7
+  revision: c443d67c03ab723c8a20f112565327ce95e63f47
   branch: master
   specs:
     wechat (0.11.7)
@@ -92,14 +92,14 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.1.4)
+    capistrano-rbenv (2.1.6)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
     capistrano3-puma (4.0.0)
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 4.0)
-    capybara (3.29.0)
+    capybara (3.30.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -109,7 +109,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     concurrent-ruby (1.1.5)
-    crass (1.0.5)
+    crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -127,7 +127,7 @@ GEM
     doorkeeper-openid_connect (1.6.3)
       doorkeeper (>= 5.0, < 5.2)
       json-jwt (~> 1.6)
-    dry-auto_inject (0.6.1)
+    dry-auto_inject (0.7.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.9.0)
       concurrent-ruby (~> 1.0)
@@ -140,10 +140,10 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffaker (2.13.0)
-    ffi (1.11.3)
-    ffi (1.11.3-java)
-    ffi (1.11.3-x64-mingw32)
-    ffi (1.11.3-x86-mingw32)
+    ffi (1.12.1)
+    ffi (1.12.1-java)
+    ffi (1.12.1-x64-mingw32)
+    ffi (1.12.1-x86-mingw32)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -151,17 +151,17 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http (4.2.0)
+    http (4.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.0)
+      http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.1.1)
+    http-form_data (2.2.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
-    i18n (1.7.0)
+    i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
@@ -192,7 +192,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.3.1)
@@ -212,14 +212,14 @@ GEM
     nokogiri (1.10.7-x86-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    public_suffix (4.0.1)
+    public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
     puma (4.3.1-java)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -253,7 +253,7 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rake (13.0.1)
     rb-fsevent (0.10.3)
-    rb-inotify (0.10.0)
+    rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
     responders (3.0.0)
@@ -272,7 +272,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     simplecov (0.17.1)
@@ -306,7 +306,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.3)
       tzinfo (>= 1.0.0)
@@ -330,7 +330,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webdrivers (4.1.3)
+    webdrivers (4.2.0)
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
@@ -404,4 +404,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.0
+   2.1.2
