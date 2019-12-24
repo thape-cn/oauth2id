@@ -63,6 +63,7 @@ class User < ApplicationRecord
     li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
     self.username = li[:samaccountname].first.to_s
     self.email = li[:mail].first.to_s
+    errors.add(:email, 'Email is empty from AD') if self.email.blank?
   end
 
   def after_ldap_authentication
