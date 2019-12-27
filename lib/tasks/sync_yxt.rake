@@ -70,7 +70,7 @@ namespace :sync_yxt do
   desc 'Sync the position to YXT'
   task sync_positions: :environment do
     puts 'Sync the positions'
-    Position.all.order(:id).find_in_batches(batch_size: 1000) do |positions|
+    Position.all.order(:id).find_in_batches(batch_size: 500) do |positions|
       puts "positions: #{positions.pluck(:id)}"
       pos = positions.collect do |p|
         prefix = if p.company_name.present?
