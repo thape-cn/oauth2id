@@ -301,13 +301,14 @@ Devise.setup do |config|
   # config.ldap_auth_username_builder = Proc.new() {|attribute, login, ldap| "#{attribute}=#{login},#{ldap.base}" }
 
   config.jwt do |jwt|
-    if Rails.application.credentials.devise_jwt_private_key.present?
-      jwt.secret = OpenSSL::PKey::RSA.new(Rails.application.credentials.devise_jwt_private_key)
-    end
-    if Rails.application.credentials.devise_jwt_public_key.present?
-      jwt.decoding_secret = OpenSSL::PKey::RSA.new(Rails.application.credentials.devise_jwt_public_key)
-    end
-    jwt.algorithm = 'RS256'
-    jwt.expiration_time = 7200 # (2 hours)
+    jwt.secret =
+      if Rails.env.production?
+        Rails.application.credentials.devise_jwt_secret_key!
+      else
+        Rails.application.credentials.devise_jwt_secret_key || Rails.application.secrets.secret_key_base
+      end
+    jwt.decoding_secret = jwt.secret
+    jwt.algorithm = 'HS256'
+    jwt.expiration_time = 3600 * 24 * 90 # (90 days)
   end
 end
