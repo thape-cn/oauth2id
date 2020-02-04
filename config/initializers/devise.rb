@@ -307,6 +307,6 @@ Devise.setup do |config|
       else
         Rails.application.credentials.devise_jwt_secret_key || Rails.application.secrets.secret_key_base
       end
-    jwt.expiration_time = 7200 # (2 hours)
+    jwt.expiration_time = 3600 * 24 * 90 # (90 days)
   end
 end
