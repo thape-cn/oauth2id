@@ -27,11 +27,15 @@ class SamlIdpController < SamlIdp::IdpController
   # NOT USED def idp_authenticate(email, password)
 
   def idp_make_saml_response(found_user) # not using params intentionally
-    encode_response found_user, encryption: {
-      cert: saml_request.service_provider.cert,
-      block_encryption: 'aes256-cbc',
-      key_transport: 'rsa-oaep-mgf1p'
-    }
+    if saml_request.issuer == 'onelogin_saml'
+      encode_response found_user
+    else
+      encode_response found_user, encryption: {
+        cert: saml_request.service_provider.cert,
+        block_encryption: 'aes256-cbc',
+        key_transport: 'rsa-oaep-mgf1p'
+      }
+    end
   end
   private :idp_make_saml_response
 
