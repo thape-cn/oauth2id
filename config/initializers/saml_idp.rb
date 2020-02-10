@@ -35,6 +35,11 @@ SamlIdp.configure do |config|
       login_url: 'https://performancemanager15.sapsf.cn/login?company=shanghaiti&loginMethod=SSO',
       cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
     },
+    "onelogin_saml" => {
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      metadata_url: "https://account.teambition.com/saml/5e40b8761daedad325c97415/metadata",
+      assertion_consumer_logout_service_url: "https://account.teambition.com/logout"
+    }
   }
 
   # `identifier` is the entity_id or issuer of the Service Provider,
