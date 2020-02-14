@@ -148,7 +148,7 @@ left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_posts
   def self.nc_departments
     NcUap.connection.select_rows("
 SELECT distinct org_dept.NAME, org_dept.code,
-       org_dept.pk_dept, org_orgs.pk_org, org_dept.pk_fatherorg, org_orgs.name,
+       org_dept.pk_dept, org_orgs.pk_org, org_dept.pk_fatherorg, org_orgs.name, org_orgs.code,
        org_dept.enablestate, org_dept.hrcanceled
 FROM NC6337.org_dept org_dept
 INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
@@ -171,13 +171,15 @@ WHERE org_dept.enablestate = '2'
       pk_org = d[3]
       pk_fatherorg = d[4]
       company_name = d[5]
-      enablestate = d[6]
-      hrcanceled = d[7]
+      company_code = d[6]
+      enablestate = d[7]
+      hrcanceled = d[8]
       department = Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
         department.name = dept_name
         department.dept_code = dept_code
         department.nc_pk_fatherorg = pk_fatherorg
         department.company_name = company_name
+        department.company_code = company_code
         department.enablestate = enablestate
         department.hrcanceled = hrcanceled
       end
@@ -185,6 +187,7 @@ WHERE org_dept.enablestate = '2'
       department.dept_code = dept_code
       department.nc_pk_fatherorg = pk_fatherorg
       department.company_name = company_name
+      department.company_code = company_code
       department.enablestate = enablestate
       department.hrcanceled = hrcanceled
       department.save
@@ -216,12 +219,14 @@ WHERE org_dept.enablestate = '2'
         department.dept_code = org_code
         department.nc_pk_fatherorg = pk_fatherorg
         department.company_name = company_name
+        department.company_code = org_code
         department.enablestate = '2'
       end
       department.name = org_name
       department.dept_code = org_code
       department.nc_pk_fatherorg = pk_fatherorg
       department.company_name = company_name
+      department.company_code = org_code
       department.enablestate = '2'
       department.save
     end
@@ -248,12 +253,14 @@ where V_ORGS_ALL.pk_org != '0001A110000000007I8I'
         department.dept_code = org_code
         department.nc_pk_fatherorg = pk_fatherorg
         department.company_name = org_name
+        department.company_code = org_code
         department.enablestate = enablestate
       end
       department.name = org_name
       department.dept_code = org_code
       department.nc_pk_fatherorg = pk_fatherorg
       department.company_name = org_name
+      department.company_code = org_code
       department.enablestate = enablestate
       department.save
     end
