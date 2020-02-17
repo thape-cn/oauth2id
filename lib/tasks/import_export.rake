@@ -31,7 +31,7 @@ namespace :import_export do
         values << u.profile&.job_level
         values << u.desk_phone
         combine_deparments = u.departments.collect do |department|
-          "#{department.id}@#{department.name}@#{department.company_name}"
+          "#{department.id}@#{department.name}@#{department.dept_code}@#{department.company_name}@#{department.company_code}"
         end.join(';')
         values << combine_deparments
         csv << values
