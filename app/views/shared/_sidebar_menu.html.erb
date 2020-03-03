@@ -16,11 +16,13 @@
         <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label"><%= t('ui.my_application_list') -%></span>
       <% end %>
     </li>
-    <li>
-      <%= link_to jwts_path, class: "app-menu__item #{params[:controller] == 'jwts' && params[:action] == 'index' ? 'active' : ''}" do %>
-        <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label"><%= t('ui.my_jwts_list') -%></span>
-      <% end %>
-    </li>
+    <% if current_user.present? %>
+      <li>
+        <%= link_to jwts_path, class: "app-menu__item #{params[:controller] == 'jwts' && params[:action] == 'index' ? 'active' : ''}" do %>
+          <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label"><%= t('ui.my_jwts_list') -%></span>
+        <% end %>
+      </li>
+    <% end %>
   <% if current_user&.admin? %>
     <li class="treeview <%= (params[:controller] == 'doorkeeper/applications') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.applications_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
