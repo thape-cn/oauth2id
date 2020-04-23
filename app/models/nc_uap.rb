@@ -60,7 +60,7 @@ where hi_psnjob.ismainjob = 'Y'
   and bd_psndoc.email is not null
   and bd_psndoc.email like '%@thape.com.cn'
   and hi_psnjob.clerkcode not in ('002541','012096')
-  and bd_psndoc.email not in ('yangxiao@thape.com.cn ')
+  and bd_psndoc.email not in ('yangxiao@thape.com.cn ','tianhua@thape.com.cn')
   and bd_psndoc.email not in ('xieyong@','xiezhipeng@','**','#n/a','#N/A','#','##','###','####','#####','####cn','*','/','0','111','1111','123','123456','213412341234','6699','=')
 
 ")
