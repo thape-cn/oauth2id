@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 5be6f38c4c8f1377f58ac5b6ca4e2d2fbfb2c68a
+  revision: eaecdfb5e0fb5d4fe36f4c3048cb8d78dd264500
   branch: master
   specs:
     wechat (0.11.9)
@@ -120,7 +120,7 @@ GEM
     docile (1.3.2)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (5.3.2)
+    doorkeeper (5.3.3)
       railties (>= 5)
     doorkeeper-openid_connect (1.7.1)
       doorkeeper (>= 5.2, < 5.4)
@@ -160,7 +160,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
-    jquery-rails (4.3.5)
+    jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
