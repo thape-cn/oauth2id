@@ -21,6 +21,7 @@ class DoorkeeperController < ApplicationController
     end
     entry_company_date = profile&.entry_company_date || Date.today
     me_hash = {
+      id: resource_owner.username, # support https://lexiangla.com/wiki/contact/32003.html
       sub: resource_owner.id,
       name: resource_owner.username,
       chinese_name: profile&.chinese_name,
