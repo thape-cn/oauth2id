@@ -21,7 +21,6 @@ and a.lastflag = 'Y'
 and a.ismainjob = 'Y'
 and a.endflag = 'Y'
 and a.pk_hrorg in (select org.pk_hrorg from NC6337.hi_psnorg org where org.lastflag = 'Y')
-and a.clerkcode not in ('014026','013579','016101','014737')
 order by a.clerkcode
 ")
   end
@@ -62,7 +61,6 @@ where hi_psnjob.ismainjob = 'Y'
   and hi_psnjob.clerkcode not in ('002541','012096')
   and bd_psndoc.email not in ('yangxiao@thape.com.cn ','tianhua@thape.com.cn')
   and bd_psndoc.email not in ('xieyong@','xiezhipeng@','**','#n/a','#N/A','#','##','###','####','#####','####cn','*','/','0','111','1111','123','123456','213412341234','6699','=')
-  and bd_psndoc.name <> '张栋'
 ")
   end
 
