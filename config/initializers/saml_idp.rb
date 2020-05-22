@@ -2,7 +2,7 @@ SamlIdp.configure do |config|
   if Rails.env.development?
     base = 'https://oauth2id.test'
   else
-    base = 'https://oauth2id.dev'
+    base = 'https://sso.thape.com.cn'
   end
 
   config.x509_certificate = Rails.application.credentials.oauth2id_x509_certificate!
@@ -34,6 +34,12 @@ SamlIdp.configure do |config|
       assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaiti",
       login_url: 'https://performancemanager15.sapsf.cn/login?company=shanghaiti&loginMethod=SSO',
       cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
+    },
+    "https://thape.zoom.us" => {
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      response_hosts: ["thape.zoom.us"],
+      assertion_consumer_logout_service_url: "https://thape.zoom.us/saml/logout",
+      login_url: 'https://thape.zoom.us/signin',
     },
     "onelogin_saml" => {
       fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
