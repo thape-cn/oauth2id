@@ -31,6 +31,7 @@ class User::SessionsController < Devise::SessionsController
         clerk_code: user.profile&.clerk_code,
         chinese_name: user.profile&.chinese_name,
         job_level: user.profile&.job_level,
+        locked_at: user.locked_at&.to_date,
         desk_phone: user.desk_phone,
         departments: combine_deparments
       }
