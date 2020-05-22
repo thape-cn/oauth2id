@@ -29,6 +29,8 @@ class SamlIdpController < SamlIdp::IdpController
   def idp_make_saml_response(found_user) # not using params intentionally
     if saml_request.issuer == 'onelogin_saml'
       encode_response found_user
+    elsif saml_request.issuer == 'https://thape.zoom.us'
+      encode_response found_user
     else
       encode_response found_user, encryption: {
         cert: saml_request.service_provider.cert,
