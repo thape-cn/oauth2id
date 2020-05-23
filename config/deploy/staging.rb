@@ -1,3 +1,3 @@
 set :nginx_use_ssl, true
 
-server 'sso-id.com', user: 'deployer', roles: %w{app db web}
+server 'ericss', user: 'ssoid', roles: %w{app db web}
