@@ -137,7 +137,7 @@ GEM
       concurrent-ruby (~> 1.0)
     erubi (1.9.0)
     execjs (2.7.0)
-    ffaker (2.14.0)
+    ffaker (2.15.0)
     ffi (1.12.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
