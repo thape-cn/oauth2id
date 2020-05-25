@@ -24,6 +24,9 @@ SamlIdp.configure do |config|
     email: {
       getter: :email,
     },
+    lastName: {
+      getter: :chinese_name,
+    },
     userName: {
       getter: :username,
     },
