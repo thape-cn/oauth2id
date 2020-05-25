@@ -20,6 +20,15 @@ SamlIdp.configure do |config|
     },
   }
 
+  config.attributes = {
+    email: {
+      getter: :email,
+    },
+    userName: {
+      getter: :username,
+    },
+  }
+
   service_providers = {
     "https://saml-example.test/saml/metadata" => {
       fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
