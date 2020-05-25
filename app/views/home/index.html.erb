@@ -16,6 +16,16 @@
         </div>
       </div>
     </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="widget-small primary coloured-icon">
+        <i class="icon fa fa-television fa-3x"></i>
+        <div class="info">
+          <%= link_to SamlIdp.config.service_provider.finder.call('https://thape.zoom.us')[:login_url], target: '_blank' do %>
+            <h4>ZOOM.us会议</h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
     <% @applications.each do |application| -%>
       <%= render partial: "app_div", locals: { application: application } %>
     <% end %>
