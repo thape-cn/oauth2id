@@ -73,6 +73,10 @@ class User < ApplicationRecord
     return fail(:invalid) if li[:mail].blank?
   end
 
+  def chinese_name
+    profile&.chinese_name
+  end
+
   protected
 
   def password_required?
