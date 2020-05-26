@@ -77,6 +77,18 @@ class User < ApplicationRecord
     profile&.chinese_name
   end
 
+  def job_title
+    main_position = position_users.find_by(main_position: true)&.position
+    main_position = position_users.last&.position if main_position.nil?
+    main_position&.name
+  end
+
+  def job_company
+    main_position = position_users.find_by(main_position: true)&.position
+    main_position = position_users.last&.position if main_position.nil?
+    main_position&.company_name
+  end
+
   protected
 
   def password_required?
