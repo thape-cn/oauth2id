@@ -30,6 +30,12 @@ SamlIdp.configure do |config|
     userName: {
       getter: :username,
     },
+    jobTitle: {
+      getter: :job_title,
+    },
+    company: {
+      getter: :job_company,
+    },
   }
 
   service_providers = {
