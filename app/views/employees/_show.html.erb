@@ -28,6 +28,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.position') -%></h5>
           <% @user.positions.each do |position| %>
+            <p class="card-text small"><%= position.company_name -%></p>
             <p class="card-text"><%= position.name -%></p>
           <% end %>
         </div>
