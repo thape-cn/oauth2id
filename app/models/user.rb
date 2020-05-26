@@ -89,6 +89,10 @@ class User < ApplicationRecord
     main_position&.company_name
   end
 
+  def last_department_name
+    departments.last&.name
+  end
+
   protected
 
   def password_required?
