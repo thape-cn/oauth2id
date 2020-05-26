@@ -33,6 +33,9 @@ SamlIdp.configure do |config|
     jobTitle: {
       getter: :job_title,
     },
+    department: {
+      getter: :last_department_name,
+    },
     company: {
       getter: :job_company,
     },
