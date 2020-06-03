@@ -114,7 +114,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-jwt (0.7.0)
+    devise-jwt (0.6.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.4)
     docile (1.3.2)
@@ -337,7 +337,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara (>= 2.15)
   devise
-  devise-jwt
+  devise-jwt (~> 0.6.0)
   doorkeeper
   doorkeeper-openid_connect
   ffaker
