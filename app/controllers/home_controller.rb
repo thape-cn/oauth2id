@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     Rails.logger.debug "from_saml_host: #{from_saml_host}"
     case from_saml_host
     when "thape.zoom.us"
+    when "thape.zoom.com.cn"
       redirect_to SamlIdp.config.service_provider.finder.call('https://thape.zoom.us')[:login_url]
     when "performancemanager15.sapsf.cn"
       redirect_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url]
