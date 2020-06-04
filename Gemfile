@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
-gem 'devise-jwt', '~> 0.6.0'
+gem 'devise-jwt'
 gem 'warden-jwt_auth', '~> 0.4.2'
 gem 'doorkeeper'
 gem 'doorkeeper-openid_connect'
