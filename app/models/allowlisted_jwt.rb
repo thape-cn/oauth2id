@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class WhitelistedJwt < ApplicationRecord
+class AllowlistedJwt < ApplicationRecord
   belongs_to :user
 end

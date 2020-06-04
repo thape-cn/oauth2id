@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @whitelisted_jwts.each do |jwt| %>
+            <% @allowlisted_jwts.each do |jwt| %>
               <tr>
                 <td>
                   <% if jwt.exp <= Time.now %>

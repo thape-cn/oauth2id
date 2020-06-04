@@ -4,7 +4,7 @@ class JwtsController < ApplicationController
   before_action :set_user
 
   def index
-    @whitelisted_jwts = @user.whitelisted_jwts
+    @allowlisted_jwts = @user.allowlisted_jwts
   end
 
   def create
@@ -12,7 +12,7 @@ class JwtsController < ApplicationController
     payload = jwt_payload(exp_seconds, params[:aud])
     jwt = Warden::JWTAuth::TokenEncoder.new.call(payload)
     Rails.logger.debug "jwt: #{jwt}"
-    if @user.whitelisted_jwts.create(jti: payload['jti'], aud: payload['aud'], exp: Time.at(payload['exp']))
+    if @user.allowlisted_jwts.create(jti: payload['jti'], aud: payload['aud'], exp: Time.at(payload['exp']))
       redirect_to jwts_path, alert: t('.created', jwt: jwt)
     else
       render :index
@@ -20,13 +20,13 @@ class JwtsController < ApplicationController
   end
 
   def destroy
-    @jwt = @user.whitelisted_jwts.find(params[:id])
+    @jwt = @user.allowlisted_jwts.find(params[:id])
     @jwt.destroy!
     redirect_to jwts_path, notice: t('.deleted')
   end
 
   def clean_expired_jwts
-    @user.whitelisted_jwts.where('exp < ?', Time.now).each(&:destroy)
+    @user.allowlisted_jwts.where('exp < ?', Time.now).each(&:destroy)
     redirect_to jwts_path, notice: t('.done')
   end
 

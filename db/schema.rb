@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_060430) do
+ActiveRecord::Schema.define(version: 2020_06_04_010332) do
+
+  create_table "allowlisted_jwts", force: :cascade do |t|
+    t.string "jti", null: false
+    t.string "aud", null: false
+    t.datetime "exp", null: false
+    t.integer "user_id", null: false
+    t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
+    t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
+  end
 
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
@@ -27,6 +36,13 @@ ActiveRecord::Schema.define(version: 2019_08_15_060430) do
     t.integer "managed_by_department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dept_code"
+    t.string "nc_pk_dept"
+    t.string "nc_pk_fatherorg"
+    t.string "company_name"
+    t.integer "enablestate"
+    t.string "hrcanceled", limit: 1
+    t.string "company_code"
     t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
   end
 
@@ -99,6 +115,10 @@ ActiveRecord::Schema.define(version: 2019_08_15_060430) do
     t.string "functional_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nc_pk_post"
+    t.integer "department_id"
+    t.string "company_name"
+    t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -108,6 +128,11 @@ ActiveRecord::Schema.define(version: 2019_08_15_060430) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "clerk_code"
+    t.string "chinese_name"
+    t.string "job_level"
+    t.date "birthdate"
+    t.date "entry_company_date"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -152,6 +177,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_060430) do
     t.boolean "admin"
     t.string "username"
     t.string "remember_token"
+    t.string "desk_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -169,15 +195,6 @@ ActiveRecord::Schema.define(version: 2019_08_15_060430) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "whitelisted_jwts", force: :cascade do |t|
-    t.string "jti", null: false
-    t.string "aud", null: false
-    t.datetime "exp", null: false
-    t.integer "user_id", null: false
-    t.index ["jti"], name: "index_whitelisted_jwts_on_jti", unique: true
-    t.index ["user_id"], name: "index_whitelisted_jwts_on_user_id"
   end
 
 end
