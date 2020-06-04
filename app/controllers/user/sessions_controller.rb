@@ -9,7 +9,7 @@ class User::SessionsController < Devise::SessionsController
       user.user_sign_in_histories
           .create(sign_in_at: Time.current,
                   user_agent: request.user_agent, sign_in_ip: request.remote_ip)
-      whitelisted_jwts_attributes = user.whitelisted_jwts.last.attributes.except('id', 'user_id')
+      allowlisted_jwts_attributes = user.allowlisted_jwts.last.attributes.except('id', 'user_id')
 
       main_position = user.position_users.find_by(main_position: true)&.position
       main_position = user.position_users.last&.position if main_position.nil?
@@ -25,7 +25,7 @@ class User::SessionsController < Devise::SessionsController
       end
 
       user_attrs = {
-        white_jwts_attrs: whitelisted_jwts_attributes,
+        white_jwts_attrs: allowlisted_jwts_attributes,
         email: user.email,
         position_title: main_position&.name,
         clerk_code: user.profile&.clerk_code,
