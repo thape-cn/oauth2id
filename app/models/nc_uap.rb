@@ -52,7 +52,7 @@ select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_p
        hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name, bd_psndoc.birthdate, hi_psnorg.begindate
 from NC6337.bd_psndoc bd_psndoc
 inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel = hi_psnjob.pk_jobgrade
+left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel =  nvl(hi_psnjob.jobglbdef33, hi_psnjob.pk_jobgrade)
 left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
 where hi_psnjob.ismainjob = 'Y'
   and hi_psnjob.lastflag = 'Y'
