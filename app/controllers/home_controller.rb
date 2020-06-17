@@ -18,4 +18,9 @@ class HomeController < ApplicationController
       end
     end
   end
+
+  def logout
+    sign_out(current_user) if current_user.present?
+    redirect_to new_user_session_path, alert: "Logout success"
+  end
 end

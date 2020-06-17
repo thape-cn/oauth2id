@@ -16,6 +16,7 @@ Rails.application.routes.draw do
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
+  get '/users/logout' => 'home#logout'
   resources :employees, only: %i[index edit update show] do
     member do
       get :sign_in_histories
