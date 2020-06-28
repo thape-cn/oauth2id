@@ -52,11 +52,14 @@ select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_p
        hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name, bd_psndoc.birthdate, hi_psnorg.begindate
 from NC6337.bd_psndoc bd_psndoc
 inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel =  nvl(hi_psnjob.jobglbdef33, hi_psnjob.pk_jobgrade)
+left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel = nvl(hi_psnjob.jobglbdef33, hi_psnjob.pk_jobgrade)
 left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
 where hi_psnjob.ismainjob = 'Y'
   and hi_psnjob.lastflag = 'Y'
   and hi_psnjob.endflag = 'N'
+  and nvl(bd_psndoc.email, '0' ) !='0'
+  and hi_psnjob.pk_psncl ! = '1001A710000000001YX1'
+  AND HI_PSNJOB.CLERKCODE ! = '007711'
   and bd_psndoc.email is not null
   and bd_psndoc.email like '%@thape.com.cn'
   and hi_psnjob.clerkcode not in ('002541','012096')
@@ -121,6 +124,8 @@ where hi_psnjob.ismainjob = 'Y'
 select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT
 from NC6337.om_post om_post
 left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
+where om_post.enablestate = '2'
+  and om_post.pk_post in (select distinct pk_post from nc6337.hi_psnjob where endflag= 'N')
 ")
   end
 
