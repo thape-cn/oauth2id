@@ -9,20 +9,7 @@ class NcUap < ApplicationRecord
   def self.nc_leaved_users
     NcUap.connection.select_rows("
 select a.clerkcode, a.begindate
-from NC6337.hi_psnjob a
-where a.pk_psnjob in (select tt.pk_psnjob
-  from (select b.begindate,
-    b.clerkcode,
-    b.pk_psnjob,
-    row_number() over(partition by b.pk_psndoc order by b.begindate desc) rn
-    from NC6337.hi_psnjob b) tt
-  where tt.rn = 1)
-and a.lastflag = 'Y'
-and a.ismainjob = 'Y'
-and a.endflag = 'Y'
-and a.pk_hrorg in (select org.pk_hrorg from NC6337.hi_psnorg org where org.lastflag = 'Y')
-and a.clerkcode not in ('013277')
-order by a.clerkcode
+from nc6337.o2_docquit a
 ")
   end
 
