@@ -40,7 +40,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'devise-jwt'
-gem 'warden-jwt_auth', '~> 0.4.2'
 gem 'doorkeeper'
 gem 'doorkeeper-openid_connect'
 gem 'pundit'
