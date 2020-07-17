@@ -6,22 +6,23 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 col-lg-4">
-      <div class="widget-small info coloured-icon">
-        <i class="icon fa fa-handshake-o fa-3x"></i>
-        <div class="info">
-          <%= link_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url], target: '_blank' do %>
-            <h4>绩效管理</h4>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "app_div", locals: { application: @portal } %>
     <div class="col-md-6 col-lg-4">
       <div class="widget-small primary coloured-icon">
         <i class="icon fa fa-television fa-3x"></i>
         <div class="info">
           <%= link_to SamlIdp.config.service_provider.finder.call('https://thape.zoom.us')[:login_url], target: '_blank' do %>
             <h4>ZOOM.us会议</h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="widget-small info coloured-icon">
+        <i class="icon fa fa-handshake-o fa-3x"></i>
+        <div class="info">
+          <%= link_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url], target: '_blank' do %>
+            <h4>绩效管理</h4>
           <% end %>
         </div>
       </div>
