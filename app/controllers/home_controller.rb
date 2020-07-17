@@ -9,12 +9,13 @@ class HomeController < ApplicationController
     when "performancemanager15.sapsf.cn"
       redirect_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url]
     else
+      @portal = Doorkeeper::Application.find_by!(id: 11)
       @applications = if current_user.present?
         user_allowed_application_ids = current_user.user_allowed_applications.where(enable: true).pluck(:oauth_application_id)
         Doorkeeper::Application.where(id: user_allowed_application_ids)
-          .or(Doorkeeper::Application.where(allow_login_by_default: true))
+          .or(Doorkeeper::Application.where(allow_login_by_default: true)).where.not(id: 11)
       else
-        Doorkeeper::Application.all
+        Doorkeeper::Application.where.not(id: 11)
       end
     end
   end
