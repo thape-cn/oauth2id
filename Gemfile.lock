@@ -73,8 +73,8 @@ GEM
       railties (>= 5.0)
       zeitwerk
     arel (9.0.0)
-    bcrypt (3.1.13)
-    bindata (2.4.7)
+    bcrypt (3.1.15)
+    bindata (2.4.8)
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
