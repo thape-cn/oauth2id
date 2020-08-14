@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/saml_idp
-  revision: 7be36846b90f75f2b990c0b46997daadf3eada5a
+  revision: 895d487859606c9697d0d4127a536da45f22d37b
   branch: master
   specs:
     saml_idp (0.9.0)
