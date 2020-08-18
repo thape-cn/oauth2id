@@ -2,7 +2,7 @@
   "name": "oauth2id",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^5.2.0",
+    "@rails/webpacker": "^5.2.1",
     "datatables": "^1.10.18",
     "jqtree": "^1.4.12",
     "stimulus": "^1.1.1",

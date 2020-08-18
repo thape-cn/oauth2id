@@ -852,10 +852,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@rails/webpacker@^5.2.0":
-  version "5.2.0"
-  resolved "https://registry.npm.taobao.org/@rails/webpacker/download/@rails/webpacker-5.2.0.tgz#0beaf004f15ed97110bb0daaa52f8a6ef1fae266"
-  integrity sha1-C+rwBPFe2XEQuw2qpS+KbvH64mY=
+"@rails/webpacker@^5.2.1":
+  version "5.2.1"
+  resolved "https://registry.npm.taobao.org/@rails/webpacker/download/@rails/webpacker-5.2.1.tgz#87cdbd4af2090ae2d74bdc51f6f04717d907c5b3"
+  integrity sha1-h829SvIJCuLXS9xR9vBHF9kHxbM=
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/plugin-proposal-class-properties" "^7.10.4"
