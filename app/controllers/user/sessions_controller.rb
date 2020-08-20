@@ -1,4 +1,6 @@
 class User::SessionsController < Devise::SessionsController
+  include AccessControlAllowOrigin
+
   protect_from_forgery with: :null_session, if: -> { request.format.json? }
   skip_before_action :verify_signed_out_user, if: -> { request.format.json? }
   respond_to :json, if: -> { request.format.json? }
@@ -68,7 +70,7 @@ class User::SessionsController < Devise::SessionsController
   end
 
   def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = 'https://notes.thape.com.cn'
+    headers['Access-Control-Allow-Origin'] = oauth2id_allow_origin
     headers['Access-Control-Allow-Methods'] = 'POST'
     headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization, Origin, Referer, User-Agent, JWT-AUD'
   end
