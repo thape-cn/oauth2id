@@ -4,6 +4,8 @@ class User::SessionsController < Devise::SessionsController
   respond_to :json, if: -> { request.format.json? }
   layout 'sessions'
 
+  after_action :cors_set_access_control_headers, only: [:create]
+
   def create
     super do |user|
       user.user_sign_in_histories
@@ -44,5 +46,11 @@ class User::SessionsController < Devise::SessionsController
   rescue Exception => e
     Rails.logger.debug e
     redirect_to new_user_session_path, alert: "Error creating session"
+  end
+
+  def cors_set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = 'https://notes.thape.com.cn'
+    headers['Access-Control-Allow-Methods'] = 'POST'
+    headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization, Origin, Referer, User-Agent, JWT-AUD'
   end
 end
