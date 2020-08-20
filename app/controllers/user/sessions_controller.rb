@@ -46,7 +46,22 @@ class User::SessionsController < Devise::SessionsController
     response2 = HTTP.options(Rails.application.credentials.sync_white_jwts_url2!, json: user_attrs)
     Rails.logger.debug response2
 
-    respond_with resource, location: after_sign_in_path_for(resource)
+    jwt_token = request.env['warden-jwt_auth.token']
+
+    respond_with resource, location: after_sign_in_path_for(resource) do |format|
+      format.json do
+        render json: {
+          id: resource.id,
+          username: resource.username,
+          desk_phone: resource.desk_phone,
+          email: resource.email,
+          created_at: resource.created_at,
+          updated_at: resource.updated_at,
+          admin: resource.admin,
+          jwt_token: jwt_token
+        }
+      end
+    end
   rescue Exception => e
     Rails.logger.debug e
     redirect_to new_user_session_path, alert: "Error creating session"
