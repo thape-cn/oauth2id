@@ -16,6 +16,9 @@ Rails.application.routes.draw do
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
                                     registrations: 'user/registrations' }
+
+  match '/users/sign_in', to: 'home#preflighted', via: :options
+
   get '/users/logout' => 'home#logout'
   resources :employees, only: %i[index edit update show] do
     member do
