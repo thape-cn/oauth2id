@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  include AccessControlAllowOrigin
   skip_before_action :verify_authenticity_token, only: :preflighted
 
   def index
@@ -28,7 +29,7 @@ class HomeController < ApplicationController
   end
 
   def preflighted
-    headers['Access-Control-Allow-Origin'] = 'https://notes.thape.com.cn'
+    headers['Access-Control-Allow-Origin'] = oauth2id_allow_origin
     headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization, Origin, Referer, User-Agent, JWT-AUD'
     render plain: ''
   end
