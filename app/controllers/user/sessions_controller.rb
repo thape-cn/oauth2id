@@ -61,7 +61,7 @@ class User::SessionsController < Devise::SessionsController
           updated_at: resource.updated_at,
           admin: resource.admin,
           jwt_token: jwt_token
-        }
+        }, status: :created
       end
     end
   rescue Exception => e
