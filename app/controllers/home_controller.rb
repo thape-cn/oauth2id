@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :preflighted
+
   def index
     redirect_to install_path if User.where(admin: true).count == 0
 
@@ -25,5 +27,11 @@ class HomeController < ApplicationController
   def logout
     sign_out(current_user) if current_user.present?
     redirect_to new_user_session_path, alert: "Logout success"
+  end
+
+  def preflighted
+    headers['Access-Control-Allow-Origin'] = 'https://notes.thape.com.cn'
+    headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization, Origin, Referer, User-Agent, JWT-AUD'
+    render plain: ''
   end
 end
