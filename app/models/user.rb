@@ -41,7 +41,7 @@ class User < ApplicationRecord
 
   def gravatarurl
     hash = Digest::MD5.hexdigest(email)
-    "https://www.gravatar.com/avatar/#{hash}"
+    "https://unicornify.pictures/avatar/#{hash}?s=128"
   end
 
   include Devise::JWT::RevocationStrategies::Allowlist
