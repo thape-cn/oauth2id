@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: eaecdfb5e0fb5d4fe36f4c3048cb8d78dd264500
+  revision: 25552dbba39d67f5df64722e4168e41db5bb2842
   branch: master
   specs:
-    wechat (0.11.9)
+    wechat (0.11.10)
       activesupport (>= 3.2, < 7)
       http (>= 1.0.4, < 5)
       nokogiri (>= 1.6.0)
@@ -73,7 +73,7 @@ GEM
       railties (>= 5.0)
       zeitwerk
     arel (9.0.0)
-    bcrypt (3.1.15)
+    bcrypt (3.1.16)
     bindata (2.4.8)
     bindex (0.8.1)
     bootsnap (1.4.8)
@@ -198,7 +198,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     puma (4.3.5)
       nio4r (~> 2.0)
     pundit (2.1.0)
