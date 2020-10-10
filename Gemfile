@@ -61,7 +61,7 @@ gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :production do
+group :production, :staging do
   gem 'dalli'
 end
 
