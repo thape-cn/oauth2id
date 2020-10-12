@@ -82,7 +82,7 @@ namespace :sync_sf do
     username = Rails.application.credentials.sf_sftp_username!
     password = Rails.application.credentials.sf_sftp_password!
 
-    Net::SFTP.start(host, username, :password => password) do |sftp|
+    Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
       # upload a file or directory to the remote host
       sftp.upload!(thapeemployee_csv_path, "/test/#{thapeemployee_csv_path}")
     end
@@ -129,7 +129,7 @@ namespace :sync_sf do
     username = Rails.application.credentials.sf_sftp_username!
     password = Rails.application.credentials.sf_sftp_password!
 
-    Net::SFTP.start(host, username, :password => password) do |sftp|
+    Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
       # upload a file or directory to the remote host
       sftp.upload!(background_csv_path, "/test/#{background_csv_path}")
     end
