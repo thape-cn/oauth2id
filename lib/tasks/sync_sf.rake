@@ -85,7 +85,7 @@ namespace :sync_sf do
 
     Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
       # upload a file or directory to the remote host
-      sftp.upload!(thapeemployee_csv_path, "/test/#{thapeemployee_csv_path}")
+      sftp.upload!(thapeemployee_csv_path, "/EmployeeData/#{thapeemployee_csv_path}")
     end
   end
 
@@ -132,7 +132,7 @@ namespace :sync_sf do
 
     Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
       # upload a file or directory to the remote host
-      sftp.upload!(background_csv_path, "/test/#{background_csv_path}")
+      sftp.upload!(background_csv_path, "/BackgroundInformation/#{background_csv_path}")
     end
   end
 end
