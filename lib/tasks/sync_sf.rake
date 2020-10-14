@@ -7,7 +7,7 @@ namespace :sync_sf do
 
   desc 'Generate CSV file from hcm_psndoc'
   task :generate_hcm_psndoc_csv, [:csv_file_path] => [:environment] do |_task, args|
-    csv_file_path = args[:csv_file_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
+    csv_file_path = args[:csv_file_path] || "thapeemployee_#{Date.tomorrow.strftime("%m%d%Y")}.csv"
 
     CSV.open(csv_file_path, 'w') do |csv|
       csv << %w[STATUS USERID USERNAME FIRSTNAME LASTNAME MI GENDER EMAIL MANAGER
@@ -78,7 +78,7 @@ namespace :sync_sf do
 
   desc 'Upload thapeemployee CSV file to production'
   task :upload_thapeemployee_csv_to_production, [:thapeemployee_csv_path] => [:environment] do |_task, args|
-    thapeemployee_csv_path = args[:thapeemployee_csv_path] ||"thapeemployee_#{Time.now.strftime("%m%d%Y")}.csv"
+    thapeemployee_csv_path = args[:thapeemployee_csv_path] ||"thapeemployee_#{Date.tomorrow.strftime("%m%d%Y")}.csv"
     host = Rails.application.credentials.sf_sftp_host!
     username = Rails.application.credentials.sf_sftp_username!
     password = Rails.application.credentials.sf_sftp_password!
@@ -91,7 +91,7 @@ namespace :sync_sf do
 
   desc 'Generate CSV file from hcm_background'
   task :generate_hcm_background_csv, [:csv_file_path] => [:environment] do |_task, args|
-    csv_file_path = args[:csv_file_path] ||"Background_#{Time.now.strftime("%m%d%Y")}.csv"
+    csv_file_path = args[:csv_file_path] || "Background_#{Date.tomorrow.strftime("%m%d%Y")}.csv"
 
     CSV.open(csv_file_path, 'w') do |csv|
       csv << %w[^UserID ^AssignmentId education startDate endDate
@@ -125,7 +125,7 @@ namespace :sync_sf do
 
   desc 'Upload background CSV file to production'
   task :upload_background_csv_to_production, [:background_csv_path] => [:environment] do |_task, args|
-    background_csv_path = args[:background_csv_path] ||"Background_#{Time.now.strftime("%m%d%Y")}.csv"
+    background_csv_path = args[:background_csv_path] ||"Background_#{Date.tomorrow.strftime("%m%d%Y")}.csv"
     host = Rails.application.credentials.sf_sftp_host!
     username = Rails.application.credentials.sf_sftp_username!
     password = Rails.application.credentials.sf_sftp_password!
