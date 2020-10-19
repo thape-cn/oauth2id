@@ -29,4 +29,8 @@ every :day, at: '12:15pm', roles: [:db] do
   rake "sync_nc_uap:all"
 end
 
+every :day, at: '10:00pm', roles: [:db] do
+  rake "sync_sf:all"
+end
+
 # Learn more: http://github.com/javan/whenever
