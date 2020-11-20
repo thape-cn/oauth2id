@@ -36,6 +36,7 @@ class User::SessionsController < Devise::SessionsController
       email: self.resource.email,
       position_title: main_position&.name,
       clerk_code: self.resource.profile&.clerk_code,
+      pre_sso_id: self.resource.profile&.pre_sso_id,
       chinese_name: self.resource.profile&.chinese_name,
       job_level: self.resource.profile&.job_level,
       locked_at: self.resource.locked_at&.to_date,
