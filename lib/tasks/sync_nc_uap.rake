@@ -2,7 +2,7 @@ require 'tiny_tds'
 
 namespace :sync_nc_uap do
   desc "Sync department, positions and users data with NC UAP"
-  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users]
+  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id]
 
   desc 'Sync orgs with NC UAP'
   task sync_orgs: :environment do
@@ -51,7 +51,7 @@ namespace :sync_nc_uap do
       if profile.present?
         profile.update(pre_sso_id: pre_sso_id)
       else
-        puts "Missing clert_code: #{clerk_code}"
+        puts "Missing clert_code: #{clerk_code} ID: #{pre_sso_id}"
       end
     end
   end
