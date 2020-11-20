@@ -19,7 +19,7 @@ namespace :import_export do
   task :export_for_cybros, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
     CSV.open(csv_file_path, 'w') do |csv|
-      csv << %w[email position_title clerk_code chinese_name job_level locked_at desk_phone combine_departments]
+      csv << %w[email position_title clerk_code pre_sso_id chinese_name job_level locked_at desk_phone combine_departments]
       User.order(id: :asc).find_each do |u|
         values = []
         values << u.email
@@ -27,6 +27,7 @@ namespace :import_export do
         main_position = u.position_users.last&.position if main_position.nil?
         values << main_position&.name
         values << u.profile&.clerk_code
+        values << u.profile&.pre_sso_id
         values << u.profile&.chinese_name
         values << u.profile&.job_level
         values << u.locked_at&.to_date
