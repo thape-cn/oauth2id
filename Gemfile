@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.com'
+source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>= 3.0'
@@ -19,6 +19,8 @@ gem 'mysql2'
 # Use Oracle to fetch NC data
 gem 'activerecord-oracle_enhanced-adapter'
 gem 'ruby-oci8'
+gem 'tiny_tds', require: false
+gem 'irb'
 
 # Use Puma as the app server
 gem 'puma'
