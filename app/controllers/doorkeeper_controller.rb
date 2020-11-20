@@ -26,6 +26,7 @@ class DoorkeeperController < ApplicationController
       name: resource_owner.username,
       chinese_name: profile&.chinese_name,
       clerk_code: profile&.clerk_code,
+      pre_sso_id: profile&.pre_sso_id,
       email: resource_owner.email,
       desk_phone: resource_owner.desk_phone,
       job_level: profile&.job_level,
