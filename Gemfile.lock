@@ -208,7 +208,10 @@ GEM
     http-form_data (2.3.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    io-console (0.5.9)
     ipip-fast (0.0.2)
+    irb (1.3.5)
+      reline (>= 0.1.5)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -300,6 +303,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
+    reline (0.2.5)
+      io-console (~> 0.5)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -343,6 +348,7 @@ GEM
     systemu (2.6.5)
     thor (1.1.0)
     tilt (2.0.10)
+    tiny_tds (2.1.5)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -414,6 +420,7 @@ DEPENDENCIES
   ffaker
   font-awesome-rails
   ipip-fast
+  irb
   jbuilder
   jquery-rails
   listen
@@ -434,6 +441,7 @@ DEPENDENCIES
   spring-watcher-listen
   sprockets
   sqlite3
+  tiny_tds
   turbolinks
   tzinfo-data
   uglifier
