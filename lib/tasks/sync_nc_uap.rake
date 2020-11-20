@@ -1,3 +1,5 @@
+require 'tiny_tds'
+
 namespace :sync_nc_uap do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users]
@@ -32,5 +34,18 @@ namespace :sync_nc_uap do
     puts 'Lock the leaved users'
     NcUap.enable_all_users
     NcUap.lock_leaved_users
+  end
+
+  desc 'Sync user old sso id'
+  task sync_old_sso_id: :environment do
+    username = Rails.application.credentials.old_sso_username!
+    password = Rails.application.credentials.old_sso_password!
+    host = Rails.application.credentials.old_sso_host!
+    database = Rails.application.credentials.old_sso_database!
+    client = TinyTds::Client.new username: username, password: password, host: host, database: database, timeout: 30
+    result = client.execute('select Id,NCWorkNo from [Thape_SSO].[dbo].[v_UserInfo]')
+    result.each do |row|
+      puts "id: #{row['Id']} clerk_code: #{row['NCWorkNo']}"
+    end
   end
 end
