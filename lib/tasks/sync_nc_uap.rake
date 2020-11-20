@@ -45,7 +45,14 @@ namespace :sync_nc_uap do
     client = TinyTds::Client.new username: username, password: password, host: host, database: database, timeout: 30
     result = client.execute('select Id,NCWorkNo from [Thape_SSO].[dbo].[v_UserInfo]')
     result.each do |row|
-      puts "id: #{row['Id']} clerk_code: #{row['NCWorkNo']}"
+      clerk_code = row['NCWorkNo']
+      pre_sso_id = row['Id']
+      profile = Profile.find_by clerk_code: clerk_code
+      if profile.present?
+        profile.update(pre_sso_id: pre_sso_id)
+      else
+        puts "Missing clert_code: #{clerk_code}"
+      end
     end
   end
 end
