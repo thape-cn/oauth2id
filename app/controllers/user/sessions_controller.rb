@@ -46,8 +46,6 @@ class User::SessionsController < Devise::SessionsController
     Rails.logger.debug "user_attrs: #{user_attrs}"
     response1 = HTTP.options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
     Rails.logger.debug response1
-    response2 = HTTP.options(Rails.application.credentials.sync_white_jwts_url2!, json: user_attrs)
-    Rails.logger.debug response2
 
     jwt_token = request.env['warden-jwt_auth.token']
 
