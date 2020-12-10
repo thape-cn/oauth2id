@@ -22,7 +22,7 @@ zh-CN:
       reset_password_instructions:
         subject: "重置密码信息"
       unlock_instructions:
-        subject: "帐户解锁信息"
+        subject: "公司SSO门户登录异常处理"
       email_changed:
         subject: "电邮已被修改"
       password_change:
