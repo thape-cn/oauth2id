@@ -1,17 +1,32 @@
-<p>Hello <%= @resource.email %>!</p>
+<p><%= @resource.profile&.chinese_name || @resource.email %>：</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
-<p>由于尝试登录失败的次数过多，您的帐户已被锁定。</p>
+<p>您在<%= Time.now -%>登录公司SSO门户失败次数过多，帐号已自动被锁定、无法登录，请点击下面链接解锁后再登录：</p>
+
+<p><%= link_to '解锁我的账户', unlock_url(@resource, unlock_token: @token) %></p>
+
+<br />
+
+<p>账号锁定后即使输入正确的用户名和密码也不会登录成功，这是用来防止防止来自互联网上的用户名/密码的暴力破解措施。</p>
+
+<p>如有疑问，请拨打公司IT服务器热线021-64281588-7777</p>
+
+<br />
+<br />
+
+<p>流程与信息化部</p>
+
+
+<p>There are too many failed logins to the company’s sso portal at <%= Time.now -%>. The account has been automatically locked and cannot be logged in. Please click the link below to unlock and log in</p>
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
 
 <br />
 
 <p>Even if the correct username and password are entered after the account is locked, the login will not be successful, thus preventing brute force cracking of the username/password from the Internet.</p>
-<p>账号锁定后即使输入正确的用户名和密码也不会登录成功，从而可以防止来自互联网上的用户名/密码的暴力破解。</p>
+
+<p>If you have any questions, please call the company's IT server hotline 021-64281588-7777</p>
 
 <br />
+<br />
 
-
-<p>Click the link below to unlock your account:</p>
-<p>点击下面的链接以解锁您的帐户：</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p>Process and Information Technology Department</p>
