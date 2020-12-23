@@ -2616,9 +2616,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.621:
-  version "1.3.630"
-  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.630.tgz?cache=0&sync_timestamp=1608575510301&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.630.tgz#102e930466e53ab7fde6009c2d50b8a4574b543e"
-  integrity sha1-EC6TBGblOrf95gCcLVC4pFdLVD4=
+  version "1.3.631"
+  resolved "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.631.tgz?cache=0&sync_timestamp=1608604484645&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.631.tgz#b28ebc7bfb348bb0aede2fae8888d775ddb6f5ee"
+  integrity sha1-so68e/s0i7Cu3i+uiIjXdd229e4=
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -5764,7 +5764,7 @@ postcss-replace-overflow-wrap@^3.0.0:
 
 postcss-safe-parser@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.npm.taobao.org/postcss-safe-parser/download/postcss-safe-parser-4.0.2.tgz?cache=0&sync_timestamp=1601169653720&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpostcss-safe-parser%2Fdownload%2Fpostcss-safe-parser-4.0.2.tgz#a6d4e48f0f37d9f7c11b2a581bf00f8ba4870b96"
+  resolved "https://registry.npm.taobao.org/postcss-safe-parser/download/postcss-safe-parser-4.0.2.tgz#a6d4e48f0f37d9f7c11b2a581bf00f8ba4870b96"
   integrity sha1-ptTkjw832ffBGypYG/APi6SHC5Y=
   dependencies:
     postcss "^7.0.26"
