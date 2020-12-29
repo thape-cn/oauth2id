@@ -1,12 +1,13 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 49e9441dfb205b0d50a6044273a82e8f2c7a9673
+  revision: 6fd194a9beb1c8fa8a899aed96d0554ddfcf7865
   branch: main
   specs:
-    wechat (0.11.11)
+    wechat (0.12.1)
       activesupport (>= 3.2, < 7)
       http (>= 1.0.4, < 5)
       nokogiri (>= 1.6.0)
+      rexml
       thor
 
 GIT
@@ -242,6 +243,7 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rexml (3.2.4)
     rubyzip (2.3.0)
     sassc (2.4.0)
       ffi (~> 1.9)
