@@ -12,5 +12,6 @@
  *
  *= require font-awesome
  *= require 'val-admin'
- *= require_self
+ *= require 'jqtree'
+ *= require 'app'
  */
