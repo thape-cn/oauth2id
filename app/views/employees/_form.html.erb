@@ -1,4 +1,4 @@
-<%= form_with model: user, url: employee_path(user), method: :put do |f| %>
+<%= form_with model: user, url: employee_path(user), method: :put, local: true do |f| %>
   <div class="tile">
     <div class="tile-body">
       <%= f.fields_for :profile do |pf| %>
