@@ -1,14 +1,11 @@
-class UserDatatable < AjaxDatatablesRails::ActiveRecord
+class UserDatatable < ApplicationDatatable
   extend Forwardable
 
   def_delegator :@view, :employee_path
   def_delegator :@view, :edit_employee_path
-  def_delegator :@view, :link_to
-  def_delegator :@view, :fa_icon
 
   def initialize(params, opts = {})
     @users = opts[:users]
-    @view = opts[:view_context]
     super
   end
 
