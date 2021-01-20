@@ -70,7 +70,7 @@ class User < ApplicationRecord
     li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
     desk_phone = li[:telephonenumber].first.to_s
     update_columns(desk_phone: desk_phone)
-    return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员')
+    return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生')
   end
 
   def chinese_name
