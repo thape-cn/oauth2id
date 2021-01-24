@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: be32ac5074e1007512b5b40c9ccf2c7d74662bf6
+  revision: 15e59940d31d11727fff2bd5d74a1236bcbfb37c
   branch: main
   specs:
     wechat (0.12.1)
@@ -172,7 +172,7 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.10.1)
+    jbuilder (2.11.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
