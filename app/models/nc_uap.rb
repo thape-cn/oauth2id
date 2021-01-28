@@ -103,7 +103,7 @@ where hi_psnjob.ismainjob = 'Y'
   end
 
   def self.clean_no_user_positions
-    Position.where.not(nc_pk_post: nil).each do |position|
+    Position.all.each do |position|
       position.destroy if position.users.count.zero?
     end
   end
