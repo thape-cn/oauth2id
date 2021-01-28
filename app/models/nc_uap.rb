@@ -35,23 +35,18 @@ from nc6337.o2_docquit a
 
   def self.nc_users
     NcUap.connection.select_rows("
-select bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_psndoc.mobile,
-       hi_psnjob.pk_dept, hi_psnjob.pk_post, om_joblevel.name, bd_psndoc.birthdate, hi_psnorg.begindate
-from NC6337.bd_psndoc bd_psndoc
-inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-left join NC6337.om_joblevel om_joblevel on om_joblevel.pk_joblevel = nvl(hi_psnjob.jobglbdef33, hi_psnjob.pk_jobgrade)
-left join NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
-where hi_psnjob.ismainjob = 'Y'
-  and hi_psnjob.lastflag = 'Y'
-  and hi_psnjob.endflag = 'N'
-  and nvl(bd_psndoc.email, '0' ) !='0'
-  and hi_psnjob.pk_psncl ! = '1001A710000000001YX1'
-  AND HI_PSNJOB.CLERKCODE ! = '007711'
-  and bd_psndoc.email is not null
-  and bd_psndoc.email like '%@thape.com.cn'
-  and hi_psnjob.clerkcode not in ('002541','012096')
-  and bd_psndoc.email not in ('yangxiao@thape.com.cn ','tianhua@thape.com.cn')
-  and bd_psndoc.email not in ('xieyong@','xiezhipeng@','**','#n/a','#N/A','#','##','###','####','#####','####cn','*','/','0','111','1111','123','123456','213412341234','6699','=')
+SELECT bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_psndoc.mobile,
+       hi_psnjob.pk_dept, bd_psndoc.birthdate, hi_psnorg.begindate
+  FROM NC6337.bd_psndoc bd_psndoc
+INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+LEFT JOIN NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
+WHERE hi_psnjob.ismainjob = 'Y'
+  AND hi_psnjob.lastflag = 'Y'
+  AND hi_psnjob.endflag = 'N'
+  AND nvl(bd_psndoc.email, '0') != '0'
+  AND hi_psnjob.pk_psncl != '1001A710000000001YX1'
+  AND bd_psndoc.email is not null
+  AND bd_psndoc.email like '%@thape.com.cn'
 ")
   end
 
@@ -64,15 +59,13 @@ where hi_psnjob.ismainjob = 'Y'
       email = u[3]&.strip
       mobile = u[4]&.strip
       pk_dept = u[5]
-      pk_post = u[6]
-      job_level = u[7]
-      birthdate = u[8]
-      entry_company_date = u[9]
+      birthdate = u[6]
+      entry_company_date = u[7]
       puts "Import user: #{chinese_name}"
 
-      user = User.find_or_create_by!(email: email.downcase) do |user|
-        user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
-        user.skip_password_validation = true
+      user = User.find_or_create_by!(email: email.downcase) do |usr|
+        usr.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
+        usr.skip_password_validation = true
       end
       user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
       user.skip_password_validation = true
@@ -83,22 +76,48 @@ where hi_psnjob.ismainjob = 'Y'
       profile.gender = (sex == 2 ? 0 : sex) # Femail is 0 in oauth2id
       profile.clerk_code = clerk_code
       profile.phone = mobile
-      profile.job_level = job_level
       profile.birthdate = birthdate
       profile.entry_company_date = entry_company_date
       profile.save
 
       user_department = Department.find_by!(nc_pk_dept: pk_dept)
       DepartmentUser.find_or_create_by!(user_id: user.id, department_id: user_department.id)
+    end
+  end
 
-      if pk_post != '~'
-        user_position = Position.find_by(nc_pk_post: pk_post)
-        user_position_company_name = user_position.department.company_name
-        real_position = Position.find_or_create_by!(name: user_position.name,
-          functional_category: user_position.functional_category,
-          nc_pk_post: pk_post, department_id: user_department.id, company_name: user_position_company_name)
-        PositionUser.find_or_create_by!(user_id: user.id, position_id: real_position.id, main_position: true)
+  def self.nc_position_users
+    NcUap.connection.select_rows("
+SELECT pncode, ismainjob, post_id, postlevel, classify_post
+FROM NC6337.V_PSNDOC_POST
+WHERE post_id != '~'
+")
+  end
+
+  def self.upserts_position_users
+    position_users = NcUap.nc_position_users
+    position_users.each do |pu|
+      clerk_code = pu[0]&.strip
+      user = Profile.find_by(clerk_code: clerk_code)&.user
+      next if user.nil?
+
+      is_main_job = (pu[1]&.strip == 'Y')
+
+      post_id = pu[2]&.strip
+      position = Position.find_by(nc_pk_post: post_id)
+      next if position.nil?
+
+      post_level = pu[3]&.strip
+      classify_post = pu[4]&.strip
+
+      position_user = PositionUser.find_or_create_by!(user_id: user.id, position_id: position.id) do |p|
+        p.main_position = is_main_job
+        p.post_level = post_level
+        p.job_type_code = classify_post
       end
+      position_user.main_position = is_main_job
+      position_user.post_level = post_level
+      position_user.job_type_code = classify_post
+      position_user.save
     end
   end
 
