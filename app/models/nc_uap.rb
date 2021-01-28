@@ -127,6 +127,15 @@ WHERE post_id != '~'
     end
   end
 
+  def self.set_profile_job_level
+    User.all.each do |user|
+      next if user.profile.nil?
+
+      job_levels = user.position_users.collect { |p| p.post_level.to_i }
+      user.profile.update(job_level: job_levels.max)
+    end
+  end
+
   def self.nc_positions
     NcUap.connection.select_rows("
 select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT
