@@ -96,7 +96,7 @@ where hi_psnjob.ismainjob = 'Y'
         user_position_company_name = user_position.department.company_name
         real_position = Position.find_or_create_by!(name: user_position.name,
           functional_category: user_position.functional_category,
-          nc_pk_post: pk_post, department_id: nil, company_name: user_position_company_name)
+          nc_pk_post: pk_post, department_id: user_department.id, company_name: user_position_company_name)
         PositionUser.find_or_create_by!(user_id: user.id, position_id: real_position.id, main_position: true)
       end
     end
