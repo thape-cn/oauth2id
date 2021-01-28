@@ -96,14 +96,16 @@ where hi_psnjob.ismainjob = 'Y'
         user_position_company_name = user_position.department.company_name
         real_position = Position.find_or_create_by!(name: user_position.name,
           functional_category: user_position.functional_category,
-          nc_pk_post: nil, department_id: nil, company_name: user_position_company_name)
+          nc_pk_post: pk_post, department_id: nil, company_name: user_position_company_name)
         PositionUser.find_or_create_by!(user_id: user.id, position_id: real_position.id, main_position: true)
       end
     end
   end
 
   def self.clean_no_user_positions
-    Position.where.not(nc_pk_post: nil).delete_all
+    Position.where.not(nc_pk_post: nil).each do |position|
+      position.destroy if position.users.count.zero?
+    end
   end
 
   def self.nc_positions
@@ -124,13 +126,15 @@ where om_post.enablestate = '2'
       postseriesname = p[2]
       pk_dept = p[3]
 
-      position = Position.find_or_create_by!(nc_pk_post: pk_post) do |position|
-        position.name = post_name
-        position.functional_category = postseriesname
-        position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
+      position = Position.find_or_create_by!(nc_pk_post: pk_post) do |pos|
+        pos.name = post_name
+        pos.functional_category = postseriesname
+        pos.nc_pk_post = pk_post
+        pos.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
       end
       position.name = post_name
       position.functional_category = postseriesname
+      position.nc_pk_post = pk_post
       position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
       position.save
     end
