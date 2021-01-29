@@ -21,7 +21,7 @@ set :repo_url, 'git@e.coding.net:sew/oauth2id.git'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, *%w[puma.rb config/database.yml config/master.key db/oauth2id_prod.sqlite3]
+append :linked_files, *%w[puma.rb config/database.yml config/master.key db/oauth2id_prod.sqlite3 db/tianhua2020.sqlite3]
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'node_modules'
