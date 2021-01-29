@@ -6,7 +6,7 @@
       "folder_exclude_patterns": [".circleci", ".ruby-lsp", ".github", ".bundle",".idea","tmp",".capistrano","log","tmp",
                                   "public/assets","coverage","public/packs","node_modules"],
       "file_exclude_patterns": ["*.sublime-workspace",".byebug_history",".DS_Store", ".overmind.sock",
-                                "config/credentials.yml.enc", "db/oauth2id_*.sqlite3"]
+                                "config/credentials.yml.enc", "db/oauth2id_*.sqlite3","db/tianhua*.sqlite3"]
     },
     {
       "path": "./node_modules/vali-admin",

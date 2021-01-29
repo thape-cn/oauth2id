@@ -15,6 +15,16 @@ namespace :import_export do
     end
   end
 
+  desc 'Import wecom_id from Tianhua2020'
+  task import_wecom_id: :environment do
+    Bill::Tianhua2020.all.each do |t|
+      p = Profile.find_by(clerk_code: t.clerkcode)
+      next if p.nil?
+
+      p.update_columns(wecom_id: t.wecom_id)
+    end
+  end
+
   desc 'Export CSV the user list for Cybros'
   task :export_for_cybros, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
