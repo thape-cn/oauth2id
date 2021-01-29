@@ -18,7 +18,7 @@ namespace :import_export do
   desc 'Import wecom_id from Tianhua2020'
   task import_wecom_id: :environment do
     Bill::Tianhua2020.all.each do |t|
-      p = Profile.find_by(clerk_code: t.clerkcode)
+      p = Profile.find_by(clerk_code: format('%06d', t.clerkcode))
       next if p.nil?
 
       p.update_columns(wecom_id: t.wecom_id)
