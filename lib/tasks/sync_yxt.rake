@@ -135,8 +135,8 @@ namespace :sync_yxt do
     puts 'Disable users'
     User.where.not(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
       puts "users: #{users.pluck(:id)}"
-      userNames = users.pluck(:username)
-      res = Yxt.disable_users(userNames)
+      user_names = users.pluck(:username)
+      res = Yxt.disable_users(user_names)
       puts res.body.to_s
     end
   end
@@ -157,8 +157,8 @@ namespace :sync_yxt do
   desc 'Enable all users'
   task enable_all_users: :environment do
     User.all.order(:id).find_in_batches(batch_size: 100) do |users|
-      userNames = users.pluck(:username)
-      res = Yxt.enable_users(userNames)
+      user_names = users.pluck(:username)
+      res = Yxt.enable_users(user_names)
       puts res.body.to_s
     end
   end
