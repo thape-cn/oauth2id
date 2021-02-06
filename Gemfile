@@ -50,7 +50,7 @@ gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :master
 gem 'xmlenc'
 
 # bundle config local.wechat /Users/guochunzhong/git/oss/wechat/
-gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
+gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :zeitwerk
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
