@@ -1,15 +1,15 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 13f6f104a81794051e294f85f2bae21782dc1a76
+  revision: 1020737d619274e8add19bcdfa68c0da438fc2f1
   branch: zeitwerk
   specs:
     wechat (0.12.2)
-      activesupport (>= 3.2, < 7)
+      activesupport (>= 6.0, < 7)
       http (>= 1.0.4, < 5)
       nokogiri (>= 1.6.0)
       rexml
       thor
-      zeitwerk (~> 2.0)
+      zeitwerk (~> 2.4)
 
 GIT
   remote: https://github.com/thape-cn/saml_idp
