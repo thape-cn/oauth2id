@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 1020737d619274e8add19bcdfa68c0da438fc2f1
+  revision: d8c1cd6d0416a321151a17d0913b5f3c80145a13
   branch: zeitwerk
   specs:
     wechat (0.12.2)
