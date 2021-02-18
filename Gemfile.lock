@@ -142,7 +142,7 @@ GEM
       json-jwt (>= 1.11.0)
     dry-auto_inject (0.7.0)
       dry-container (>= 0.3.4)
-    dry-configurable (0.12.0)
+    dry-configurable (0.12.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.5, >= 0.5.0)
     dry-container (0.7.2)
@@ -397,4 +397,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.9
+   2.2.11
