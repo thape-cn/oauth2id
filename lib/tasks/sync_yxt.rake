@@ -74,17 +74,17 @@ namespace :sync_yxt do
       puts "positions: #{positions.pluck(:id)}"
       pos = positions.collect do |p|
         prefix = if p.company_name.present?
-          "#{p.company_name};#{p.functional_category}"
-        else
-          p.functional_category
-        end
+                   "#{p.company_name};#{p.functional_category}"
+                 else
+                   p.functional_category
+                 end
         {
           pNames: "#{prefix};#{p.name}",
           pNo: p.id
         }
       end
-      puts "Yxt.sync_position(pos): #{pos}"
-      res = Yxt.sync_position(pos)
+      puts "Yxt.insert_positions(pos): #{pos}"
+      res = Yxt.insert_positions(pos)
       puts res.body.to_s
     end
   end
