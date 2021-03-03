@@ -78,9 +78,14 @@ namespace :sync_yxt do
                  else
                    p.functional_category
                  end
+        position_no = p.id
+        position_name = "#{prefix};#{p.name}"
+        puts "Yxt.update_position_info(#{position_no}, #{position_name})"
+        res = Yxt.update_position_info(position_no, position_name)
+        puts res.body.to_s
         {
-          pNames: "#{prefix};#{p.name}",
-          pNo: p.id
+          pNames: position_name,
+          pNo: position_no
         }
       end
       puts "Yxt.insert_positions(pos): #{pos}"
