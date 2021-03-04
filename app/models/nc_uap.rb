@@ -172,16 +172,17 @@ where om_post.enablestate = '2'
     NcUap.connection.select_rows("
 SELECT distinct org_dept.NAME, org_dept.code,
        org_dept.pk_dept, org_orgs.pk_org, org_dept.pk_fatherorg, org_orgs.name, org_orgs.code,
-       org_dept.enablestate, org_dept.hrcanceled
+       org_dept.enablestate, org_dept.hrcanceled,
+       decode(org_dept.glbdef1, '1001A710000000001PQE', '职能', '1001A710000000001PQF', '生产') dept_category
 FROM NC6337.org_dept org_dept
-INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org=org_orgs.pk_org
-INNER JOIN NC6337.bd_psndoc on bd_psndoc.pk_ORG=org_orgs.pk_org
-inner join NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+INNER JOIN NC6337.org_orgs org_orgs on org_dept.pk_org = org_orgs.pk_org
+INNER JOIN NC6337.bd_psndoc on bd_psndoc.pk_ORG = org_orgs.pk_org
+INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
 WHERE org_dept.enablestate = '2'
   AND org_dept.hrcanceled = 'N'
   AND hi_psnjob.ismainjob = 'Y'
-  and hi_psnjob.lastflag = 'Y'
-  and hi_psnjob.endflag = 'N'
+  AND hi_psnjob.lastflag = 'Y'
+  AND hi_psnjob.endflag = 'N'
 ")
   end
 
@@ -197,6 +198,7 @@ WHERE org_dept.enablestate = '2'
       company_code = d[6]
       enablestate = d[7]
       hrcanceled = d[8]
+      dept_category = d[9]
       department = Department.find_or_create_by!(nc_pk_dept: pk_dept) do |department|
         department.name = dept_name
         department.dept_code = dept_code
@@ -205,6 +207,7 @@ WHERE org_dept.enablestate = '2'
         department.company_code = company_code
         department.enablestate = enablestate
         department.hrcanceled = hrcanceled
+        department.dept_category = dept_category
       end
       department.name = dept_name
       department.dept_code = dept_code
@@ -213,6 +216,7 @@ WHERE org_dept.enablestate = '2'
       department.company_code = company_code
       department.enablestate = enablestate
       department.hrcanceled = hrcanceled
+      department.dept_category = dept_category
       department.save
     end
   end
