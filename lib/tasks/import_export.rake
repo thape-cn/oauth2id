@@ -47,11 +47,11 @@ namespace :import_export do
         values << u.profile&.phone
         values << u.desk_phone
         combine_deparments = u.departments.collect do |department|
-          "#{department.id}@#{department.name}@#{department.dept_code}@#{department.company_name}@#{department.company_code}"
+          "#{department.id}@#{department.name}@#{department.dept_code}@#{department.company_name}@#{department.company_code}@#{department.dept_category}"
         end.join(';')
         values << combine_deparments
         combine_positions = u.position_users.collect do |pu|
-          "#{pu.position.id}@#{pu.position.name}@#{pu.position.functional_category}@#{pu.position.department&.dept_code}@#{pu.position.department&.name}@#{pu.position.department&.company_code}@#{pu.position.department&.company_name}@#{pu.main_position}@#{pu.post_level}@#{pu.job_type_code}"
+          "#{pu.position.id}@#{pu.position.name}@#{pu.position.functional_category}@#{pu.position.department&.dept_code}@#{pu.position.department&.name}@#{pu.position.department&.company_code}@#{pu.position.department&.dept_category}@#{pu.position.department&.company_name}@#{pu.main_position}@#{pu.post_level}@#{pu.job_type_code}"
         end.join(';')
         values << combine_positions
         csv << values
