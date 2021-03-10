@@ -23,7 +23,7 @@ In order to make sure Faraday running in local also works well in https, we also
 In order to make [httpclient](https://github.com/nahi/httpclient/issues/335) also works well in https, need copy generated cert.pem to httpclient folder. There is two `pem` files in httpclient currently, but Puma-dev CA is 1024, so safe to overwrite.
 
 ```bash
-cp /usr/local/etc/openssl/cert.pem /usr/local/lib/ruby/gems/2.6.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
+cp /usr/local/etc/openssl/cert.pem /usr/local/lib/ruby/gems/3.0.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
 ```
 
 
