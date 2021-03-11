@@ -46,7 +46,7 @@ gem 'doorkeeper-openid_connect', git: 'https://github.com/thape-cn/doorkeeper-op
 gem 'pundit'
 
 # bundle config local.saml_idp /Users/guochunzhong/git/sso/saml_idp/
-gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :master
+gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :oauth2id
 # Encrypted Assertions require the xmlenc gem in saml_idp
 gem 'xmlenc'
 
@@ -64,6 +64,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production, :staging do
   gem 'dalli'
+  gem 'minitest'
 end
 
 group :development, :test do
