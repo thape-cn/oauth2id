@@ -41,7 +41,8 @@ gem 'jbuilder', '~> 2.10'
 gem 'devise'
 gem 'devise-jwt'
 gem 'doorkeeper'
-gem 'doorkeeper-openid_connect'
+# bundle config local.doorkeeper-openid_connect /Users/guochunzhong/git/oss/doorkeeper-openid_connect/
+gem 'doorkeeper-openid_connect', git: 'https://github.com/thape-cn/doorkeeper-openid_connect', branch: :support_form_post_response_mode
 gem 'pundit'
 
 # bundle config local.saml_idp /Users/guochunzhong/git/sso/saml_idp/
