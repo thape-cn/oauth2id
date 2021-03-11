@@ -15,6 +15,7 @@ zh-CN:
             redirect_uri:
               fragment_present: '不能包含网址片段（#）'
               invalid_uri: '必须是有效的 URI 格式'
+              unspecified_scheme: '必须指定一个方案'
               relative_uri: '必须是绝对的 URI 地址'
               secured_uri: '必须是 HTTPS/SSL 的 URI 地址'
               forbidden_uri: '被服务器禁止。'
@@ -36,7 +37,7 @@ zh-CN:
       help:
         confidential: '应用程序的client secret可以保密，但原生移动应用和单页应用将无法保护client secret。'
         redirect_uri: '每行只能有一个 URI'
-        native_redirect_uri: '本地测试请使用 %{native_redirect_uri}'
+        blank_redirect_uri: "如果将提供程序配置为使用客户端凭据，资源所有者密码凭据或任何其他不需要重定向URI的授予类型，则将其保留为空白。"
         scopes: '用空格分割权限范围，留空则使用默认设置'
         icon: "显示应用程序fontawesome图标名称，<a href='https://fontawesome.com/v4.7.0/icons/' target='_blank'>点击</a>选择。"
         div_class: "显示应用的div class名字"
@@ -61,10 +62,12 @@ zh-CN:
         title: '应用：%{name}'
         application_id: '应用 UID'
         secret: '应用密钥'
+        secret_hashed: '秘密哈希'
         scopes: '权限范围'
         confidential: 'Confidential'
         callback_urls: '回调 URL'
         actions: '操作'
+        not_defined: '没有定义'
 
     authorizations:
       buttons:
@@ -78,6 +81,8 @@ zh-CN:
         able_to: '此应用将能够'
       show:
         title: '授权代码'
+      form_post:
+        title: '提交此表格'
 
     authorized_applications:
       confirmations:
@@ -96,7 +101,10 @@ zh-CN:
     errors:
       messages:
         # Common error messages
-        invalid_request: '请求缺少必要的参数，或者参数值、格式不正确。'
+        invalid_request:
+          unknown: '该请求缺少必需的参数，包括不支持的参数值，或者格式错误。'
+          missing_param: '缺少必需的参数：%{value}.'
+          request_not_authorized: '请求需要被授权。用于授权请求的必需参数丢失或无效。'
         invalid_redirect_uri: '无效的登录回调地址。'
         unauthorized_client: '未授权的应用，请求无法执行。'
         access_denied: '资源所有者或服务器拒绝了请求。'
@@ -112,6 +120,7 @@ zh-CN:
 
         # Access grant errors
         unsupported_response_type: '服务器不支持这种响应类型。'
+        unsupported_response_mode: '授权服务器不支持此响应模式。'
 
         # Access token errors
         invalid_client: '由于应用信息未知、未提交认证信息或使用了不支持的认证方式，认证失败。'
@@ -122,6 +131,8 @@ zh-CN:
           revoked: "访问令牌已被吊销"
           expired: "访问令牌已过期"
           unknown: "访问令牌无效"
+        revoke:
+          unauthorized: "您无权撤消此令牌"
 
     flash:
       applications:
