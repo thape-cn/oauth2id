@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: 4e67aff2285c9216b9b0b4457aa17cebfc252ca0
+  revision: 5b5b4695229b1d878c50b00a1b510fcae69ce262
   branch: support_form_post_response_mode
   specs:
     doorkeeper-openid_connect (1.7.5)
