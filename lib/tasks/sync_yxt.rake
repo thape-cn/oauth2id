@@ -2,7 +2,7 @@ namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
     :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4nd_level_departments,
-    :sync_5nd_level_departments, :sync_positions, :enable_all_users, :sync_users, :disable_users]
+    :sync_5nd_level_departments, :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -68,24 +68,14 @@ namespace :sync_yxt do
   end
 
   desc 'Sync the position to YXT'
-  task sync_positions: :environment do
-    puts 'Sync the positions'
-    Position.all.order(:id).find_in_batches(batch_size: 20) do |positions|
+  task sync_yxt_positions: :environment do
+    puts 'Sync the yxt_positions'
+    YxtPosition.all.order(:id).find_in_batches(batch_size: 20) do |positions|
       puts "positions: #{positions.pluck(:id)}"
       pos = positions.collect do |p|
-        prefix = if p.company_name.present?
-                   "#{p.company_name};#{p.functional_category}"
-                 else
-                   p.functional_category
-                 end
-        position_no = p.id
-        position_name = "#{prefix};#{p.name}"
-        puts "Yxt.update_position_info(#{position_no}, #{position_name})"
-        res = Yxt.update_position_info(position_no, position_name)
-        puts res.body.to_s
         {
-          pNames: position_name,
-          pNo: position_no
+          pNames: p.prefix_paths,
+          pNo: p.id
         }
       end
       puts "Yxt.insert_positions(pos): #{pos}"
@@ -122,7 +112,7 @@ namespace :sync_yxt do
           isMobileValidated: 1,
           mail: u.email,
           orgOuCode: u.departments.last&.id,
-          postionNo: main_position&.id,
+          postionNo: u.yxt_position_id,
           birthday: u&.profile&.birthdate,
           entrytime: u&.profile&.entry_company_date,
           spare1: main_position&.functional_category,

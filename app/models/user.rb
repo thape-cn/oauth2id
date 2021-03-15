@@ -35,6 +35,7 @@ class User < ApplicationRecord
 
   has_many :position_users, dependent: :destroy
   has_many :positions, through: :position_users
+  belongs_to :yxt_position, optional: true
   has_many :user_sign_in_histories, -> { order(id: :desc) }, dependent: :restrict_with_error
 
   validates :username, presence: true, exclusion: { in: %w[admin] }

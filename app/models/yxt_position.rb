@@ -1,0 +1,3 @@
+class YxtPosition < ApplicationRecord
+  has_many :users
+end
