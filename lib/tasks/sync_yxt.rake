@@ -101,6 +101,11 @@ namespace :sync_yxt do
         main_position = u.position_users.find_by(main_position: true)&.position
         main_position = u.position_users.last&.position if main_position.nil?
 
+        department_name = if main_position.present? && main_position.department.present?
+                            dept = main_position.department
+                            "#{dept.managed_by_department.name}-#{dept.name}"
+                          end
+
         {
           id: u.id,
           userName: u.username,
@@ -117,6 +122,8 @@ namespace :sync_yxt do
           entrytime: u&.profile&.entry_company_date,
           spare1: main_position&.functional_category,
           spare2: u&.profile&.job_level,
+          spare3: main_position&.company_name,
+          spare4: department_name,
           gradeName: u&.profile&.job_level
         }
       end
