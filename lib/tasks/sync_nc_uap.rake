@@ -2,7 +2,7 @@ require 'tiny_tds'
 
 namespace :sync_nc_uap do
   desc "Sync department, positions and users data with NC UAP"
-  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id]
+  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
 
   desc 'Sync orgs with NC UAP'
   task sync_orgs: :environment do
@@ -55,6 +55,24 @@ namespace :sync_nc_uap do
       else
         puts "Missing clert_code: #{clerk_code} ID: #{pre_sso_id}"
       end
+    end
+  end
+
+  desc 'Link user to YxtPosition'
+  task link_user_to_yxt_position: :environment do
+    User.all.order(:id).find_each do |user|
+      next if user.position_users.blank?
+
+      p = user.position_users.find_by(main_position: true)&.position
+      p = user.position_users.last&.position if p.nil?
+      prefix = if p.company_name.present?
+                 "#{p.company_name};#{p.functional_category}"
+               else
+                 p.functional_category
+               end
+      position_name = "#{prefix};#{p.name}"
+      yxt_position = YxtPosition.find_or_create_by!(prefix_paths: position_name, position_name: p.name)
+      user.update_columns(yxt_position_id: yxt_position.id)
     end
   end
 end
