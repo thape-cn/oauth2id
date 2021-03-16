@@ -97,13 +97,20 @@ namespace :sync_yxt do
     puts 'Sync the users'
     User.where(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
       puts "users: #{users.pluck(:id)}"
-      users = users.collect do |u|
+      yxt_users = users.collect do |u|
         main_position = u.position_users.find_by(main_position: true)&.position
         main_position = u.position_users.last&.position if main_position.nil?
 
-        department_name = if main_position.present? && main_position.department.present?
-                            dept = main_position.department
-                            "#{dept.managed_by_department.name}-#{dept.name}"
+        dept = if main_position.present? && main_position.department.present?
+                 main_position.department
+               else
+                 u.departments.first
+               end
+
+        department_name = if dept.present?
+                            "#{dept.managed_by_department&.name}-#{dept.name}"
+                          else
+                            puts "User id: #{u.id} name: #{u.username} no department"
                           end
 
         {
@@ -122,12 +129,12 @@ namespace :sync_yxt do
           entrytime: u&.profile&.entry_company_date,
           spare1: main_position&.functional_category,
           spare2: u&.profile&.job_level,
-          spare3: main_position&.company_name,
+          spare3: dept&.company_name,
           spare4: department_name,
           gradeName: u&.profile&.job_level
         }
       end
-      res = Yxt.sync_users(users)
+      res = Yxt.sync_users(yxt_users)
       puts res.body.to_s
     end
   end
