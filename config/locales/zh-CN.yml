@@ -34,6 +34,7 @@ zh-CN:
     sign_in_at: "登录时间"
     user_agent: "浏览器 User agent"
     sign_in_ip: "登录IP"
+    sign_in_loc: "登录IP位置"
     user_info: "用户信息"
     department: "部门"
     enable_javascript_to_login: "刷新页面并启用javascript来登录"
