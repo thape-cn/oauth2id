@@ -179,6 +179,7 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
+    ipip-fast (0.0.2)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -362,7 +363,6 @@ DEPENDENCIES
   ajax-datatables-rails
   bootsnap (>= 1.1.0)
   byebug
-  capistrano
   capistrano-rails
   capistrano-rbenv
   capistrano3-puma
@@ -374,6 +374,7 @@ DEPENDENCIES
   doorkeeper-openid_connect!
   ffaker
   font-awesome-rails
+  ipip-fast
   jbuilder (~> 2.10)
   jquery-rails
   listen

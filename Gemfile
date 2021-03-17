@@ -53,11 +53,10 @@ gem 'xmlenc'
 # bundle config local.wechat /Users/guochunzhong/git/oss/wechat/
 gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
 
+gem 'ipip-fast'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -83,7 +82,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.1'
 
-  gem 'capistrano'
   gem 'capistrano3-puma'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'

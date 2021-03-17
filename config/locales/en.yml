@@ -34,6 +34,7 @@ en:
     sign_in_at: "Sign in at"
     user_agent: "User agent"
     sign_in_ip: "Sign in IP"
+    sign_in_loc: "Sign in IP location"
     user_info: "User Info"
     department: "Department"
     enable_javascript_to_login: "Refresh & enable javascript to login"
