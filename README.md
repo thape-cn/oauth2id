@@ -49,3 +49,10 @@ openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 -keyout oauth2id_sa
 # Show SHA1 Fingerprint
 openssl x509 -in oauth2id_saml_cert.crt -noout -sha256 -fingerprint
 ```
+
+# Generate initial data
+
+
+```bash
+bin/setup
+```
