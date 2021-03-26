@@ -2,11 +2,15 @@
 eric_profile:
   user_id: 1  # user_eric
   title: "Rails developer"
+  clerk_code: 000123
+  chinese_name: "过纯中"
   gender: true
   phone: "+8613901234567"
 
 demo_profile:
   user_id: 2  # user_demo
   title: "Cute demo user"
+  clerk_code: 000123
+  chinese_name: "过纯中"
   gender: false
   phone: "+8602164268137"
