@@ -9,8 +9,31 @@
       <li class="breadcrumb-item"><a href="<%= duplicate_employees_path -%>"><%= t('ui.duplicate_employees') -%></a></li>
     </ul>
   </div>
-  <div class="row">
-    <div class="col-md-12">
+  <%= form_with url: duplicate_employee_path(id: @clerk_code), method: 'PUT' do |f| %>
+    <div class="row">
+      <% @duplicate_users.each do |user| %>
+        <div class="col-4">
+          <div class="tile">
+            <div class="tile-body">
+              <h3><%= user.profile.chinese_name %></h3>
+              <p><%= user.profile.clerk_code %></p>
+              <div class="form-group row">
+                <div class="col-9 offset-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="main_user_id" id="merge-user-id-<%= user.id -%>" value="<%= user.id -%>">
+                    <label class="form-check-label" for="merge-user-id-<%= user.id -%>"><%= t('ui.keep_user_tips') -%></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-8 offset-2">
+        <%= f.submit t('ui.merge'), class: 'btn btn-primary w-100' -%>
+      </div>
+    </div>
+  <% end %>
 </main>

@@ -10,5 +10,10 @@ class DuplicateEmployeesController < ApplicationController
   end
 
   def show
+    @clerk_code = params[:id]
+    @duplicate_users = User.joins(:profile).where(profile: { clerk_code: @clerk_code })
+  end
+
+  def update
   end
 end
