@@ -42,6 +42,7 @@ zh-CN:
     enable_javascript_to_login: "刷新页面并启用javascript来登录"
     doing_signing: "登录中"
     merge: "合并"
+    keep_user_tips: "合并后保留此用户"
   user:
     username: "用户名"
     username_placeholder: "希望显示的用户名"

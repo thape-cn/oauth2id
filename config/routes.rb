@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :duplicate_employees, only: %i[show index]
+  resources :duplicate_employees, only: %i[show index update]
 
   resource :setting, only: :update do
     member do
