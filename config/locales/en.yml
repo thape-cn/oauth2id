@@ -43,6 +43,7 @@ en:
     enable_javascript_to_login: "Refresh & enable javascript to login"
     doing_signing: "Signing..."
     merge: "Merge"
+    merge_success: "Merge success"
     keep_user_tips: "Keep this user after merging"
   user:
     username: "Username"
