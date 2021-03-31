@@ -181,7 +181,7 @@ GEM
     http-form_data (2.3.0)
     http-parser (1.2.3)
       ffi-compiler (>= 1.0, < 2.0)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     ipip-fast (0.0.2)
     jbuilder (2.11.2)
@@ -195,7 +195,7 @@ GEM
       aes_key_wrap
       bindata
     jwt (2.2.2)
-    listen (3.5.0)
+    listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
