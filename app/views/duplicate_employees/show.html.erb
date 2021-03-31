@@ -9,7 +9,7 @@
       <li class="breadcrumb-item"><a href="<%= duplicate_employees_path -%>"><%= t('ui.duplicate_employees') -%></a></li>
     </ul>
   </div>
-  <%= form_with url: duplicate_employee_path(id: @clerk_code), method: 'PUT' do |f| %>
+  <%= form_with url: duplicate_employee_path(id: @clerk_code), method: 'PUT', local: true do |f| %>
     <div class="row">
       <% @duplicate_users.each do |user| %>
         <div class="col-4">
