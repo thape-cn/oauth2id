@@ -20,8 +20,10 @@
                 <a href="mailto:<%= user.email -%>"><%= user.email -%></a>
                 <% user.profile&.custom_attributes&.each do |key, value| %>
                   <% next if key == 'chinese_name' %>
-                  <p class="card-text m-0"><%= t("user.#{key}") -%>: <%= value -%></p>
+                  <p class="m-0"><%= t("user.#{key}") -%>: <%= value -%></p>
                 <% end %>
+                <p class="m-0"><%= t("user.current_sign_in_at") -%>: <%= user.current_sign_in_at %></p>
+                <p class="m-0"><%= t("user.last_sign_in_at") -%>: <%= user.last_sign_in_at %></p>
               </address>
               <div class="form-group row">
                 <div class="col-9 offset-3">
