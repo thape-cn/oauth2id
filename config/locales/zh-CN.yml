@@ -61,6 +61,8 @@ zh-CN:
     stay_signed_in: "保持登录"
     forgot_password: "忘记密码 ？"
     back_to_login: "回到登入"
+    current_sign_in_at: "当前登录时间"
+    last_sign_in_at: "上次登录时间"
     characters_minimum: "字符以上"
     leave_blank_hint: "如果您不想更改它，请留空"
     need_current_password_hint: "我们需要您当前的密码来确认您的更改"

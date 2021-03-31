@@ -61,6 +61,8 @@ en:
     stay_signed_in: "Stay Signed in"
     forgot_password: "Forgot Password ?"
     back_to_login: "Back to Login"
+    current_sign_in_at: "Current sign in at"
+    last_sign_in_at: "Last sign in at"
     characters_minimum: "characters minimum"
     leave_blank_hint: "leave blank if you don't want to change it"
     need_current_password_hint: "we need your current password to confirm your changes"
@@ -96,6 +98,7 @@ en:
       deleted: "Deleted"
     clean_expired_jwts:
       done: "All expired jwts is cleaned."
+
   activerecord:
     errors:
       models:
