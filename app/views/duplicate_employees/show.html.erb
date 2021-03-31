@@ -15,8 +15,14 @@
         <div class="col-4">
           <div class="tile">
             <div class="tile-body">
-              <h3><%= user.profile.chinese_name %></h3>
-              <p><%= user.profile.clerk_code %></p>
+              <address>
+                <strong><%= user.profile.chinese_name %></strong><br>
+                <a href="mailto:<%= user.email -%>"><%= user.email -%></a>
+                <% user.profile&.custom_attributes&.each do |key, value| %>
+                  <% next if key == 'chinese_name' %>
+                  <p class="card-text m-0"><%= t("user.#{key}") -%>: <%= value -%></p>
+                <% end %>
+              </address>
               <div class="form-group row">
                 <div class="col-9 offset-3">
                   <div class="form-check">
