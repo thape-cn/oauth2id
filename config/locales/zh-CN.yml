@@ -39,6 +39,7 @@ zh-CN:
     sign_in_loc: "登录IP位置"
     user_info: "用户信息"
     department: "部门"
+    position: "岗位"
     enable_javascript_to_login: "刷新页面并启用javascript来登录"
     doing_signing: "登录中"
     merge: "合并"

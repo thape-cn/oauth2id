@@ -39,6 +39,7 @@ en:
     sign_in_loc: "Sign in IP location"
     user_info: "User Info"
     department: "Department"
+    position: "Position"
     enable_javascript_to_login: "Refresh & enable javascript to login"
     doing_signing: "Signing..."
     merge: "Merge"
