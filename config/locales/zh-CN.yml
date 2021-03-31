@@ -78,6 +78,11 @@ zh-CN:
     phone: "电话"
     clerk_code: "员工号"
     chinese_name: "中文姓名"
+    job_level: "职级"
+    birthdate: "生日"
+    entry_company_date: "加入公司日期"
+    pre_sso_id: "之前 SSO ID"
+    wecom_id: "企业微信 ID"
     account_counts: "账号数量"
     locked_at: "锁定日期"
   jwts:

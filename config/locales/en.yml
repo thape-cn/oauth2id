@@ -78,7 +78,12 @@ en:
     phone: "Phone"
     clerk_code: "Clerk Code"
     chinese_name: "Chinese Name"
-    account_counts: "Account Count"
+    job_level: "Job level"
+    birthdate: "Birth date"
+    entry_company_date: "Entry company date"
+    pre_sso_id: "Pre SSO ID"
+    wecom_id: "WeCom ID"
+    account_counts: "Account Counts"
     locked_at: "Locked at"
   jwts:
     index:
