@@ -7,6 +7,9 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import "regenerator-runtime/runtime";
+import "@stimulus/polyfills";
+
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
