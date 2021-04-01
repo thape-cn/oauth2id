@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_082831) do
+ActiveRecord::Schema.define(version: 2021_04_01_091150) do
 
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "jti", null: false
@@ -121,6 +121,9 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "nc_pk_post"
     t.bigint "department_id"
     t.string "company_name"
+    t.string "pk_poststd"
+    t.string "b_postcode"
+    t.string "b_postname"
     t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
