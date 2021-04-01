@@ -138,9 +138,11 @@ WHERE post_id != '~'
 
   def self.nc_positions
     NcUap.connection.select_rows("
-select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT
+select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT,
+       om_post.pk_poststd, om_post1.postcode as b_postcode, om_post1.postname as b_postname
 from NC6337.om_post om_post
-left join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
+inner join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
+inner join NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
 where om_post.enablestate = '2'
   and om_post.pk_post in (select distinct pk_post from nc6337.hi_psnjob where endflag= 'N')
 ")
@@ -153,17 +155,26 @@ where om_post.enablestate = '2'
       pk_post = p[1]
       postseriesname = p[2]
       pk_dept = p[3]
+      pk_poststd = p[4]
+      b_postcode = p[5]
+      b_postname = p[6]
 
       position = Position.find_or_create_by!(nc_pk_post: pk_post) do |pos|
         pos.name = post_name
         pos.functional_category = postseriesname
         pos.nc_pk_post = pk_post
         pos.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
+        pos.pk_poststd = pk_poststd
+        pos.b_postcode = b_postcode
+        pos.b_postname = b_postname
       end
       position.name = post_name
       position.functional_category = postseriesname
       position.nc_pk_post = pk_post
       position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
+      position.pk_poststd = pk_poststd
+      position.b_postcode = b_postcode
+      position.b_postname = b_postname
       position.save
     end
   end
