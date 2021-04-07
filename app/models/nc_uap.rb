@@ -63,10 +63,15 @@ WHERE hi_psnjob.ismainjob = 'Y'
       entry_company_date = u[7]
       puts "Import user: #{chinese_name}"
 
-      user = User.find_or_create_by!(email: email.downcase) do |usr|
-        usr.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
-        usr.skip_password_validation = true
-      end
+      profile = Profile.find_by(clerk_code: clerk_code, chinese_name: chinese_name)
+      user = if profile.present?
+               profile.user
+             else
+               User.find_or_create_by!(email: email.downcase) do |usr|
+                 usr.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
+                 usr.skip_password_validation = true
+               end
+             end
       user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
       user.skip_password_validation = true
       user.save
