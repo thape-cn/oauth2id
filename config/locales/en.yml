@@ -12,6 +12,7 @@ en:
     employee_list: "Employee List"
     employee_report: "Export Report"
     employees_description: "Motivated Employees Are Key To Your Company's Success."
+    duplicate_employees: "Duplicate employees"
     applications_management: "Applications Management"
     applications_list: "Applications List"
     can_grant_applications: "Applications can grant to access"

@@ -12,6 +12,7 @@ zh-CN:
     employee_list: "员工名单"
     employee_report: "导出报表"
     employees_description: "有动力的员工是公司成功的关键。"
+    duplicate_employees: "重复的员工"
     applications_management: "应用管理"
     applications_list: "应用列表"
     can_grant_applications: "可以授予访问权限的应用程序"

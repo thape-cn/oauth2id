@@ -1,16 +1,31 @@
 class DuplicateEmployeesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_profiles, only: %i[index report]
 
   def index
-    @profiles = policy_scope(Profile)
-      .select('chinese_name, clerk_code, COUNT(user_id) account_counts')
-      .group(:chinese_name, :clerk_code)
-      .having('count(user_id) > 1')
-      .where.not(clerk_code: nil)
-      .order('account_counts DESC, clerk_code DESC')
   end
 
   def report
+    respond_to do |format|
+      format.csv do
+        render_csv_header :duplicate_employees_report.to_s
+        csv_res = CSV.generate do |csv|
+          csv << ['chinese_name', 'clerk_code', 'account_counts']
+          @profiles.each_with_index do |p, index|
+            du = Profile.includes(:user).where(chinese_name: p.chinese_name, clerk_code: p.clerk_code)
+            next if du.collect(&:user).all? { |u| u&.locked_at.present? }
+            next if du.collect(&:user).one? { |u| u&.locked_at.nil? }
+
+            values = []
+            values << p.chinese_name
+            values << p.clerk_code
+            values << du.collect { |d| d.user.username }.join(';')
+            csv << values
+          end
+        end
+        send_data "\xEF\xBB\xBF#{csv_res}"
+      end
+    end
   end
 
   def show
@@ -40,4 +55,15 @@ class DuplicateEmployeesController < ApplicationController
 
     redirect_to duplicate_employee_path(id: main_user.profile.clerk_code), notice: I18n.t('ui.merge_success')
   end
+
+  private
+
+    def set_profiles
+      @profiles = policy_scope(Profile)
+        .select('chinese_name, clerk_code, COUNT(user_id) account_counts')
+        .group(:chinese_name, :clerk_code)
+        .having('count(user_id) > 1')
+        .where.not(clerk_code: nil)
+        .order('account_counts DESC, clerk_code DESC')
+    end
 end

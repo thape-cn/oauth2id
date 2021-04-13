@@ -15,7 +15,7 @@
         <div class="tile-title-w-btn">
           <h3 class="title"><%= t('.duplicate_employee') %></h3>
           <p>
-            <%= link_to report_duplicate_employees_path, class: 'btn btn-primary icon-btn' do %>
+            <%= link_to report_duplicate_employees_path(format: :csv), class: 'btn btn-primary icon-btn' do %>
               <i class="fa fa-trash"></i><%= t('.export_report') %></a>
             <% end %>
           </p>
