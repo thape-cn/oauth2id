@@ -1,8 +1,8 @@
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-dashboard"></i> <%= t('ui.duplicate_employees') -%></h1>
-      <p><%= t('ui.duplicate_employees_description') -%></p>
+      <h1><i class="fa fa-dashboard"></i> <%= t('.title') -%></h1>
+      <p><%= t('.description') -%></p>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -12,6 +12,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
+        <div class="tile-title-w-btn">
+          <h3 class="title"><%= t('.duplicate_employee') %></h3>
+          <p>
+            <%= link_to report_duplicate_employees_path, class: 'btn btn-primary icon-btn' do %>
+              <i class="fa fa-trash"></i><%= t('.export_report') %></a>
+            <% end %>
+          </p>
+        </div>
         <div class="tile-body">
           <table class="table table-hover table-bordered">
             <thead>

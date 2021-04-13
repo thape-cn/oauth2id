@@ -10,6 +10,9 @@ class DuplicateEmployeesController < ApplicationController
       .order('account_counts DESC, clerk_code DESC')
   end
 
+  def report
+  end
+
   def show
     @clerk_code = params[:id]
     @duplicate_users = User.joins(:profile).where(profile: { clerk_code: @clerk_code })

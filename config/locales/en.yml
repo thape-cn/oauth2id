@@ -12,8 +12,6 @@ en:
     employee_list: "Employee List"
     employee_report: "Export Report"
     employees_description: "Motivated Employees Are Key To Your Company's Success."
-    duplicate_employees: "Duplicate employees"
-    duplicate_employees_description: "Duplicate employees description"
     applications_management: "Applications Management"
     applications_list: "Applications List"
     can_grant_applications: "Applications can grant to access"
@@ -99,6 +97,12 @@ en:
       deleted: "Deleted"
     clean_expired_jwts:
       done: "All expired jwts is cleaned."
+  duplicate_employees:
+    index:
+      title: "Duplicate employees"
+      description: "Employees with exactly the same name and ID are considered duplicate employees."
+      duplicate_employee: "Merge duplicate employees"
+      export_report: "Export report"
 
   activerecord:
     errors:
