@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: a7c8736032e1fa8bf41efaec388e5cc1af0a0f5b
+  revision: 8195bb0b36585986bf7ec1b4c568d68780ae5e15
   branch: main
   specs:
     wechat (0.13.1)
@@ -406,4 +406,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
