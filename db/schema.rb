@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_091150) do
+ActiveRecord::Schema.define(version: 2021_04_20_085159) do
 
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "jti", null: false
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_04_01_091150) do
     t.date "entry_company_date"
     t.string "pre_sso_id"
     t.string "wecom_id"
+    t.string "major_code"
+    t.string "major_name"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
