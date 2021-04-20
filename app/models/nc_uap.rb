@@ -126,6 +126,34 @@ WHERE post_id != '~'
     end
   end
 
+  def self.nc_user_majors
+    NcUap.connection.select_rows("
+SELECT hi_psnjob.clerkcode, bd_defdoc.code major_code, bd_defdoc.name major_name
+FROM NC6337.bd_psndoc bd_psndoc
+INNER JOIN NC6337.hi_psnjob hi_psnjob ON bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
+INNER JOIN NC6337.Hi_Psndoc_Glbdef3 Hi_Psndoc_Glbdef3 ON Hi_Psndoc_Glbdef3.pk_psndoc = bd_psndoc.pk_psndoc
+INNER JOIN NC6337.BD_defdoc bd_defdoc ON bd_defdoc.pk_defdoc = Hi_Psndoc_Glbdef3.Glbdef1
+WHERE hi_psnjob.ismainjob = 'Y'
+  AND hi_psnjob.lastflag = 'Y'
+  AND hi_psnjob.endflag = 'N'
+  AND Hi_Psndoc_Glbdef3.dr = '0'
+  AND bd_defdoc.pk_defdoclist = '1001A7100000000022C5'
+")
+  end
+
+  def self.upserts_user_majors
+    user_majors = NcUap.nc_user_majors
+    user_majors.each do |pu|
+      clerk_code = pu[0]&.strip
+      major_code = pu[1]&.strip
+      major_name = pu[2]&.strip
+      profile = Profile.find_by(clerk_code: clerk_code)
+      next if profile.nil?
+
+      profile.update(major_code: major_code, major_name: major_name)
+    end
+  end
+
   def self.clean_no_user_positions
     Position.all.each do |position|
       position.destroy if position.users.count.zero?
