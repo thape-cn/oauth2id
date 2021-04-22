@@ -66,11 +66,7 @@ namespace :sync_nc_uap do
 
       p = user.position_users.find_by(main_position: true)&.position
       p = user.position_users.last&.position if p.nil?
-      prefix = if p.company_name.present?
-                 "#{p.company_name};#{p.functional_category}"
-               else
-                 p.functional_category
-               end
+      prefix = p.functional_category
       position_name = "#{prefix};#{p.name}"
       yxt_position = YxtPosition.find_or_create_by!(prefix_paths: position_name, position_name: p.name)
       user.update_columns(yxt_position_id: yxt_position.id)
