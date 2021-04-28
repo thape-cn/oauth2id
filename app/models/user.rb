@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  has_many :user_allowed_applications
+  has_many :user_allowed_applications, dependent: :destroy
   accepts_nested_attributes_for :user_allowed_applications
   has_many :oauth_applications, through: :user_allowed_applications
 
