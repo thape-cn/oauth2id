@@ -70,7 +70,7 @@ namespace :sync_yxt do
   desc 'Sync the position to YXT'
   task sync_yxt_positions: :environment do
     puts 'Sync the yxt_positions'
-    YxtPosition.joins(:users).order(:id).find_in_batches(batch_size: 20) do |positions|
+    YxtPosition.joins(:users).where('users.locked_at is null').order(:id).find_in_batches(batch_size: 20) do |positions|
       puts "positions: #{positions.pluck(:id)}"
       pos = positions.collect do |p|
         {
