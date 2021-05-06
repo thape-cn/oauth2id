@@ -72,6 +72,7 @@ class User < ApplicationRecord
     desk_phone = li[:telephonenumber].first.to_s
     update_columns(desk_phone: desk_phone)
     Rails.logger.debug li[:title]
+    Rails.logger.debug li[:mail]
     return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生')
   end
 
