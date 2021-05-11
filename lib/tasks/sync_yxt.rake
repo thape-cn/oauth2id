@@ -107,7 +107,9 @@ namespace :sync_yxt do
                  u.departments.first
                end
 
-        department_name = if dept.present?
+        department_name = if dept.present? && dept.managed_by_department&.name&.end_with?('有限公司')
+                            dept.name
+                          elsif dept.present?
                             "#{dept.managed_by_department&.name}-#{dept.name}"
                           else
                             puts "User id: #{u.id} name: #{u.username} no department"
