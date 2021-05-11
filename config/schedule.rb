@@ -13,7 +13,7 @@
 #   rake "some:great:rake:task"
 # end
 #
-every :day, at: '12:20am', roles: [:db] do
+every :day, at: '12:17am', roles: [:db] do
   rake "sync_sf:all"
 end
 
@@ -21,11 +21,11 @@ every :day, at: '12:15am', roles: [:db] do
   rake "doorkeeper:db:cleanup"
 end
 
-every :day, at: '12:17am', roles: [:db] do
+every :day, at: '12:20am', roles: [:db] do
   rake "sync_nc_uap:all"
 end
 
-every :day, at: '12:47am', roles: [:db] do
+every :day, at: '12:57am', roles: [:db] do
   rake "sync_yxt:all"
 end
 
