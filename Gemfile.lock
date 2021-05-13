@@ -1,11 +1,11 @@
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 26461affb39aea99e66884849a0c8d70e7b9e726
+  revision: d162173217141beca0e05b789654479e0836353a
   branch: main
   specs:
     wechat (0.13.2)
       activesupport (>= 6.0, < 7)
-      http (>= 1.0.4, < 5)
+      http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
       rexml
       thor
@@ -171,16 +171,14 @@ GEM
       railties (>= 3.2, < 7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    http (4.4.1)
+    http (5.0.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
-      http-parser (~> 1.2.0)
+      llhttp-ffi (~> 0.0.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    http-parser (1.2.3)
-      ffi-compiler (>= 1.0, < 2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     ipip-fast (0.0.2)
@@ -198,6 +196,9 @@ GEM
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    llhttp-ffi (0.0.1)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
