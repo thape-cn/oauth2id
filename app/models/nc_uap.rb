@@ -65,7 +65,10 @@ WHERE hi_psnjob.ismainjob = 'Y'
 
       profile = Profile.find_by(clerk_code: clerk_code, chinese_name: chinese_name)
       user = if profile.present?
-               profile.user
+               user = profile.user
+               existing_user = User.find_by email: email.downcase
+               user.update_columns(email: email.downcase) if existing_user.blank?
+               user
              else
                User.find_or_create_by!(email: email.downcase) do |usr|
                  usr.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
