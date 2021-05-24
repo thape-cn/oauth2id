@@ -85,6 +85,8 @@ en:
     wecom_id: "WeCom ID"
     account_counts: "Account Counts"
     locked_at: "Locked at"
+    major_code: "Major code"
+    major_name: "Major name"
   jwts:
     index:
       title: "Management application and its JWT authorization"
