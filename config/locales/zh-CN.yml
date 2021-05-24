@@ -94,6 +94,8 @@ zh-CN:
     wecom_id: "企业微信 ID"
     account_counts: "账号数量"
     locked_at: "锁定日期"
+    major_code: "专业编码"
+    major_name: "专业名称"
   department:
     name: "部门名称"
     managed_by_department: "上级部门"

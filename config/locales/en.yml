@@ -94,6 +94,8 @@ en:
     wecom_id: "WeCom ID"
     account_counts: "Account Counts"
     locked_at: "Locked at"
+    major_code: "Major code"
+    major_name: "Major name"
   department:
     name: "Department name"
     managed_by_department: "Managed by department"
