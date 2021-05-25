@@ -67,7 +67,9 @@ WHERE hi_psnjob.ismainjob = 'Y'
       user = if profile.present?
                user = profile.user
                existing_user = User.find_by email: email.downcase
-               user.update_columns(email: email.downcase) if existing_user.blank?
+               if existing_user.blank? || existing_user.email != email.downcase
+                 user.update_columns(email: email.downcase, username: email.split('@').first)
+               end
                user
              else
                User.find_or_create_by!(email: email.downcase) do |usr|
