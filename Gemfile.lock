@@ -1,4 +1,12 @@
 GIT
+  remote: https://e.coding.net/sew/doorkeeper.git
+  revision: 76c6ed657b202a169586d43652d60aab635f6e20
+  branch: main
+  specs:
+    doorkeeper (5.5.1)
+      railties (>= 5)
+
+GIT
   remote: https://github.com/Eric-Guo/wechat
   revision: 027c049aa09151ba310cacd9a23c612e41ee2671
   branch: main
@@ -148,8 +156,6 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (5.5.1)
-      railties (>= 5)
     dry-auto_inject (0.7.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.12.1)
@@ -372,7 +378,7 @@ DEPENDENCIES
   dalli
   devise
   devise-jwt
-  doorkeeper
+  doorkeeper!
   doorkeeper-openid_connect!
   ffaker
   font-awesome-rails
