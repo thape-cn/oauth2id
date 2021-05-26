@@ -40,7 +40,8 @@ gem 'jbuilder'
 
 gem 'devise'
 gem 'devise-jwt'
-gem 'doorkeeper'
+# bundle config local.doorkeeper /Users/guochunzhong/git/oss/doorkeeper/
+gem 'doorkeeper', git: 'https://e.coding.net/sew/doorkeeper.git', branch: :main
 # bundle config local.doorkeeper-openid_connect /Users/guochunzhong/git/oss/doorkeeper-openid_connect/
 gem 'doorkeeper-openid_connect', git: 'https://github.com/thape-cn/doorkeeper-openid_connect', branch: :master
 gem 'pundit'
