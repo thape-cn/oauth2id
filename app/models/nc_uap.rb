@@ -69,8 +69,15 @@ WHERE hi_psnjob.ismainjob = 'Y'
                existing_user = User.find_by email: email.downcase
                if existing_user.blank? || existing_user.email != email.downcase
                  user.update_columns(email: email.downcase, username: email.split('@').first)
+                 user
+               else
+                 existing_user.update_columns(email: email.downcase, username: email.split('@').first)
+                 p = existing_user.profile || existing_user.build_profile
+                 p.clerk_code = clerk_code
+                 p.chinese_name = chinese_name
+                 p.save
+                 existing_user
                end
-               user
              else
                User.find_or_create_by!(email: email.downcase) do |usr|
                  usr.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
