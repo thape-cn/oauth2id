@@ -77,6 +77,7 @@ en:
     clerk_code: "Clerk Code"
     chinese_name: "Chinese Name"
     account_counts: "Account Count"
+    locked_at: "Locked at"
   jwts:
     index:
       title: "Management application and its JWT authorization"
