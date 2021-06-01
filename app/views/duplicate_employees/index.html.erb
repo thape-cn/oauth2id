@@ -28,6 +28,7 @@
                 <th><%= t('user.chinese_name') -%></th>
                 <th><%= t('user.clerk_code') -%></th>
                 <th><%= t('user.account_counts') -%></th>
+                <th><%= t('user.locked_at') -%></th>
                 <th><%= t('ui.admin_action') -%></th>
               </tr>
             </thead>
@@ -41,6 +42,11 @@
                   <td>
                     <% du.each do |d| %>
                       <%= link_to d.user.username, employee_path(d.user) %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <% du.each do |d| %>
+                      <%= d.user.locked_at&.to_date %>
                     <% end %>
                   </td>
                   <td>

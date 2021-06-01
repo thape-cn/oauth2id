@@ -10,7 +10,7 @@ class DuplicateEmployeesController < ApplicationController
       format.csv do
         render_csv_header :duplicate_employees_report.to_s
         csv_res = CSV.generate do |csv|
-          csv << ['chinese_name', 'clerk_code', 'account_counts']
+          csv << ['chinese_name', 'clerk_code', 'account_counts', 'locked_at']
           @profiles.each_with_index do |p, index|
             du = Profile.includes(:user).where(chinese_name: p.chinese_name, clerk_code: p.clerk_code)
 
@@ -18,6 +18,7 @@ class DuplicateEmployeesController < ApplicationController
             values << p.chinese_name
             values << p.clerk_code
             values << du.collect { |d| d.user.username }.join(';')
+            values << du.collect { |d| d.user.locked_at&.to_date }.join(';')
             csv << values
           end
         end

@@ -77,6 +77,7 @@ zh-CN:
     clerk_code: "员工号"
     chinese_name: "中文姓名"
     account_counts: "账号数量"
+    locked_at: "锁定日期"
   jwts:
     index:
       title: "管理应用程序及其JWT授权"
