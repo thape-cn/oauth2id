@@ -13,8 +13,6 @@ class DuplicateEmployeesController < ApplicationController
           csv << ['chinese_name', 'clerk_code', 'account_counts']
           @profiles.each_with_index do |p, index|
             du = Profile.includes(:user).where(chinese_name: p.chinese_name, clerk_code: p.clerk_code)
-            next if du.collect(&:user).all? { |u| u&.locked_at.present? }
-            next if du.collect(&:user).one? { |u| u&.locked_at.nil? }
 
             values = []
             values << p.chinese_name
