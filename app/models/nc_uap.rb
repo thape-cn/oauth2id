@@ -14,7 +14,7 @@ from nc6337.o2_docquit a
   end
 
   def self.enable_all_users
-    User.where.not(locked_at: nil).update_all(locked_at: nil)
+    User.where("email like '%@thape.com.cn'").where.not(locked_at: nil).update_all(locked_at: nil)
   end
 
   def self.lock_leaved_users
@@ -44,9 +44,8 @@ WHERE hi_psnjob.ismainjob = 'Y'
   AND hi_psnjob.lastflag = 'Y'
   AND hi_psnjob.endflag = 'N'
   AND nvl(bd_psndoc.email, '0') != '0'
-  AND hi_psnjob.pk_psncl != '1001A710000000001YX1'
   AND bd_psndoc.email is not null
-  AND bd_psndoc.email like '%@thape.com.cn'
+  AND bd_psndoc.email like '%@%'
 ")
   end
 
@@ -86,6 +85,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
              end
       user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
       user.skip_password_validation = true
+      user.locked_at ||= Time.zone.now unless user.email.end_with?('@thape.com.cn')
       user.save
 
       profile = user.profile || user.build_profile
