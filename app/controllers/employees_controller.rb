@@ -62,7 +62,8 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    @user.skip_confirmation_notification!
+    if @user.update(user_params) && @user.confirm
       redirect_to employees_path, notice: I18n.t('ui.update_success')
     else
       render 'edit'
@@ -77,6 +78,6 @@ class EmployeesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable, :oauth_application_id])
+    params.require(:user).permit(:email, :username, profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable, :oauth_application_id])
   end
 end
