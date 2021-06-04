@@ -43,9 +43,7 @@ LEFT JOIN NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndo
 WHERE hi_psnjob.ismainjob = 'Y'
   AND hi_psnjob.lastflag = 'Y'
   AND hi_psnjob.endflag = 'N'
-  AND nvl(bd_psndoc.email, '0') != '0'
-  AND bd_psndoc.email is not null
-  AND bd_psndoc.email like '%@%'
+  AND bd_psndoc.name not in ('AA')
 ")
   end
 
@@ -61,6 +59,12 @@ WHERE hi_psnjob.ismainjob = 'Y'
       birthdate = u[6]
       entry_company_date = u[7]
       puts "Import user: #{chinese_name}"
+
+      email = if email.present? && email.include?('@') && email != '@'
+                email
+              else
+                "#{clerk_code}@thape.com"
+              end
 
       profile = Profile.find_by(clerk_code: clerk_code, chinese_name: chinese_name)
       user = if profile.present?
