@@ -25,8 +25,10 @@ from nc6337.o2_docquit a
       puts "Locking user: #{clerk_code}, #{leaved_company_date}"
 
       profile = Profile.find_by(clerk_code: clerk_code)
+      leave_company_date = Date.parse(leaved_company_date)
+      profile.update(leave_company_date: leave_company_date) if profile.present?
       user = profile&.user
-      if user.present? && Date.parse(leaved_company_date) <= Date.today
+      if user.present? && leave_company_date <= Date.today
         user.locked_at = leaved_company_date
         user.save(validate: false)
       end
