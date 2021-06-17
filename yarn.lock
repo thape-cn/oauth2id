@@ -1396,12 +1396,12 @@ babel-plugin-polyfill-corejs2@^0.2.2:
     semver "^6.1.1"
 
 babel-plugin-polyfill-corejs3@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.nlark.com/babel-plugin-polyfill-corejs3/download/babel-plugin-polyfill-corejs3-0.2.2.tgz?cache=0&sync_timestamp=1622023850672&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fbabel-plugin-polyfill-corejs3%2Fdownload%2Fbabel-plugin-polyfill-corejs3-0.2.2.tgz#7424a1682ee44baec817327710b1b094e5f8f7f5"
-  integrity sha1-dCShaC7kS67IFzJ3ELGwlOX49/U=
+  version "0.2.3"
+  resolved "https://registry.nlark.com/babel-plugin-polyfill-corejs3/download/babel-plugin-polyfill-corejs3-0.2.3.tgz?cache=0&sync_timestamp=1623879605583&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fbabel-plugin-polyfill-corejs3%2Fdownload%2Fbabel-plugin-polyfill-corejs3-0.2.3.tgz#72add68cf08a8bf139ba6e6dfc0b1d504098e57b"
+  integrity sha1-cq3WjPCKi/E5um5t/AsdUECY5Xs=
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
-    core-js-compat "^3.9.1"
+    core-js-compat "^3.14.0"
 
 babel-plugin-polyfill-regenerator@^0.2.2:
   version "0.2.2"
@@ -2038,7 +2038,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.nlark.com/copy-descriptor/download/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-core-js-compat@^3.14.0, core-js-compat@^3.9.1:
+core-js-compat@^3.14.0:
   version "3.14.0"
   resolved "https://registry.nlark.com/core-js-compat/download/core-js-compat-3.14.0.tgz#b574dabf29184681d5b16357bd33d104df3d29a5"
   integrity sha1-tXTavykYRoHVsWNXvTPRBN89KaU=
@@ -3120,7 +3120,7 @@ globals@^11.1.0:
 
 globby@^6.1.0:
   version "6.1.0"
-  resolved "https://registry.npm.taobao.org/globby/download/globby-6.1.0.tgz?cache=0&sync_timestamp=1616407139482&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fglobby%2Fdownload%2Fglobby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
+  resolved "https://registry.nlark.com/globby/download/globby-6.1.0.tgz?cache=0&sync_timestamp=1623850103454&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fglobby%2Fdownload%2Fglobby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
   integrity sha1-9abXDoOV4hyFj7BInWTfAkJNUGw=
   dependencies:
     array-union "^1.0.1"
@@ -6882,7 +6882,7 @@ wrappy@1:
 
 ws@^6.2.1:
   version "6.2.2"
-  resolved "https://registry.nlark.com/ws/download/ws-6.2.2.tgz?cache=0&sync_timestamp=1623180787489&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fws%2Fdownload%2Fws-6.2.2.tgz#dd5cdbd57a9979916097652d78f1cc5faea0c32e"
+  resolved "https://registry.nlark.com/ws/download/ws-6.2.2.tgz#dd5cdbd57a9979916097652d78f1cc5faea0c32e"
   integrity sha1-3Vzb1XqZeZFgl2UtePHMX66gwy4=
   dependencies:
     async-limiter "~1.0.0"
