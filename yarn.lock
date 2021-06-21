@@ -990,9 +990,9 @@
   integrity sha1-8Owl2/Lw5LGGRzE6wDETTKWySyE=
 
 "@types/node@*":
-  version "15.12.2"
-  resolved "https://registry.nlark.com/@types/node/download/@types/node-15.12.2.tgz#1f2b42c4be7156ff4a6f914b2fb03d05fa84e38d"
-  integrity sha1-HytCxL5xVv9Kb5FLL7A9BfqE440=
+  version "15.12.4"
+  resolved "https://registry.nlark.com/@types/node/download/@types/node-15.12.4.tgz#e1cf817d70a1e118e81922c4ff6683ce9d422e26"
+  integrity sha1-4c+BfXCh4RjoGSLE/2aDzp1CLiY=
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1762,9 +1762,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001219:
-  version "1.0.30001237"
-  resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001237.tgz#4b7783661515b8e7151fc6376cfd97f0e427b9e5"
-  integrity sha1-S3eDZhUVuOcVH8Y3bP2X8OQnueU=
+  version "1.0.30001239"
+  resolved "https://registry.nlark.com/caniuse-lite/download/caniuse-lite-1.0.30001239.tgz?cache=0&sync_timestamp=1624135650227&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcaniuse-lite%2Fdownload%2Fcaniuse-lite-1.0.30001239.tgz#66e8669985bb2cb84ccb10f68c25ce6dd3e4d2b8"
+  integrity sha1-ZuhmmYW7LLhMyxD2jCXObdPk0rg=
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -2005,9 +2005,9 @@ content-type@~1.0.4:
   integrity sha1-4TjMdeBAxyexlm/l5fjJruJW/js=
 
 convert-source-map@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.nlark.com/convert-source-map/download/convert-source-map-1.7.0.tgz?cache=0&sync_timestamp=1618847182423&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fconvert-source-map%2Fdownload%2Fconvert-source-map-1.7.0.tgz#17a2cb882d7f77d3490585e2ce6c524424a3a442"
-  integrity sha1-F6LLiC1/d9NJBYXizmxSRCSjpEI=
+  version "1.8.0"
+  resolved "https://registry.nlark.com/convert-source-map/download/convert-source-map-1.8.0.tgz?cache=0&sync_timestamp=1624045420970&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fconvert-source-map%2Fdownload%2Fconvert-source-map-1.8.0.tgz#f3373c32d21b4d780dd8004514684fb791ca4369"
+  integrity sha1-8zc8MtIbTXgN2ABFFGhPt5HKQ2k=
   dependencies:
     safe-buffer "~5.1.1"
 
@@ -2039,17 +2039,17 @@ copy-descriptor@^0.1.0:
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
 core-js-compat@^3.14.0:
-  version "3.14.0"
-  resolved "https://registry.nlark.com/core-js-compat/download/core-js-compat-3.14.0.tgz#b574dabf29184681d5b16357bd33d104df3d29a5"
-  integrity sha1-tXTavykYRoHVsWNXvTPRBN89KaU=
+  version "3.15.0"
+  resolved "https://registry.nlark.com/core-js-compat/download/core-js-compat-3.15.0.tgz?cache=0&sync_timestamp=1624210452044&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcore-js-compat%2Fdownload%2Fcore-js-compat-3.15.0.tgz#e14a371123db9d1c5b41206d3f420643d238b8fa"
+  integrity sha1-4Uo3ESPbnRxbQSBtP0IGQ9I4uPo=
   dependencies:
     browserslist "^4.16.6"
     semver "7.0.0"
 
 core-js@^3.12.1, core-js@^3.4.0:
-  version "3.14.0"
-  resolved "https://registry.nlark.com/core-js/download/core-js-3.14.0.tgz#62322b98c71cc2018b027971a69419e2425c2a6c"
-  integrity sha1-YjIrmMccwgGLAnlxppQZ4kJcKmw=
+  version "3.15.0"
+  resolved "https://registry.nlark.com/core-js/download/core-js-3.15.0.tgz?cache=0&sync_timestamp=1624210542561&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcore-js%2Fdownload%2Fcore-js-3.15.0.tgz#db9554ebce0b6fd90dc9b1f2465c841d2d055044"
+  integrity sha1-25VU684Lb9kNybHyRlyEHS0FUEQ=
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -6914,7 +6914,7 @@ yaml@^1.7.2:
 
 yargs-parser@^13.1.2:
   version "13.1.2"
-  resolved "https://registry.nlark.com/yargs-parser/download/yargs-parser-13.1.2.tgz#130f09702ebaeef2650d54ce6e3e5706f7a4fb38"
+  resolved "https://registry.nlark.com/yargs-parser/download/yargs-parser-13.1.2.tgz?cache=0&sync_timestamp=1624233514145&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fyargs-parser%2Fdownload%2Fyargs-parser-13.1.2.tgz#130f09702ebaeef2650d54ce6e3e5706f7a4fb38"
   integrity sha1-Ew8JcC667vJlDVTObj5XBvek+zg=
   dependencies:
     camelcase "^5.0.0"
