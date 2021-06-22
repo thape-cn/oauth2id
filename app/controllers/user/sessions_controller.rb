@@ -65,7 +65,7 @@ class User::SessionsController < Devise::SessionsController
     end
   rescue Exception => e
     Rails.logger.debug e
-    redirect_to new_user_session_path, alert: "目前无法登录，最可能情况是Windows邮箱没有配置，请联系IT检查。"
+    redirect_to new_user_session_path, alert: "目前无法登录，请使用您的Windows邮箱做为用户名进行登录，还有问题请联系IT检查。"
   end
 
   def cors_set_access_control_headers
