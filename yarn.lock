@@ -690,7 +690,7 @@
 
 "@babel/plugin-transform-runtime@^7.14.3":
   version "7.14.5"
-  resolved "https://registry.nlark.com/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.14.5.tgz#30491dad49c6059f8f8fa5ee8896a0089e987523"
+  resolved "https://registry.nlark.com/@babel/plugin-transform-runtime/download/@babel/plugin-transform-runtime-7.14.5.tgz?cache=0&sync_timestamp=1623280381633&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40babel%2Fplugin-transform-runtime%2Fdownload%2F%40babel%2Fplugin-transform-runtime-7.14.5.tgz#30491dad49c6059f8f8fa5ee8896a0089e987523"
   integrity sha1-MEkdrUnGBZ+Pj6XuiJagCJ6YdSM=
   dependencies:
     "@babel/helper-module-imports" "^7.14.5"
@@ -2532,9 +2532,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723:
-  version "1.3.756"
-  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.756.tgz?cache=0&sync_timestamp=1624485790609&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.756.tgz#942cee59cd64d19f576d8d5804eef09cb423740c"
-  integrity sha1-lCzuWc1k0Z9XbY1YBO7wnLQjdAw=
+  version "1.3.757"
+  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.757.tgz?cache=0&sync_timestamp=1624572333951&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.757.tgz#ff99436c99ca0fc5d120e11030a868401396e0e1"
+  integrity sha1-/5lDbJnKD8XRIOEQMKhoQBOW4OE=
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -3768,9 +3768,9 @@ jest-worker@^26.5.0:
     supports-color "^7.0.0"
 
 jqtree@^1.4.12:
-  version "1.6.0"
-  resolved "https://registry.nlark.com/jqtree/download/jqtree-1.6.0.tgz#43702265f06f04b5f4755892256f423f51b3c8d5"
-  integrity sha1-Q3AiZfBvBLX0dViSJW9CP1GzyNU=
+  version "1.6.1"
+  resolved "https://registry.nlark.com/jqtree/download/jqtree-1.6.1.tgz#1df198aec08627ccf03705acf1975c6315355144"
+  integrity sha1-HfGYrsCGJ8zwNwWs8ZdcYxU1UUQ=
   dependencies:
     jquery ">=1.9"
 
@@ -4554,7 +4554,7 @@ p-map@^4.0.0:
 
 p-retry@^3.0.1:
   version "3.0.1"
-  resolved "https://registry.npm.taobao.org/p-retry/download/p-retry-3.0.1.tgz?cache=0&sync_timestamp=1617001968077&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fp-retry%2Fdownload%2Fp-retry-3.0.1.tgz#316b4c8893e2c8dc1cfa891f406c4b422bebf328"
+  resolved "https://registry.nlark.com/p-retry/download/p-retry-3.0.1.tgz?cache=0&sync_timestamp=1624534411422&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fp-retry%2Fdownload%2Fp-retry-3.0.1.tgz#316b4c8893e2c8dc1cfa891f406c4b422bebf328"
   integrity sha1-MWtMiJPiyNwc+okfQGxLQivr8yg=
   dependencies:
     retry "^0.12.0"
@@ -6270,7 +6270,7 @@ strip-eof@^1.0.0:
 
 style-loader@^1.3.0:
   version "1.3.0"
-  resolved "https://registry.npm.taobao.org/style-loader/download/style-loader-1.3.0.tgz#828b4a3b3b7e7aa5847ce7bae9e874512114249e"
+  resolved "https://registry.nlark.com/style-loader/download/style-loader-1.3.0.tgz?cache=0&sync_timestamp=1624560213944&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fstyle-loader%2Fdownload%2Fstyle-loader-1.3.0.tgz#828b4a3b3b7e7aa5847ce7bae9e874512114249e"
   integrity sha1-gotKOzt+eqWEfOe66eh0USEUJJ4=
   dependencies:
     loader-utils "^2.0.0"
