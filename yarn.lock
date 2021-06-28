@@ -2532,9 +2532,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723:
-  version "1.3.759"
-  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.759.tgz?cache=0&sync_timestamp=1624658662388&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.759.tgz#b0d652d376831470a4c230ba721da2427bfb996a"
-  integrity sha1-sNZS03aDFHCkwjC6ch2iQnv7mWo=
+  version "1.3.760"
+  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.760.tgz#cf19c9ae9ff23c0ac6bb289e3b71c09b7c3f8de1"
+  integrity sha1-zxnJrp/yPArGuyieO3HAm3w/jeE=
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -3760,7 +3760,7 @@ isobject@^3.0.0, isobject@^3.0.1:
 
 jest-worker@^26.5.0:
   version "26.6.2"
-  resolved "https://registry.nlark.com/jest-worker/download/jest-worker-26.6.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjest-worker%2Fdownload%2Fjest-worker-26.6.2.tgz#7f72cbc4d643c365e27b9fd775f9d0eaa9c7a8ed"
+  resolved "https://registry.nlark.com/jest-worker/download/jest-worker-26.6.2.tgz#7f72cbc4d643c365e27b9fd775f9d0eaa9c7a8ed"
   integrity sha1-f3LLxNZDw2Xie5/XdfnQ6qnHqO0=
   dependencies:
     "@types/node" "*"
@@ -6382,9 +6382,9 @@ terser@^4.1.2:
     source-map-support "~0.5.12"
 
 terser@^5.3.4:
-  version "5.7.0"
-  resolved "https://registry.nlark.com/terser/download/terser-5.7.0.tgz#a761eeec206bc87b605ab13029876ead938ae693"
-  integrity sha1-p2Hu7CBryHtgWrEwKYdurZOK5pM=
+  version "5.7.1"
+  resolved "https://registry.nlark.com/terser/download/terser-5.7.1.tgz#2dc7a61009b66bb638305cb2a824763b116bf784"
+  integrity sha1-LcemEAm2a7Y4MFyyqCR2OxFr94Q=
   dependencies:
     commander "^2.20.0"
     source-map "~0.7.2"
