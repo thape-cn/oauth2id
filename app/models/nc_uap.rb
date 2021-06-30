@@ -172,12 +172,6 @@ WHERE hi_psnjob.ismainjob = 'Y'
     end
   end
 
-  def self.clean_no_user_positions
-    Position.all.each do |position|
-      position.destroy if position.users.count.zero?
-    end
-  end
-
   def self.set_profile_job_level
     User.all.each do |user|
       next if user.profile.nil?
