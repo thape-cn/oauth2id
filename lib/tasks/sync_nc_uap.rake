@@ -31,7 +31,6 @@ namespace :sync_nc_uap do
     puts 'Upserts the users'
     NcUap.upserts_users
     NcUap.upserts_position_users
-    NcUap.clean_no_user_positions
     NcUap.set_profile_job_level
     NcUap.upserts_user_majors
     puts 'Lock the leaved users'
