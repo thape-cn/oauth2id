@@ -25,6 +25,26 @@ namespace :import_export do
     end
   end
 
+  desc 'Export positions CSV'
+  task :export_position_csv, [:csv_file_path] => [:environment] do |_task, args|
+    csv_file_path = args[:csv_file_path]
+    CSV.open(csv_file_path, 'w') do |csv|
+      csv << %w[name functional_category dept_code b_postcode b_postname nc_pk_post]
+      Position.order(id: :asc).find_each do |p|
+        values = []
+        values << p.name
+        values << p.functional_category
+        dept_code = Department.find_by(id: p.department_id)&.dept_code
+        values << dept_code
+
+        values << p.b_postcode
+        values << p.b_postname
+        values << p.nc_pk_post
+        csv << values
+      end
+    end
+  end
+
   desc 'Export CSV the user list for Cybros'
   task :export_for_cybros, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
