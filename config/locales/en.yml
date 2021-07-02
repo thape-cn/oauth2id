@@ -87,6 +87,7 @@ en:
     locked_at: "Locked at"
     major_code: "Major code"
     major_name: "Major name"
+    leave_company_date: "Leave company date"
   jwts:
     index:
       title: "Management application and its JWT authorization"
