@@ -64,8 +64,7 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    @user.skip_confirmation_notification!
-    if @user.update(user_params) && @user.confirm
+    if @user.update(user_params)
       redirect_to employees_path, notice: I18n.t('ui.update_success')
     else
       render 'edit'
