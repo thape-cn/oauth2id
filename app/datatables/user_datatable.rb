@@ -26,8 +26,8 @@ class UserDatatable < ApplicationDatatable
     records.map do |record|
       { id: record.id,
         username: render(partial: 'datatable/user_status', locals: {user: record}, formats: :html),
-        chinese_name: record.profile.chinese_name,
-        clerk_code: record.profile.clerk_code,
+        chinese_name: record.profile&.chinese_name,
+        clerk_code: record.profile&.clerk_code,
         email: record.email,
         admin_action: link_to(fa_icon('edit'), edit_employee_path(record), remote: true) }
     end
