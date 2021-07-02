@@ -96,6 +96,7 @@ en:
     locked_at: "Locked at"
     major_code: "Major code"
     major_name: "Major name"
+    leave_company_date: "Leave company date"
   department:
     name: "Department name"
     managed_by_department: "Managed by department"

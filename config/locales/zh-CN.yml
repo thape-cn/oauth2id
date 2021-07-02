@@ -96,6 +96,7 @@ zh-CN:
     locked_at: "锁定日期"
     major_code: "专业编码"
     major_name: "专业名称"
+    leave_company_date: "离职日期"
   department:
     name: "部门名称"
     managed_by_department: "上级部门"
