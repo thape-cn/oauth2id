@@ -141,6 +141,26 @@ WHERE post_id != '~'
     end
   end
 
+  def self.nc_user_entry_company_date
+    NcUap.connection.select_rows("
+SELECT a.begindate, b.clerkcode
+FROM (SELECT MAX(begindate) begindate, pk_psndoc
+  FROM NC6337.hi_psnorg a GROUP BY pk_psndoc) a
+  LEFT JOIN (SELECT DISTINCT clerkcode, pk_psndoc FROM nc6337.hi_psnjob) b on a.pk_psndoc = b.pk_psndoc
+")
+  end
+
+  def self.upserts_user_entry_company_date
+    NcUap.nc_user_majors.each do |pu|
+      entry_company_date = pu[0]&.strip
+      clerk_code = pu[1]&.strip
+      profile = Profile.find_by(clerk_code: clerk_code)
+      next if profile.nil?
+
+      profile.update(entry_company_date: entry_company_date)
+    end
+  end
+
   def self.nc_user_majors
     NcUap.connection.select_rows("
 SELECT hi_psnjob.clerkcode, bd_defdoc.code major_code, bd_defdoc.name major_name
