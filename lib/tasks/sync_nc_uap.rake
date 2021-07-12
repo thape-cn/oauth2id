@@ -32,6 +32,7 @@ namespace :sync_nc_uap do
     NcUap.upserts_users
     NcUap.upserts_position_users
     NcUap.set_profile_job_level
+    NcUap.upserts_user_entry_company_date
     NcUap.upserts_user_majors
     puts 'Lock the leaved users'
     NcUap.enable_all_users
