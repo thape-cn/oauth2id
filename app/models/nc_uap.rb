@@ -38,10 +38,9 @@ from nc6337.o2_docquit a
   def self.nc_users
     NcUap.connection.select_rows("
 SELECT bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_psndoc.mobile,
-       hi_psnjob.pk_dept, bd_psndoc.birthdate, hi_psnorg.begindate
+       hi_psnjob.pk_dept, bd_psndoc.birthdate
   FROM NC6337.bd_psndoc bd_psndoc
 INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-LEFT JOIN NC6337.hi_psnorg hi_psnorg on hi_psnorg.pk_psndoc = bd_psndoc.pk_psndoc
 WHERE hi_psnjob.ismainjob = 'Y'
   AND hi_psnjob.lastflag = 'Y'
   AND hi_psnjob.endflag = 'N'
@@ -59,7 +58,6 @@ WHERE hi_psnjob.ismainjob = 'Y'
       mobile = u[4]&.strip
       pk_dept = u[5]
       birthdate = u[6]
-      entry_company_date = u[7]
       puts "Import user: #{chinese_name}"
 
       email = if email.present? && email.include?('@') && email != '@'
@@ -100,7 +98,6 @@ WHERE hi_psnjob.ismainjob = 'Y'
       profile.clerk_code = clerk_code
       profile.phone = mobile
       profile.birthdate = birthdate
-      profile.entry_company_date = entry_company_date
       profile.save
 
       user_department = Department.find_by!(nc_pk_dept: pk_dept)
