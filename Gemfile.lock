@@ -205,7 +205,7 @@ GEM
     llhttp-ffi (0.3.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.10.0)
+    loofah (2.11.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     macaddr (1.7.2)
@@ -413,4 +413,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.24
+   2.2.25
