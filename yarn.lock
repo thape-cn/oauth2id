@@ -2532,9 +2532,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.793:
-  version "1.3.799"
-  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.799.tgz?cache=0&sync_timestamp=1628301859140&other_urls=https%3A%2F%2Fregistry.nlark.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.799.tgz#6e9911b25e7ecd5aa1e54dcb68f82a3e02d00f09"
-  integrity sha1-bpkRsl5+zVqh5U3LaPgqPgLQDwk=
+  version "1.3.800"
+  resolved "https://registry.nlark.com/electron-to-chromium/download/electron-to-chromium-1.3.800.tgz#8efbb11e88b0a072d5c0250e6249123d3a76cb9a"
+  integrity sha1-jvuxHoiwoHLVwCUOYkkSPTp2y5o=
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -2587,7 +2587,7 @@ enhanced-resolve@^4.1.1, enhanced-resolve@^4.5.0:
 
 entities@^2.0.0:
   version "2.2.0"
-  resolved "https://registry.nlark.com/entities/download/entities-2.2.0.tgz?cache=0&sync_timestamp=1628374557753&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fentities%2Fdownload%2Fentities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  resolved "https://registry.nlark.com/entities/download/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
   integrity sha1-CY3JDruD2N/6CJ1VJWs1HTTE2lU=
 
 errno@^0.1.3, errno@~0.1.7:
@@ -5425,7 +5425,7 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2
 
 prepend-http@^1.0.0:
   version "1.0.4"
-  resolved "https://registry.nlark.com/prepend-http/download/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
+  resolved "https://registry.nlark.com/prepend-http/download/prepend-http-1.0.4.tgz?cache=0&sync_timestamp=1628547439455&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fprepend-http%2Fdownload%2Fprepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
 process-nextick-args@~2.0.0:
@@ -6209,7 +6209,7 @@ stimulus@^2.0.0:
 
 stream-browserify@^2.0.1:
   version "2.0.2"
-  resolved "https://registry.nlark.com/stream-browserify/download/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
+  resolved "https://registry.npm.taobao.org/stream-browserify/download/stream-browserify-2.0.2.tgz#87521d38a44aa7ee91ce1cd2a47df0cb49dd660b"
   integrity sha1-h1IdOKRKp+6RzhzSpH3wy0ndZgs=
   dependencies:
     inherits "~2.0.1"
@@ -6365,9 +6365,9 @@ tapable@^1.0.0, tapable@^1.1.3:
   integrity sha1-ofzMBrWNth/XpF2i2kT186Pme6I=
 
 tar@^6.0.2:
-  version "6.1.6"
-  resolved "https://registry.nlark.com/tar/download/tar-6.1.6.tgz#c23d797b0a1efe5d479b1490805c5443f3560c5d"
-  integrity sha1-wj15ewoe/l1HmxSQgFxUQ/NWDF0=
+  version "6.1.7"
+  resolved "https://registry.nlark.com/tar/download/tar-6.1.7.tgz?cache=0&sync_timestamp=1628551130388&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftar%2Fdownload%2Ftar-6.1.7.tgz#c566d1107d38b09e92983a68db5534fc7f6cab42"
+  integrity sha1-xWbREH04sJ6SmDpo21U0/H9sq0I=
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
