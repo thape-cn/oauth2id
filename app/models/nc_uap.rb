@@ -146,7 +146,9 @@ WHERE post_id != '~'
 SELECT a.begindate, b.clerkcode
 FROM (SELECT MAX(begindate) begindate, pk_psndoc
   FROM NC6337.hi_psnorg a GROUP BY pk_psndoc) a
-  LEFT JOIN (SELECT DISTINCT clerkcode, pk_psndoc FROM nc6337.hi_psnjob) b on a.pk_psndoc = b.pk_psndoc
+  LEFT JOIN (SELECT DISTINCT clerkcode, pk_psndoc FROM nc6337.hi_psnjob
+  WHERE begindate is not null
+  ) b on a.pk_psndoc = b.pk_psndoc
 ")
   end
 
