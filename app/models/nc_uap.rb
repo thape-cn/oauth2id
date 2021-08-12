@@ -153,7 +153,7 @@ FROM (SELECT MAX(begindate) begindate, pk_psndoc
   end
 
   def self.upserts_user_entry_company_date
-    NcUap.nc_user_majors.each do |pu|
+    NcUap.nc_user_entry_company_date.each do |pu|
       entry_company_date = pu[0]&.strip
       clerk_code = pu[1]&.strip
       profile = Profile.find_by(clerk_code: clerk_code)
