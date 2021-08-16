@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: c25f567785cc37d6d4714f31133d64c0f7537aa3
+  revision: 16c2ebee19aabd3def2e09dd7695b74916d667a8
   branch: main
   specs:
     wechat (0.13.3)
@@ -233,7 +233,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.4.0)
       nio4r (~> 2.0)
-    pundit (2.1.0)
+    pundit (2.1.1)
       activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -357,8 +357,8 @@ GEM
       activesupport (>= 3.0.0)
       nokogiri (>= 1.6.0, < 2.0.0)
       xmlmapper (>= 0.7.3)
-    xmlmapper (0.8.0)
-      nokogiri (~> 1.5)
+    xmlmapper (0.8.1)
+      nokogiri (~> 1.11)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
