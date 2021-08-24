@@ -14,7 +14,7 @@ from nc6337.o2_docquit a
   end
 
   def self.enable_all_users
-    User.where("email like '%@thape.com.cn'").where.not(locked_at: nil).update_all(locked_at: nil)
+    User.where("email like '%@thape.com.cn'").or(User.where("email like '%@eid-arch.com.hk'")).where.not(locked_at: nil).update_all(locked_at: nil)
   end
 
   def self.lock_leaved_users
