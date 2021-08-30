@@ -1,9 +1,9 @@
 document.addEventListener("turbolinks:load", function() {
   $("#user-sign-in").on("ajax:before", function(event, settings) {
-    let user_name = event.currentTarget[2].value
+    let user_name = $('#input-user-name').val();
     let user_array = user_name.split('@');
     if(user_array.length > 1 && user_array[1]=='thape.com.cn') {
-      event.currentTarget[2].value = user_array[0];
+      $('#input-user-name').val(user_array[0]);
     }
     return true;
   });
