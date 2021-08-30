@@ -12,6 +12,10 @@ a.app-header__logo {
   min-height: 502px !important;
 }
 
+.login-box.flipped {
+  min-height: 350px !important;
+}
+
 .app-login-box {
   @media(max-width: 480px) { display: none; }
   align-self: center;
