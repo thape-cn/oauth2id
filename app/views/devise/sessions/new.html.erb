@@ -37,20 +37,21 @@
           <p class="text-center" id="user-sign-in-hint"><%= t('ui.enable_javascript_to_login') %></p>
         </div>
     <% end %>
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'forget-form' }) do |f| %>
-        <h3 class="login-head">
-          <i class="fa fa-lg fa-fw fa-lock"></i><%= t('user.forgot_password') -%>
-        </h3>
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'forget-form', style: 'padding-top: 20px' }) do |f| %>
+        <h5 class="login-head">
+          <i class="fa fa-lg fa-fw fa-lock"></i><%= t('user.resend_unlock_instructions') -%>
+        </h5>
+        <p><%= t('user.reset_password_instructions') -%></p>
         <div class="form-group">
           <label class="control-label"><%= t('user.email') -%></label>
           <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
         </div>
         <div class="form-group btn-container">
           <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block') do %>
-            <i class="fa fa-unlock fa-lg fa-fw"></i><%= t('form.reset') -%>
+            <i class="fa fa-unlock fa-lg fa-fw"></i><%= t('user.resend') -%>
           <% end %>
         </div>
-        <div class="form-group mt-3">
+        <div class="form-group mt-1">
           <p class="semibold-text mb-0">
             <a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> <%= t('user.back_to_login') -%></a>
             <% if FeatureToggles.allow_user_signup? %>
