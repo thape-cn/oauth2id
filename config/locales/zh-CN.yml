@@ -80,7 +80,7 @@ zh-CN:
     resend: "重新发送"
     resend_confirmation: "重新发送确认 ？"
     resend_confirmation_instructions: "重新发送确认说明"
-    reset_password_instructions: "请咨询 7777 重新设置密码，有时候您的密码没错，但是有人攻击穷举您的密码，这时候账号会被锁定，SSO 会发送 Outlook 邮件引导您解锁账号。"
+    reset_password_instructions: "有时候您的密码没错，但是由于之前有人攻击穷举您的密码，这时候账号会被锁定，SSO 会发送 Outlook 邮件引导您解锁账号，解锁后可以再试十次登录，您也可以递交表单发送解锁邮件。"
     edit_user_access: "编辑用户访问权限"
     show_user: "查看用户信息"
     title: "称谓"

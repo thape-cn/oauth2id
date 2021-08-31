@@ -80,7 +80,7 @@ en:
     resend: "Resent"
     resend_confirmation: "Resend confirmation ?"
     resend_confirmation_instructions: "Resend confirmation instructions"
-    reset_password_instructions: "Please consult 7777 to reset your password. Sometimes your password is correct, but someone attacked your password. At this time, your account will be locked, and SSO will send an email to guide you to unlock your account."
+    reset_password_instructions: "Sometimes your password is correct, but because someone attacked your password before, the account will be locked at this time, and SSO will send an Outlook email to guide you to unlock the account. After unlocking, you can try to log in ten more times, and you can also submit the form. Send an unlock email."
     edit_user_access: "Edit User Access"
     show_user: "Show User Information"
     title: "Title"
