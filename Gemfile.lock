@@ -1,9 +1,9 @@
 GIT
   remote: https://e.coding.net/sew/doorkeeper.git
-  revision: 76c6ed657b202a169586d43652d60aab635f6e20
+  revision: 54668fb8301ce02613fca569f0c5addb241487ed
   branch: main
   specs:
-    doorkeeper (5.5.1)
+    doorkeeper (5.5.3)
       railties (>= 5)
 
 GIT
@@ -21,10 +21,10 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: 88f2df8ec0f934611070def307afb24ac67a2f76
+  revision: 383dd028fea57cfe2b9ff3e08e87fc7691c211e1
   branch: master
   specs:
-    doorkeeper-openid_connect (1.8.0.pre.rc1)
+    doorkeeper-openid_connect (1.8.0)
       doorkeeper (>= 5.5, < 5.6)
       json-jwt (>= 1.11.0)
 
