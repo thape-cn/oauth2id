@@ -1,6 +1,6 @@
 GIT
   remote: https://e.coding.net/sew/doorkeeper.git
-  revision: 54668fb8301ce02613fca569f0c5addb241487ed
+  revision: f2142e1825f4ea1b4183bd0f49acc23e380c2766
   branch: main
   specs:
     doorkeeper (5.5.3)
@@ -224,10 +224,10 @@ GEM
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    nokogiri (1.12.4-x86_64-darwin)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (4.0.6)
@@ -409,4 +409,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
