@@ -1,9 +1,9 @@
 GIT
   remote: https://e.coding.net/sew/doorkeeper.git
-  revision: f2142e1825f4ea1b4183bd0f49acc23e380c2766
+  revision: 3304eae703e7ea9289b94d9abbc6f78e7581ee95
   branch: main
   specs:
-    doorkeeper (5.5.3)
+    doorkeeper (5.5.4)
       railties (>= 5)
 
 GIT
@@ -168,7 +168,7 @@ GEM
       concurrent-ruby (~> 1.0)
     erubi (1.10.0)
     execjs (2.8.1)
-    ffaker (2.19.0)
+    ffaker (2.20.0)
     ffi (1.15.4)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
