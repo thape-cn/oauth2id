@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 23531d597535972e934e62ca23bdfedfa6b36fc3
+  revision: d0d93af12f3a8dddbd45bdfdaa769b816c2f382c
   branch: main
   specs:
     wechat (0.14.0)
@@ -143,7 +143,7 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    dalli (3.0.0)
+    dalli (3.0.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -406,7 +406,7 @@ DEPENDENCIES
   xmlenc
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.2p107
 
 BUNDLED WITH
    2.2.29
