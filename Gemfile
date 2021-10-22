@@ -23,8 +23,7 @@ gem 'sprockets'
 # Host ourself instead of relay on CDN
 gem 'font-awesome-rails'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem 'terser'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker'
 
