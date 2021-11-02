@@ -252,14 +252,14 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.16.0":
-  version "7.16.0"
-  resolved "https://registry.npmmirror.com/@babel/parser/download/@babel/parser-7.16.0.tgz#cf147d7ada0a3655e79bf4b08ee846f00a00a295"
-  integrity sha1-zxR9etoKNlXnm/SwjuhG8AoAopU=
+  version "7.16.2"
+  resolved "https://registry.npmmirror.com/@babel/parser/download/@babel/parser-7.16.2.tgz#3723cd5c8d8773eef96ce57ea1d9b7faaccd12ac"
+  integrity sha1-NyPNXI2Hc+75bOV+odm3+qzNEqw=
 
 "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@^7.16.0":
-  version "7.16.0"
-  resolved "https://registry.npmmirror.com/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/download/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.16.0.tgz#efb7f147042aca34ce8156a055906a7abaadeaf0"
-  integrity sha1-77fxRwQqyjTOgVagVZBqerqt6vA=
+  version "7.16.2"
+  resolved "https://registry.npmmirror.com/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/download/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.16.2.tgz?cache=0&sync_timestamp=1635837362783&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40babel%2Fplugin-bugfix-safari-id-destructuring-collision-in-function-expression%2Fdownload%2F%40babel%2Fplugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.16.2.tgz#2977fca9b212db153c195674e57cfab807733183"
+  integrity sha1-KXf8qbIS2xU8GVZ05Xz6uAdzMYM=
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
@@ -2549,9 +2549,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.878:
-  version "1.3.885"
-  resolved "https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.3.885.tgz?cache=0&sync_timestamp=1635734600590&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.885.tgz#c8cec32fbc61364127849ae00f2395a1bae7c454"
-  integrity sha1-yM7DL7xhNkEnhJrgDyOVobrnxFQ=
+  version "1.3.886"
+  resolved "https://registry.npmmirror.com/electron-to-chromium/download/electron-to-chromium-1.3.886.tgz?cache=0&sync_timestamp=1635822719687&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.886.tgz#ac039c4001b665b1dd0f0ed9c2e4da90ff3c9267"
+  integrity sha1-rAOcQAG2ZbHdDw7ZwuTakP88kmc=
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -2939,7 +2939,7 @@ find-up@^4.0.0:
 
 findup-sync@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.npm.taobao.org/findup-sync/download/findup-sync-3.0.0.tgz#17b108f9ee512dfb7a5c7f3c8b27ea9e1a9c08d1"
+  resolved "https://registry.npmmirror.com/findup-sync/download/findup-sync-3.0.0.tgz?cache=0&sync_timestamp=1635766146977&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ffindup-sync%2Fdownload%2Ffindup-sync-3.0.0.tgz#17b108f9ee512dfb7a5c7f3c8b27ea9e1a9c08d1"
   integrity sha1-F7EI+e5RLft6XH88iyfqnhqcCNE=
   dependencies:
     detect-file "^1.0.0"
@@ -5185,7 +5185,7 @@ postcss-modules-values@^3.0.0:
 
 postcss-nesting@^7.0.0:
   version "7.0.1"
-  resolved "https://registry.nlark.com/postcss-nesting/download/postcss-nesting-7.0.1.tgz#b50ad7b7f0173e5b5e3880c3501344703e04c052"
+  resolved "https://registry.npmmirror.com/postcss-nesting/download/postcss-nesting-7.0.1.tgz#b50ad7b7f0173e5b5e3880c3501344703e04c052"
   integrity sha1-tQrXt/AXPlteOIDDUBNEcD4EwFI=
   dependencies:
     postcss "^7.0.2"
