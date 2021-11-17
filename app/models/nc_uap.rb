@@ -89,7 +89,9 @@ WHERE hi_psnjob.ismainjob = 'Y'
              end
       user.username ||= email.split('@').first == '#' ? clerk_code : email.split('@').first
       user.skip_password_validation = true
-      user.locked_at ||= Time.zone.now unless user.email.end_with?('@thape.com.cn')
+      unless user.email.end_with?('@thape.com.cn') || user.email.end_with?('@eid-arch.com.hk') || user.email.end_with?('@thape.com')
+        user.locked_at ||= Time.zone.now
+      end
       user.save
 
       profile = user.profile || user.build_profile
