@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: d0d93af12f3a8dddbd45bdfdaa769b816c2f382c
+  revision: 18fc6a8a50440e0417d5f175432a909fd377edfa
   branch: main
   specs:
     wechat (0.14.0)
@@ -335,7 +335,7 @@ GEM
       dry-configurable (~> 0.13)
       jwt (~> 2.1)
       warden (~> 1.2)
-    web-console (4.1.0)
+    web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
