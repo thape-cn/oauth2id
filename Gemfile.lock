@@ -144,7 +144,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
-    dalli (3.0.4)
+    dalli (3.0.5)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
