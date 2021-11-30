@@ -1,6 +1,12 @@
 require 'tiny_tds'
 
 namespace :sync_nc_uap do
+  desc 'Clean the PositionUser and DepartmentUser record'
+  task clean_position_department_user: :environment do
+    PositionUser.joins(user: :profile).where.not('profiles.leave_company_date': nil).delete_all
+    DepartmentUser.joins(user: :profile).where.not('profiles.leave_company_date': nil).delete_all
+  end
+
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
 
