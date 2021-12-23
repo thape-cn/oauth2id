@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 245560c3b355ab630d10b00b29136b87fda47489
+  revision: 2e5031d2601dafd2793e244e7a6b7454247b905c
   branch: main
   specs:
     wechat (0.15.0)
@@ -174,8 +174,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    font-awesome-rails (4.7.0.7)
-      railties (>= 3.2, < 7)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     http (5.0.4)
@@ -189,7 +189,8 @@ GEM
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     ipip-fast (0.0.2)
-    jbuilder (2.11.4)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -412,4 +413,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.32
+   2.3.1
