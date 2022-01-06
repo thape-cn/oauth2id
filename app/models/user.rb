@@ -61,19 +61,24 @@ class User < ApplicationRecord
 
   # Will be called at gem devise_ldap_authenticatable, lib/devise_ldap_authenticatable/model.rb:107
   def ldap_before_save
-    li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
+    li = Devise::LDAP::Adapter.get_ldap_entry(username)
     self.username = li[:samaccountname].first.to_s
-    self.email = li[:mail].first.to_s
-    errors.add(:email, 'Email is empty from AD') if self.email.blank?
+    if li[:dn][0].include?('功能账户')
+      self.email = "#{username}@thape.com.cn"
+    else
+      self.email = li[:mail].first.to_s
+    end
+    errors.add(:email, 'Email is empty from AD') if email.blank?
   end
 
   def after_ldap_authentication
     li = Devise::LDAP::Adapter.get_ldap_entry(self.username)
     desk_phone = li[:telephonenumber].first.to_s
     update_columns(desk_phone: desk_phone)
+    is_function_account = li[:dn][0].include?('功能账户')
     Rails.logger.debug li[:title]
     Rails.logger.debug li[:mail]
-    return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生')
+    return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生') || is_function_account
   end
 
   def chinese_name
