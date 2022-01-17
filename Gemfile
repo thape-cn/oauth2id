@@ -84,6 +84,8 @@ group :development do
   gem 'capistrano3-puma'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :test do
