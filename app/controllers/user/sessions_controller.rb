@@ -44,7 +44,7 @@ class User::SessionsController < Devise::SessionsController
       departments: combine_deparments
     }
     Rails.logger.debug "user_attrs: #{user_attrs}"
-    response1 = HTTP.options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
+    response1 = HTTP.timeout(4).options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
     Rails.logger.debug response1
 
     jwt_token = request.env['warden-jwt_auth.token']
@@ -65,6 +65,7 @@ class User::SessionsController < Devise::SessionsController
     end
   rescue Exception => e
     Rails.logger.debug e
+    Rails.logger.debug e.class
     redirect_to new_user_session_path, alert: "目前无法登录，请使用您的Windows邮箱做为用户名进行登录，还有问题请联系IT检查。"
   end
 
