@@ -84,9 +84,11 @@ psql -d postgres
 ```psql
 DROP DATABASE thape_sso_dev;
 CREATE DATABASE thape_sso_dev WITH ENCODING='UTF8' OWNER='guochunzhong';
+\q
 ```
 
 ```bat
 psql -d thape_sso_dev -f databasename.psql
 ```
 
+May replace ' datetime(6) ' with ' timestamp(6) without time zone '.
