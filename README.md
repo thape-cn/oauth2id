@@ -61,3 +61,32 @@ openssl x509 -in oauth2id_saml_cert.crt -noout -sha256 -fingerprint
 ```bash
 bin/setup
 ```
+
+
+## To migrate MySQL to Postgresql
+
+Get db_converter.py from below:
+
+https://github.com/bhmj/mysql-postgresql-converter
+
+```bash
+mysqldump --set-gtid-purged=OFF --no-tablespaces --compatible=postgresql --default-character-set=utf8 -r databasename.mysql -u thape_sso_prod thape_sso_prod -p
+python ./mysql-postgresql-converter/db_converter.py databasename.mysql databasename.psql
+zip -9 databasename.zip databasename.psql
+```
+
+Copy the databasename.psql and import via below.
+
+```bat
+psql -d postgres
+```
+
+```psql
+DROP DATABASE thape_sso_dev;
+CREATE DATABASE thape_sso_dev WITH ENCODING='UTF8' OWNER='guochunzhong';
+```
+
+```bat
+psql -d thape_sso_dev -f databasename.psql
+```
+
