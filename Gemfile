@@ -16,9 +16,11 @@ gem 'sqlite3'
 
 # Thape using mysql as production
 gem 'mysql2'
-# Use Oracle to fetch NC data
-gem 'activerecord-oracle_enhanced-adapter'
-gem 'ruby-oci8'
+unless ENV["NO_ORACLE_ENHANCED"]
+  # Use Oracle to fetch NC data
+  gem 'ruby-oci8'
+  gem 'activerecord-oracle_enhanced-adapter'
+end
 gem 'tiny_tds', require: false
 gem 'irb'
 
