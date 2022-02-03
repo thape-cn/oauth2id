@@ -112,7 +112,7 @@ GEM
     bcrypt_pbkdf (1.1.0)
     bindata (2.4.10)
     bindex (0.8.1)
-    bootsnap (1.10.2)
+    bootsnap (1.10.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
