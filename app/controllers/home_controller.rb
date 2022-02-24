@@ -23,7 +23,7 @@ class HomeController < ApplicationController
         Doorkeeper::Application.all
       end.where.not(id: 11)
 
-      @applications = if current_user.is_function_account
+      @applications = if current_user.present? && current_user.is_function_account
         applications.where(allow_function_account_login: true)
       else
         applications
