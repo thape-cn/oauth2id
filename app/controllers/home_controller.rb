@@ -15,13 +15,19 @@ class HomeController < ApplicationController
       redirect_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url]
     else
       @portal = Doorkeeper::Application.find_by!(id: 11)
-      @applications = if current_user.present?
+      applications = if current_user.present?
         user_allowed_application_ids = current_user.user_allowed_applications.where(enable: true).pluck(:oauth_application_id)
         Doorkeeper::Application.where(id: user_allowed_application_ids)
           .or(Doorkeeper::Application.where(allow_login_by_default: true))
       else
         Doorkeeper::Application.all
       end.where.not(id: 11)
+
+      @applications = if current_user.is_function_account
+        applications.where(allow_function_account_login: true)
+      else
+        applications
+      end
     end
   end
 
