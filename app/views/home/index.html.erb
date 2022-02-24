@@ -6,7 +6,11 @@
   </div>
 
   <div class="row">
-    <%= render partial: "app_div", locals: { application: @portal } %>
+    <% if current_user.present? && current_user.is_function_account %>
+      <%= render partial: "app_div", locals: { application: @portal } if @portal.allow_function_account_login %>
+    <% else %>
+      <%= render partial: "app_div", locals: { application: @portal } %>
+    <% end %>
     <div class="col-md-6 col-lg-4">
       <div class="widget-small primary coloured-icon">
         <i class="icon fa fa-television fa-3x"></i>
