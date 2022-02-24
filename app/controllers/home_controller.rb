@@ -18,10 +18,10 @@ class HomeController < ApplicationController
       @applications = if current_user.present?
         user_allowed_application_ids = current_user.user_allowed_applications.where(enable: true).pluck(:oauth_application_id)
         Doorkeeper::Application.where(id: user_allowed_application_ids)
-          .or(Doorkeeper::Application.where(allow_login_by_default: true)).where.not(id: 11)
+          .or(Doorkeeper::Application.where(allow_login_by_default: true))
       else
-        Doorkeeper::Application.where.not(id: 11)
-      end
+        Doorkeeper::Application.all
+      end.where.not(id: 11)
     end
   end
 
