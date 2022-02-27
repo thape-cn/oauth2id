@@ -1,9 +1,9 @@
 GIT
   remote: https://e.coding.net/sew/doorkeeper.git
-  revision: 3304eae703e7ea9289b94d9abbc6f78e7581ee95
+  revision: fbda514d9cd0a1f0eb4c44f8ca02f9a87f9212e3
   branch: main
   specs:
-    doorkeeper (5.5.4)
+    doorkeeper (5.6.0.rc1)
       railties (>= 5)
 
 GIT
