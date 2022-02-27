@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_082831) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_03_26_082831) do
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
-    t.datetime "exp", null: false
+    t.datetime "exp", precision: nil, null: false
     t.integer "user_id", null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
@@ -24,8 +23,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
   create_table "department_users", force: :cascade do |t|
     t.integer "department_id", null: false
     t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["department_id"], name: "index_department_users_on_department_id"
     t.index ["user_id"], name: "index_department_users_on_user_id"
   end
@@ -34,8 +33,14 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "name", null: false
     t.integer "position"
     t.integer "managed_by_department_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "dept_code"
+    t.string "nc_pk_dept"
+    t.string "nc_pk_fatherorg"
+    t.string "company_name"
+    t.integer "enablestate"
+    t.string "hrcanceled", limit: 1
     t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
   end
 
@@ -45,8 +50,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
-    t.datetime "created_at", null: false
-    t.datetime "revoked_at"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "revoked_at", precision: nil
     t.string "scopes"
     t.string "code_challenge"
     t.string "code_challenge_method"
@@ -61,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at", null: false
+    t.datetime "revoked_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
     t.string "scopes"
     t.string "previous_refresh_token", default: "", null: false
     t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
@@ -78,8 +83,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.text "redirect_uri", null: false
     t.string "scopes", default: "", null: false
     t.boolean "confidential", default: true, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "icon", default: "fa-star"
     t.string "div_class", default: "primary"
     t.string "login_url"
@@ -97,8 +102,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.integer "position_id", null: false
     t.integer "user_id", null: false
     t.boolean "main_position", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["position_id"], name: "index_position_users_on_position_id"
     t.index ["user_id"], name: "index_position_users_on_user_id"
   end
@@ -106,8 +111,9 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
   create_table "positions", force: :cascade do |t|
     t.string "name"
     t.string "functional_category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "nc_pk_post"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -115,8 +121,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "title"
     t.boolean "gender"
     t.string "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "clerk_code"
     t.string "chinese_name"
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -126,15 +132,15 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.integer "user_id"
     t.integer "oauth_application_id"
     t.boolean "enable", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["oauth_application_id"], name: "index_user_allowed_applications_on_oauth_application_id"
     t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
   end
 
   create_table "user_sign_in_histories", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "sign_in_at"
+    t.datetime "sign_in_at", precision: nil
     t.text "user_agent"
     t.string "sign_in_ip"
     t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
@@ -144,22 +150,22 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "locked_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "admin"
     t.string "username"
     t.string "remember_token"
@@ -178,8 +184,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_082831) do
     t.string "party_id"
     t.string "tag_id"
     t.text "message"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
