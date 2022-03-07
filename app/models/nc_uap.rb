@@ -205,10 +205,12 @@ WHERE hi_psnjob.ismainjob = 'Y'
   def self.nc_positions
     NcUap.connection.select_rows("
 select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT,
-       om_post.pk_poststd, om_post1.postcode as b_postcode, om_post1.postname as b_postname
+       om_post.pk_poststd, om_post1.postcode as b_postcode, om_post1.postname as b_postname,
+       NC6337.bd_defdoc.code as classify_post
 from NC6337.om_post om_post
 inner join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
 inner join NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
+left join NC6337.bd_defdoc on NC6337.om_post1.worktype = bd_defdoc.pk_defdoc
 where om_post.enablestate = '2'
   and om_post.pk_post in (select distinct pk_post from nc6337.hi_psnjob where endflag= 'N')
 ")
@@ -224,6 +226,7 @@ where om_post.enablestate = '2'
       pk_poststd = p[4]
       b_postcode = p[5]
       b_postname = p[6]
+      classify_post = p[7]
 
       position = Position.find_or_create_by!(nc_pk_post: pk_post) do |pos|
         pos.name = post_name
