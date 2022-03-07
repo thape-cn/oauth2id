@@ -233,6 +233,7 @@ where om_post.enablestate = '2'
         pos.pk_poststd = pk_poststd
         pos.b_postcode = b_postcode
         pos.b_postname = b_postname
+        pos.job_type_code = classify_post
       end
       position.name = post_name
       position.functional_category = postseriesname
@@ -241,6 +242,7 @@ where om_post.enablestate = '2'
       position.pk_poststd = pk_poststd
       position.b_postcode = b_postcode
       position.b_postname = b_postname
+      position.job_type_code = classify_post
       position.save
     end
   end
