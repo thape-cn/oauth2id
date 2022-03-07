@@ -109,7 +109,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
 
   def self.nc_position_users
     NcUap.connection.select_rows("
-SELECT pncode, ismainjob, post_id, postlevel, classify_post
+SELECT pncode, ismainjob, post_id, postlevel
 FROM NC6337.V_PSNDOC_POST
 WHERE post_id != '~'
 ")
@@ -129,16 +129,13 @@ WHERE post_id != '~'
       next if position.nil?
 
       post_level = pu[3]&.strip
-      classify_post = pu[4]&.strip
 
       position_user = PositionUser.find_or_create_by!(user_id: user.id, position_id: position.id) do |p|
         p.main_position = is_main_job
         p.post_level = post_level
-        p.job_type_code = classify_post
       end
       position_user.main_position = is_main_job
       position_user.post_level = post_level
-      position_user.job_type_code = classify_post
       position_user.save
     end
   end
