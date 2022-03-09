@@ -363,6 +363,9 @@ GEM
       railties (>= 5.2)
     rexml (3.3.1)
       strscan
+    roo (2.10.1)
+      nokogiri (~> 1)
+      rubyzip (>= 1.3.0, < 3.0.0)
     ruby-oci8 (2.2.12)
     ruby-plsql (0.8.0)
     rubyzip (2.3.2)
@@ -414,7 +417,7 @@ GEM
     thor (1.3.1)
     tilt (2.4.0)
     timeout (0.4.1)
-    tiny_tds (2.1.5)
+    tiny_tds (2.1.7)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -500,6 +503,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.8)
   rails-i18n
+  roo
   ruby-oci8
   saml_idp!
   sassc-rails
