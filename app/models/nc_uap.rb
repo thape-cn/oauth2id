@@ -198,14 +198,13 @@ WHERE hi_psnjob.ismainjob = 'Y'
   def self.nc_positions
     NcUap.connection.select_rows("
 select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT,
-       om_post.pk_poststd, om_post1.postcode as b_postcode, om_post1.postname as b_postname,
-       NC6337.bd_defdoc.code as classify_post
-from NC6337.om_post om_post
-inner join NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
-inner join NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
-left join NC6337.bd_defdoc on NC6337.om_post1.worktype = bd_defdoc.pk_defdoc
-where om_post.enablestate = '2'
-  and om_post.pk_post in (select distinct pk_post from nc6337.hi_psnjob where endflag= 'N')
+       om_post.pk_poststd, om_post1.postcode AS b_postcode, om_post1.postname AS b_postname,
+       NC6337.bd_defdoc.code AS classify_post, NC6337.om_joblevel.name AS joblevelname
+FROM NC6337.om_post om_post
+INNER JOIN NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
+INNER JOIN NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
+LEFT JOIN NC6337.bd_defdoc ON NC6337.om_post1.worktype = bd_defdoc.pk_defdoc
+LEFT JOIN NC6337.om_joblevel ON NC6337.om_joblevel.pk_joblevel = om_post.glbdef3
 ")
   end
 
@@ -220,6 +219,7 @@ where om_post.enablestate = '2'
       b_postcode = p[5]
       b_postname = p[6]
       classify_post = p[7]
+      job_level_name = p[8]
 
       position = Position.find_or_create_by!(nc_pk_post: pk_post) do |pos|
         pos.name = post_name
@@ -230,6 +230,7 @@ where om_post.enablestate = '2'
         pos.b_postcode = b_postcode
         pos.b_postname = b_postname
         pos.job_type_code = classify_post
+        pos.post_level = job_level_name
       end
       position.name = post_name
       position.functional_category = postseriesname
@@ -239,6 +240,7 @@ where om_post.enablestate = '2'
       position.b_postcode = b_postcode
       position.b_postname = b_postname
       position.job_type_code = classify_post
+      position.post_level = job_level_name
       position.save
     end
   end
