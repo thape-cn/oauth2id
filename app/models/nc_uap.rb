@@ -109,7 +109,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
 
   def self.nc_position_users
     NcUap.connection.select_rows("
-SELECT pncode, ismainjob, post_id, postlevel
+SELECT pncode, ismainjob, post_id
 FROM NC6337.V_PSNDOC_POST
 WHERE post_id != '~'
 ")
@@ -128,14 +128,10 @@ WHERE post_id != '~'
       position = Position.find_by(nc_pk_post: post_id)
       next if position.nil?
 
-      post_level = pu[3]&.strip
-
       position_user = PositionUser.find_or_create_by!(user_id: user.id, position_id: position.id) do |p|
         p.main_position = is_main_job
-        p.post_level = post_level
       end
       position_user.main_position = is_main_job
-      position_user.post_level = post_level
       position_user.save
     end
   end
@@ -194,7 +190,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
     User.all.each do |user|
       next if user.profile.nil?
 
-      job_levels = user.position_users.collect { |p| p.post_level.to_i }
+      job_levels = user.positions.collect { |p| p.post_level.to_i }
       user.profile.update(job_level: job_levels.max)
     end
   end
