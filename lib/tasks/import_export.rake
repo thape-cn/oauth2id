@@ -96,7 +96,7 @@ namespace :import_export do
         end.join(';')
         values << combine_deparments
         combine_positions = u.position_users.collect do |pu|
-          "#{pu.position.id}@#{pu.position.name}@#{pu.position.functional_category}@#{pu.position.department&.dept_code}@#{pu.position.department&.name}@#{pu.position.department&.company_code}@#{pu.position.nc_pk_post}@#{pu.position.b_postcode}@#{pu.position.b_postname}@#{pu.position.department&.dept_category}@#{pu.position.department&.company_name}@#{pu.main_position}@#{pu.post_level}"
+          "#{pu.position.id}@#{pu.position.name}@#{pu.position.functional_category}@#{pu.position.department&.dept_code}@#{pu.position.department&.name}@#{pu.position.department&.company_code}@#{pu.position.nc_pk_post}@#{pu.position.b_postcode}@#{pu.position.b_postname}@#{pu.position.department&.dept_category}@#{pu.position.department&.company_name}@#{pu.main_position}@#{pu.position.post_level}"
         end.join(';')
         values << combine_positions
         csv << values
