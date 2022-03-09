@@ -1,3 +1,5 @@
+require 'roo'
+
 namespace :import_export do
   desc 'Create new users from CSV'
   task :import_from_csv, [:csv_file_path] => [:environment] do |_task, args|
@@ -15,13 +17,32 @@ namespace :import_export do
     end
   end
 
-  desc 'Import wecom_id from Tianhua2020'
-  task import_wecom_id: :environment do
+  desc 'Import wecom_id from Tianhua2020 DB'
+  task import_wecom_id_from_db: :environment do
     Bill::Tianhua2020.all.each do |t|
       p = Profile.find_by(clerk_code: format('%06d', t.clerkcode))
       next if p.nil?
 
       p.update_columns(wecom_id: t.wecom_id)
+    end
+  end
+
+  desc 'Import wecom_id from Excel file'
+  task :import_wecom_id_from_excel, [:file_path] => [:environment] do |task, args|
+    excel_file_path = args[:file_path]
+    return unless excel_file_path.present?
+
+    xlsx = Roo::Excelx.new(excel_file_path)
+    xlsx.each_row_streaming(offset: 1) do |row|
+      微信账号 = row[0]&.value&.to_s&.strip
+      邮箱 = row[1]&.value&.to_s&.strip
+
+      u = User.find_by(email: 邮箱)
+      next if u.nil?
+
+      puts "Update: #{邮箱} with #{微信账号}"
+      profile = u.profile || u.build_profile
+      profile.update(wecom_id: 微信账号)
     end
   end
 
