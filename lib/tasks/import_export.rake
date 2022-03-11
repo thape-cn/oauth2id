@@ -50,7 +50,7 @@ namespace :import_export do
   task :export_position_csv, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
     CSV.open(csv_file_path, 'w') do |csv|
-      csv << %w[name functional_category dept_code b_postcode b_postname nc_pk_post job_type_code]
+      csv << %w[name functional_category dept_code b_postcode b_postname nc_pk_post job_type_code post_level]
       Position.order(id: :asc).find_each do |p|
         values = []
         values << p.name
@@ -62,6 +62,7 @@ namespace :import_export do
         values << p.b_postname
         values << p.nc_pk_post
         values << p.job_type_code
+        values << p.post_level
         csv << values
       end
     end
