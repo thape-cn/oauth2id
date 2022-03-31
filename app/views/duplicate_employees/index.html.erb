@@ -34,10 +34,14 @@
             </thead>
             <tbody>
               <% @profiles.each_with_index do |p, index| %>
-                <% du = Profile.includes(:user).where(chinese_name: p.chinese_name, clerk_code: p.clerk_code) %>
+                <% du = Profile.includes(:user).where(clerk_code: p.clerk_code) %>
                 <tr>
                   <td><%= index %></td>
-                  <td><%= p.chinese_name %></td>
+                  <td>
+                    <% du.each do |d| %>
+                      <%= d.chinese_name %>
+                    <% end %>
+                  </td>
                   <td><%= p.clerk_code %></td>
                   <td>
                     <% du.each do |d| %>
