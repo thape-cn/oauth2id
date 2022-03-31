@@ -12,10 +12,10 @@ class DuplicateEmployeesController < ApplicationController
         csv_res = CSV.generate do |csv|
           csv << ['chinese_name', 'clerk_code', 'account_counts', 'locked_at']
           @profiles.each_with_index do |p, index|
-            du = Profile.includes(:user).where(chinese_name: p.chinese_name, clerk_code: p.clerk_code)
+            du = Profile.includes(:user).where(clerk_code: p.clerk_code)
 
             values = []
-            values << p.chinese_name
+            values << du.collect { |d| d.user.chinese_name }.join(';')
             values << p.clerk_code
             values << du.collect { |d| d.user.username }.join(';')
             values << du.collect { |d| d.user.locked_at&.to_date }.join(';')
@@ -59,8 +59,8 @@ class DuplicateEmployeesController < ApplicationController
 
     def set_profiles
       @profiles = policy_scope(Profile)
-        .select('chinese_name, clerk_code, COUNT(user_id) account_counts')
-        .group(:chinese_name, :clerk_code)
+        .select('clerk_code, COUNT(user_id) account_counts')
+        .group(:clerk_code)
         .having('count(user_id) > 1')
         .where.not(clerk_code: nil)
         .order('account_counts DESC, clerk_code DESC')
