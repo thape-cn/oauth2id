@@ -554,7 +554,10 @@ DEPENDENCIES
   minitest
   minitest-ci
   mysql2
+  net-imap
+  net-pop
   net-sftp
+  net-smtp
   nokogiri (~> 1.17.2)
   pagy
   puma
