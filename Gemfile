@@ -84,6 +84,12 @@ gem 'yxt-api', git: 'https://github.com/thape-cn/yxt-api', branch: :master
 
 gem 'whenever', require: false
 gem 'net-sftp', require: false
+
+# Ruby 3.1 removed as default gems.
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
+
 # To import the excel
 gem 'roo', require: false
 
