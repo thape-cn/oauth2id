@@ -497,7 +497,10 @@ DEPENDENCIES
   minitest
   minitest-ci
   mysql2
+  net-imap
+  net-pop
   net-sftp
+  net-smtp
   pagy
   puma
   pundit
