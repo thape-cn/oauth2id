@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 2a21aef52f10ca2f14b5b80172f4509dc4f8cca2
+  revision: 2b55c353805c48814938f95c66d953165ab1395d
   branch: main
   specs:
     wechat (0.15.1)
@@ -169,7 +169,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dry-auto_inject (0.9.0)
       dry-container (>= 0.3.4)
-    dry-configurable (0.14.0)
+    dry-configurable (0.15.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
     dry-container (0.9.0)
@@ -307,7 +307,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (2.3.0)
+    regexp_parser (2.3.1)
     reline (0.3.1)
       io-console (~> 0.5)
     responders (3.0.1)
@@ -450,4 +450,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.3.11
+   2.3.12
