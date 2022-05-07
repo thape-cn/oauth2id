@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 2b55c353805c48814938f95c66d953165ab1395d
+  revision: 36d382ed82f8a594364a0cad72708264e78b45d3
   branch: main
   specs:
     wechat (0.15.1)
@@ -255,12 +255,12 @@ GEM
       timeout
     net-ssh (6.1.0)
     nio4r (2.5.8)
-    nokogiri (1.13.4)
+    nokogiri (1.13.5)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.4-arm64-darwin)
+    nokogiri (1.13.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.4-x86_64-darwin)
+    nokogiri (1.13.5-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (4.0.7)
@@ -348,7 +348,7 @@ GEM
       net-ssh (>= 2.8.0)
     strscan (3.0.1)
     systemu (2.6.5)
-    terser (1.1.8)
+    terser (1.1.9)
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.0.10)
@@ -450,4 +450,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.3.12
+   2.3.13
