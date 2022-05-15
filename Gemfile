@@ -75,6 +75,8 @@ gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
 
 gem 'ipip-fast'
 
+gem 'gitlab'
+
 # bundle config local.yxt-api /Users/guochunzhong/git/sso/yxt-api/
 gem 'yxt-api', git: 'https://github.com/thape-cn/yxt-api', branch: :master
 
