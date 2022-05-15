@@ -76,6 +76,8 @@ gem 'nokogiri', '~> 1.17.2'
 
 gem 'ipip-fast'
 
+gem 'gitlab'
+
 # bundle config local.yxt-api /Users/guochunzhong/git/sso/yxt-api/
 gem 'yxt-api', git: 'https://github.com/thape-cn/yxt-api', branch: :master
 
