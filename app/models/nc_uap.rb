@@ -38,7 +38,7 @@ from nc6337.o2_docquit a
 
   def self.nc_users
     NcUap.connection.select_rows("
-SELECT bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.email, bd_psndoc.mobile,
+SELECT bd_psndoc.name, bd_psndoc.SEX, hi_psnjob.clerkcode, bd_psndoc.code, bd_psndoc.email, bd_psndoc.mobile,
        hi_psnjob.pk_dept, bd_psndoc.birthdate
   FROM NC6337.bd_psndoc bd_psndoc
 INNER JOIN NC6337.hi_psnjob hi_psnjob on bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
@@ -55,10 +55,11 @@ WHERE hi_psnjob.ismainjob = 'Y'
       chinese_name = u[0]
       sex = u[1]
       clerk_code = u[2]&.strip
-      email = u[3]&.strip
-      mobile = u[4]&.strip
-      pk_dept = u[5]
-      birthdate = u[6]
+      th_code = u[3]&.strip
+      email = u[4]&.strip
+      mobile = u[5]&.strip
+      pk_dept = u[6]
+      birthdate = u[7]
       puts "Import user: #{chinese_name}"
 
       email = if email.present? && email.include?('@') && email != '@'
@@ -78,6 +79,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
                  existing_user.update_columns(email: email.downcase, username: email.split('@').first)
                  p = existing_user.profile || existing_user.build_profile
                  p.clerk_code = clerk_code
+                 p.th_code = th_code
                  p.chinese_name = chinese_name
                  p.save
                  existing_user
@@ -99,6 +101,7 @@ WHERE hi_psnjob.ismainjob = 'Y'
       profile.chinese_name = chinese_name
       profile.gender = (sex == 2 ? 0 : sex) # Femail is 0 in oauth2id
       profile.clerk_code = clerk_code
+      profile.th_code = th_code
       profile.phone = mobile
       profile.birthdate = birthdate
       profile.save
