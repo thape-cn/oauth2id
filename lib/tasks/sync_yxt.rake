@@ -133,6 +133,7 @@ namespace :sync_yxt do
           spare2: u&.profile&.job_level,
           spare3: dept&.company_name,
           spare4: department_name,
+          spare5: u&.profile&.pre_sso_id,
           gradeName: u&.profile&.job_level
         }
       end
