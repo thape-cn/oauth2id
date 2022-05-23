@@ -5,7 +5,7 @@ namespace :gitlab do
     gitlab_users.auto_paginate do |g_user|
       user = User.find_by email: g_user.email
       if user&.profile.present?
-        Gitlab.edit_user(g_user.id, { name: user.profile.chinese_name, job_title: user.job_title })
+        Gitlab.edit_user(g_user.id, { name: user.profile.chinese_name, note: user.job_title })
       else
         puts "User: #{g_user.username} email: #{g_user.email} not found"
       end
