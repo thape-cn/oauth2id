@@ -43,12 +43,12 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-      # Here we make sure that the secondary container boots
-      # up before we run operations on the database.
+      - run:
+          name: Restore DB config
+          command: cp config/database.yml.sample config/database.yml
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
-      # run tests!
       - run:
           name: run tests
           command: bin/rails test:system test
