@@ -1,20 +1,21 @@
 GIT
   remote: https://e.coding.net/sew/doorkeeper.git
-  revision: fbda514d9cd0a1f0eb4c44f8ca02f9a87f9212e3
+  revision: 98af17f72d16a21f18f906f35436bbbcd0ff366c
   branch: main
   specs:
-    doorkeeper (5.6.0.rc1)
+    doorkeeper (5.6.0.rc2)
       railties (>= 5)
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: f05d648dfd53a977cbdd9ae2827e0c1f1ff55518
+  revision: dec0ec787b2c6d482b5614dd90f121163cb5c039
   branch: main
   specs:
     wechat (0.15.1)
       activesupport (>= 6.0)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
+      psych (>= 3.3.2)
       rexml
       thor
       zeitwerk (~> 2.4)
@@ -263,6 +264,8 @@ GEM
     nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    psych (4.0.4)
+      stringio
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -323,7 +326,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.2.0)
+    selenium-webdriver (4.2.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -347,6 +350,7 @@ GEM
     sshkit (1.21.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stringio (3.0.2)
     strscan (3.0.3)
     systemu (2.6.5)
     terser (1.1.9)
