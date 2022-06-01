@@ -29,7 +29,7 @@ jobs:
 
       - run:
           name: Bundle Install
-          command: bundle check || bundle install
+          command: bundle install
 
       # Store bundle cache
       - save_cache:
