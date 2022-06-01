@@ -10,7 +10,6 @@ jobs:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
-          NOKOGIRI_USE_SYSTEM_LIBRARIES: true
 
     working_directory: ~/oauth2
 
