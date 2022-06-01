@@ -6,11 +6,12 @@ version: 2.1 # Use 2.1 to enable using orbs and other features.
 orbs:
   ruby: circleci/ruby@1.0
   node: circleci/node@2
+  browser-tools: circleci/browser-tools@1.3.0
 
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: circleci/ruby:3.0.3-node-browsers
+      - image: cimg/ruby:3.1.2-browsers
 
     steps:
       - checkout # pull down our git code.
@@ -28,7 +29,7 @@ jobs:
     parallelism: 3
     # here we set TWO docker images.
     docker:
-      - image: circleci/ruby:3.0.3-node-browsers
+      - image: cimg/ruby:3.1.2-browsers
 
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
@@ -39,10 +40,17 @@ jobs:
     # A series of steps to run, some are similar to those in "build".
     steps:
       - checkout
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
+      - run:
+          name: Check browser install
+          command: |
+            google-chrome --version
+            chromedriver --version
       - run:
           name: Restore DB config
           command: cp config/database.yml.sample config/database.yml
