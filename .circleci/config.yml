@@ -28,7 +28,7 @@ jobs:
     parallelism: 3
     # here we set TWO docker images.
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: circleci/ruby:3.0.3-node-browsers
 
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
