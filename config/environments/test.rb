@@ -10,7 +10,7 @@ Rails.application.configure do
   config.secret_key_base = '98010a9b5abaade34aabbe2f81892548c36be73581f849760c8fe1c0834649d94d3dbc9617ef0c38c24213180c1af1c0d777cb1b494f0d77cbc7b16720085271'
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
-  config.cache_classes = true
+  config.cache_classes = false
 
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
