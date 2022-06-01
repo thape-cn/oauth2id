@@ -18,41 +18,10 @@ jobs:
 
     steps:
       - checkout
-
-      # Which version of bundler? should keep same as Gemfile.lock
-      - run:
-          name: check bundler version
-          command: bundler -v
-
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-            - harman-vendor-bundle-v2-{{ checksum "Gemfile.lock" }}
-
-      - run:
-          name: Bundle Install
-          command: bundle install
-
-      # Store bundle cache
-      - save_cache:
-          key: harman-vendor-bundle-v2-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - harman-vendor-yarn-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: harman-vendor-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
 
       - run:
           name: Restore DB config
