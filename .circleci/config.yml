@@ -1,44 +1,64 @@
 ---
-version: 2
+version: 2.1 # Use 2.1 to enable using orbs and other features.
+
+# Declare the orbs that we'll use in our config.
+# read more about orbs: https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  ruby: circleci/ruby@1.0
+  node: circleci/node@2
+
 jobs:
-  build:
+  build: # our first job, named "build"
     docker:
-      # specify the version you desire here
       - image: cimg/ruby:3.1.2-browsers
-        environment: # environment variables for primary container
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          RAILS_ENV: test
 
-    working_directory: ~/oauth2
+    steps:
+      - checkout # pull down our git code.
+      - ruby/install-deps # use the ruby orb to install dependencies
+      # use the node orb to install our packages
+      # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
+      # learn more: https://circleci.com/docs/2.0/caching/
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
 
-    # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
-    resource_class: large
+  test:  # our next job, called "test"
+    # we run "parallel job containers" to enable speeding up our tests;
+    # this splits our tests across multiple containers.
+    parallelism: 3
+    # here we set TWO docker images.
+    docker:
+      - image: cimg/ruby:3.1.2-browsers
 
+    # environment variables specific to Ruby/Rails, applied to the primary container.
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      RAILS_ENV: test
+
+    # A series of steps to run, some are similar to those in "build".
     steps:
       - checkout
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-
-      - run:
-          name: Restore DB config
-          command: cp config/database.yml.sample config/database.yml
-
+      # Here we make sure that the secondary container boots
+      # up before we run operations on the database.
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
-
+          command: bundle exec rails db:schema:load --trace
       # run tests!
       - run:
           name: run tests
           command: bin/rails test:system test
 
-      # Save test results for timing analysis
-      - store_test_results:
-          path: test/reports
-
-      - store_artifacts:
-          path: coverage
+# We use workflows to orchestrate the jobs that we declared above.
+workflows:
+  version: 2
+  build_and_test:     # The name of our workflow is "build_and_test"
+    jobs:             # The list of jobs we run as part of this workflow.
+      - build         # Run build first.
+      - test:         # Then run test,
+          requires:   # Test requires that build passes for it to run.
+            - build   # Finally, run the build job.
