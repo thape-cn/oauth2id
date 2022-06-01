@@ -10,7 +10,7 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: circleci/ruby:3.0.3-node-browsers
 
     steps:
       - checkout # pull down our git code.
