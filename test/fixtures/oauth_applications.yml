@@ -73,7 +73,7 @@ oauth_app_boran_oauth2:
   updated_at: <%= Time.zone.now %>
 
 oauth_app_cybros_oidc:
-  id: 6
+  id: 11
   name: "Cybros"
   uid: "ske--S5OaJLsWWPLiau40C2eukE3mMcho4tKsl2ubo4"
   secret: "xDDi0ZwvH53sIEECH7zDtcNa39MsYln4dkfstbPkRQ8"
