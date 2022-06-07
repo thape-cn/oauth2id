@@ -24,6 +24,9 @@ stages:
   - test
   - deploy
 
+stages:
+  - test
+
 test:
   stage: test
   cache:
