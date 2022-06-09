@@ -1,4 +1,4 @@
-require 'tiny_tds'
+require 'tiny_tds' unless ENV["NO_TINY_TDS"]
 
 namespace :sync_nc_uap do
   desc 'Clean the PositionUser and DepartmentUser record'
@@ -45,6 +45,7 @@ namespace :sync_nc_uap do
     NcUap.lock_leaved_users
   end
 
+unless ENV["NO_TINY_TDS"]
   desc 'Sync user old sso id'
   task sync_old_sso_id: :environment do
     username = Rails.application.credentials.old_sso_username!
@@ -64,6 +65,7 @@ namespace :sync_nc_uap do
       end
     end
   end
+end
 
   desc 'Link user to YxtPosition'
   task link_user_to_yxt_position: :environment do
