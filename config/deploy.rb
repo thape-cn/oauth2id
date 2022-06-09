@@ -2,7 +2,7 @@
 lock '~> 3.17.0'
 
 set :application, 'oauth2id'
-set :repo_url, 'git@github.com:thape-cn/oauth2id.git'
+set :repo_url, 'https://git.thape.com.cn/Eric-Guo/oauth2id.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
