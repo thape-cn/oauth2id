@@ -8,10 +8,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: dec0ec787b2c6d482b5614dd90f121163cb5c039
+  revision: 29946fc6c75510ce7ff49235ce244d338ad01939
   branch: main
   specs:
-    wechat (0.15.1)
+    wechat (0.16.0)
       activesupport (>= 6.0)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
@@ -215,7 +215,7 @@ GEM
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
-    jwt (2.3.0)
+    jwt (2.4.1)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
