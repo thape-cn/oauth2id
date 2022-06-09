@@ -2,6 +2,7 @@
 image: circleci/ruby:3.0.3-node-browsers
 
 variables:
+  CACHE_FALLBACK_KEY: "$CI_COMMIT_REF_SLUG"
 
 before_script:
   - bundle config mirror.https://rubygems.org https://gems.ruby-china.com
