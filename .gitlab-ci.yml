@@ -9,6 +9,7 @@ before_script:
 
 stages:
   - test
+  - deploy
 
 test:
   stage: test
@@ -30,3 +31,21 @@ test:
     - echo $RAILS_MASTER_KEY > config/master.key
     - bundle exec rails db:schema:load --trace
     - bundle exec rails test
+
+deploy_staging:
+  cache:
+    - key:
+        files:
+          - Gemfile.lock
+      paths:
+        - vendor/ruby
+  stage: deploy
+  script:
+    - bundle install -j $(nproc)
+    - mkdir ~/.ssh
+    - mv "$SSH_ID_RSA" ~/.ssh/id_rsa
+    - mv "$SSH_CONFIG_FILE" ~/.ssh/config
+    - bundle exec cap staging deploy
+  environment:
+    name: staging
+    url: https://sso-id.com
