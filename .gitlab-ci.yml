@@ -2,6 +2,7 @@
 image: circleci/ruby:3.0.3-node-browsers
 
 variables:
+  NO_ORACLE_ENHANCED: "true"
   CACHE_FALLBACK_KEY: "$CI_COMMIT_REF_SLUG"
 
 before_script:
