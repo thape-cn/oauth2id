@@ -21,7 +21,9 @@ unless ENV["NO_ORACLE_ENHANCED"]
   gem 'ruby-oci8'
   gem 'activerecord-oracle_enhanced-adapter'
 end
-gem 'tiny_tds', require: false
+unless ENV["NO_TINY_TDS"]
+  gem 'tiny_tds', require: false
+end
 gem 'irb'
 
 # Use Puma as the app server
