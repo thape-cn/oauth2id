@@ -1,35 +1,31 @@
 ---
-image: "ruby:3.1"
+image: circleci/ruby:3.0.3-node-browsers
 
 variables:
-  NO_ORACLE_ENHANCED: "true"
 
 before_script:
-  - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sysctl -p
-  - curl -sL https://deb.nodesource.com/setup_lts.x | bash -
-  - apt-get update -qq && apt-get install -y -qq nodejs
-  # Install yarn as outlined in (https://yarnpkg.com/lang/en/docs/install/#alternatives-stable)
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  # Make available in the current terminal
-  - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-  - node -v
-  - yarn -v
-  - ruby -v
-  - which ruby
-  - bundler --version
   - bundle config mirror.https://rubygems.org https://gems.ruby-china.com
-  - bundle config path vendor
+  - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
+
+stages:
+  - test
 
 test:
   stage: test
   cache:
-    paths:
-      - node_modules/
-      - .yarn
-      - vendor
+    - key:
+        files:
+          - Gemfile.lock
+      paths:
+        - vendor/ruby
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - ".yarn-cache/"
   script:
-    - bundle install --jobs $(nproc)  "${FLAGS[@]}"
-    - yarn install
+    - bundle install -j $(nproc)
+    - yarn install --cache-folder .yarn-cache
     - cp config/database.yml.sample config/database.yml
     - echo $RAILS_MASTER_KEY > config/master.key
     - bundle exec rails db:schema:load --trace
