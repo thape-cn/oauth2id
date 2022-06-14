@@ -11,7 +11,7 @@ gem 'rails-i18n'
 gem 'mail'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.7'
+gem 'sqlite3', '= 1.4.2' # Server still at CentOS 7
 
 # Thape using mysql as production
 gem 'mysql2'
