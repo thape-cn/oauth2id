@@ -50,7 +50,7 @@ test:
     - bundle exec rails db:migrate RAILS_ENV=test
     - bundle exec rails test:all
 
-deploy_staging:
+deploy_production:
   cache:
     - key:
         files:
@@ -63,9 +63,10 @@ deploy_staging:
     - mkdir ~/.ssh
     - mv "$SSH_ID_RSA" ~/.ssh/id_rsa
     - mv "$SSH_CONFIG_FILE" ~/.ssh/config
-    - bundle exec cap staging deploy
+    - bundle exec cap production deploy
   environment:
-    name: staging
-    url: https://sso-id.com
-  only:
-    - main
+    name: production
+    url: https://sso.thape.com.cn
+  when: manual
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
