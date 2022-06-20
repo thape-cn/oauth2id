@@ -22,11 +22,11 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: 383dd028fea57cfe2b9ff3e08e87fc7691c211e1
+  revision: 9eb9012af51d5b1630ca0f5cebf9b883525ec146
   branch: master
   specs:
-    doorkeeper-openid_connect (1.8.0)
-      doorkeeper (>= 5.5, < 5.6)
+    doorkeeper-openid_connect (1.8.1)
+      doorkeeper (>= 5.5, < 5.7)
       json-jwt (>= 1.11.0)
 
 GIT
