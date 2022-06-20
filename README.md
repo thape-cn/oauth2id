@@ -27,10 +27,10 @@ In order to make [httpclient](https://github.com/nahi/httpclient/issues/335) als
 cp /usr/local/etc/openssl/cert.pem /usr/local/lib/ruby/gems/3.0.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
 ```
 
-For Monterey
+For Monterey running Apple Silicon on Ruby 3.1
 
 ```bash
-cp /opt/homebrew/etc/openssl@1.1/cert.pem /opt/homebrew/lib/ruby/gems/3.0.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
+cp /opt/homebrew/etc/openssl@1.1/cert.pem /opt/homebrew/lib/ruby/gems/3.1.0/gems/httpclient-2.8.3/lib/httpclient/cacert.pem
 ```
 
 # Generate signing key
