@@ -19,7 +19,6 @@
 //= require vali-admin/docs/js/plugins/dataTables.bootstrap.min
 //= require jqtree/tree.jquery
 //= require turbolinks
-//= require cable
 //= require_self
 //= require devise-jwt
 //= require employees
