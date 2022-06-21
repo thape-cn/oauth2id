@@ -1,7 +1,7 @@
 class NcUap < ApplicationRecord
   # No corresponding table in the DB.
   self.abstract_class = true
-  establish_connection :nc_uap
+  establish_connection :nc_uap unless Rails.env.test?
   def readonly?
     true
   end
