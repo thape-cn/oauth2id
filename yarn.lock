@@ -3443,9 +3443,9 @@ http-errors@~1.6.2:
     statuses ">= 1.4.0 < 2"
 
 http-parser-js@>=0.5.1:
-  version "0.5.7"
-  resolved "https://registry.npmmirror.com/http-parser-js/-/http-parser-js-0.5.7.tgz#39bde369fb8a57235121bb69d05f079fa1b598f4"
-  integrity sha512-8gQM8ZcewlONQLnik2AKzS13euQhaZcu4rK5QBSYOszW0T1upLW9VA2MdWvTvMmRo42HjXp7igFmdROoBCCrfg==
+  version "0.5.8"
+  resolved "https://registry.npmmirror.com/http-parser-js/-/http-parser-js-0.5.8.tgz#af23090d9ac4e24573de6f6aecc9d84a48bf20e3"
+  integrity sha512-SGeBX54F94Wgu5RH3X5jsDtf4eHyRogWX1XGT3b4HuW3tQPM4AaBzoUji/4AAJNXCEOWZ5O0DgZmJw1947gD5Q==
 
 http-proxy-middleware@0.19.1:
   version "0.19.1"
