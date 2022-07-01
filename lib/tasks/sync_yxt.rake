@@ -130,7 +130,7 @@ namespace :sync_yxt do
           birthday: u&.profile&.birthdate,
           entrytime: u&.profile&.entry_company_date,
           spare1: main_position&.functional_category,
-          spare2: u&.profile&.job_level,
+          spare2: main_position&.b_postname,
           spare3: dept&.company_name,
           spare4: department_name,
           spare5: u&.profile&.th_code,
