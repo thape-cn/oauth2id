@@ -2,7 +2,7 @@
 eric_profile:
   user_id: 1  # user_eric
   title: "Rails developer"
-  clerk_code: 000123
+  clerk_code: 000001
   chinese_name: "过纯中"
   gender: true
   phone: "+8613901234567"
@@ -10,7 +10,25 @@ eric_profile:
 demo_profile:
   user_id: 2  # user_demo
   title: "Cute demo user"
-  clerk_code: 000123
-  chinese_name: "过纯中"
+  clerk_code: 000002
+  chinese_name: "过秋成"
   gender: false
   phone: "+8602164268137"
+
+shin_profile:
+  user_id: 3  # user_shin
+  title: "Mixtint owner"
+  clerk_code: 000003
+  chinese_name: "张兴华"
+  gender: false
+  phone: "+8602164262137"
+
+<% (4..60).each do |digit| %>
+user_<%= digit %>_profile:
+  user_id: <%= digit %>
+  title: <%= FFaker::JobCN.title %>
+  clerk_code: <%= "0000#{digit}" %>
+  chinese_name: <%= FFaker::NameCN.name %>
+  gender: <%= digit % 2 == 0 %>
+  phone: <%= FFaker::PhoneNumberTW.phone_number %>
+<% end %>
