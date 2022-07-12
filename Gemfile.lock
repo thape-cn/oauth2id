@@ -164,7 +164,7 @@ GEM
     devise-jwt (0.9.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.6)
-    digest (3.1.0)
+    digest (3.0.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -420,6 +420,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  digest (= 3.0.0)
   doorkeeper!
   doorkeeper-openid_connect!
   ed25519
