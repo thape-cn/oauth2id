@@ -7,6 +7,8 @@ ruby '>= 2.7'
 gem 'rails', '~> 7.0.3'
 gem 'rails-i18n'
 
+gem 'digest', '= 3.0.0' # to make CI works
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
