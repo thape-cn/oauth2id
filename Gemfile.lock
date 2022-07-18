@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 33dd923abd345243fbc4f5f0e3e8e3a9f9bec53d
+  revision: 834eb087060d7685a34b99c9055d1e1a11898461
   branch: main
   specs:
     wechat (0.16.0)
@@ -352,7 +352,7 @@ GEM
     stringio (3.0.2)
     strscan (3.0.3)
     systemu (2.6.5)
-    terser (1.1.11)
+    terser (1.1.12)
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.0.10)
