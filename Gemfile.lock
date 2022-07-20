@@ -22,10 +22,10 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: 9eb9012af51d5b1630ca0f5cebf9b883525ec146
+  revision: 69828cb8ae788078674a2238f7d754b3a6c6b76d
   branch: master
   specs:
-    doorkeeper-openid_connect (1.8.1)
+    doorkeeper-openid_connect (1.8.2)
       doorkeeper (>= 5.5, < 5.7)
       json-jwt (>= 1.11.0)
 
@@ -360,7 +360,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
