@@ -236,7 +236,7 @@ GEM
     minitest (5.16.2)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
-    msgpack (1.5.3)
+    msgpack (1.5.4)
     net-imap (0.2.3)
       digest
       net-protocol
