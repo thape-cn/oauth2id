@@ -134,6 +134,7 @@ namespace :sync_yxt do
           spare3: dept&.company_name,
           spare4: department_name,
           spare5: u&.profile&.th_code,
+          spare6: u&.profile&.leave_company_date,
           gradeName: u&.profile&.job_level
         }
       end
