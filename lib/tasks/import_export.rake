@@ -72,13 +72,14 @@ namespace :import_export do
   task :export_for_cybros, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
     CSV.open(csv_file_path, 'w') do |csv|
-      csv << %w[email position_title gender clerk_code pre_sso_id chinese_name job_level major_code major_name entry_company_date pre_sso_id wecom_id locked_at mobile desk_phone combine_departments combine_positions]
+      csv << %w[email position_title nc_pk_post gender clerk_code pre_sso_id chinese_name job_level major_code major_name entry_company_date pre_sso_id wecom_id locked_at mobile desk_phone combine_departments combine_positions]
       User.order(id: :asc).find_each do |u|
         values = []
         values << u.email
         main_position = u.position_users.find_by(main_position: true)&.position
         main_position = u.position_users.last&.position if main_position.nil?
         values << main_position&.name
+        values << main_position&.nc_pk_post
         values << u.profile&.gender
         values << u.profile&.clerk_code
         values << u.profile&.pre_sso_id
