@@ -3956,7 +3956,7 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jqtree@^1.6.1:
+jqtree@^1.6.3:
   version "1.6.3"
   resolved "https://registry.npmmirror.com/jqtree/-/jqtree-1.6.3.tgz#9cdb20d679ed70c57940d2fc15d515a800a2fdd3"
   integrity sha512-v8aRMbx3hF1XVNVXGZKd1Nt83og31e/Haic8rUby1w2zcLoebYPkV5/YX5TRw++LtW1s0RIc+5USeU2wy+u9+g==
