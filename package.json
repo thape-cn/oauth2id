@@ -5,7 +5,7 @@
     "@rails/webpacker": "^5.4.3",
     "@stimulus/polyfills": "^2.0.0",
     "datatables": "^1.10.18",
-    "jqtree": "^1.6.1",
+    "jqtree": "^1.6.3",
     "stimulus": "^2.0.0",
     "vali-admin": "^2.4.1"
   },
