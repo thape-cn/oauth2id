@@ -31,6 +31,7 @@ end
 
 every :day, at: '12:15pm', roles: [:db] do
   rake "sync_nc_uap:all"
+  rake "import_export:export_cybros_all"
 end
 
 # Learn more: http://github.com/javan/whenever
