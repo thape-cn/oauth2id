@@ -46,6 +46,12 @@ namespace :import_export do
     end
   end
 
+  desc 'Export two CSV for cybros import'
+  task export_cybros_all: :environment do
+    Export.position_csv('all_positions.csv')
+    Export.user_for_cybros('all_employees.csv')
+  end
+
   desc 'Export positions CSV'
   task :export_position_csv, [:csv_file_path] => [:environment] do |_task, args|
     csv_file_path = args[:csv_file_path]
