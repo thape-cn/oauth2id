@@ -48,8 +48,14 @@ namespace :import_export do
 
   desc 'Export two CSV for cybros import'
   task export_cybros_all: :environment do
-    Export.position_csv('all_positions.csv')
-    Export.user_for_cybros('all_employees.csv')
+    all_position = 'all_positions.csv'
+    all_employee = 'all_employees.csv'
+    Export.position_csv(all_position)
+    Export.user_for_cybros(all_employee)
+    Net::SFTP.start('thape_vendor', 'cybros_bi') do |sftp|
+      sftp.upload!(all_position, all_position)
+      sftp.upload!(all_employee, all_employee)
+    end
   end
 
   desc 'Export positions CSV'
