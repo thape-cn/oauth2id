@@ -11,11 +11,12 @@ class EmployeesController < ApplicationController
 
     dept = Department.find_by(id: params[:dept_id])
     users = if dept.present?
-      policy_scope(User).joins(:department_users)
-        .where(department_users: {department_id: dept.all_managed_department_ids}).references(:department_users)
-    else
-      policy_scope(User)
-    end
+              policy_scope(User).joins(:department_users)
+                                .where(department_users: { department_id: dept.all_managed_department_ids })
+                                .references(:department_users)
+            else
+              policy_scope(User)
+            end
     respond_to do |format|
       format.html
       format.json { render json: UserDatatable.new(params, users: users, view_context: view_context) }
