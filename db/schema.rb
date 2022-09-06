@@ -35,12 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2021_03_26_082831) do
     t.integer "managed_by_department_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "dept_code"
-    t.string "nc_pk_dept"
-    t.string "nc_pk_fatherorg"
-    t.string "company_name"
-    t.integer "enablestate"
-    t.string "hrcanceled", limit: 1
     t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
   end
 
@@ -113,7 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2021_03_26_082831) do
     t.string "functional_category"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.string "nc_pk_post"
   end
 
   create_table "profiles", force: :cascade do |t|
