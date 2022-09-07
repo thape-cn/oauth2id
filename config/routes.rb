@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   match '/saml/logout' => 'saml_idp#logout', via: [:get]
   match '/saml/logout' => 'saml_idp#logout_response', via: [:post]
 
+  get '/homeland/sso' => 'homeland_sso#sso'
+
   resource :wechat, only: [:show, :create]
 
   devise_for :users, controllers: { sessions: 'user/sessions',
