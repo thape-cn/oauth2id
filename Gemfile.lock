@@ -371,7 +371,7 @@ GEM
       macaddr (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    warden-jwt_auth (0.7.0)
+    warden-jwt_auth (0.6.0)
       dry-auto_inject (~> 0.8)
       dry-configurable (~> 0.13)
       jwt (~> 2.1)
@@ -448,6 +448,7 @@ DEPENDENCIES
   terser
   turbolinks
   tzinfo-data
+  warden-jwt_auth (~> 0.6.0)
   web-console
   webdrivers
   webpacker
