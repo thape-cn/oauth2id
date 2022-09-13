@@ -42,6 +42,8 @@ gem 'jbuilder'
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'warden-jwt_auth', '~> 0.6.0' # need fix at https://github.com/waiting-for-dev/warden-jwt_auth/pull/40
+
 # bundle config local.doorkeeper /Users/guochunzhong/git/oss/doorkeeper/
 gem 'doorkeeper', git: 'https://github.com/Eric-Guo/doorkeeper', branch: :main
 # bundle config local.doorkeeper-openid_connect /Users/guochunzhong/git/oss/doorkeeper-openid_connect/
