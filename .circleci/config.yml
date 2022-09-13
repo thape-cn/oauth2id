@@ -11,7 +11,7 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: cimg/ruby:3.0.4-browsers
 
     steps:
       - checkout # pull down our git code.
@@ -29,7 +29,7 @@ jobs:
     parallelism: 3
     # here we set TWO docker images.
     docker:
-      - image: cimg/ruby:3.1.2-browsers
+      - image: cimg/ruby:3.0.4-browsers
 
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
