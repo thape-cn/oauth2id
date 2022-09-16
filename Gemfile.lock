@@ -161,7 +161,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-jwt (0.9.0)
+    devise-jwt (0.10.0)
       devise (~> 4.0)
       warden-jwt_auth (~> 0.6)
     digest (3.0.0)
@@ -173,7 +173,7 @@ GEM
     dry-configurable (0.15.0)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.6)
-    dry-container (0.10.1)
+    dry-container (0.11.0)
       concurrent-ruby (~> 1.0)
     dry-core (0.8.1)
       concurrent-ruby (~> 1.0)
@@ -371,7 +371,7 @@ GEM
       macaddr (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    warden-jwt_auth (0.6.0)
+    warden-jwt_auth (0.7.0)
       dry-auto_inject (~> 0.8)
       dry-configurable (~> 0.13)
       jwt (~> 2.1)
@@ -448,7 +448,6 @@ DEPENDENCIES
   terser
   turbolinks
   tzinfo-data
-  warden-jwt_auth (~> 0.6.0)
   web-console
   webdrivers
   webpacker
