@@ -92,3 +92,12 @@ psql -d thape_sso_dev -f databasename.psql
 ```
 
 May replace ' datetime(6) ' with ' timestamp(6) without time zone '.
+
+## Notes to using thape production data
+
+Need running below to make production sign-in success.
+
+```ruby
+u=User.find 4431 # it's me
+u.confirm
+```
