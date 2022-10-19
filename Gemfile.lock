@@ -251,17 +251,17 @@ GEM
       net-protocol
     net-protocol (0.1.3)
       timeout
-    net-scp (4.0.0.rc1)
+    net-scp (4.0.0)
       net-ssh (>= 2.6.5, < 8.0.0)
     net-smtp (0.3.2)
       net-protocol
     net-ssh (7.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-darwin)
+    nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-linux)
+    nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     psych (4.0.6)
