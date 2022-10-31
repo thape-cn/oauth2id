@@ -117,7 +117,7 @@ GEM
       zeitwerk
     bcrypt (3.1.18)
     bcrypt_pbkdf (1.1.0)
-    bindata (2.4.13)
+    bindata (2.4.14)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
