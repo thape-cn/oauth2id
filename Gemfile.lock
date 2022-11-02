@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 991fdacb8ab3673fd9bea19d6efd48a008fef0cb
+  revision: 2533ab92e9ee337f52bbab2b2201d791a19a7633
   branch: main
   specs:
     doorkeeper (5.6.0)
@@ -404,7 +404,7 @@ GEM
       nokogiri (~> 1.11)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.3)
+    zeitwerk (2.6.4)
 
 PLATFORMS
   arm64-darwin-21
