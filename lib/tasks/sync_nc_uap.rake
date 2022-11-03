@@ -10,6 +10,15 @@ namespace :sync_nc_uap do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
 
+  task :all_with_day_one => [:clean_position_department_on_month_day_one, :sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
+
+  task clean_position_department_on_month_day_one: :environment do
+    if Time.now.day == 1
+      PositionUser.joins(user: :profile).where('profiles.leave_company_date': nil).delete_all
+      DepartmentUser.joins(user: :profile).where('profiles.leave_company_date': nil).delete_all
+    end
+  end
+
   desc 'Sync orgs with NC UAP'
   task sync_orgs: :environment do
     puts 'Upserts the orgs'
