@@ -30,7 +30,7 @@ every :day, at: '12:59am', roles: [:db] do
 end
 
 every :day, at: '12:15pm', roles: [:db] do
-  rake "sync_nc_uap:all"
+  rake "sync_nc_uap:all_with_day_one"
   rake "import_export:export_cybros_all"
 end
 
