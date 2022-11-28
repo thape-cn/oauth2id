@@ -10,6 +10,8 @@ namespace :gitlab do
       end
 
       Gitlab.edit_user(g_user.id, { name: user.profile.chinese_name, note: user.job_title })
+
+      Gitlab.block_user(g_user.id) if user.locked_at.present?
     end
   end
 end
