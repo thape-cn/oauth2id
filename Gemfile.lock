@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 1c077cfb15accb33f50c46682d5e8bb4da57be3c
+  revision: 248af2faf5a14767da36d24c00b6adec3d42f05b
   branch: main
   specs:
-    doorkeeper (5.6.1)
+    doorkeeper (5.6.2)
       railties (>= 5)
 
 GIT
@@ -208,7 +208,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     ipip-fast (0.0.2)
-    irb (1.5.0)
+    irb (1.5.1)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
