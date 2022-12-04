@@ -234,8 +234,11 @@ GEM
       nokogiri (>= 1.5.9)
     macaddr (1.7.2)
       systemu (~> 2.6.5)
-    mail (2.7.1)
+    mail (2.8.0)
       mini_mime (>= 0.1.1)
+      net-imap
+      net-pop
+      net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
@@ -353,7 +356,7 @@ GEM
       net-ssh (>= 2.8.0)
     stringio (3.0.2)
     systemu (2.6.5)
-    terser (1.1.12)
+    terser (1.1.13)
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.0.11)
