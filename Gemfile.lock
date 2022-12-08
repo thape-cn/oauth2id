@@ -354,7 +354,7 @@ GEM
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stringio (3.0.2)
+    stringio (3.0.3)
     systemu (2.6.5)
     terser (1.1.13)
       execjs (>= 0.3.0, < 3)
