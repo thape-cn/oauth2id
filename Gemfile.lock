@@ -8,14 +8,13 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 5610d49598b2c8c8230ec576e62b953a522d0bd3
+  revision: 5d2de0a8a6c4797a032fbf0c0af9f0c2cf13c3f0
   branch: main
   specs:
-    wechat (0.16.1)
+    wechat (0.16.2)
       activesupport (>= 6.0)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
-      psych (>= 3.3.2)
       rexml
       thor
       zeitwerk (~> 2.4)
@@ -151,6 +150,7 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     dalli (3.2.3)
+    date (3.3.1)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -207,7 +207,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
     ipip-fast (0.0.2)
-    irb (1.5.1)
+    irb (1.6.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -247,7 +247,8 @@ GEM
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.6.0)
-    net-imap (0.3.1)
+    net-imap (0.3.2)
+      date
       net-protocol
     net-pop (0.1.2)
       net-protocol
@@ -266,8 +267,6 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    psych (4.0.6)
-      stringio
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -354,7 +353,6 @@ GEM
     sshkit (1.21.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stringio (3.0.3)
     systemu (2.6.5)
     terser (1.1.13)
       execjs (>= 0.3.0, < 3)
