@@ -244,7 +244,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.16.3)
+    minitest (5.17.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.6.0)
@@ -460,4 +460,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.1
+   2.4.2
