@@ -8,7 +8,6 @@ gem 'rails', '~> 7.0.4'
 gem 'rails-i18n'
 
 gem 'digest', '= 3.0.0' # to make CI works
-gem 'racc', '= 1.6.0' # to make CI works
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
