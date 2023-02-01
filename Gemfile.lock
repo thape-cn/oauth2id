@@ -1,14 +1,14 @@
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 5e299ffc7274a248142993af473f8c5ed8eabd88
+  revision: 3ad48e05fdab9843ef742163f0e6bbf9fb273c4b
   branch: main
   specs:
-    doorkeeper (5.6.2)
+    doorkeeper (5.6.4)
       railties (>= 5)
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: e11dd5419071b8c95bc82b59c4f907d17cf874e5
+  revision: efbe92e3a50d7a748d32e949553c0b184e390460
   branch: main
   specs:
     wechat (0.16.2)
@@ -166,14 +166,13 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dry-auto_inject (0.9.0)
-      dry-container (>= 0.3.4)
-    dry-configurable (0.16.1)
-      dry-core (~> 0.6)
+    dry-auto_inject (1.0.0)
+      dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-container (0.11.0)
-      concurrent-ruby (~> 1.0)
-    dry-core (0.9.1)
+    dry-configurable (1.0.1)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.0)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     ed25519 (1.3.0)
@@ -357,9 +356,9 @@ GEM
       macaddr (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    warden-jwt_auth (0.7.0)
-      dry-auto_inject (~> 0.8)
-      dry-configurable (~> 0.13)
+    warden-jwt_auth (0.8.0)
+      dry-auto_inject (>= 0.8, < 2)
+      dry-configurable (>= 0.13, < 2)
       jwt (~> 2.1)
       warden (~> 1.2)
     web-console (4.2.0)
@@ -371,7 +370,7 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
-    webpacker (5.4.3)
+    webpacker (5.4.4)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -443,4 +442,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.5
+   2.4.6
