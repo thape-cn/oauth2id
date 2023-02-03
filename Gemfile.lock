@@ -220,7 +220,7 @@ GEM
       nokogiri (>= 1.5.9)
     macaddr (1.7.2)
       systemu (~> 2.6.5)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
