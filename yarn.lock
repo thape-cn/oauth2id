@@ -1882,9 +1882,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001449:
-  version "1.0.30001450"
-  resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001450.tgz#022225b91200589196b814b51b1bbe45144cf74f"
-  integrity sha512-qMBmvmQmFXaSxexkjjfMvD5rnDL0+m+dUMZKoDYsGG8iZN29RuYh9eRoMvKsT6uMAWlyUUGDEQGJJYjzCIO9ew==
+  version "1.0.30001451"
+  resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001451.tgz#2e197c698fc1373d63e1406d6607ea4617c613f1"
+  integrity sha512-XY7UbUpGRatZzoRft//5xOa69/1iGJRBlrieH6QYrkKLIFn3m7OVEJ81dSrKoy2BnKsdbX5cLrOispZNYo9v2w==
 
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
@@ -2650,9 +2650,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.284:
-  version "1.4.288"
-  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.288.tgz#bbce00eb03c1819fe3d0d0d861374b76c53f7507"
-  integrity sha512-8s9aJf3YiokIrR+HOQzNOGmEHFXVUQzXM/JaViVvKdCkNUjS+lEa/uT7xw3nDVG/IgfxiIwUGkwJ6AR1pTpYsQ==
+  version "1.4.289"
+  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.289.tgz#02b59b1096486fc0bd4871a0484d8317802c6658"
+  integrity sha512-relLdMfPBxqGCxy7Gyfm1HcbRPcFUJdlgnCPVgQ23sr1TvUrRJz0/QPoGP0+x41wOVSTN/Wi3w6YDgHiHJGOzg==
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -4413,9 +4413,9 @@ minipass@^3.0.0, minipass@^3.1.1:
     yallist "^4.0.0"
 
 minipass@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.npmmirror.com/minipass/-/minipass-4.0.2.tgz#26fc3364d5ea6cb971c6e5259eac67a0887510d1"
-  integrity sha512-4Hbzei7ZyBp+1aw0874YWpKOubZd/jc53/XU+gkYry1QV+VvrbO8icLM5CUtm4F0hyXn85DXYKEMIS26gitD3A==
+  version "4.0.3"
+  resolved "https://registry.npmmirror.com/minipass/-/minipass-4.0.3.tgz#00bfbaf1e16e35e804f4aa31a7c1f6b8d9f0ee72"
+  integrity sha512-OW2r4sQ0sI+z5ckEt5c1Tri4xTgZwYDxpE54eqWlQloQRoWtXjqt9udJ5Z4dSv7wK+nfFI7FRXyCpBSft+gpFw==
 
 minizlib@^2.1.1:
   version "2.1.2"
