@@ -148,7 +148,7 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.0)
     crass (1.0.6)
-    dalli (3.2.3)
+    dalli (3.2.4)
     date (3.3.3)
     debug (1.7.1)
       irb (>= 1.5.0)
@@ -343,7 +343,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     thor (1.2.1)
     tilt (2.0.11)
-    timeout (0.3.1)
+    timeout (0.3.2)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -442,4 +442,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.6
+   2.4.7
