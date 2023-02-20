@@ -335,7 +335,7 @@ GEM
     sqlite3 (1.6.0-arm64-darwin)
     sqlite3 (1.6.0-x86_64-darwin)
     sqlite3 (1.6.0-x86_64-linux)
-    sshkit (1.21.3)
+    sshkit (1.21.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     systemu (2.6.5)
