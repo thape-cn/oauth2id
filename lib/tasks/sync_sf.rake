@@ -14,7 +14,7 @@ namespace :sync_sf do
         HR DEPARTMENT JOBCODE DIVISION LOCATION TIMEZONE HIREDATE EMPID TITLE
         BIZ_PHONE FAX ADDR1 ADDR2 CITY STATE ZIP COUNTRY REVIEW_FREQ LAST_REVIEW_DATE
         CUSTOM01 CUSTOM02 CUSTOM03 CUSTOM04 CUSTOM05 CUSTOM06 CUSTOM07 CUSTOM08 CUSTOM09 CUSTOM10 CUSTOM11 CUSTOM12 CUSTOM13 CUSTOM14 CUSTOM15
-        JOBFAMILY JOBLEVEL DEFAULT_LOCALE JOBROLE LOGIN_METHOD MATRIX_MANAGER]
+        JOBFAMILY JOBLEVEL DEFAULT_LOCALE JOBROLE LOGIN_METHOD MATRIX_MANAGER STCODE]
       NcHcmAccount.all.each do |n|
         values = []
         values << n.status
@@ -70,6 +70,7 @@ namespace :sync_sf do
         values << n.jobrole
         values << n.login_method
         values << n.matrix_manager
+        values << n.stcode
 
         csv << values
       end
