@@ -199,7 +199,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     ipip-fast (0.0.2)
-    irb (1.6.2)
+    irb (1.6.3)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
