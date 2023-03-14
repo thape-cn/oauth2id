@@ -40,6 +40,7 @@ gem 'jbuilder'
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'digest', '~>3.1.1'
 
 # bundle config local.doorkeeper /Users/guochunzhong/git/oss/doorkeeper/
 gem 'doorkeeper', git: 'https://github.com/Eric-Guo/doorkeeper', branch: :main
