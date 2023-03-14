@@ -27,7 +27,7 @@
 
 $.notifyDefaults({
   allow_dismiss: true,
-  delay: 15000
+  delay: 30000
 });
 
 // Translate dataTable into Chinese
