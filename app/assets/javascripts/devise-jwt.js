@@ -9,8 +9,8 @@ document.addEventListener("turbolinks:load", function() {
 
     if(user_password.match(/^thape\w\w20\d\d$/i)) {
       $.notify({
-        title: "无法继续，请按 ctrl+alt+del 键，在 Windows中先修改您的默认密码。",
-        message: "\n SSO单点登录系统在任何情况下都不存储您的密码，但为了增强天华IT系统的整体安全性，SSO 刚刚在您的浏览器本地沙盒内尝试检测并发现您的密码符合天华默认密码规则，因此无法使用您的当前密码代理您继续登录。"
+        title: "为了您的账号安全，请按 ctrl+alt+del 键，在 Windows中先修改您的默认密码。",
+        message: ""
       },{
         type: "danger"
       });
