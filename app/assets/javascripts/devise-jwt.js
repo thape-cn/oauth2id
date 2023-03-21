@@ -12,7 +12,7 @@ document.addEventListener("turbolinks:load", function() {
     if(user_password.match(/^thape\w\w20\d\d$/i) && currentHour >= 11 && currentHour < 17) {
       $.notify({
         title: "为了您的账号安全，请按 ctrl+alt+del 键，在 Windows中先修改您的默认密码。",
-        message: ""
+        message: "Windows中更改密码后，如果您在外地子公司，域控制器之间同步可能需要10分钟，请耐心等待，感谢🙏"
       },{
         type: "danger"
       });
