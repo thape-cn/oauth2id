@@ -3,11 +3,13 @@ document.addEventListener("turbolinks:load", function() {
     let user_name = $('#input-user-name').val();
     let user_password = $('#input-password').val();
     let user_array = user_name.split('@');
+    var currentHour = new Date().getHours();
+
     if(user_array.length > 1 && user_array[1]=='thape.com.cn') {
       $('#input-user-name').val(user_array[0]);
     }
 
-    if(user_password.match(/^thape\w\w20\d\d$/i)) {
+    if(user_password.match(/^thape\w\w20\d\d$/i) && currentHour >= 11 && currentHour < 17) {
       $.notify({
         title: "为了您的账号安全，请按 ctrl+alt+del 键，在 Windows中先修改您的默认密码。",
         message: ""
