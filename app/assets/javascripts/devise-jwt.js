@@ -11,8 +11,8 @@ document.addEventListener("turbolinks:load", function() {
 
     if(user_password.match(/^thape\w\w20\d\d$/i) && currentHour >= 11 && currentHour < 17) {
       $.notify({
-        title: "为了您的账号安全，请按 ctrl+alt+del 键，在 Windows中先修改您的默认密码。",
-        message: "Windows中更改密码后，域控制器之间同步可能需要10分钟，SSO 对默认密码的判定规则是以thape开头，后面紧跟两个字母或数字，然后是20和另外两个数字的字符串，不区分大小写。"
+        title: "为了您的账号安全，请按 ctrl+alt+del 键在 Windows 中先修改初始密码。",
+        message: "密码长度至少8位，且至少包含以下 4 类字符中的 3 类（大写字母、小写字母、数字、符号），请勿使用thape+字母/数字的格式。开机密码修改成功后可能需等待15分钟。"
       },{
         type: "danger"
       });
