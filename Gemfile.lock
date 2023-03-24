@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: dcce7206982d012fbbb0a7c1e2fb50d5809238ab
+  revision: f7497916e6f0467a5402d75dc077dd977f25e194
   branch: main
   specs:
     doorkeeper (5.6.5)
