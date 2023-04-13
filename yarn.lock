@@ -2661,9 +2661,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.284:
-  version "1.4.359"
-  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.359.tgz#5c4d13cb08032469fcd6bd36457915caa211356b"
-  integrity sha512-OoVcngKCIuNXtZnsYoqlCvr0Cf3NIPzDIgwUfI9bdTFjXCrr79lI0kwQstLPZ7WhCezLlGksZk/BFAzoXC7GDw==
+  version "1.4.360"
+  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.360.tgz#7a24cf81588d6af82ab17d77715cdc09dacfafb2"
+  integrity sha512-EP/jdF15S+l3iSSzgUpUqeazvkbVFXNuVxwwLMVUSie3lUeH1HH70gKe0IS7TASB/0h5QPG2bLMzv2jelSztIQ==
 
 element-closest@^2.0.2:
   version "2.0.2"
