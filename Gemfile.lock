@@ -417,6 +417,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   listen
+  mail (= 2.8.1)
   minitest
   minitest-ci
   puma
