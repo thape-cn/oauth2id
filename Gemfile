@@ -6,6 +6,10 @@ ruby '>= 2.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0.4'
 gem 'rails-i18n'
+# `config/initializers/mail_starttls_patch.rb` has also been patched to
+# fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
+# released.
+gem 'mail', '= 2.8.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
