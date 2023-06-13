@@ -10,6 +10,7 @@
     "vali-admin": "^2.4.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
     "webpack": "^4.46.0",
     "webpack-dev-server": "^3.11.3"
   },
