@@ -1,4 +1,4 @@
-set :nginx_use_ssl, false
+set :nginx_use_ssl, true
 set :branch, :main
 set :puma_systemctl_user, :system
 
