@@ -90,6 +90,7 @@ group :development do
 
   gem 'capistrano3-puma', '~> 5.2.0'
   gem 'capistrano-rails'
+  gem 'capistrano-yarn'
   gem 'capistrano-rbenv'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
