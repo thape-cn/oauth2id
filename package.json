@@ -2,6 +2,7 @@
   "name": "oauth2id",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "~7.21.4",
     "@rails/webpacker": "^5.4.3",
     "@stimulus/polyfills": "^2.0.0",
     "datatables": "^1.10.18",
