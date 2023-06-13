@@ -12,12 +12,12 @@
 //
 //= require jquery3
 //= require rails-ujs
-//= require vali-admin/docs/js/popper.min
-//= require vali-admin/docs/js/bootstrap.min
-//= require vali-admin/docs/js/plugins/bootstrap-notify.min
+//= require vali-admin/docs/js/popper.min.js
+//= require vali-admin/docs/js/bootstrap.min.js
+//= require vali-admin/docs/js/plugins/bootstrap-notify.min.js
 //= require datatables/media/js/jquery.dataTables.js
-//= require vali-admin/docs/js/plugins/dataTables.bootstrap.min
-//= require jqtree/tree.jquery
+//= require vali-admin/docs/js/plugins/dataTables.bootstrap.min.js
+//= require jqtree/tree.jquery.js
 //= require turbolinks
 //= require_self
 //= require devise-jwt
