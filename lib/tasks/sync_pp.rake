@@ -1,7 +1,7 @@
 require 'net/sftp'
 
-namespace :sync_sf do
-  desc "Upload all data to SF"
+namespace :sync_pp do
+  desc "Upload all data to people performance"
   task :all => [:generate_hcm_psndoc_csv, :upload_thapeemployee_csv_to_production,
     :generate_hcm_background_csv, :upload_background_csv_to_production]
 
@@ -80,13 +80,12 @@ namespace :sync_sf do
   desc 'Upload thapeemployee CSV file to production'
   task :upload_thapeemployee_csv_to_production, [:thapeemployee_csv_path] => [:environment] do |_task, args|
     thapeemployee_csv_path = args[:thapeemployee_csv_path] ||"thapeemployee_#{Date.today.strftime("%m%d%Y")}.csv"
-    host = Rails.application.credentials.sf_sftp_host!
-    username = Rails.application.credentials.sf_sftp_username!
-    password = Rails.application.credentials.sf_sftp_password!
+    host = Rails.application.credentials.pp_sftp_host!
+    username = Rails.application.credentials.pp_sftp_username!
 
-    Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
+    Net::SFTP.start(host, username) do |sftp|
       # upload a file or directory to the remote host
-      sftp.upload!(thapeemployee_csv_path, "/EmployeeData/#{thapeemployee_csv_path}")
+      sftp.upload!(thapeemployee_csv_path, "/home/pp_vendor/EmployeeData/#{thapeemployee_csv_path}")
     end
   end
 
@@ -127,13 +126,12 @@ namespace :sync_sf do
   desc 'Upload background CSV file to production'
   task :upload_background_csv_to_production, [:background_csv_path] => [:environment] do |_task, args|
     background_csv_path = args[:background_csv_path] ||"Background_#{Date.today.strftime("%m%d%Y")}.csv"
-    host = Rails.application.credentials.sf_sftp_host!
-    username = Rails.application.credentials.sf_sftp_username!
-    password = Rails.application.credentials.sf_sftp_password!
+    host = Rails.application.credentials.pp_sftp_host!
+    username = Rails.application.credentials.pp_sftp_username!
 
-    Net::SFTP.start(host, username, { password: password, append_all_supported_algorithms: true }) do |sftp|
+    Net::SFTP.start(host, username) do |sftp|
       # upload a file or directory to the remote host
-      sftp.upload!(background_csv_path, "/BackgroundInformation/#{background_csv_path}")
+      sftp.upload!(background_csv_path, "/home/pp_vendor/EmployeeData/#{background_csv_path}")
     end
   end
 end
