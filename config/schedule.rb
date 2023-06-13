@@ -18,7 +18,7 @@ every :day, at: '12:08am', roles: [:db] do
 end
 
 every :day, at: '12:09am', roles: [:db] do
-  rake "sync_sf:all"
+  rake "sync_pp:all"
 end
 
 every :day, at: '12:12am', roles: [:db] do
