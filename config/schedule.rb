@@ -17,7 +17,7 @@ every :day, at: '12:08am', roles: [:db] do
   rake "doorkeeper:db:cleanup"
 end
 
-every :day, at: '12:09am', roles: [:db] do
+every :day, at: '08:09am', roles: [:db] do
   rake "sync_pp:all"
 end
 
