@@ -4329,13 +4329,13 @@ jest-worker@^26.5.0:
     supports-color "^7.0.0"
 
 jqtree@^1.6.3:
-  version "1.7.0"
-  resolved "https://registry.npmmirror.com/jqtree/-/jqtree-1.7.0.tgz#a89d4e12761ddc1622a48e9ae9844aafa47db1d7"
-  integrity sha512-+pcAddicU4c2J5p+sS3XDxn2GNFGAlNJbi0CDkdUArpTEAjZPeigP2VHrfm1OqfCwmPuOSI3miE0IxNT2kIDBw==
+  version "1.7.1"
+  resolved "https://registry.npmmirror.com/jqtree/-/jqtree-1.7.1.tgz#14dfc9510f8d822e7c7db87b1441dc66449d5d42"
+  integrity sha512-By14E3t3h1fgHXNpr9WgiTp1qMClhtO/nuRR1pmyT8sj4ckwQlC9TU6R3EeWyKoUelYa+KO9bq57UEMmbpBr/Q==
   dependencies:
-    jquery "^3.6.3"
+    jquery "^3.7.0"
 
-jquery@>=1.7, jquery@^3.6.3:
+jquery@>=1.7, jquery@^3.7.0:
   version "3.7.0"
   resolved "https://registry.npmmirror.com/jquery/-/jquery-3.7.0.tgz#fe2c01a05da500709006d8790fe21c8a39d75612"
   integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
