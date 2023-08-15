@@ -77,8 +77,8 @@ class User < ApplicationRecord
     update_columns(desk_phone: desk_phone)
     is_function_account = li[:dn][0].include?('功能账户')
     update_columns(is_function_account: true) if is_function_account
-    Rails.logger.debug li[:title]
-    Rails.logger.debug li[:mail]
+    Rails.logger.debug "LDAP title: #{li[:title]}"
+    Rails.logger.debug "LDAP mail: #{li[:mail]}"
     return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生') || is_function_account
   end
 
