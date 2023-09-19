@@ -209,7 +209,7 @@ INNER JOIN NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_post
 INNER JOIN NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
 LEFT JOIN NC6337.bd_defdoc ON NC6337.om_post1.worktype = bd_defdoc.pk_defdoc
 LEFT JOIN NC6337.om_joblevel ON NC6337.om_joblevel.pk_joblevel = om_post.glbdef3
-WHERE om_post1.postcode <> '021906'
+WHERE om_post.postname <> '发薪人员'
 ") # 跳过导入发薪人员
   end
 
