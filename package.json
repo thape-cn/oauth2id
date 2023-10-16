@@ -11,7 +11,7 @@
     "vali-admin": "^2.4.1"
   },
   "devDependencies": {
-    "webpack": "^4.46.0",
+    "webpack": "^4.47.0",
     "webpack-dev-server": "^3.11.3"
   },
   "resolutions": {
