@@ -434,7 +434,7 @@ DEPENDENCIES
   minitest-ci
   puma
   pundit
-  rails (~> 7.0.4)
+  rails (~> 7.0.8)
   rails-i18n
   saml_idp!
   sassc-rails
