@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock '~> 3.17.2'
+lock '~> 3.18.0'
 
 set :application, 'oauth2id'
 set :repo_url, 'https://git.thape.com.cn/Eric-Guo/oauth2id.git'
