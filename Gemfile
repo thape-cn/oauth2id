@@ -43,7 +43,8 @@ gem 'jbuilder'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
-gem 'devise-jwt'
+# bundle config local.devise-jwt /Users/guochunzhong/git/oss/devise-jwt/
+gem 'devise-jwt', git: 'https://git.thape.com.cn/rails/devise-jwt.git', branch: :main
 gem 'digest', '~> 3.1.1'
 
 # bundle config local.doorkeeper /Users/guochunzhong/git/oss/doorkeeper/
