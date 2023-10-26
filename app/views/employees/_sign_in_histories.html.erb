@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @user.user_sign_in_histories.each do |sign_in_history| %>
+          <% @user_sign_in_histories.each do |sign_in_history| %>
             <tr>
               <td><%= sign_in_history.sign_in_at -%></td>
               <td><%= sign_in_history.user_agent -%></td>
@@ -21,6 +21,7 @@
           <% end %>
         </tbody>
       </table>
+      <%== pagy_bootstrap_nav(@pagy) %>
     </div>
   </div>
 </div>

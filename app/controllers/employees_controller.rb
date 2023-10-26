@@ -1,6 +1,7 @@
 require 'csv'
 
 class EmployeesController < ApplicationController
+  include Pagy::Backend
   before_action :authenticate_user!
   before_action :set_user_and_authorized, except: %i[index report]
   after_action :verify_authorized
@@ -51,6 +52,7 @@ class EmployeesController < ApplicationController
   end
 
   def sign_in_histories
+    @pagy, @user_sign_in_histories = pagy(@user.user_sign_in_histories)
     render :show
   end
 

@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def devise_error_messages
     return flash[:alert] if flash[:alert].present?
     return '' unless defined?(resource) && resource.errors.present?

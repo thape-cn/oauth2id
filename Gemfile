@@ -26,6 +26,7 @@ gem 'sprockets'
 
 # Host ourself instead of relay on CDN
 gem 'font-awesome-rails'
+gem 'pagy'
 
 gem 'terser'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
