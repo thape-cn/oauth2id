@@ -1,4 +1,13 @@
 GIT
+  remote: https://git.thape.com.cn/rails/devise-jwt.git
+  revision: 82e9e460a8f386fdbd88e4af4b51eb9924b530d0
+  branch: main
+  specs:
+    devise-jwt (0.11.0)
+      devise (~> 4.0)
+      warden-jwt_auth (~> 0.8)
+
+GIT
   remote: https://github.com/Eric-Guo/doorkeeper
   revision: 0aa94c5a82035ec4840785156760a2930e5de27a
   branch: main
@@ -161,9 +170,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-jwt (0.11.0)
-      devise (~> 4.0)
-      warden-jwt_auth (~> 0.8)
     digest (3.1.1)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -418,7 +424,7 @@ DEPENDENCIES
   dalli
   debug
   devise
-  devise-jwt
+  devise-jwt!
   digest (~> 3.1.1)
   doorkeeper!
   doorkeeper-openid_connect!
