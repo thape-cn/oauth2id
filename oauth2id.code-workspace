@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/*.sqlite3": true,
+			"**/log": true,
+			"**/node_modules": true,
+			"**/tmp": true
+		}
+	}
+}
