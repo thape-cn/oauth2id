@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '>= 2.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.8'
+gem 'rails', '~> 7.1.1'
 gem 'rails-i18n'
 # `config/initializers/mail_starttls_patch.rb` has also been patched to
 # fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
@@ -68,7 +68,7 @@ gem 'ipip-fast'
 # gem 'mini_magick', '~> 4.8'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.16.0', require: false
 
 group :production, :staging do
   gem 'dalli'
@@ -101,7 +101,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.39'
-  gem 'selenium-webdriver', '>= 4.11.0'
+  gem 'selenium-webdriver', '>= 4.14.0'
 end
 
 group :ci do
