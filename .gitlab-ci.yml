@@ -7,9 +7,8 @@ variables:
 before_script:
   - bundle config mirror.https://rubygems.org https://gems.ruby-china.com
   - gem install bundler
-  - gem install mutex_m
-  - gem install --default mutex_m
   - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
+  - sed -i 's/mutex_m (0.1.2)/mutex_m (0.1.1)/g' Gemfile.lock
 
 stages:
   - test
