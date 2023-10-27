@@ -76,6 +76,9 @@ group :production, :staging do
 end
 
 group :development, :test do
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debug'
 
@@ -87,8 +90,6 @@ group :development do
   gem 'web-console'
 
   gem 'listen'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
 
   gem 'capistrano3-puma', '~> 6.0.0.beta.1'
   gem 'capistrano-rails'
