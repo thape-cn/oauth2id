@@ -24,7 +24,7 @@ set :repo_url, 'https://git.thape.com.cn/Eric-Guo/oauth2id.git'
 append :linked_files, *%w[puma.rb config/database.yml config/master.key db/oauth2id_staging.sqlite3]
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'node_modules'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'node_modules', 'storage'
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
