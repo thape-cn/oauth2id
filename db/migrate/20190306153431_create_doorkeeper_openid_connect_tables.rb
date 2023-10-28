@@ -1,7 +1,7 @@
 class CreateDoorkeeperOpenidConnectTables < ActiveRecord::Migration[5.2]
   def mysql?
-    config = ActiveRecord::Base.configurations[Rails.env]
-    config && config['adapter'] == 'mysql2'
+    ar_config = ActiveRecord::Base.configurations.configs_for(env_name: Rails.env, name: "primary").configuration_hash
+    ar_config && ar_config['adapter'] == 'mysql2'
   end
 
   def change

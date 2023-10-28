@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_03_26_082831) do
+ActiveRecord::Schema[7.1].define(version: 2021_03_26_082831) do
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
@@ -182,5 +182,13 @@ ActiveRecord::Schema[7.0].define(version: 2021_03_26_082831) do
   end
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
+  add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
+  add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
+  add_foreign_key "profiles", "users"
+  add_foreign_key "user_allowed_applications", "oauth_applications"
+  add_foreign_key "user_allowed_applications", "users"
+  add_foreign_key "user_sign_in_histories", "users"
 end
