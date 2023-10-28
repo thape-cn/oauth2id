@@ -1,7 +1,7 @@
 class CreateUserSignInHistories < ActiveRecord::Migration[5.2]
   def postgresql?
-    config = ActiveRecord::Base.configurations[Rails.env]
-    config && config['adapter'] == 'postgresql'
+    ar_config = ActiveRecord::Base.configurations.configs_for(env_name: Rails.env, name: "primary").configuration_hash
+    ar_config && ar_config['adapter'] == 'postgresql'
   end
 
   def change
