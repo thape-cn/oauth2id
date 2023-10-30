@@ -282,14 +282,17 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.jwt do |jwt|
-    jwt.secret =
-      if Rails.env.production?
-        Rails.application.credentials.devise_jwt_secret_key!
-      else
-        Rails.application.credentials.devise_jwt_secret_key || Rails.application.secrets.secret_key_base
-      end
-    jwt.decoding_secret = jwt.secret
-    jwt.algorithm = 'HS256'
+    jwt.secret = if Rails.env.test?
+                   Rails.application.secrets.secret_key_base
+                 else
+                   OpenSSL::PKey::RSA.new(Rails.application.credentials.devise_jwt_private_key!)
+                 end
+    jwt.decoding_secret = if Rails.env.test?
+                            jwt.secret
+                          else
+                            OpenSSL::PKey::RSA.new(Rails.application.credentials.devise_jwt_public_key!)
+                          end
+    jwt.algorithm = (Rails.env.test? ? 'HS256' : 'RS256')
     jwt.expiration_time = 7200 # (2 hours)
   end
 end

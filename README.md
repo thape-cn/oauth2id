@@ -56,6 +56,13 @@ openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 -keyout oauth2id_sa
 openssl x509 -in oauth2id_saml_cert.crt -noout -sha256 -fingerprint
 ```
 
+## Generate RS256 for asymmetric JWT
+
+```bash
+openssl genpkey -algorithm RSA -out oauth2id_jwt_private_key.pem -pkeyopt rsa_keygen_bits:2048
+openssl rsa -pubout -in oauth2id_jwt_private_key.pem -out oauth2id_jwt_public_key.pem
+```
+
 # Generate initial data
 
 
