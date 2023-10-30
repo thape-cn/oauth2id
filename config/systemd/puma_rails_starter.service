@@ -1,0 +1,26 @@
+[Unit]
+Description=Puma HTTP Server for oauth2id (staging)
+After=network.target
+
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/var/www/oauth2id/current
+# Support older bundler versions where file descriptors weren't kept
+# See https://github.com/rubygems/rubygems/issues/3254
+ExecStart=/home/ec2-user/.rbenv/bin/rbenv exec bundle exec --keep-file-descriptors puma -C /var/www/oauth2id/shared/puma.rb
+ExecReload=/bin/kill -USR1 $MAINPID
+StandardOutput=append:/var/www/oauth2id/shared/log/puma_access.log
+StandardError=append:/var/www/oauth2id/shared/log/puma_error.log
+
+
+
+
+Restart=always
+RestartSec=10
+
+SyslogIdentifier=puma
+
+[Install]
+WantedBy=multi-user.target
