@@ -27,7 +27,7 @@ end
 gem 'irb'
 
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '< 6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
