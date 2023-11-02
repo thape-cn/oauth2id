@@ -44,22 +44,22 @@ gem 'jbuilder'
 # gem 'redis', '~> 4.0'
 
 gem 'devise'
-# bundle config local.devise-jwt /Users/guochunzhong/git/oss/devise-jwt/
+# bundle config local.devise-jwt /Users/$(whoami)/git/oss/devise-jwt/
 gem 'devise-jwt', git: 'https://git.thape.com.cn/rails/devise-jwt.git', branch: :main
 gem 'digest', '~> 3.1.1'
 
-# bundle config local.doorkeeper /Users/guochunzhong/git/oss/doorkeeper/
+# bundle config local.doorkeeper /Users/$(whoami)/git/oss/doorkeeper/
 gem 'doorkeeper', git: 'https://github.com/Eric-Guo/doorkeeper', branch: :main
-# bundle config local.doorkeeper-openid_connect /Users/guochunzhong/git/oss/doorkeeper-openid_connect/
+# bundle config local.doorkeeper-openid_connect /Users/$(whoami)/git/oss/doorkeeper-openid_connect/
 gem 'doorkeeper-openid_connect', git: 'https://github.com/thape-cn/doorkeeper-openid_connect', branch: :master
 gem 'pundit'
 
-# bundle config local.saml_idp /Users/guochunzhong/git/sso/saml_idp/
+# bundle config local.saml_idp /Users/$(whoami)/git/sso/saml_idp/
 gem 'saml_idp', git: 'https://github.com/thape-cn/saml_idp', branch: :oauth2id
 # Encrypted Assertions require the xmlenc gem in saml_idp
 gem 'xmlenc'
 
-# bundle config local.wechat /Users/guochunzhong/git/oss/wechat/
+# bundle config local.wechat /Users/$(whoami)/git/oss/wechat/
 gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
 
 gem 'ipip-fast'
