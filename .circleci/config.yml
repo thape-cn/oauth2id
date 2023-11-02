@@ -11,7 +11,7 @@ orbs:
 jobs:
   build: # our first job, named "build"
     docker:
-      - image: cimg/ruby:3.0.4-browsers
+      - image: cimg/ruby:3.2.2-browsers
 
     steps:
       - checkout # pull down our git code.
