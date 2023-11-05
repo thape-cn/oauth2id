@@ -28,6 +28,7 @@ gem 'sprockets'
 gem 'font-awesome-rails'
 gem 'pagy'
 
+gem 'terser'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker'
 
@@ -75,8 +76,6 @@ group :production, :staging do
 end
 
 group :development, :test do
-  gem 'terser'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
