@@ -3,6 +3,12 @@
 # oauth2id
 SSO Portal based on oauth2 id protocol
 
+# Build & Run in docker mode
+
+```bash
+docker build -t oauth2id-main .
+docker run -d -v ./config/master.key:/rails/config/master.key -v ./storage/oauth2id_dev.sqlite3:/rails/storage/oauth2id_prod.sqlite3 oauth2id-main
+```
 
 # Dev env setup
 
