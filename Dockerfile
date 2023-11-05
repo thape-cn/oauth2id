@@ -51,6 +51,9 @@ RUN rm -rf node_modules
 
 RUN sed -i 's/config.force_ssl = true/config.force_ssl = false/g' config/environments/production.rb
 
+RUN sed -i '/gem '\''terser'\''/d' Gemfile && \
+    sed -i '/group :development, :test do/a \ \ gem '\''terser'\''' Gemfile
+    
 # Final stage for app image
 FROM base
 
