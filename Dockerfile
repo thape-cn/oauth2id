@@ -37,14 +37,20 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
+# Install node modules
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile    
+
 # Copy application code
 COPY . .
 
+COPY config/database.yml.sample config/database.yml
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
-
+env RAILS_MASTER_KEY="YourMasterKey"
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=test ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Remove node_modules directory
 RUN rm -rf node_modules
