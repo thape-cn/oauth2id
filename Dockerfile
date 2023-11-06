@@ -53,6 +53,7 @@ env RAILS_MASTER_KEY="YourMasterKey"
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Remove node_modules directory
+# Can not remove even in .dockerignore because https://github.com/moby/moby/issues/33923#issuecomment-312563142
 RUN rm -rf node_modules
 
 RUN sed -i 's/config.force_ssl = true/config.force_ssl = false/g' config/environments/production.rb
