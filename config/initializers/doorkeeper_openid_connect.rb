@@ -5,7 +5,7 @@ Doorkeeper::OpenidConnect.configure do
     issuer 'https://sso-id.com'
   end
 
-  signing_key Rails.application.credentials.oauth2id_signing_key!
+  signing_key Rails.application.credentials.oauth2id_signing_key
 
   subject_types_supported [:public]
 

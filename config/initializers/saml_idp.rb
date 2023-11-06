@@ -5,9 +5,9 @@ SamlIdp.configure do |config|
     base = 'https://oauth2id.dev'
   end
 
-  config.x509_certificate = Rails.application.credentials.oauth2id_x509_certificate!
+  config.x509_certificate = Rails.application.credentials.oauth2id_x509_certificate
 
-  config.secret_key = Rails.application.credentials.oauth2id_x509_secret_key!
+  config.secret_key = Rails.application.credentials.oauth2id_x509_secret_key
 
   # NameIDFormat
   config.name_id.formats = {
@@ -22,17 +22,17 @@ SamlIdp.configure do |config|
 
   service_providers = {
     "https://saml-example.test/saml/metadata" => {
-      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint,
       metadata_url: "https://saml-example.test/saml/metadata",
       assertion_consumer_logout_service_url: "https://saml-example.test/saml/logout",
-      cert: Base64.encode64(Rails.application.credentials.saml_sp_cert!)
+      cert: Base64.encode64(Rails.application.credentials.saml_sp_cert.to_s),
     },
     "www.successfactors.com" => {
-      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint!,
+      fingerprint: Rails.application.credentials.oauth2id_x509_sha256_fingerprint,
       response_hosts: ["performancemanager15.sapsf.cn"],
       acs_url: 'https://performancemanager15.sapsf.cn/saml2/SAMLAssertionConsumer?company=shanghaitiT1',
       assertion_consumer_logout_service_url: "https://performancemanager15.sapsf.cn/saml2/LogoutServiceHTTPRedirect?company=shanghaitiT1",
-      cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert!)
+      cert: Base64.encode64(Rails.application.credentials.saml_shti_sp_cert.to_s),
     },
   }
 
