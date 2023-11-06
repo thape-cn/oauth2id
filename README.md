@@ -7,7 +7,8 @@ SSO Portal based on oauth2 id protocol
 
 ```bash
 docker build -t oauth2id-main .
-docker run -d -v ./config/master.key:/rails/config/master.key -v ./storage/oauth2id_dev.sqlite3:/rails/storage/oauth2id_prod.sqlite3 oauth2id-main
+docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage oauth2id-main
+```
 ```
 
 # Dev env setup
