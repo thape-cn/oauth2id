@@ -50,7 +50,7 @@ COPY config/database.yml.sample config/database.yml
 RUN bundle exec bootsnap precompile app/ lib/
 env RAILS_MASTER_KEY="YourMasterKey"
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 RAILS_ENV=test ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Remove node_modules directory
 RUN rm -rf node_modules
