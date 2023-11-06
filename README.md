@@ -3,12 +3,22 @@
 # oauth2id
 SSO Portal based on oauth2 id protocol
 
+
+# Quickly Start
+
+```bash
+cp config/database.yml.sample config/database.yml
+rm config/credentials.yml.enc # or ask for master.key
+export EDITOR=vim
+bin/rails credentials:edit # paste credentials.yml.sample or skip
+bin/rails test:all
+```
+
 # Build & Run in docker mode
 
 ```bash
 docker build -t oauth2id-main .
 docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage oauth2id-main
-```
 ```
 
 # Dev env setup
