@@ -48,7 +48,6 @@ COPY config/database.yml.sample config/database.yml
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
-env RAILS_MASTER_KEY="YourMasterKey"
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
