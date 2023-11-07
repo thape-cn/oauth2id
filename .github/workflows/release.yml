@@ -33,5 +33,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }},ericguo/oauth2id:${{ github.ref_name }}
+          tags: ${{ steps.meta.outputs.tags }},ericguo/oauth2id:${{ github.ref_name }}-amd64
           labels: ${{ steps.meta.outputs.labels }}
