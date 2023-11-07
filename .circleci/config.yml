@@ -54,7 +54,7 @@ jobs:
           command: cp config/database.yml.sample config/database.yml
       - run:
           name: Fix mutex_m version CI errors
-          command: sed -i 's/mutex_m (0.1.2)/mutex_m (0.1.1)/g' Gemfile.lock
+          command: sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
