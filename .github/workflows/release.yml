@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'main'
+      - 'yai'
+      
 jobs:
   push_to_registry:
     if: contains(github.event.head_commit.message, 'released new version')
@@ -31,5 +33,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }},ericguo/oauth2id:latest
+          tags: ${{ steps.meta.outputs.tags }},ericguo/oauth2id:${{ github.ref_name }}
           labels: ${{ steps.meta.outputs.labels }}
