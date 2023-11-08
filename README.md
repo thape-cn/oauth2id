@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/thape-cn/oauth2id.svg?style=svg)](https://circleci.com/gh/thape-cn/oauth2id) [Docker Images](https://hub.docker.com/r/ericguo/oauth2id/tags)
+[![CircleCI](https://circleci.com/gh/thape-cn/oauth2id.svg?style=svg)](https://circleci.com/gh/thape-cn/oauth2id) [![Docker Images](https://img.shields.io/badge/Docker%20Images-blue.svg)](https://hub.docker.com/r/ericguo/oauth2id/tags)
 
-# oauth2id
+# Oauth2id
 
 SSO Portal based on oauth2 id protocol
 
