@@ -6,9 +6,11 @@
 	],
 	"settings": {
 		"files.exclude": {
+			"**/.idea": true,
 			"**/*.sqlite3": true,
 			"**/log": true,
 			"**/node_modules": true,
+			"**/storage": true,
 			"**/tmp": true
 		},
 		"i18n-ally.localesPaths": [
