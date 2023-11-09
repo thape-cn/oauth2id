@@ -18,12 +18,12 @@ bin/rails test:all
 # Build & Run in docker mode
 
 ```bash
-docker build --tag ericguo/oauth2id:main-$(uname -m) .
-docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main-$(uname -m)
+docker build --tag ericguo/oauth2id:main .
+docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main
 # If can not start in above, do the debug.
-docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it ericguo/oauth2id:main-arm64 bash
+docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it ericguo/oauth2id:main bash
 # After success, push manually.
-docker push ericguo/oauth2id:main-$(uname -m)
+docker push ericguo/oauth2id:main
 ```
 
 # First user is admin
