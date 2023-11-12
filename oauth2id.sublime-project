@@ -17,6 +17,10 @@
                                 "docs/js/jquery-3.2.1.min.js",
                                 "docs/js/plugins/jquery.dataTables.min.js",
                                 "docs/js/plugins/dataTables.bootstrap.min.js"]
+    },
+    {
+      "path": "../oauth2id-docker",
+      "folder_exclude_patterns": ["data", "shared/cache"],
     }
   ],
     "settings":
