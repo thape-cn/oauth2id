@@ -10,9 +10,9 @@ class HomeController < ApplicationController
     case from_saml_host
     when "thape.zoom.us"
     when "thape.zoom.com.cn"
-      redirect_to SamlIdp.config.service_provider.finder.call('https://thape.zoom.us')[:login_url]
+      redirect_to SamlIdp.config.service_provider.finder.call('https://thape.zoom.us')[:login_url], allow_other_host: true
     when "performancemanager15.sapsf.cn"
-      redirect_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url]
+      redirect_to SamlIdp.config.service_provider.finder.call('www.successfactors.com')[:login_url], allow_other_host: true
     else
       @portal = Doorkeeper::Application.find_by!(id: 11)
       applications = if current_user.present?
