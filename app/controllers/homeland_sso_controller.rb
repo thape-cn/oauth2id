@@ -15,6 +15,6 @@ class HomelandSsoController < ApplicationController
 
     # 最后将准备好的信息计算成加密的 URL Query String 并跳转到 Homeland 应用的 SSO 登录地址 '/auth/sso/login'
     # Homeland 接收到信息以后，将会实现同步账号登陆的流程
-    redirect_to sso.to_url(Rails.application.credentials[Rails.env.to_sym][:homeland_url])
+    redirect_to sso.to_url(Rails.application.credentials[Rails.env.to_sym][:homeland_url]), allow_other_host: true
   end
 end
