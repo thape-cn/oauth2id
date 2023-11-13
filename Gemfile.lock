@@ -299,6 +299,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.6.1)
     pagy (9.3.1)
+    pg (1.5.9)
     psych (5.2.0)
       stringio
     public_suffix (6.0.1)
@@ -392,12 +393,6 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.3-aarch64-linux)
-    sqlite3 (1.7.3-arm-linux)
-    sqlite3 (1.7.3-arm64-darwin)
-    sqlite3 (1.7.3-x86-linux)
-    sqlite3 (1.7.3-x86_64-darwin)
-    sqlite3 (1.7.3-x86_64-linux)
     sshkit (1.23.2)
       base64
       net-scp (>= 1.1.2)
@@ -485,6 +480,7 @@ DEPENDENCIES
   minitest
   minitest-ci
   pagy
+  pg
   puma
   pundit
   rails (~> 7.1.2)
@@ -495,7 +491,6 @@ DEPENDENCIES
   simplecov
   spring
   sprockets
-  sqlite3 (~> 1.7)
   terser
   turbolinks
   tzinfo-data
