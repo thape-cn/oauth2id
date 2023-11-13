@@ -9,9 +9,11 @@ SSO Portal based on oauth2 id protocol
 
 ```bash
 cp config/database.yml.sample config/database.yml
-rm config/credentials.yml.enc # or ask for master.key
+# or ask for master.key
+rm config/credentials.yml.enc
 export EDITOR=vim
-bin/rails credentials:edit # paste credentials.yml.sample or skip
+# paste credentials.yml.sample or skip
+bin/rails credentials:edit
 bin/rails test:all
 ```
 
