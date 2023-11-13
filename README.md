@@ -40,19 +40,32 @@ rm config/credentials.yml.enc
 export EDITOR=vim
 # paste credentials.yml.sample or skip
 bin/rails credentials:edit
+bin/rails db:create
 bin/rails test:all
 ```
 
-# Build & Run in docker mode
+# Create postgresql db user in Mac
 
 ```bash
-docker build --tag ericguo/oauth2id:main .
-# or `docker pull ericguo/oauth2id:main` to using existing images
-docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main
+sudo su - postgres
+createuser oauth2id_prod
+psql -d postgres
+ALTER ROLE oauth2id_prod LOGIN;
+ALTER USER oauth2id_prod PASSWORD 'oauth2id_prod';
+CREATE DATABASE oauth2id_prod WITH ENCODING='UTF8' OWNER=oauth2id_prod;
+logout
+```
+
+# Build & Run in docker mode in OrbStack
+
+```bash
+docker build --tag ericguo/oauth2id:yai .
+# or `docker pull ericguo/oauth2id:yai` to using existing images
+docker run -p 3000:3000 -d --restart always --name oauth2id-yai --env RAILS_MASTER_KEY=YourMasterKey --env OAUTH2ID_DB_NAME=oauth2id_prod --env OAUTH2ID_DB_HOST=host.docker.internal --env OAUTH2ID_DB_USERNAME=oauth2id_prod --env OAUTH2ID_DB_PASSWORD=oauth2id_prod -v ./storage:/rails/storage ericguo/oauth2id:yai
 # If can not start in above, do the debug.
-docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it ericguo/oauth2id:main bash
+docker run --env RAILS_MASTER_KEY=YourMasterKey --env OAUTH2ID_DB_NAME=oauth2id_prod --env OAUTH2ID_DB_HOST=host.docker.internal --env OAUTH2ID_DB_USERNAME=oauth2id_prod --env OAUTH2ID_DB_PASSWORD=oauth2id_prod -v ./storage:/rails/storage -it ericguo/oauth2id:yai bash
 # After success, push manually.
-docker push ericguo/oauth2id:main
+docker push ericguo/oauth2id:yai
 ```
 
 # Dev env setup

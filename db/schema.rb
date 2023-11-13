@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_05_132232) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
     t.datetime "exp", precision: nil, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
@@ -30,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "department_users", force: :cascade do |t|
-    t.integer "department_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "department_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["department_id"], name: "index_department_users_on_department_id"
@@ -48,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
-    t.integer "resource_owner_id", null: false
-    t.integer "application_id", null: false
+    t.bigint "resource_owner_id", null: false
+    t.bigint "application_id", null: false
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
@@ -64,8 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "oauth_access_tokens", force: :cascade do |t|
-    t.integer "resource_owner_id"
-    t.integer "application_id"
+    t.bigint "resource_owner_id"
+    t.bigint "application_id"
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
@@ -111,8 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "position_users", force: :cascade do |t|
-    t.integer "position_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "position_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "main_position", default: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -128,7 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "title"
     t.boolean "gender"
     t.string "phone"
@@ -140,8 +143,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "user_allowed_applications", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "oauth_application_id"
+    t.bigint "user_id"
+    t.bigint "oauth_application_id"
     t.boolean "enable", default: true
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -150,7 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
   end
 
   create_table "user_sign_in_histories", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "sign_in_at", precision: nil
     t.text "user_agent"
     t.string "sign_in_ip"

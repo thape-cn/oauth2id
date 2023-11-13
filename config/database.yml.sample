@@ -1,13 +1,13 @@
 ---
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   primary:
     <<: *default
-    database: storage/oauth2id_dev.sqlite3
+    database: <%= ENV.fetch("OAUTH2ID_DEV_DB_NAME") { 'oauth2id_dev' } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -15,9 +15,14 @@ development:
 test:
   primary:
     <<: *default
-    database: storage/oauth2id_test.sqlite3
+    database: <%= ENV.fetch("OAUTH2ID_TEST_DB_NAME") { 'oauth2id_test' } %>
+    username: <%= ENV.fetch("OAUTH2ID_DB_USERNAME") { '' } %>
+    host: <%= ENV.fetch("OAUTH2ID_DB_HOST") { '' } %>
 
 production:
   primary:
     <<: *default
-    database: storage/oauth2id_prod.sqlite3
+    database: <%= ENV.fetch("OAUTH2ID_DB_NAME") { 'oauth2id_prod' } %>
+    username: <%= ENV.fetch("OAUTH2ID_DB_USERNAME") { '' } %>
+    password: <%= ENV.fetch("OAUTH2ID_DB_PASSWORD") { '' } %>
+    host: <%= ENV.fetch("OAUTH2ID_DB_HOST") { '' } %>

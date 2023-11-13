@@ -11,8 +11,7 @@ gem 'rails-i18n'
 # released.
 gem 'mail', '= 2.8.1'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.7'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 # Use jquery as the JavaScript library

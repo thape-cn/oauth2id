@@ -2,6 +2,10 @@
 image: circleci/ruby:3.0.3-node-browsers
 
 variables:
+  POSTGRES_HOST: postgres
+  POSTGRES_DB: pagila_test
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
   CACHE_FALLBACK_KEY: "$CI_COMMIT_REF_SLUG"
 
 before_script:
@@ -14,6 +18,8 @@ stages:
   - deploy
 
 test:
+  services:
+    - postgres:12.9
   stage: test
   cache:
     - key:
@@ -26,6 +32,8 @@ test:
           - yarn.lock
       paths:
         - ".yarn-cache/"
+  variables:
+    DATABASE_URL: postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB
   script:
     - bundle install -j $(nproc)
     - yarn install --cache-folder .yarn-cache
