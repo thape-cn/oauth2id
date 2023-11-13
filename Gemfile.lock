@@ -477,7 +477,7 @@ DEPENDENCIES
   turbolinks
   tzinfo-data
   web-console
-  webpacker
+  webpacker (~> 5.4.4)
   wechat!
   xmlenc
 
