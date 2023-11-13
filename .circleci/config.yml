@@ -4,14 +4,24 @@ version: 2.1 # Use 2.1 to enable using orbs and other features.
 # Declare the orbs that we'll use in our config.
 # read more about orbs: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  ruby: circleci/ruby@1.0
+  ruby: circleci/ruby@2.1.0
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.3.0
+
+executors:
+  libraries:
+    docker:
+      - image: circleci/postgres:14.9-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: oauth2id_test
+          POSTGRES_PASSWORD: ""
 
 jobs:
   build: # our first job, named "build"
     docker:
       - image: cimg/ruby:3.2.2-browsers
+    executor: libraries
 
     steps:
       - checkout # pull down our git code.
@@ -24,12 +34,13 @@ jobs:
           cache-key: "yarn.lock"
 
   test:  # our next job, called "test"
+    docker:
+      - image: cimg/ruby:3.2.2-browsers
+    executor: libraries
+
     # we run "parallel job containers" to enable speeding up our tests;
     # this splits our tests across multiple containers.
     parallelism: 3
-    # here we set TWO docker images.
-    docker:
-      - image: cimg/ruby:3.0.4-browsers
 
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
@@ -54,7 +65,7 @@ jobs:
           command: cp config/database.yml.sample config/database.yml
       - run:
           name: Fix mutex_m version CI errors
-          command: sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
+          command: sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.2)/g' Gemfile.lock
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
