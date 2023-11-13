@@ -11,11 +11,11 @@ orbs:
 executors:
   libraries:
     docker:
-      - image: circleci/postgres:14.9-alpine
+      - image: cimg/postgres:14.9
         environment:
-          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: circleci
           POSTGRES_DB: oauth2id_test
-          POSTGRES_PASSWORD: ""
 
 jobs:
   build: # our first job, named "build"
