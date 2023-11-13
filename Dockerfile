@@ -13,6 +13,8 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
+# Install libpq to access pg
+RUN apt-get update && apt-get install -y libpq-dev
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
