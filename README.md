@@ -21,6 +21,7 @@ bin/rails test:all
 
 ```bash
 docker build --tag ericguo/oauth2id:main .
+# or `docker pull ericguo/oauth2id:main` to using existing images
 docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main
 # If can not start in above, do the debug.
 docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it ericguo/oauth2id:main bash
@@ -30,7 +31,7 @@ docker push ericguo/oauth2id:main
 
 # First user is admin
 
-The first user will automatically become the admin, please ignore 500 erros as jwt token at first sign-in not via login screen.
+The first user will automatically become the admin, please ignore 500 erros as jwt token at first sign-up not via login screen.
 
 # Dev env setup
 
