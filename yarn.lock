@@ -4260,10 +4260,10 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jqtree@^1.6.3:
-  version "1.8.0"
-  resolved "https://registry.npmmirror.com/jqtree/-/jqtree-1.8.0.tgz#1c1922bdbac692b3e8120c2161ad2b6229a6fc78"
-  integrity sha512-3Pgi8AvILdqxG8OprfSUTukvVy+/eBn3bmTfgLi01ghx+UEIPvBXTIlJfVxE8diSCLONb1V6DDX1JvNCoMB+gg==
+jqtree@=1.7.5:
+  version "1.7.5"
+  resolved "https://registry.npmmirror.com/jqtree/-/jqtree-1.7.5.tgz#15a4d092ecc73551e04fa6dacbaa8b6d38a541a8"
+  integrity sha512-Bw7pMExChLOWW6GIQv0xZ9PlochLpAu4hYqJIGdWYLZP+M9q5pKwsGO+fnrkY2lC5WMkiH3ghwXd1uIIpRGq+A==
 
 jquery@>=1.7:
   version "3.7.1"
