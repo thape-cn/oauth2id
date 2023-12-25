@@ -53,7 +53,9 @@
         <div class="form-group mt-3">
           <p class="semibold-text mb-0">
             <a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> <%= t('user.back_to_login') -%></a>
-            <%= link_to t('user.sign_up'), new_user_registration_path, class: 'pull-right' -%>
+            <% if FeatureToggles.allow_user_signup? %>
+              <%= link_to t('user.sign_up'), new_user_registration_path, class: 'pull-right' -%>
+            <% end %>
           </p>
         </div>
     <% end %>
