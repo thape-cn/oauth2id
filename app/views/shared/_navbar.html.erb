@@ -72,7 +72,9 @@
     <% else %>
       <li class="app-login-box">
         <a class="btn btn-dark" href="<%= new_user_session_path -%>"><%= t('user.sign_in') -%></a>
-        <a class="btn btn-light" href="<%= new_user_registration_path -%>"><%= t('user.sign_up') -%></a>
+        <% if FeatureToggles.allow_user_signup? %>
+          <a class="btn btn-light" href="<%= new_user_registration_path -%>"><%= t('user.sign_up') -%></a>
+        <% end %>
       </li>
     <% end %>
   </ul>

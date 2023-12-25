@@ -58,6 +58,7 @@ en:
     password_confirmation: "Password confirmation"
     sign_in: "Sign in"
     sign_up: "Sign up"
+    sign_up_disabled: "User sign-up is currently disabled."
     stay_signed_in: "Stay Signed in"
     forgot_password: "Forgot Password ?"
     back_to_login: "Back to Login"
