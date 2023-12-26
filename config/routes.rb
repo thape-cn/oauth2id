@@ -11,6 +11,16 @@ Rails.application.routes.draw do
 
   get '/homeland/sso' => 'homeland_sso#sso'
 
+  get '/install' => 'install#index'
+  get '/install/step1' => 'install#step1'
+  get '/install/step2' => 'install#step2'
+  get '/install/step3' => 'install#step3'
+  get '/install/step4' => 'install#step4'
+  post '/install/step1' => 'install#save_step1'
+  post '/install/step2' => 'install#save_step2'
+  post '/install/step3' => 'install#save_step3'
+  post '/install/step4' => 'install#save_step4'
+
   resource :wechat, only: [:show, :create]
 
   devise_for :users, controllers: { sessions: 'user/sessions',

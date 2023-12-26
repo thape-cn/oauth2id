@@ -1,0 +1,22 @@
+<section class="login-content">
+  <div class="logo">
+    <h1>Oauth2 Install</h1>
+  </div>
+  <div class="login-box login-box-signup">
+    <div class="p-4">
+      <h3><i class="fa fa-solid fa-check"></i> Install successful!</h3>
+      <p>Congratulations, your installation was successful!</p>
+      <p>The initial admin user: </p>
+      <ol class="list-group list-group-flush">
+        <li class="list-group-item">Email: <strong><%= @initial_admin_user.email %></strong></li>
+        <li class="list-group-item">Username: <strong><%= @initial_admin_user.username %></strong></li>
+      </ol>
+      <div class="mt-4">
+        <%= link_to new_user_session_path, class: 'btn btn-primary btn-block' do -%>
+        <i class="fa fa-sign-in fa-lg fa-fw"></i> Login
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

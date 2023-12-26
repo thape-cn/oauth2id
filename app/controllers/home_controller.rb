@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    redirect_to install_path if User.where(admin: true).count == 0
+
     @applications = if current_user.present?
       user_allowed_application_ids = current_user.user_allowed_applications.where(enable: true).pluck(:oauth_application_id)
       Doorkeeper::Application.where(id: user_allowed_application_ids)
