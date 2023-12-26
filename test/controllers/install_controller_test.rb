@@ -50,6 +50,10 @@ class InstallControllerTest < ActionDispatch::IntegrationTest
       post install_step3_path, params: {
         user: { username: 'firstadmin', email: 'firstadmin@example.com', password: '123abc1234', password_confirmation: '123abc1234' }
       }
+      user = User.first
+      assert_equal 'firstadmin', user.username
+      assert_equal true, user.admin?
+      assert_equal true, user.confirmed?
       assert_response :redirect
     end
 
