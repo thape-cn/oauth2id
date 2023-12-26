@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class JwtsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user
 
   def index
