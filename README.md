@@ -29,10 +29,6 @@ docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it 
 docker push ericguo/oauth2id:main
 ```
 
-# First user is admin
-
-The first user will automatically become the admin, please ignore 500 erros as jwt token at first sign-up not via login screen.
-
 # Dev env setup
 
 Setup the puma-dev to support https in local.
