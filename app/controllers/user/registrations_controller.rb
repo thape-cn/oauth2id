@@ -2,15 +2,6 @@ class User::RegistrationsController < Devise::RegistrationsController
   before_action :check_signup_allowed, only: %i[new create]
   layout 'sessions', only: %i[new create]
 
-  def create
-    super do |user|
-      if User.count == 1
-        user.admin = true
-        user.save
-        user.confirm
-      end
-    end
-  end
 
   private
 
