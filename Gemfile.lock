@@ -380,7 +380,8 @@ GEM
     sqlite3 (1.6.9-x86-linux)
     sqlite3 (1.6.9-x86_64-darwin)
     sqlite3 (1.6.9-x86_64-linux)
-    sshkit (1.21.6)
+    sshkit (1.21.7)
+      mutex_m
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     stringio (3.1.0)
