@@ -1,0 +1,31 @@
+<section class="login-content">
+  <div class="logo">
+    <h1>Oauth2 Install</h1>
+  </div>
+  <div class="login-box login-box-signup">
+  <%= form_with(url: install_step1_path, method: :post, html: { class: 'p-4' }) do |f| %>
+      <h3><i class="fa fa-solid fa-users"></i> Check environment</h3>
+
+      <ol class="my-4">
+        <li>Ruby Version: <%= RUBY_VERSION %></li>
+        <li>Rails Version: <%= Rails.version %></li>
+        <li>Database: <%= @db_name %> (<%= @db_adapter %>) </li>
+        <% if @master_key_missing %>
+        <li class="text-danger">Warning: Missing RAILS MASTER KEY</li>
+        <% end %>
+      </ol>
+      
+      <div class="d-flex form-group btn-container">
+        <% if @env_valid %>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary flex-fill') do %>
+          <i class="fa fa-sign-in fa-lg fa-fw"></i> Next
+        <% end %>
+        <% else %>
+        <%= button_tag(type: 'submit', disabled: :disabled, class: 'btn btn-primary flex-fill') do %>
+          <i class="fa fa-sign-in fa-lg fa-fw"></i> Next
+        <% end %>
+        <% end %>
+      </div>
+  <% end %>
+  </div>
+</section>

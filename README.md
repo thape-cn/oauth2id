@@ -4,6 +4,32 @@
 
 SSO Portal based on oauth2 id protocol
 
+# Self-Hosting
+
+Before proceeding with Oauth2id installation, ensure you meet the following prerequisites:
+
+* A server with [Docker](https://www.docker.com/) installed: Oauth2id is designed to be self-hosted with Docker.
+* Rails master key, which is used to decrypt the credentials file. If you don't have one, ask for it from the project maintainer.
+
+## Docker Run
+
+To set up Oauth2id using `docker run`, execute the following one command to start Oauth2id:
+
+1. Select a suitable directory as your application directory, and create a directory to store the Oauth2id database file:
+
+    ```
+    mkdir -p /opt/oauth2id/storage
+    ```
+
+    This step makes sure that storage directory is created and owned by the current user.
+
+2. Run the following command to start Oauth2id:
+
+    ```
+    cd /opt/oauth2id
+    docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main
+    ```
+    This command starts Oauth2id in the background, and exposes the Oauth2id web interface on port 3000. The `--env RAILS_MASTER_KEY=YourMasterKey` option is used to pass the Rails master key to the container. The `-v ./storage:/rails/storage` option is used to mount the storage directory on the host to the container. This is necessary to persist the Oauth2id database file.
 
 # Quickly Start
 
@@ -28,10 +54,6 @@ docker run --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage -it 
 # After success, push manually.
 docker push ericguo/oauth2id:main
 ```
-
-# First user is admin
-
-The first user will automatically become the admin, please ignore 500 erros as jwt token at first sign-up not via login screen.
 
 # Dev env setup
 
