@@ -26,9 +26,6 @@ stages:
   - test
   - deploy
 
-stages:
-  - test
-
 test:
   stage: test
   cache:
@@ -46,6 +43,7 @@ test:
     - bundle install -j $(nproc)
     - pnpm install --frozen-lockfile --store-dir .pnpm-store
     - cp config/database.yml.sample config/database.yml
+    - export RAILS_MASTER_KEY=$PRODUCTION_MASTER_KEY
     - echo $PRODUCTION_MASTER_KEY > config/master.key
     - bundle exec rails db:migrate RAILS_ENV=test
     - bundle exec rails test:all
