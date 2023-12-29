@@ -1,0 +1,33 @@
+<section class="login-content">
+  <div class="logo">
+    <h1>Oauth2 Install</h1>
+  </div>
+  <div class="login-box login-box-signup">
+  <%= form_with(model: @new_user, url: install_step2_path, method: :post, html: { class: 'p-4' }) do |f| %>
+      <h3><i class="fa fa-solid fa-users"></i> Import users</h3>
+      <div class="form-group">
+        <label class="control-label">CSV file</label>
+        <%= f.file_field :file, autofocus: true, placeholder: 'csv file', class: 'form-control' -%>
+      </div>
+      
+      <div class="d-flex form-group btn-container">
+        <%= button_tag(type: 'submit', class: 'btn btn-primary flex-fill') do %>
+          <i class="fa fa-sign-in fa-lg fa-fw"></i> Next
+        <% end %>
+
+        <%= button_tag(type: 'submit', value: 'skip', class: 'ml-4 btn') do %>
+          <i class="fa fa-fast-forward"></i> Skip
+        <% end %>
+      </div>
+
+      <div class="mt-4">
+        Tips: <br>
+        <ul>
+          <li>CSV file must have header row</li>
+          <li>CSV file must have columns: username, email, password</li>
+          <li>CSV file must have at least one row</li>
+          <li>CSV file must be UTF-8 encoded</li>
+      </div>
+  <% end %>
+  </div>
+</section>
