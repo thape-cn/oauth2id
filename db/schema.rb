@@ -44,6 +44,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.integer "managed_by_department_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "dept_code"
+    t.string "nc_pk_dept"
+    t.string "nc_pk_fatherorg"
+    t.string "company_name"
+    t.integer "enablestate"
+    t.string "hrcanceled", limit: 1
+    t.string "company_code"
+    t.string "dept_category"
     t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
   end
 
@@ -93,6 +101,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.string "login_url"
     t.boolean "allow_login_by_default", default: false
     t.boolean "superapp", default: false
+    t.boolean "allow_function_account_login", default: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
@@ -125,6 +134,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.string "functional_category"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "nc_pk_post"
+    t.integer "department_id"
+    t.string "company_name"
+    t.string "pk_poststd"
+    t.string "b_postcode"
+    t.string "b_postname"
+    t.string "job_type_code"
+    t.string "post_level"
+    t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -136,6 +154,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "clerk_code"
     t.string "chinese_name"
+    t.integer "job_level"
+    t.date "birthdate"
+    t.date "entry_company_date"
+    t.string "pre_sso_id"
+    t.string "wecom_id"
+    t.string "major_code"
+    t.string "major_name"
+    t.date "leave_company_date"
+    t.string "th_code"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -180,10 +207,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.boolean "admin"
     t.string "username"
     t.string "remember_token"
+    t.string "desk_phone"
+    t.integer "yxt_position_id"
+    t.boolean "is_function_account", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["yxt_position_id"], name: "index_users_on_yxt_position_id"
   end
 
   create_table "wechat_event_histories", force: :cascade do |t|
@@ -199,6 +230,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
+  create_table "yxt_positions", force: :cascade do |t|
+    t.string "position_name"
+    t.string "prefix_paths"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
   add_foreign_key "department_allowed_applications", "departments"
   add_foreign_key "department_allowed_applications", "oauth_applications"
@@ -207,8 +245,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
+<<<<<<< HEAD
   add_foreign_key "position_allowed_applications", "oauth_applications"
   add_foreign_key "position_allowed_applications", "positions"
+=======
+  add_foreign_key "positions", "departments"
+>>>>>>> 39c178c7 (Sync DB Schema)
   add_foreign_key "profiles", "users"
   add_foreign_key "user_allowed_applications", "oauth_applications"
   add_foreign_key "user_allowed_applications", "users"
