@@ -52,3 +52,5 @@ deploy_staging:
   environment:
     name: staging
     url: https://sso-id.com
+  only:
+    - main
