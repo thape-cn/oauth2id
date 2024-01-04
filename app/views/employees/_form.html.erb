@@ -14,6 +14,19 @@
               <%= f.text_field :username, class: 'form-control', placeholder: t('user.username_placeholder') %>
             </div>
           </div>
+          <% if FeatureToggles.allow_admin_grant_admin? %>
+          <div class="form-group row">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-8">
+              <div class="form-check">
+                <label class="control-label">
+                  <%= f.check_box :admin, class: 'form-check-input' %>
+                  <%= t('user.admin') -%>
+                </label>
+              </div>
+            </div>
+          </div>
+          <% end %>
           <%= f.fields_for :profile do |pf| %>
             <div class="form-group row">
               <label class="control-label col-md-3"><%= t('user.title') -%></label>
