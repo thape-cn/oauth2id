@@ -3,7 +3,7 @@
   [
     {
       "path": ".",
-      "folder_exclude_patterns": [".circleci", ".github", ".bundle",".idea","tmp",".capistrano","log","tmp",
+      "folder_exclude_patterns": [".circleci", ".ruby-lsp", ".github", ".bundle",".idea","tmp",".capistrano","log","tmp",
                                   "public/assets","coverage","public/packs","node_modules"],
       "file_exclude_patterns": ["*.sublime-workspace",".byebug_history",".DS_Store",
                                 "config/credentials.yml.enc", "db/oauth2id_*.sqlite3"]
@@ -17,10 +17,6 @@
                                 "docs/js/jquery-3.2.1.min.js",
                                 "docs/js/plugins/jquery.dataTables.min.js",
                                 "docs/js/plugins/dataTables.bootstrap.min.js"]
-    },
-    {
-      "path": "../oauth2id-docker",
-      "folder_exclude_patterns": ["data", "shared/cache"],
     }
   ],
     "settings":
