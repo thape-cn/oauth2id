@@ -24,7 +24,12 @@
       </li>
     <% end %>
   <% if current_user&.admin? %>
-    <li class="treeview <%= (params[:controller] == 'doorkeeper/applications') ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.applications_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
+    <li class="treeview <%= (params[:controller] == 'doorkeeper/applications') ? 'is-expanded' : '' -%>">
+      <a class="app-menu__item" href="#" data-toggle="treeview">
+        <i class="app-menu__icon fa fa-laptop"></i>
+        <span class="app-menu__label"><%= t('ui.applications_management') -%></span>
+        <i class="treeview-indicator fa fa-angle-right"></i>
+      </a>
       <ul class="treeview-menu">
         <li>
           <%= link_to oauth_applications_path, class: "treeview-item #{params[:controller] == 'doorkeeper/applications' && params[:action] == 'index' ? 'active' : ''}" do %>
@@ -39,8 +44,29 @@
       </ul>
     </li>
   <% end -%>
+  <% if policy(Department).index? %>
+    <li class="treeview <%= (params[:controller] == 'departments') ? 'is-expanded' : '' -%>">
+      <a class="app-menu__item" href="#" data-toggle="treeview">
+        <i class="app-menu__icon fa fa-laptop"></i>
+        <span class="app-menu__label"><%= t('ui.department_management') -%></span>
+        <i class="treeview-indicator fa fa-angle-right"></i>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to departments_path, class: "treeview-item #{params[:controller] == 'departments' && params[:action] == 'index' ? 'active' : ''}" do %>
+            <i class="icon fa fa-circle-o"></i> <%= t('ui.department_list') -%>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  <% end -%>
   <% if policy(User).index? %>
-    <li class="treeview <%= (['employees','duplicate_employees'].include? params[:controller]) ? 'is-expanded' : '' -%>"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label"><%= t('ui.employees_management') -%></span><i class="treeview-indicator fa fa-angle-right"></i></a>
+    <li class="treeview <%= (['employees','duplicate_employees'].include? params[:controller]) ? 'is-expanded' : '' -%>">
+      <a class="app-menu__item" href="#" data-toggle="treeview">
+        <i class="app-menu__icon fa fa-laptop"></i>
+        <span class="app-menu__label"><%= t('ui.employees_management') -%></span>
+        <i class="treeview-indicator fa fa-angle-right"></i>
+      </a>
       <ul class="treeview-menu">
         <li>
           <%= link_to employees_path, class: "treeview-item #{params[:controller] == 'employees' && params[:action] == 'index' ? 'active' : ''}" do %>
@@ -56,7 +82,7 @@
     </li>
   <% end -%>
   <% if policy(Department).show? %>
-    <div id="tree-department" data-url="/departments/data.json"></div>
+    <div id="tree-department" data-url="<%= data_departments_path(format: :json) -%>"></div>
   <% end -%>
   </ul>
 </aside>

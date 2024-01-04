@@ -48,7 +48,7 @@ Rails.application.routes.draw do
       get :profile
     end
   end
-  resource :departments, only: [] do
+  resources :departments, only: %i[index] do
     collection do
       get :data
     end
