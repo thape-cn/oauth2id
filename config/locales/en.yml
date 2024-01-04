@@ -15,6 +15,8 @@ en:
     duplicate_employees: "Duplicate employees"
     applications_management: "Applications Management"
     applications_list: "Applications List"
+    department_management: "Department management"
+    department_list: "Department list"
     can_grant_applications: "Applications can grant to access"
     can_not_grant_applications: "Can not grant applications to access"
     allow_access: "Allow Access"
