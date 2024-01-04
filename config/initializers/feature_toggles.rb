@@ -4,6 +4,6 @@ module FeatureToggles
   end
 
   def self.allow_admin_grant_admin?
-    ENV.fetch('ALLOW_ADMIN_GRANT_ADMIN', 'true') == 'true'
+    ENV.fetch('ALLOW_ADMIN_GRANT_ADMIN', 'false') == 'true'
   end
 end
