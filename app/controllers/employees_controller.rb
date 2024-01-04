@@ -81,6 +81,8 @@ class EmployeesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :username, profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable, :oauth_application_id])
+    permitted_params = [:email, :username, profile_attributes: [:id, :title], user_allowed_applications_attributes: [:id, :enable, :oauth_application_id]]
+    permitted_params << :admin if FeatureToggles.allow_admin_grant_admin?
+    params.require(:user).permit(permitted_params)
   end
 end
