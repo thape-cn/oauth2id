@@ -17,6 +17,7 @@ en:
     applications_list: "Applications List"
     department_management: "Department management"
     department_list: "Department list"
+    department_description: "Successful companies have no departmental barriers."
     can_grant_applications: "Applications can grant to access"
     can_not_grant_applications: "Can not grant applications to access"
     allow_access: "Allow Access"
@@ -83,6 +84,9 @@ en:
     chinese_name: "Chinese Name"
     account_counts: "Account Count"
     locked_at: "Locked at"
+  department:
+    name: "Department name"
+    managed_by_department: "Managed by department"
   jwts:
     index:
       title: "Management application and its JWT authorization"

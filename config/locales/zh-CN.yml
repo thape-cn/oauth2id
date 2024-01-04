@@ -17,6 +17,7 @@ zh-CN:
     applications_list: "应用列表"
     department_management: "部门管理"
     department_list: "部门列表"
+    department_description: "成功的公司没有部门壁垒。"
     can_grant_applications: "可以授予访问权限的应用程序"
     can_not_grant_applications: "无法授予应用程序访问权限"
     allow_access: "允许访问"
@@ -83,6 +84,9 @@ zh-CN:
     chinese_name: "中文姓名"
     account_counts: "账号数量"
     locked_at: "锁定日期"
+  department:
+    name: "部门名称"
+    managed_by_department: "上级部门"
   jwts:
     index:
       title: "管理应用程序及其JWT授权"
