@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/thape-cn/oauth2id.svg?style=svg)](https://circleci.com/gh/thape-cn/oauth2id) [![Docker Images](https://img.shields.io/badge/Docker%20Images-blue.svg)](https://hub.docker.com/r/ericguo/oauth2id/tags)
+[![Circle CI](https://circleci.com/gh/thape-cn/oauth2id.svg?style=svg)](https://circleci.com/gh/thape-cn/oauth2id) [![Gitlab CI](https://git.thape.com.cn/Eric-Guo/oauth2id/badges/main/pipeline.svg)](https://git.thape.com.cn/Eric-Guo/oauth2id/-/commits/main)[![Docker Images](https://img.shields.io/badge/Docker%20Images-blue.svg)](https://hub.docker.com/r/ericguo/oauth2id/tags)
 
 # Oauth2id
 
@@ -114,7 +114,7 @@ openssl genpkey -algorithm RSA -out oauth2id_jwt_private_key.pem -pkeyopt rsa_ke
 openssl rsa -pubout -in oauth2id_jwt_private_key.pem -out oauth2id_jwt_public_key.pem
 ```
 
-# Generate initial data
+## Generate initial data
 
 
 ```bash
