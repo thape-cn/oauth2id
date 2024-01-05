@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
     "columns": [
       {"data": "id"},
       {"data": "name"},
-      {"data": "managed_by_department"},
+      {"data": "functional_category"},
       {"data": "admin_action", bSortable: false}
     ],
     stateSave: true,
