@@ -12,9 +12,7 @@
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
-
-<%= render 'doorkeeper/applications/form', application: @application %>
-
+          <%= render partial: 'form', locals: { application: @application } %>
         </div>
       </div>
     </div>

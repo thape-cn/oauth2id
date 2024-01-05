@@ -5,9 +5,11 @@ en:
       doorkeeper/application:
         name: 'Name'
         redirect_uri: 'Redirect URI'
+        confidential: "Confidential"
         scopes: 'Scopes'
         icon: 'Icon'
         div_class: 'tag DIV class'
+        login_url: "Login URL"
     errors:
       models:
         doorkeeper/application:

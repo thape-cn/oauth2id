@@ -5,9 +5,11 @@ zh-CN:
       doorkeeper/application:
         name: '应用名称'
         redirect_uri: '重定向 URI'
+        confidential: "机密"
         scopes: '权限范围'
         icon: '图标'
         div_class: 'tag DIV class'
+        login_url: "登录 URL"
     errors:
       models:
         doorkeeper/application:
