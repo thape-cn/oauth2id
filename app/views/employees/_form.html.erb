@@ -15,17 +15,17 @@
             </div>
           </div>
           <% if FeatureToggles.allow_admin_grant_admin? %>
-          <div class="form-group row">
-            <div class="col-md-3">&nbsp;</div>
-            <div class="col-md-8">
-              <div class="form-check">
-                <label class="control-label">
-                  <%= f.check_box :admin, class: 'form-check-input' %>
-                  <%= t('user.admin') -%>
-                </label>
+            <div class="form-group row">
+              <div class="col-md-3">&nbsp;</div>
+              <div class="col-md-8">
+                <div class="form-check">
+                  <label class="control-label">
+                    <%= f.check_box :admin, class: 'form-check-input' %>
+                    <%= t('user.admin') -%>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
           <% end %>
           <%= f.fields_for :profile do |pf| %>
             <div class="form-group row">
@@ -45,13 +45,13 @@
               </tr>
             </thead>
             <tbody>
-      <%= f.fields_for :user_allowed_applications do |ua_f| %>
-              <tr>
-                <%= ua_f.hidden_field :oauth_application_id -%>
-                <td><%= ua_f.object.oauth_application.name -%></td>
-                <td><%= ua_f.check_box :enable %></td>
-              </tr>
-      <% end %>
+              <%= f.fields_for :user_allowed_applications do |ua_f| %>
+                <tr>
+                  <%= ua_f.hidden_field :oauth_application_id -%>
+                  <td><%= ua_f.object.oauth_application.name -%></td>
+                  <td><%= ua_f.check_box :enable %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
