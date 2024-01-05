@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2021_03_26_082831) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_05_091805) do
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.1].define(version: 2021_03_26_082831) do
     t.integer "user_id", null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
+  end
+
+  create_table "department_allowed_applications", force: :cascade do |t|
+    t.integer "department_id", null: false
+    t.integer "oauth_application_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_department_allowed_applications_on_department_id"
+    t.index ["oauth_application_id"], name: "index_department_allowed_applications_on_oauth_application_id"
   end
 
   create_table "department_users", force: :cascade do |t|
@@ -182,6 +191,8 @@ ActiveRecord::Schema[7.1].define(version: 2021_03_26_082831) do
   end
 
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
+  add_foreign_key "department_allowed_applications", "departments"
+  add_foreign_key "department_allowed_applications", "oauth_applications"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
