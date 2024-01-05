@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       get :data
     end
   end
+  resources :positions, only: %i[index]
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'
