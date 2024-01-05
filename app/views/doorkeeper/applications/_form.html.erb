@@ -6,16 +6,16 @@
   <% end %>
 
   <div class="form-group row">
-    <%= f.label :name, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :name, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_field :name, class: "form-control #{ 'is-invalid' if application.errors[:name].present? }", required: true %>
       <%= doorkeeper_errors_for application, :name %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :redirect_uri, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :redirect_uri, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_area :redirect_uri, class: "form-control #{ 'is-invalid' if application.errors[:redirect_uri].present? }" %>
       <%= doorkeeper_errors_for application, :redirect_uri %>
       <span class="form-text text-secondary">
@@ -31,19 +31,23 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :confidential, class: 'col-sm-2 form-check-label font-weight-bold' %>
-    <div class="col-sm-10">
-      <%= f.check_box :confidential, class: "checkbox #{ 'is-invalid' if application.errors[:confidential].present? }" %>
-      <%= doorkeeper_errors_for application, :confidential %>
+    <%= f.label :confidential, class: 'col-sm-3 form-check-label font-weight-bold' %>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <label class="control-label">
+          <%= f.check_box :confidential, class: "form-check-input #{ 'is-invalid' if application.errors[:confidential].present? }" %>
+          <%= t('doorkeeper.applications.help.confidential') %>
+        </label>
+      </div>
       <span class="form-text text-secondary">
-        <%= t('doorkeeper.applications.help.confidential') %>
+        <%= doorkeeper_errors_for application, :confidential %>
       </span>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :scopes, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :scopes, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_field :scopes, class: "form-control #{ 'has-error' if application.errors[:scopes].present? }" %>
       <%= doorkeeper_errors_for application, :scopes %>
       <span class="form-text text-secondary">
@@ -53,8 +57,8 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :icon, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :icon, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_field :icon, class: "form-control #{ 'has-error' if application.errors[:icon].present? }" %>
       <%= doorkeeper_errors_for application, :icon %>
       <span class="form-text text-secondary">
@@ -64,8 +68,8 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :div_class, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :div_class, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_field :div_class, class: "form-control #{ 'has-error' if application.errors[:div_class].present? }" %>
       <%= doorkeeper_errors_for application, :div_class %>
       <span class="form-text text-secondary">
@@ -75,8 +79,8 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :login_url, class: 'col-sm-2 col-form-label font-weight-bold' %>
-    <div class="col-sm-10">
+    <%= f.label :login_url, class: 'col-sm-3 col-form-label font-weight-bold' %>
+    <div class="col-sm-9">
       <%= f.text_field :login_url, class: "form-control #{ 'has-error' if application.errors[:login_url].present? }" %>
       <%= doorkeeper_errors_for application, :login_url %>
       <span class="form-text text-secondary">
@@ -86,29 +90,37 @@
   </div>
 
   <div class="form-group row">
-    <%= f.label :allow_login_by_default, class: 'col-sm-2 form-check-label font-weight-bold' %>
-    <div class="col-sm-10">
-      <%= f.check_box :allow_login_by_default, class: "checkbox #{ 'is-invalid' if application.errors[:allow_login_by_default].present? }" %>
-      <%= doorkeeper_errors_for application, :allow_login_by_default %>
+    <%= f.label :allow_login_by_default, class: 'col-sm-3 form-check-label font-weight-bold' %>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <label class="control-label">
+          <%= f.check_box :allow_login_by_default, class: "form-check-input #{ 'is-invalid' if application.errors[:allow_login_by_default].present? }" %>
+          <%= t('doorkeeper.applications.help.allow_login_by_default') %>
+        </label>
+      </div>
       <span class="form-text text-secondary">
-        <%= t('doorkeeper.applications.help.allow_login_by_default') %>
+        <%= doorkeeper_errors_for application, :allow_login_by_default %>
       </span>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= f.label :superapp, class: 'col-sm-2 form-check-label font-weight-bold' %>
-    <div class="col-sm-10">
-      <%= f.check_box :superapp, class: "checkbox #{ 'is-invalid' if application.errors[:superapp].present? }" %>
-      <%= doorkeeper_errors_for application, :superapp %>
+    <%= f.label :superapp, class: 'col-sm-3 form-check-label font-weight-bold' %>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <label class="control-label">
+          <%= f.check_box :superapp, class: "form-check-input #{ 'is-invalid' if application.errors[:superapp].present? }" %>
+          <%= t('doorkeeper.applications.help.superapp') %>
+        </label>
+      </div>
       <span class="form-text text-secondary">
-        <%= t('doorkeeper.applications.help.superapp') %>
+        <%= doorkeeper_errors_for application, :superapp %>
       </span>
     </div>
   </div>
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-3 col-sm-9">
       <%= f.submit t('doorkeeper.applications.buttons.submit'), class: 'btn btn-primary' %>
       <%= link_to t('doorkeeper.applications.buttons.cancel'), oauth_applications_path, class: 'btn btn-secondary' %>
     </div>
