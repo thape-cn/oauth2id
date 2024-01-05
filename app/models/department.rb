@@ -4,6 +4,9 @@ class Department < ApplicationRecord
   belongs_to :managed_by_department, class_name: :Department, optional: true
   has_many :managed_departments, class_name: :Department, foreign_key: :managed_by_department_id
 
+  has_many :department_allowed_applications, dependent: :destroy
+  has_many :oauth_applications, through: :department_allowed_applications
+
   def all_managed_department_ids
     all_ids = ids = [id]
     loop do

@@ -1,0 +1,8 @@
+---
+thape_it_department_use_oauth_app_test:
+  department_id: 2  # thape_it_department
+  oauth_application_id: 1  # oauth_app_test
+
+thape_operation_group_use_oauth_app_test:
+  department_id: 7  # thape_operation_group
+  oauth_application_id: 1  # oauth_app_test
