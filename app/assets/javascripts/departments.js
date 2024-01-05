@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", function() {
   $('#departments-datatable').dataTable({
     "processing": true,
     "serverSide": true,
-    "ajax": $('#users-datatable').data('source'),
+    "ajax": $('#departments-datatable').data('source'),
     "pagingType": "full_numbers",
     "columns": [
       {"data": "id"},

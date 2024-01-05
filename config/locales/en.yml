@@ -89,6 +89,9 @@ en:
   department:
     name: "Department name"
     managed_by_department: "Managed by department"
+  position:
+    name: "Position name"
+    functional_category: "Functional category"
   jwts:
     index:
       title: "Management application and its JWT authorization"
