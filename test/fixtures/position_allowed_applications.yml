@@ -1,0 +1,8 @@
+---
+position_strategic_development_supervisor_use_oauth_app_test:
+  position: position_strategic_development_supervisor
+  oauth_application_id: 1  # oauth_app_test
+
+position_rails_developer_use_oauth_app_test:
+  position: position_rails_developer
+  oauth_application_id: 1  # oauth_app_test

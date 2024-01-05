@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_05_091805) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_05_132232) do
   create_table "allowlisted_jwts", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
@@ -99,6 +99,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_091805) do
   create_table "oauth_openid_requests", force: :cascade do |t|
     t.integer "access_grant_id", null: false
     t.string "nonce", null: false
+  end
+
+  create_table "position_allowed_applications", force: :cascade do |t|
+    t.integer "position_id", null: false
+    t.integer "oauth_application_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["oauth_application_id"], name: "index_position_allowed_applications_on_oauth_application_id"
+    t.index ["position_id"], name: "index_position_allowed_applications_on_position_id"
   end
 
   create_table "position_users", force: :cascade do |t|
@@ -198,6 +207,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_091805) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
+  add_foreign_key "position_allowed_applications", "oauth_applications"
+  add_foreign_key "position_allowed_applications", "positions"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_allowed_applications", "oauth_applications"
   add_foreign_key "user_allowed_applications", "users"
