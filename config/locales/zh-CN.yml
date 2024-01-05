@@ -89,6 +89,9 @@ zh-CN:
   department:
     name: "部门名称"
     managed_by_department: "上级部门"
+  position:
+    name: "岗位名称"
+    functional_category: "岗位类型"
   jwts:
     index:
       title: "管理应用程序及其JWT授权"

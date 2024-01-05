@@ -13,6 +13,18 @@
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
+          <table id="positions-datatable" class="table table-hover table-bordered" data-source="<%= positions_path(format: :json) -%>">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th><%= t('position.name') -%></th>
+                <th><%= t('position.functional_category') -%></th>
+                <th><%= t('ui.admin_action') -%></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

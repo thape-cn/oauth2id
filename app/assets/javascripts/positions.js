@@ -1,10 +1,10 @@
 document.addEventListener("turbolinks:load", function() {
   "use strict";
 
-  $('#departments-datatable').dataTable({
+  $('#positions-datatable').dataTable({
     "processing": true,
     "serverSide": true,
-    "ajax": $('#departments-datatable').data('source'),
+    "ajax": $('#positions-datatable').data('source'),
     "pagingType": "full_numbers",
     "columns": [
       {"data": "id"},
@@ -14,16 +14,16 @@ document.addEventListener("turbolinks:load", function() {
     ],
     stateSave: true,
     stateSaveCallback: function(settings, data) {
-        localStorage.setItem('DataTables_departments-datatable', JSON.stringify(data));
+        localStorage.setItem('DataTables_positions-datatable', JSON.stringify(data));
       },
     stateLoadCallback: function(settings) {
-      return JSON.parse(localStorage.getItem('DataTables_departments-datatable'));
+      return JSON.parse(localStorage.getItem('DataTables_positions-datatable'));
       }
   });
 })
 
 document.addEventListener("turbolinks:before-cache", function() {
-  if($("#departments-datatable_wrapper").length == 1) {
-    $('#departments-datatable').DataTable().destroy();
+  if($("#positions-datatable_wrapper").length == 1) {
+    $('#positions-datatable').DataTable().destroy();
   }
 })
