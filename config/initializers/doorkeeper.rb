@@ -11,16 +11,15 @@ Doorkeeper.configure do
 
     if current_user
       authenticate_application = DoorkeeperApplication.find_by!(uid: client_id)
-      allowed_application = current_user
-        .user_allowed_applications.find_by(enable: true, oauth_application_id: authenticate_application.id)
+      user_allowed = current_user.user_allowed_applications.exists?(enable: true, oauth_application_id: authenticate_application.id)
 
-      if allowed_application || authenticate_application.allow_login_by_default?
+      if user_allowed || authenticate_application.allow_login_by_default?
         current_user
       else
         raise Doorkeeper::Errors::DoorkeeperError.new(I18n.t('ui.can_not_grant_applications'))
       end
     else
-      warden.authenticate!(:scope => :user)
+      warden.authenticate!(scope: :user)
     end
   end
 
