@@ -8,9 +8,9 @@ class DoorkeeperAuthorizationsControllerTest < ActionDispatch::IntegrationTest
   test 'should show new authorize title' do
     test_doorkeeper_application = oauth_applications(:oauth_app_test)
     get oauth_authorization_url, params: { client_id: test_doorkeeper_application.uid,
-                                            redirect_uri: test_doorkeeper_application.redirect_uri,
-                                            response_type: 'code',
-                                            scope: 'public' }
+                                           redirect_uri: test_doorkeeper_application.redirect_uri,
+                                           response_type: 'code',
+                                           scope: 'public' }
     assert_response :success
     assert_match I18n.t('doorkeeper.authorizations.new.title'), @response.body
   end
@@ -22,16 +22,16 @@ class DoorkeeperAuthorizationsControllerTest < ActionDispatch::IntegrationTest
                                             response_type: 'code',
                                             scope: 'public' }
     assert_response :redirect
-    assert_match Doorkeeper::AccessGrant.last.token, @response.body
+    assert_match Doorkeeper::AccessGrant.last.token, response.headers['location'].split('=')[1]
   end
 
   test 'should access_denied if user denied access' do
     test_doorkeeper_application = oauth_applications(:oauth_app_test)
     delete oauth_authorization_url, params: { client_id: test_doorkeeper_application.uid,
-                                            redirect_uri: test_doorkeeper_application.redirect_uri,
-                                            response_type: 'code',
-                                            scope: 'public' }
+                                              redirect_uri: test_doorkeeper_application.redirect_uri,
+                                              response_type: 'code',
+                                              scope: 'public' }
     assert_response :redirect
-    assert_match 'error=access_denied', @response.body
+    assert_includes response.headers['location'], 'error=access_denied'
   end
 end
