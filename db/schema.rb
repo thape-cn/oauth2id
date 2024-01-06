@@ -10,35 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
-  create_table "allowlisted_jwts", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2024_01_05_132232) do
+  create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
     t.datetime "exp", precision: nil, null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
-  create_table "department_allowed_applications", force: :cascade do |t|
-    t.integer "department_id", null: false
-    t.integer "oauth_application_id", null: false
+  create_table "department_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "department_id", null: false
+    t.bigint "oauth_application_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_department_allowed_applications_on_department_id"
     t.index ["oauth_application_id"], name: "index_department_allowed_applications_on_oauth_application_id"
   end
 
-  create_table "department_users", force: :cascade do |t|
-    t.integer "department_id", null: false
-    t.integer "user_id", null: false
+  create_table "department_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "department_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["department_id"], name: "index_department_users_on_department_id"
     t.index ["user_id"], name: "index_department_users_on_user_id"
   end
 
-  create_table "departments", force: :cascade do |t|
+  create_table "departments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "position"
     t.integer "managed_by_department_id"
@@ -55,9 +55,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["managed_by_department_id"], name: "index_departments_on_managed_by_department_id"
   end
 
-  create_table "oauth_access_grants", force: :cascade do |t|
-    t.integer "resource_owner_id", null: false
-    t.integer "application_id", null: false
+  create_table "oauth_access_grants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "resource_owner_id", null: false
+    t.bigint "application_id", null: false
     t.string "token", null: false
     t.integer "expires_in", null: false
     t.text "redirect_uri", null: false
@@ -71,9 +71,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
-  create_table "oauth_access_tokens", force: :cascade do |t|
-    t.integer "resource_owner_id"
-    t.integer "application_id"
+  create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "resource_owner_id"
+    t.bigint "application_id"
     t.string "token", null: false
     t.string "refresh_token"
     t.integer "expires_in"
@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
   end
 
-  create_table "oauth_applications", force: :cascade do |t|
+  create_table "oauth_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "uid", null: false
     t.string "secret", null: false
@@ -105,23 +105,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
-  create_table "oauth_openid_requests", force: :cascade do |t|
-    t.integer "access_grant_id", null: false
+  create_table "oauth_openid_requests", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "access_grant_id", null: false
     t.string "nonce", null: false
+    t.index ["access_grant_id"], name: "fk_rails_77114b3b09"
   end
 
-  create_table "position_allowed_applications", force: :cascade do |t|
-    t.integer "position_id", null: false
-    t.integer "oauth_application_id", null: false
+  create_table "position_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "position_id", null: false
+    t.bigint "oauth_application_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["oauth_application_id"], name: "index_position_allowed_applications_on_oauth_application_id"
     t.index ["position_id"], name: "index_position_allowed_applications_on_position_id"
   end
 
-  create_table "position_users", force: :cascade do |t|
-    t.integer "position_id", null: false
-    t.integer "user_id", null: false
+  create_table "position_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "position_id", null: false
+    t.bigint "user_id", null: false
     t.boolean "main_position", default: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -129,13 +130,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["user_id"], name: "index_position_users_on_user_id"
   end
 
-  create_table "positions", force: :cascade do |t|
+  create_table "positions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "functional_category"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "nc_pk_post"
-    t.integer "department_id"
+    t.bigint "department_id"
     t.string "company_name"
     t.string "pk_poststd"
     t.string "b_postcode"
@@ -145,8 +146,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "title"
     t.boolean "gender"
     t.string "phone"
@@ -166,9 +167,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "user_allowed_applications", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "oauth_application_id"
+  create_table "user_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "oauth_application_id"
     t.boolean "enable", default: true
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -176,15 +177,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
   end
 
-  create_table "user_sign_in_histories", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "user_sign_in_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "sign_in_at", precision: nil
     t.text "user_agent"
     t.string "sign_in_ip"
     t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -208,7 +209,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.string "username"
     t.string "remember_token"
     t.string "desk_phone"
-    t.integer "yxt_position_id"
+    t.bigint "yxt_position_id"
     t.boolean "is_function_account", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -217,7 +218,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.index ["yxt_position_id"], name: "index_users_on_yxt_position_id"
   end
 
-  create_table "wechat_event_histories", force: :cascade do |t|
+  create_table "wechat_event_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "create_time"
     t.string "event"
     t.string "change_type"
@@ -230,7 +231,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "yxt_positions", force: :cascade do |t|
+  create_table "yxt_positions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "position_name"
     t.string "prefix_paths"
     t.datetime "created_at", null: false
@@ -245,12 +246,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_01_05_132232) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade
-<<<<<<< HEAD
   add_foreign_key "position_allowed_applications", "oauth_applications"
   add_foreign_key "position_allowed_applications", "positions"
-=======
   add_foreign_key "positions", "departments"
->>>>>>> 39c178c7 (Sync DB Schema)
   add_foreign_key "profiles", "users"
   add_foreign_key "user_allowed_applications", "oauth_applications"
   add_foreign_key "user_allowed_applications", "users"
