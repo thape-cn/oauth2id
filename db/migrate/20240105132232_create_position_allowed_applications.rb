@@ -1,4 +1,4 @@
-class CreatePositionAllowedApplications < ActiveRecord::Migration[7.1]
+class CreatePositionAllowedApplications < ActiveRecord::Migration[7.0]
   def change
     create_table :position_allowed_applications do |t|
       t.references :position, null: false, foreign_key: true
