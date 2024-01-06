@@ -53,7 +53,7 @@ oauth_app_yxt_oauth2:
   confidential: true
   div_class: "primary"
   icon: "fa-graduation-cap"
-  allow_login_by_default: true
+  allow_login_by_default: false
   superapp: false
   created_at: <%= Time.zone.now %>
   updated_at: <%= Time.zone.now %>
