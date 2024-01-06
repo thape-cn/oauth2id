@@ -12,7 +12,7 @@ user_demo_use_oauth_app_test:
 user_shin_use_oauth_app_test:
   user_id: 3  # user_shin
   oauth_application_id: 1  # oauth_app_test
-  enable: true
+  enable: false
 
 user_eric_use_oauth_app_omniauth:
   user_id: 1  # user_eric
