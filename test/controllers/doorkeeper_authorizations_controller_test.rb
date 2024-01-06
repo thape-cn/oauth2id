@@ -34,4 +34,18 @@ class DoorkeeperAuthorizationsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_includes response.headers['location'], 'error=access_denied'
   end
+
+  test 'should raise error if user is not allowed to authenticate application' do
+    disallowed_user = users(:user_shin)
+    disallowed_application = oauth_applications(:oauth_app_yxt_oauth2)
+
+    sign_in disallowed_user
+
+    assert_raises(Doorkeeper::Errors::DoorkeeperError) do
+      get oauth_authorization_url, params: { client_id: disallowed_application.uid,
+                                             redirect_uri: disallowed_application.redirect_uri,
+                                             response_type: 'code',
+                                             scope: 'public' }
+    end
+  end
 end

@@ -57,4 +57,4 @@ user_demo_use_oauth_app_yxt_oauth2:
 user_shin_use_oauth_app_yxt_oauth2:
   user_id: 3  # user_shin
   oauth_application_id: 4  # oauth_app_yxt_oauth2
-  enable: true
+  enable: false
