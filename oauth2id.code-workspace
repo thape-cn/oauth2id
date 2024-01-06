@@ -2,9 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../oauth2id-docker"
 		}
 	],
 	"settings": {
