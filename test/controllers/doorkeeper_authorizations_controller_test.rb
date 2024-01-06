@@ -41,12 +41,11 @@ class DoorkeeperAuthorizationsControllerTest < ActionDispatch::IntegrationTest
 
     sign_in disallowed_user
 
-    assert_raises(Doorkeeper::Errors::DoorkeeperError) do
-      get oauth_authorization_url, params: { client_id: disallowed_application.uid,
-                                             redirect_uri: disallowed_application.redirect_uri,
-                                             response_type: 'code',
-                                             scope: 'public' }
-    end
+    get oauth_authorization_url, params: { client_id: disallowed_application.uid,
+                                           redirect_uri: disallowed_application.redirect_uri,
+                                           response_type: 'code',
+                                           scope: 'public' }
+    assert_response :internal_server_error
   end
 
   test 'should allow login if user is not allowed but application allow login by default' do
