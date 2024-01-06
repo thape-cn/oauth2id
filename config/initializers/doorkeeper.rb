@@ -11,7 +11,7 @@ Doorkeeper.configure do
 
     if current_user
       authenticate_application = DoorkeeperApplication.find_by!(uid: client_id)
-      user_allowed = current_user.user_allowed_applications.exists?(enable: true, oauth_application_id: authenticate_application.id)
+      user_allowed = authenticate_application.user_allowed_access?(current_user.id)
 
       if user_allowed || authenticate_application.allow_login_by_default?
         current_user
