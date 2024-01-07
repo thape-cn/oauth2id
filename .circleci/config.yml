@@ -64,6 +64,9 @@ jobs:
           name: Fix mutex_m version CI errors
           command: sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.2)/g' Gemfile.lock
       - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run:
           name: run tests
           command: bin/rails test:all
 
