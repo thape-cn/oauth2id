@@ -12,8 +12,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
-        <div class="tile-body">
-          <table id="departments-datatable" class="table table-hover table-bordered" data-source="<%= departments_path(format: :json) -%>">
+        <div class="tile-body" data-controller="department"
+          data-department-source-value="<%= departments_path(format: :json) -%>">
+          <table class="table table-hover table-bordered" data-department-target="datatable">
             <thead>
               <tr>
                 <th>ID</th>

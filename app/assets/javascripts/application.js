@@ -22,7 +22,6 @@
 //= require_self
 //= require devise-jwt
 //= require employees
-//= require departments
 //= require positions
 //= require main
 
