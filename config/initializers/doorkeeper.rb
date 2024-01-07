@@ -10,12 +10,12 @@ Doorkeeper.configure do
     client_id = routes.params[:client_id]
 
     if current_user
-      authenticate_application = DoorkeeperApplication.find_by!(uid: client_id)
-      user_allowed = authenticate_application.user_allowed_access?(current_user.id)
-      department_allowed = authenticate_application.department_allowed_access?(current_user.department_users.pluck(:department_id))
-      position_allowed = authenticate_application.position_allowed_access?(current_user.position_users.pluck(:position_id))
+      app = DoorkeeperApplication.find_by!(uid: client_id)
 
-      if user_allowed || department_allowed || position_allowed || authenticate_application.allow_login_by_default?
+      if app.allow_login_by_default? \
+        || app.user_allowed_access?(current_user.id) \
+        || app.department_allowed_access?(current_user.department_users.pluck(:department_id)) \
+        || app.position_allowed_access?(current_user.position_users.pluck(:position_id))
         current_user
       else
         raise Doorkeeper::Errors::DoorkeeperError.new(I18n.t('ui.can_not_grant_applications'))
