@@ -98,6 +98,8 @@ openssl rsa -pubout -in oauth2id_oidc_private_key.pem -out oauth2id_oidc_public_
 
 Notice replace oauth2id with your new site name, notice you can get public key from [/oauth/discovery/keys](https://oauth2id.dev/oauth/discovery/keys) as well.
 
+Also make sure the scope setting at least contain `openid` as it's the spec requirement. (Oauth2 can leave scope blank.)
+
 
 ## SAML 2.0
 
