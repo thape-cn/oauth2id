@@ -1,6 +1,6 @@
 GIT
   remote: https://git.thape.com.cn/rails/devise-jwt.git
-  revision: 82e9e460a8f386fdbd88e4af4b51eb9924b530d0
+  revision: 74f8f085bffd11b3238dcb09fb86fda57d58a2fe
   branch: main
   specs:
     devise-jwt (0.11.0)
