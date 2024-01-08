@@ -1,6 +1,7 @@
 ---
 en:
   ui:
+    close: "Close"
     update: "Update"
     update_success: "Successfully updated"
     have_new_notification: "You have %{count} new notifications."
