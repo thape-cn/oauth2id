@@ -22,7 +22,6 @@
 //= require_self
 //= require devise-jwt
 //= require employees
-//= require positions
 //= require main
 
 $.notifyDefaults({
