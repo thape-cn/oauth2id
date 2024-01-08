@@ -1,6 +1,7 @@
 ---
 zh-CN:
   ui:
+    close: "关闭"
     update: "更新"
     update_success: "更新成功"
     have_new_notification: "您有%{count}个新通知。"

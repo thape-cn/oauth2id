@@ -25,7 +25,7 @@ class UserDatatable < ApplicationDatatable
       { id: record.id,
         username: link_to(record.username,employee_path(record)),
         email: record.email,
-        admin_action: link_to(fa_icon('edit'), edit_employee_path(record)) }
+        admin_action: link_to(fa_icon('edit'), edit_employee_path(record), remote: true) }
     end
   end
 
