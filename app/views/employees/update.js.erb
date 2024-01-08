@@ -1,0 +1,9 @@
+$("#employee-modal").modal('hide');
+$("#employee-modal").html('');
+$.notify({
+  title: "Oauth2 Notice",
+  message: "<%= I18n.t('ui.update_success') -%>",
+  icon: 'fa fa-check'
+},{
+  type: "info"
+});
