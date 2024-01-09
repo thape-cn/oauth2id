@@ -142,6 +142,7 @@ en:
     models:
       user: "User"
   form:
+    show: "Show"
     edit: "Edit"
     update: "Update"
     reset: "Reset"
