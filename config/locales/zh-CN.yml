@@ -142,6 +142,7 @@ zh-CN:
     models:
       user: "用户"
   form:
+    show: "显示"
     edit: "编辑"
     update: "更新"
     reset: "重置"
