@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
   "use strict";
 
-  $('#users-datatable').dataTable({
+  $('#users-datatable').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": $('#users-datatable').data('source'),

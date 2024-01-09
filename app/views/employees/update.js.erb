@@ -1,5 +1,6 @@
 $("#employee-modal").modal('hide');
 $("#employee-modal").html('');
+$('#users-datatable').DataTable().ajax.reload(null, false);
 $.notify({
   title: "Oauth2 Notice",
   message: "<%= I18n.t('ui.update_success') -%>",
