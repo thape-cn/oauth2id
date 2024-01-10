@@ -1,0 +1,4 @@
+<%= link_to(user.username, employee_path(user), remote: true) %>
+<% if user.admin? %>
+  <span class="badge badge-danger align-text-top"><%= t('user.admin') -%></span>
+<% end %>
