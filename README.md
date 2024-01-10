@@ -85,6 +85,18 @@ cp /opt/homebrew/etc/openssl\@1.1/cert.pem /opt/homebrew/lib/ruby/gems/3.2.0/gem
 cp /opt/homebrew/etc/openssl\@1.1/cert.pem /opt/homebrew/etc/ca-certificates/cert.pem
 ```
 
+## About UI
+
+Oauth2id using [vali-admin](https://github.com/pratikborsadiya/vali-admin) UI v2.4.1 which based on the Bootstrap 4 and support *IE 11*.
+
+Please visit UI document via:
+
+```
+cd node_modules/vali-admin/docs/
+thin -A file -c . -p 3001 start
+open http://localhost:3001/index.html
+```
+
 # Generate signing key
 
 ## Open ID Connect
