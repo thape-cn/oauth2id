@@ -22,7 +22,7 @@ export default class extends Controller {
       stateSaveCallback: function(settings, data) {
           localStorage.setItem('DataTables_departments-datatable', JSON.stringify(data));
         },
-      stateLoadCallback: function(settings) {
+      stateLoadCallback: function() {
         return JSON.parse(localStorage.getItem('DataTables_departments-datatable'));
         }
     });
