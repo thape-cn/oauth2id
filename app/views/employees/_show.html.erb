@@ -3,14 +3,14 @@
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.user_info') -%></h5>
-          <p class="card-text"><%= t('user.username') -%>: <%= @user.username -%></p>
-          <p class="card-text"><%= t('user.email') -%>: <%= @user.email -%></p>
+          <p class="card-text"><%= t('user.username') -%>: <%= user.username -%></p>
+          <p class="card-text"><%= t('user.email') -%>: <%= user.email -%></p>
         </div>
       </div>
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.profile') -%></h5>
-          <% @user.profile&.custom_attributes&.each do |key, value| %>
+          <% user.profile&.custom_attributes&.each do |key, value| %>
             <p class="card-text"><%= t("user.#{key}") -%>: <%= value -%></p>
           <% end %>
         </div>
@@ -18,7 +18,7 @@
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.department') -%></h5>
-          <% @user.departments.each do |department| %>
+          <% user.departments.each do |department| %>
             <p class="card-text"><%= department.name -%></p>
           <% end %>
         </div>
@@ -26,7 +26,7 @@
       <div class="card m-3">
         <div class="card-body">
           <h5 class="card-title"><%= t('ui.position') -%></h5>
-          <% @user.positions.each do |position| %>
+          <% user.positions.each do |position| %>
             <p class="card-text"><%= position.name -%></p>
           <% end %>
         </div>
