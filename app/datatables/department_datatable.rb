@@ -1,6 +1,8 @@
 class DepartmentDatatable < ApplicationDatatable
   extend Forwardable
 
+  def_delegator :@view, :edit_department_path
+
   def initialize(params, opts = {})
     @departments = opts[:departments]
     super
@@ -20,7 +22,7 @@ class DepartmentDatatable < ApplicationDatatable
       { id: record.id,
         name: record.name,
         managed_by_department: record.managed_by_department&.name,
-        admin_action: nil }
+        admin_action: link_to(fa_icon('edit'), edit_department_path(record), remote: true) }
     end
   end
 

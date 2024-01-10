@@ -48,12 +48,12 @@ Rails.application.routes.draw do
       get :profile
     end
   end
-  resources :departments, only: %i[index] do
+  resources :departments, only: %i[index edit update] do
     collection do
       get :data
     end
   end
-  resources :positions, only: %i[index]
+  resources :positions, only: %i[index edit update]
 
   get '/me' => 'doorkeeper#me'
   get '/profiles' => 'doorkeeper#profiles'

@@ -1,0 +1,21 @@
+<div class="modal-dialog modal-lg" role="document">
+  <%= form_with model: position, url: position_path(position), method: :put, local: false do |f| %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="flex: 1"><%= t('form.edit') -%></h5>
+        <div style="flex: 1" class="text-center"><%= t('ui.position_description') %></div>
+        <a style="flex: 1" class="close text-right" data-dismiss="modal" aria-label="Close">
+          <i class="fa fa-window-close"></i>
+        </a>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('ui.close') -%></button>
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-fw fa-lg fa-check-circle"></i><%= t('ui.update') -%>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div

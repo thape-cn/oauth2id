@@ -6,4 +6,12 @@ class DepartmentPolicy < ApplicationPolicy
   def show?
     user&.admin?
   end
+
+  def edit?
+    user&.admin?
+  end
+
+  def update?
+    edit?
+  end
 end
