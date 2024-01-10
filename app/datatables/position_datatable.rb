@@ -1,6 +1,8 @@
 class PositionDatatable < ApplicationDatatable
   extend Forwardable
 
+  def_delegator :@view, :edit_position_path
+
   def initialize(params, opts = {})
     @positions = opts[:positions]
     super
@@ -20,7 +22,7 @@ class PositionDatatable < ApplicationDatatable
       { id: record.id,
         name: record.name,
         functional_category: record.functional_category,
-        admin_action: nil }
+        admin_action: link_to(fa_icon('edit'), edit_position_path(record), remote: true) }
     end
   end
 

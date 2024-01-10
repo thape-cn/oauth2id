@@ -1,6 +1,7 @@
 class DepartmentsController < ApplicationController
   before_action :authenticate_user!
-  after_action :verify_policy_scoped
+  before_action :set_department_and_authorized, except: %i[index data]
+  after_action :verify_policy_scoped, only: %i[index data]
 
   def index
     authorize Department
@@ -13,11 +14,24 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
   def data
     managed_by_department_id = params[:node]
     departments = policy_scope(Department).where(managed_by_department_id: managed_by_department_id).collect do |d|
       { name: d.name, id: d.id, load_on_demand: d.managed_departments.count.positive? }
     end
     render json: departments
+  end
+
+  private
+
+  def set_department_and_authorized
+    @department = Department.find(params[:id])
+    authorize @department
   end
 end
