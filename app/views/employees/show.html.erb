@@ -20,7 +20,12 @@
               <a class="nav-link <%= params[:action] == 'sign_in_histories' ? 'active' : '' -%>" href="<%= sign_in_histories_employee_path(@user) -%>"><%= t('ui.sign_in_histories') -%></a>
             </li>
           </ul>
-          <%= render params[:action] %>
+          <% case params[:action] %>
+          <% when 'show' %>
+            <%= render partial: 'show', locals: {user: @user} -%>
+          <% when 'sign_in_histories' %>
+            <%= render partial: 'sign_in_histories', locals: {user: @user, pagy: @pagy, user_sign_in_histories: @user_sign_in_histories} -%>
+          <% end %>
         </div>
       </div>
     </div>

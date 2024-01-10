@@ -8,6 +8,7 @@
       </a>
     </div>
     <div class="modal-body">
+      <%= render partial: 'show', locals: {user: user} -%>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-primary" data-dismiss="modal"><%= t('ui.close') -%></button>
