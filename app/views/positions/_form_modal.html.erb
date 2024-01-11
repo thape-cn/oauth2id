@@ -9,6 +9,14 @@
         </a>
       </div>
       <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group row">
+            <label class="control-label col-md-3"><%= t('position.position_allowed_application') -%></label>
+            <div class="col-md-8">
+              <%= f.select :allowed_application_ids, options_from_collection_for_select(DoorkeeperApplication.all, "id", "name", position.allowed_application_ids), {multiple: true}, class: 'form-control', id: 'position-allowed_application_ids-select' %>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('ui.close') -%></button>

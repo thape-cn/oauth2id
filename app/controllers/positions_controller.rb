@@ -18,6 +18,7 @@ class PositionsController < ApplicationController
   end
 
   def update
+    @position.update(position_params)
   end
 
   private
@@ -25,5 +26,9 @@ class PositionsController < ApplicationController
   def set_position_and_authorized
     @position = Position.find(params[:id])
     authorize @position
+  end
+
+  def position_params
+    params.require(:position).permit(allowed_application_ids: [])
   end
 end

@@ -90,9 +90,11 @@ zh-CN:
   department:
     name: "部门名称"
     managed_by_department: "上级部门"
+    department_allowed_application: "允许部门访问的应用"
   position:
     name: "岗位名称"
     functional_category: "岗位类型"
+    position_allowed_application: "允许岗位访问的应用"
   jwts:
     index:
       title: "管理应用程序及其JWT授权"
