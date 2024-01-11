@@ -1,2 +1,3 @@
 $("#department-modal").html('<%= j render partial: 'form_modal', locals: { department: @department } -%>');
 $("#department-modal").modal('show');
+$("#department-allowed_application_ids-select").select2();

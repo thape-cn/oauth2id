@@ -18,6 +18,7 @@ class DepartmentsController < ApplicationController
   end
 
   def update
+    @department.update(department_params)
   end
 
   def data
@@ -33,5 +34,9 @@ class DepartmentsController < ApplicationController
   def set_department_and_authorized
     @department = Department.find(params[:id])
     authorize @department
+  end
+
+  def department_params
+    params.require(:department).permit(allowed_application_ids: [])
   end
 end
