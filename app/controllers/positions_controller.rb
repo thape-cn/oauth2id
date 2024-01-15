@@ -29,6 +29,6 @@ class PositionsController < ApplicationController
   end
 
   def position_params
-    params.require(:position).permit(allowed_application_ids: [])
+    params.require(:position).permit(:name, :functional_category, allowed_application_ids: [])
   end
 end
