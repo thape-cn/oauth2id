@@ -1,2 +1,3 @@
 $("#department-modal").modal('hide');
 $("#department-modal").html('');
+$('table[data-department-target="datatable"]').DataTable().ajax.reload(null, false);

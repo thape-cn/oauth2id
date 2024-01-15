@@ -1,2 +1,3 @@
 $("#position-modal").modal('hide');
 $("#position-modal").html('');
+$('table[data-position-target="datatable"]').DataTable().ajax.reload(null, false);

@@ -11,6 +11,18 @@
       <div class="modal-body">
         <form class="form-horizontal">
           <div class="form-group row">
+            <label class="control-label col-md-3"><%= t('position.name') -%></label>
+            <div class="col-md-8">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3"><%= t('position.functional_category') -%></label>
+            <div class="col-md-8">
+              <%= f.text_field :functional_category, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group row">
             <label class="control-label col-md-3"><%= t('position.position_allowed_application') -%></label>
             <div class="col-md-8">
               <%= f.select :allowed_application_ids, options_from_collection_for_select(DoorkeeperApplication.all, "id", "name", position.allowed_application_ids), {multiple: true}, class: 'form-control', id: 'position-allowed_application_ids-select' %>
