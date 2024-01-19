@@ -135,7 +135,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.0)
-    bigdecimal (3.1.5)
+    bigdecimal (3.1.6)
     bindex (0.8.1)
     bootsnap (1.17.1)
       msgpack (~> 1.2)
@@ -218,7 +218,7 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.7.1)
+    io-console (0.7.2)
     ipip-fast (0.0.2)
     irb (1.11.1)
       rdoc
@@ -250,7 +250,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    minitest (5.21.1)
+    minitest (5.21.2)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.7.2)
@@ -283,7 +283,7 @@ GEM
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (6.4.1)
+    pagy (6.4.3)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -492,4 +492,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.4
+   2.5.5
