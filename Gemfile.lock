@@ -137,7 +137,7 @@ GEM
     bcrypt_pbkdf (1.1.0)
     bigdecimal (3.1.6)
     bindex (0.8.1)
-    bootsnap (1.18.2)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     capistrano (3.18.0)
