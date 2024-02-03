@@ -3968,9 +3968,9 @@ is-arguments@^1.1.1:
     has-tostringtag "^1.0.0"
 
 is-array-buffer@^3.0.1, is-array-buffer@^3.0.2:
-  version "3.0.3"
-  resolved "https://registry.npmmirror.com/is-array-buffer/-/is-array-buffer-3.0.3.tgz#96e256e36f2861d87464ecb2b0875dddec7d4fdf"
-  integrity sha512-4uU8qe5vJcW6tiP6HfaXsXPDN9pkcrp8DBCrvCkHQS08xeDEdLNbshLfIydPf3x7VDtGYKad/GkX3ujNfgxPaw==
+  version "3.0.4"
+  resolved "https://registry.npmmirror.com/is-array-buffer/-/is-array-buffer-3.0.4.tgz#7a1f92b3d61edd2bc65d24f130530ea93d7fae98"
+  integrity sha512-wcjaerHw0ydZwfhiKbXJWLDY8A7yV7KhjQOpb83hGgGfId/aQa4TOvwyzn2PuswW2gPCYEL/nEAiSVpdOj1lXw==
   dependencies:
     call-bind "^1.0.2"
     get-intrinsic "^1.2.1"
