@@ -252,7 +252,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    minitest (5.22.0)
+    minitest (5.22.1)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.7.2)
