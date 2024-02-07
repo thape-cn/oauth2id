@@ -5,6 +5,7 @@
     "@babel/preset-env": "~7.21.4",
     "@rails/webpacker": "^5.4.4",
     "@stimulus/polyfills": "^2.0.0",
+    "chokidar": "^3.5.3",
     "datatables": "^1.10.18",
     "jqtree": "=1.7.5",
     "semver": "^7.5.3",
