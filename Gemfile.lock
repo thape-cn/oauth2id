@@ -222,7 +222,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     ipip-fast (0.0.2)
-    irb (1.11.1)
+    irb (1.11.2)
       rdoc
       reline (>= 0.4.2)
     jbuilder (2.11.5)
@@ -252,7 +252,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    minitest (5.22.1)
+    minitest (5.22.2)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.7.2)
