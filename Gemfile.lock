@@ -285,7 +285,7 @@ GEM
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (7.0.5)
+    pagy (7.0.6)
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
@@ -343,7 +343,7 @@ GEM
     rdoc (6.6.2)
       psych (>= 4.0.0)
     regexp_parser (2.9.0)
-    reline (0.4.2)
+    reline (0.4.3)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
