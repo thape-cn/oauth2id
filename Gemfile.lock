@@ -369,7 +369,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    spring (4.2.0)
+    spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -481,7 +481,7 @@ DEPENDENCIES
   simplecov
   spring
   sprockets
-  sqlite3
+  sqlite3 (~> 1.7)
   terser
   turbolinks
   tzinfo-data
