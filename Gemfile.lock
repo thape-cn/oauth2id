@@ -135,7 +135,7 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.0)
-    bigdecimal (3.1.7)
+    bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -270,7 +270,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     net-ssh (7.2.3)
-    nio4r (2.7.1)
+    nio4r (2.7.3)
     nokogiri (1.16.4-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.4-arm-linux)
