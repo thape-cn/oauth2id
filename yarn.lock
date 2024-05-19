@@ -2971,9 +2971,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.668:
-  version "1.4.772"
-  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.772.tgz#7a1efabf86b20e5709736ce64dbc2ce13cb68936"
-  integrity sha512-jFfEbxR/abTTJA3ci+2ok1NTuOBBtB4jH+UT6PUmRN+DY3WSD4FFRsgoVQ+QNIJ0T7wrXwzsWCI2WKC46b++2A==
+  version "1.4.774"
+  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.774.tgz#1017d1758aaeeefe5423aa9d67b4b1e5d1d0a856"
+  integrity sha512-132O1XCd7zcTkzS3FgkAzKmnBuNJjK8WjcTtNuoylj7MYbqw5eXehjQ5OK91g0zm7OTKIPeaAG4CPoRfD9M1Mg==
 
 element-closest@^2.0.2:
   version "2.0.2"
@@ -6363,9 +6363,9 @@ sass-loader@10.1.1, sass-loader@~10.5.2:
     semver "^7.3.2"
 
 sass@^1.38.0:
-  version "1.77.1"
-  resolved "https://registry.npmmirror.com/sass/-/sass-1.77.1.tgz#018cdfb206afd14724030c02e9fefd8f30a76cd0"
-  integrity sha512-OMEyfirt9XEfyvocduUIOlUSkWOXS/LAt6oblR/ISXCTukyavjex+zQNm51pPCOiFKY1QpWvEH1EeCkgyV3I6w==
+  version "1.77.2"
+  resolved "https://registry.npmmirror.com/sass/-/sass-1.77.2.tgz#18d4ed2eefc260cdc8099c5439ec1303fd5863aa"
+  integrity sha512-eb4GZt1C3avsX3heBNlrc7I09nyT00IUuo4eFhAbeXWU2fvA7oXI53SxODVAA+zgZCk9aunAZgO+losjR3fAwA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
