@@ -527,7 +527,7 @@ DEPENDENCIES
   simplecov
   spring
   sprockets
-  sqlite3
+  sqlite3 (~> 1.7)
   terser
   tiny_tds
   turbolinks
