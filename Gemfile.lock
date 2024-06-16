@@ -407,12 +407,12 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (2.0.4-aarch64-linux-gnu)
-    sqlite3 (2.0.4-arm-linux-gnu)
-    sqlite3 (2.0.4-arm64-darwin)
-    sqlite3 (2.0.4-x86-linux-gnu)
-    sqlite3 (2.0.4-x86_64-darwin)
-    sqlite3 (2.0.4-x86_64-linux-gnu)
+    sqlite3 (1.7.3-aarch64-linux)
+    sqlite3 (1.7.3-arm-linux)
+    sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86-linux)
+    sqlite3 (1.7.3-x86_64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     sshkit (1.23.1)
       base64
       net-scp (>= 1.1.2)
@@ -527,7 +527,7 @@ DEPENDENCIES
   simplecov
   spring
   sprockets
-  sqlite3
+  sqlite3 (~> 1.7)
   terser
   tiny_tds
   turbolinks
