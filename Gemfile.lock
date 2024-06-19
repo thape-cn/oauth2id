@@ -258,7 +258,7 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    minitest (5.23.1)
+    minitest (5.24.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.7.2)
@@ -290,7 +290,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (8.4.4)
+    pagy (8.4.5)
     psych (5.1.2)
       stringio
     public_suffix (5.1.1)
