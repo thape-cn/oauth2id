@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: c48fd2d989e761ab3ebe21698fcfa70261df7f57
+  revision: 1cd750b2bfc68b641c11a8ec0297feb3825eb97b
   branch: main
   specs:
-    doorkeeper (5.6.8)
+    doorkeeper (5.7.1)
       railties (>= 5)
 
 GIT
@@ -39,11 +39,11 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: 5987683ccc22262beb6e44c76ca4b65288d6067a
+  revision: ab28ba3cb822a003234469116ddbc3fa090c803a
   branch: master
   specs:
-    doorkeeper-openid_connect (1.8.7)
-      doorkeeper (>= 5.5, < 5.7)
+    doorkeeper-openid_connect (1.8.9)
+      doorkeeper (>= 5.5, < 5.8)
       jwt (>= 2.5)
 
 GIT
@@ -315,7 +315,7 @@ GEM
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pagy (8.4.5)
+    pagy (8.6.0)
     psych (3.3.4)
     public_suffix (6.0.0)
     puma (5.6.8)
