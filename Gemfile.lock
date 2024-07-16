@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 1cd750b2bfc68b641c11a8ec0297feb3825eb97b
+  revision: d23242f21d53ccd3fab5c06a68106122b0ff0f25
   branch: main
   specs:
     doorkeeper (5.7.1)
@@ -473,7 +473,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm-linux
-  arm64-darwin
+  arm64-darwin-23
   x86-linux
   x86_64-darwin
   x86_64-linux
