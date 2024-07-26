@@ -185,7 +185,7 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.1.1)
-    docile (1.4.0)
+    docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.1)
     dry-auto_inject (1.0.1)
