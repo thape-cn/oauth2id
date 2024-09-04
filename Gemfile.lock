@@ -355,8 +355,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.7)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -399,7 +398,6 @@ GEM
       net-sftp (>= 2.1.2)
       net-ssh (>= 2.8.0)
     stringio (3.1.1)
-    strscan (3.1.0)
     systemu (2.6.5)
     terser (1.2.3)
       execjs (>= 0.3.0, < 3)
