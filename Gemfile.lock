@@ -264,7 +264,7 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.15)
+    net-imap (0.4.16)
       date
       net-protocol
     net-pop (0.1.2)
@@ -502,4 +502,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.17
+   2.5.18
