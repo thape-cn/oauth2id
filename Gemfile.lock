@@ -227,7 +227,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     ipip-fast (0.0.2)
-    irb (1.14.0)
+    irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.13.0)
@@ -504,4 +504,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.19
+   2.5.20
