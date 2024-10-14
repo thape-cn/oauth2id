@@ -264,7 +264,7 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.7.3)
     mutex_m (0.2.0)
-    net-imap (0.4.16)
+    net-imap (0.4.17)
       date
       net-protocol
     net-pop (0.1.2)
@@ -302,7 +302,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-proxy (0.7.7)
       rack
     rack-session (2.0.0)
