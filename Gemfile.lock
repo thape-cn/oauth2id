@@ -430,7 +430,7 @@ GEM
     sqlite3 (1.7.3-x86-linux)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    sshkit (1.23.1)
+    sshkit (1.23.2)
       base64
       net-scp (>= 1.1.2)
       net-sftp (>= 2.1.2)
