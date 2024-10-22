@@ -79,13 +79,19 @@ namespace :sync_pp do
 
   desc 'Upload thapeemployee CSV file to production'
   task :upload_thapeemployee_csv_to_production, [:thapeemployee_csv_path] => [:environment] do |_task, args|
-    thapeemployee_csv_path = args[:thapeemployee_csv_path] ||"thapeemployee_#{Date.today.strftime("%m%d%Y")}.csv"
-    host = Rails.application.credentials.pp_sftp_host!
-    username = Rails.application.credentials.pp_sftp_username!
+    thapeemployee_csv_path = args[:thapeemployee_csv_path] || "thapeemployee_#{Date.today.strftime('%m%d%Y')}.csv"
+    pp_host = Rails.application.credentials.pp_sftp_host!
+    pp_username = Rails.application.credentials.pp_sftp_username!
 
-    Net::SFTP.start(host, username) do |sftp|
-      # upload a file or directory to the remote host
+    Net::SFTP.start(pp_host, pp_username) do |sftp|
       sftp.upload!(thapeemployee_csv_path, "/home/pp_vendor/EmployeeData/#{thapeemployee_csv_path}")
+    end
+
+    highfive_host = Rails.application.credentials.highfive_sftp_host!
+    highfive_username = Rails.application.credentials.highfive_sftp_username!
+
+    Net::SFTP.start(highfive_host, highfive_username) do |sftp|
+      sftp.upload!(thapeemployee_csv_path, "/home/high_five/EmployeeData/#{thapeemployee_csv_path}")
     end
   end
 
@@ -125,13 +131,19 @@ namespace :sync_pp do
 
   desc 'Upload background CSV file to production'
   task :upload_background_csv_to_production, [:background_csv_path] => [:environment] do |_task, args|
-    background_csv_path = args[:background_csv_path] ||"Background_#{Date.today.strftime("%m%d%Y")}.csv"
-    host = Rails.application.credentials.pp_sftp_host!
-    username = Rails.application.credentials.pp_sftp_username!
+    background_csv_path = args[:background_csv_path] || "Background_#{Date.today.strftime('%m%d%Y')}.csv"
+    pp_host = Rails.application.credentials.pp_sftp_host!
+    pp_username = Rails.application.credentials.pp_sftp_username!
 
-    Net::SFTP.start(host, username) do |sftp|
-      # upload a file or directory to the remote host
+    Net::SFTP.start(pp_host, pp_username) do |sftp|
       sftp.upload!(background_csv_path, "/home/pp_vendor/EmployeeData/#{background_csv_path}")
+    end
+
+    highfive_host = Rails.application.credentials.highfive_sftp_host!
+    highfive_username = Rails.application.credentials.highfive_sftp_username!
+
+    Net::SFTP.start(highfive_host, highfive_username) do |sftp|
+      sftp.upload!(background_csv_path, "/home/high_five/EmployeeData/#{background_csv_path}")
     end
   end
 end
