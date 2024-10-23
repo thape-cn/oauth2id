@@ -51,6 +51,7 @@ Doorkeeper::OpenidConnect.configure do
     normal_claim :email, scope: :openid do |resource_owner|
       resource_owner.email
     end
+
     normal_claim :gender, scope: :openid do |resource_owner|
       profile = resource_owner.profile
       if profile.present?
@@ -66,20 +67,20 @@ Doorkeeper::OpenidConnect.configure do
       resource_owner.profile&.chinese_name
     end
 
+    claim :first_name do |resource_owner|
+      resource_owner.username
+    end
+
+    claim :last_name do |resource_owner|
+      resource_owner.profile&.chinese_name
+    end
+
     normal_claim :phone_number, scope: :phone do |resource_owner|
       resource_owner.profile&.phone
     end
 
     normal_claim :desk_phone, scope: :phone do |resource_owner|
       resource_owner.desk_phone
-    end
-
-    normal_claim :clerk_code, scope: :clerk_code do |resource_owner|
-      resource_owner.profile&.clerk_code
-    end
-
-    normal_claim :chinese_name, scope: :chinese_name do |resource_owner|
-      resource_owner.profile&.chinese_name
     end
 
     normal_claim :departments, scope: :departments do |resource_owner|
