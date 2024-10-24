@@ -477,6 +477,12 @@ GEM
     thor (1.5.0)
     tilt (2.7.0)
     timeout (0.6.1)
+    tiny_tds (3.4.0)
+      bigdecimal (>= 2.0.0)
+    tiny_tds (3.4.0-aarch64-linux-gnu)
+      bigdecimal (>= 2.0.0)
+    tiny_tds (3.4.0-x86_64-linux-gnu)
+      bigdecimal (>= 2.0.0)
     tsort (0.2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -557,6 +563,7 @@ DEPENDENCIES
   font-awesome-rails
   gitlab
   ipip-fast
+  irb
   jbuilder
   jquery-rails
   listen
@@ -588,6 +595,7 @@ DEPENDENCIES
   sprockets
   sqlite3 (~> 1.7)
   terser
+  tiny_tds
   turbolinks
   tzinfo-data
   web-console
@@ -601,4 +609,4 @@ RUBY VERSION
   ruby 3.2.2p53
 
 BUNDLED WITH
-   2.6.9
+  4.0.9
