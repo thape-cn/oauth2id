@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 79a714f8b84ceb10804c6afed2faafc4cb4eb35a
+  revision: 37cc550a4a934e09b0ecd9a91021d71c611bd78c
   branch: main
   specs:
-    wechat (0.17.4)
+    wechat (0.17.5)
       activesupport (>= 6.0, < 8)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
@@ -246,7 +246,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.6.1)
-    loofah (2.22.0)
+    loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     macaddr (1.7.2)
@@ -356,7 +356,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.8)
+    rexml (3.3.9)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -444,7 +444,7 @@ GEM
       nokogiri (~> 1.11)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.1)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   aarch64-linux
