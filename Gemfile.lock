@@ -17,11 +17,11 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 37cc550a4a934e09b0ecd9a91021d71c611bd78c
+  revision: 74a0d3ef428d474e86f45100b6ec0a64e5363c4c
   branch: main
   specs:
     wechat (0.17.5)
-      activesupport (>= 6.0, < 8)
+      activesupport (>= 6.0, < 9)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
       rexml
@@ -215,8 +215,8 @@ GEM
     ffi-compiler (1.3.2)
       ffi (>= 1.15.5)
       rake
-    font-awesome-rails (4.7.0.8)
-      railties (>= 3.2, < 8.0)
+    font-awesome-rails (4.7.0.9)
+      railties (>= 3.2, < 9.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http (5.2.0)
@@ -267,7 +267,7 @@ GEM
     minitest (5.25.1)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
-    msgpack (1.7.3)
+    msgpack (1.7.5)
     mutex_m (0.2.0)
     net-imap (0.5.1)
       date
@@ -298,7 +298,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.1)
-    pagy (9.2.1)
+    pagy (9.2.2)
     psych (5.2.0)
       stringio
     public_suffix (6.0.1)
@@ -370,7 +370,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    securerandom (0.3.1)
+    securerandom (0.3.2)
     selenium-webdriver (4.26.0)
       base64 (~> 0.2)
       logger (~> 1.4)
