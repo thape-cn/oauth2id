@@ -26,152 +26,153 @@
       <excludeFolder url="file://$MODULE_DIR$/public/system" />
       <excludeFolder url="file://$MODULE_DIR$/components" />
     </content>
-    <orderEntry type="jdk" jdkName="ruby-3.3.4-p94" jdkType="RUBY_SDK" />
+    <orderEntry type="jdk" jdkName="ruby-3.3.6-p108" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="actioncable (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionpack (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actiontext (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="actionview (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activejob (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activemodel (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activerecord (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activestorage (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.7, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="airbrussh (v1.5.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ajax-datatables-rails (v1.5.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="base64 (v0.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.20, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bcrypt_pbkdf (v1.1.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v3.1.8, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.18.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.5.16, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano (v3.19.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano-bundler (v2.1.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano-rails (v1.6.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano-rbenv (v2.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano-yarn (v2.0.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capistrano3-puma (v6.0.0.beta.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="capybara (v3.40.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.4.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dalli (v3.2.8, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="date (v3.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="debug (v1.9.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="devise (v4.9.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="digest (v3.1.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="docile (v1.4.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="domain_name (v0.6.20240107, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dry-auto_inject (v1.0.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dry-configurable (v1.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="dry-core (v1.0.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.3.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.9.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffaker (v2.23.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffi-compiler (v1.3.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="font-awesome-rails (v4.7.0.8, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="http (v5.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="http-form_data (v2.3.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.5, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="io-console (v0.7.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ipip-fast (v0.0.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="irb (v1.14.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.12.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.6.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="jwt (v2.8.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="listen (v3.9.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="llhttp-ffi (v0.5.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="logger (v1.6.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.22.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="macaddr (v1.7.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.24.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest-ci (v3.4.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.4.14, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-scp (v4.0.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-sftp (v4.0.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.5.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-ssh (v7.2.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.16.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pagy (v9.0.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="psych (v5.1.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v6.0.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="puma (v6.4.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pundit (v2.3.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack (v3.1.7, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-proxy (v0.7.7, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.0.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-test (v2.1.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rackup (v2.1.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-i18n (v7.0.9, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="railties (v7.1.3.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v13.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.11.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.7.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="reline (v0.5.9, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.3.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.23.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="semantic_range (v3.0.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.22.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.12.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="spring (v4.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.5.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.7.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.23.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="strscan (v3.1.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="systemu (v2.6.5, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="terser (v1.2.3, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="tilt (v2.4.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="uuid (v2.3.9, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="warden-jwt_auth (v0.10.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="webpacker (v5.4.4, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="webrick (v1.8.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.6, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="xmlenc (v0.8.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="xmlmapper (v0.8.1, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, ruby-3.3.4-p94) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.16, ruby-3.3.4-p94) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actioncable (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionmailer (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionpack (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actiontext (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="actionview (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activejob (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activemodel (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activestorage (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activesupport (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.7, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="airbrussh (v1.5.3, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ajax-datatables-rails (v1.5.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="base64 (v0.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.20, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bcrypt_pbkdf (v1.1.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="benchmark (v0.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v3.1.8, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.18.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.3.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.5.23, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano (v3.19.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano-bundler (v2.1.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano-rails (v1.6.3, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano-rbenv (v2.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano-yarn (v2.0.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capistrano3-puma (v6.0.0.beta.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="capybara (v3.40.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.3.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.4.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dalli (v3.2.8, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="date (v3.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="debug (v1.9.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="devise (v4.9.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="digest (v3.1.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="docile (v1.4.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="domain_name (v0.6.20240107, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-auto_inject (v1.0.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-configurable (v1.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dry-core (v1.0.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.3.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="execjs (v2.10.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffaker (v2.23.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ffi-compiler (v1.3.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="font-awesome-rails (v4.7.0.9, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="http (v5.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.7, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="http-form_data (v2.3.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.6, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="io-console (v0.7.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ipip-fast (v0.0.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="irb (v1.14.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.13.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.6.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jwt (v2.9.3, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="listen (v3.9.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="llhttp-ffi (v0.5.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="logger (v1.6.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="loofah (v2.23.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="macaddr (v1.7.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mail (v2.8.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="marcel (v1.0.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="minitest-ci (v3.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.7.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.3.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-scp (v4.0.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-sftp (v4.0.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.5.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-ssh (v7.3.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.16.7, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ostruct (v0.6.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pagy (v9.3.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="psych (v5.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v6.0.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="puma (v6.5.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pundit (v2.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="racc (v1.8.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack (v3.1.8, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-proxy (v0.7.7, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.0.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-test (v2.1.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rackup (v2.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.6.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails-i18n (v7.0.10, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="railties (v7.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v13.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.11.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.8.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.9.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="reline (v0.5.11, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="responders (v3.1.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.3.9, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.3.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.26.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="semantic_range (v3.1.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov (v0.22.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov-html (v0.13.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="simplecov_json_formatter (v0.1.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="spring (v4.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.5.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.7.3, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.23.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.1.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="systemu (v2.6.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="terser (v1.2.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tilt (v2.4.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.2, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="turbolinks (v5.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="uuid (v2.3.9, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="warden-jwt_auth (v0.10.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="web-console (v4.2.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="webpacker (v5.4.4, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.11, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.6, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="xmlenc (v0.8.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="xmlmapper (v0.8.1, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, ruby-3.3.6-p108) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.18, ruby-3.3.6-p108) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
@@ -180,76 +181,122 @@
   <component name="RailsGeneratorsCache">
     <option name="generators">
       <list>
-        <option value="active_record:migration" />
-        <option value="active_record:model" />
-        <option value="active_record:observer" />
-        <option value="active_record:session_migration" />
+        <option value="active_record:application_record" />
+        <option value="active_record:devise" />
+        <option value="active_record:multi_db" />
+        <option value="application_record" />
+        <option value="benchmark" />
+        <option value="capistrano:nginx_puma:config" />
+        <option value="channel" />
         <option value="controller" />
-        <option value="erb:controller" />
-        <option value="erb:mailer" />
-        <option value="erb:scaffold" />
+        <option value="datatable" />
+        <option value="devise" />
+        <option value="devise:controllers" />
+        <option value="devise:install" />
+        <option value="devise:views" />
+        <option value="doorkeeper:application_owner" />
+        <option value="doorkeeper:confidential_applications" />
+        <option value="doorkeeper:enable_polymorphic_resource_owner" />
+        <option value="doorkeeper:install" />
+        <option value="doorkeeper:migration" />
+        <option value="doorkeeper:openid_connect:install" />
+        <option value="doorkeeper:openid_connect:migration" />
+        <option value="doorkeeper:pkce" />
+        <option value="doorkeeper:previous_refresh_token" />
+        <option value="doorkeeper:views" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
+        <option value="jbuilder" />
+        <option value="job" />
+        <option value="mailbox" />
         <option value="mailer" />
-        <option value="metal" />
         <option value="migration" />
         <option value="model" />
-        <option value="model_subclass" />
-        <option value="observer" />
-        <option value="performance_test" />
-        <option value="plugin" />
+        <option value="mongoid:devise" />
+        <option value="pundit:install" />
+        <option value="pundit:policy" />
         <option value="resource" />
+        <option value="responders:install" />
+        <option value="responders_controller" />
+        <option value="rspec:policy" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
-        <option value="session_migration" />
-        <option value="stylesheets" />
-        <option value="test_unit:controller" />
-        <option value="test_unit:helper" />
-        <option value="test_unit:integration" />
-        <option value="test_unit:mailer" />
-        <option value="test_unit:model" />
-        <option value="test_unit:observer" />
-        <option value="test_unit:performance" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
+        <option value="system_test" />
+        <option value="task" />
+        <option value="test_unit:channel" />
+        <option value="test_unit:generator" />
+        <option value="test_unit:install" />
+        <option value="test_unit:mailbox" />
         <option value="test_unit:plugin" />
-        <option value="test_unit:scaffold" />
+        <option value="test_unit:policy" />
+        <option value="wechat:config" />
+        <option value="wechat:install" />
+        <option value="wechat:menu" />
+        <option value="wechat:redis_store" />
+        <option value="wechat:session" />
       </list>
     </option>
     <option name="myGenerators">
       <list>
-        <option value="active_record:migration" />
-        <option value="active_record:model" />
-        <option value="active_record:observer" />
-        <option value="active_record:session_migration" />
+        <option value="active_record:application_record" />
+        <option value="active_record:devise" />
+        <option value="active_record:multi_db" />
+        <option value="application_record" />
+        <option value="benchmark" />
+        <option value="capistrano:nginx_puma:config" />
+        <option value="channel" />
         <option value="controller" />
-        <option value="erb:controller" />
-        <option value="erb:mailer" />
-        <option value="erb:scaffold" />
+        <option value="datatable" />
+        <option value="devise" />
+        <option value="devise:controllers" />
+        <option value="devise:install" />
+        <option value="devise:views" />
+        <option value="doorkeeper:application_owner" />
+        <option value="doorkeeper:confidential_applications" />
+        <option value="doorkeeper:enable_polymorphic_resource_owner" />
+        <option value="doorkeeper:install" />
+        <option value="doorkeeper:migration" />
+        <option value="doorkeeper:openid_connect:install" />
+        <option value="doorkeeper:openid_connect:migration" />
+        <option value="doorkeeper:pkce" />
+        <option value="doorkeeper:previous_refresh_token" />
+        <option value="doorkeeper:views" />
         <option value="generator" />
         <option value="helper" />
         <option value="integration_test" />
+        <option value="jbuilder" />
+        <option value="job" />
+        <option value="mailbox" />
         <option value="mailer" />
-        <option value="metal" />
         <option value="migration" />
         <option value="model" />
-        <option value="model_subclass" />
-        <option value="observer" />
-        <option value="performance_test" />
-        <option value="plugin" />
+        <option value="mongoid:devise" />
+        <option value="pundit:install" />
+        <option value="pundit:policy" />
         <option value="resource" />
+        <option value="responders:install" />
+        <option value="responders_controller" />
+        <option value="rspec:policy" />
         <option value="scaffold" />
         <option value="scaffold_controller" />
-        <option value="session_migration" />
-        <option value="stylesheets" />
-        <option value="test_unit:controller" />
-        <option value="test_unit:helper" />
-        <option value="test_unit:integration" />
-        <option value="test_unit:mailer" />
-        <option value="test_unit:model" />
-        <option value="test_unit:observer" />
-        <option value="test_unit:performance" />
+        <option value="scss:assets" />
+        <option value="scss:scaffold" />
+        <option value="system_test" />
+        <option value="task" />
+        <option value="test_unit:channel" />
+        <option value="test_unit:generator" />
+        <option value="test_unit:install" />
+        <option value="test_unit:mailbox" />
         <option value="test_unit:plugin" />
-        <option value="test_unit:scaffold" />
+        <option value="test_unit:policy" />
+        <option value="wechat:config" />
+        <option value="wechat:install" />
+        <option value="wechat:menu" />
+        <option value="wechat:redis_store" />
+        <option value="wechat:session" />
       </list>
     </option>
   </component>
