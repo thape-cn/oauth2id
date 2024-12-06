@@ -164,16 +164,9 @@ FROM (SELECT MAX(begindate) begindate, pk_psndoc
 
   def self.nc_user_majors
     NcUap.connection.select_rows("
-SELECT hi_psnjob.clerkcode, bd_defdoc.code major_code, bd_defdoc.name major_name
-FROM NC6337.bd_psndoc bd_psndoc
-INNER JOIN NC6337.hi_psnjob hi_psnjob ON bd_psndoc.pk_psndoc = hi_psnjob.pk_psndoc
-INNER JOIN NC6337.Hi_Psndoc_Glbdef3 Hi_Psndoc_Glbdef3 ON Hi_Psndoc_Glbdef3.pk_psndoc = bd_psndoc.pk_psndoc
-INNER JOIN NC6337.BD_defdoc bd_defdoc ON bd_defdoc.pk_defdoc = Hi_Psndoc_Glbdef3.Glbdef1
-WHERE hi_psnjob.ismainjob = 'Y'
-  AND hi_psnjob.lastflag = 'Y'
-  AND hi_psnjob.endflag = 'N'
-  AND Hi_Psndoc_Glbdef3.dr = '0'
-  AND bd_defdoc.pk_defdoclist = '1001A7100000000022C5'
+SELECT PNCODE clerkcode, MAJORCODE major_code, MAJORNAME major_name
+FROM NC6337.V_PSNDOC
+WHERE ISMAINJOB = 'Y' and WORK_ENDDATE is null
 ")
   end
 
