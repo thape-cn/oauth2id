@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 3b906771f91b8e834b1ac392b7b2b1cdf8d21ab6
+  revision: 0f0b6aacc00cd9955c8fc9f25440f324c204ed7a
   branch: main
   specs:
-    doorkeeper (5.7.1)
+    doorkeeper (5.8.1)
       railties (>= 5)
 
 GIT
@@ -39,12 +39,13 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: ab28ba3cb822a003234469116ddbc3fa090c803a
+  revision: e2ac95897dcb9fb1a1a08ea9df558845084c2f69
   branch: master
   specs:
-    doorkeeper-openid_connect (1.8.9)
-      doorkeeper (>= 5.5, < 5.8)
+    doorkeeper-openid_connect (1.8.10)
+      doorkeeper (>= 5.5, < 5.9)
       jwt (>= 2.5)
+      ostruct (>= 0.5)
 
 GIT
   remote: https://github.com/thape-cn/saml_idp
