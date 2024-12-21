@@ -304,7 +304,7 @@ GEM
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
     mysql2 (0.5.6)
-    net-imap (0.5.2)
+    net-imap (0.5.3)
       date
       net-protocol
     net-ldap (0.19.0)
@@ -450,7 +450,7 @@ GEM
     terser (1.2.4)
       execjs (>= 0.3.0, < 3)
     thor (1.3.2)
-    tilt (2.4.0)
+    tilt (2.5.0)
     timeout (0.4.3)
     tiny_tds (2.1.7)
     turbolinks (5.2.1)
@@ -463,7 +463,7 @@ GEM
       macaddr (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    warden-jwt_auth (0.10.1)
+    warden-jwt_auth (0.11.0)
       dry-auto_inject (>= 0.8, < 2)
       dry-configurable (>= 0.13, < 2)
       jwt (~> 2.1)
