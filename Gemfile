@@ -61,6 +61,7 @@ gem 'xmlenc'
 
 # bundle config local.wechat /Users/$(whoami)/git/oss/wechat/
 gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
+gem 'nokogiri', '~> 1.17.2'
 
 gem 'ipip-fast'
 
