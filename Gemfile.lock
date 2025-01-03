@@ -486,6 +486,7 @@ DEPENDENCIES
   mail (= 2.8.1)
   minitest
   minitest-ci
+  nokogiri (~> 1.17.2)
   pagy
   puma
   pundit
