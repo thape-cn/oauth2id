@@ -15,6 +15,7 @@ gem 'mail', '= 2.8.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.7'
+gem 'ffi', '~> 1.16.3'
 
 # Thape using mysql as production
 gem 'mysql2'
