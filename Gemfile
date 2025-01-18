@@ -98,6 +98,10 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+
+  # Support cursor / vs code
+  gem "ruby-lsp", require: false
+  gem "ruby-lsp-rails", require: false
 end
 
 group :test do
