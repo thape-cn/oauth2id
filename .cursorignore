@@ -1,2 +1,6 @@
 config/credentials.yml
 config/credentials.yml.enc
+config/credentials
+public/assets
+public/packs
+public/packs-test
