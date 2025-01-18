@@ -465,12 +465,12 @@ PLATFORMS
 DEPENDENCIES
   ajax-datatables-rails
   bcrypt_pbkdf
-  bootsnap (>= 1.17.0)
+  bootsnap (>= 1.18.4)
   capistrano-rails
   capistrano-rbenv
   capistrano-yarn
-  capistrano3-puma (~> 6.0.0.beta.1)
-  capybara (>= 3.39)
+  capistrano3-puma (~> 6.0)
+  capybara (>= 3.40)
   dalli
   debug
   devise
@@ -492,11 +492,11 @@ DEPENDENCIES
   pagy
   puma
   pundit
-  rails (~> 7.1.2)
+  rails (~> 7.1.5)
   rails-i18n
   saml_idp!
   sassc-rails
-  selenium-webdriver (>= 4.14.0)
+  selenium-webdriver (>= 4.27.0)
   simplecov
   spring
   sprockets
