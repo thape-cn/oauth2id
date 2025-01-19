@@ -46,6 +46,7 @@ gem 'jbuilder'
 gem 'devise'
 # bundle config local.devise-jwt /Users/$(whoami)/git/oss/devise-jwt/
 gem 'devise-jwt', git: 'https://git.thape.com.cn/rails/devise-jwt.git', branch: :main
+gem 'dry-auto_inject', '~> 1.0.1'
 gem 'digest', '~> 3.1.1'
 
 # bundle config local.doorkeeper /Users/$(whoami)/git/oss/doorkeeper/

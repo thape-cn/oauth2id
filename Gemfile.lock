@@ -490,6 +490,7 @@ DEPENDENCIES
   digest (~> 3.1.1)
   doorkeeper!
   doorkeeper-openid_connect!
+  dry-auto_inject (~> 1.0.1)
   ed25519
   ffaker
   font-awesome-rails
@@ -527,4 +528,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.6.2
+   2.6.3
