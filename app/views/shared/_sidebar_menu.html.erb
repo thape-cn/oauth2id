@@ -43,6 +43,11 @@
         </li>
       </ul>
     </li>
+    <li>
+      <%= link_to system_info_path, class: "app-menu__item #{params[:controller] == 'system_info' && params[:action] == 'show' ? 'active' : ''}" do %>
+        <i class="app-menu__icon fa fa-microchip"></i><span class="app-menu__label"><%= t('ui.system_info') -%></span>
+      <% end %>
+    </li>
   <% end -%>
   <% allow_department_index = policy(Department).index? %>
   <% allow_position_index = policy(Position).index? %>

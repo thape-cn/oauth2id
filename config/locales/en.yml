@@ -24,6 +24,7 @@ en:
     can_grant_applications: "Applications can grant to access"
     can_not_grant_applications: "Can not grant applications to access"
     allow_access: "Allow Access"
+    system_info: "System Info"
     system_administrator: "System Administrator"
     settings: "Settings"
     profile: "Profile"

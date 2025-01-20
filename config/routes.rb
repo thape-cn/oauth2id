@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       get :report
     end
   end
+  resource :system_info, controller: 'system_info', only: [:show]
 
   resource :setting, only: :update do
     member do
