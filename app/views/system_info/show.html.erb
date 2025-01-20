@@ -12,6 +12,23 @@
     <div class="col-md-12">
       <div class="tile">
         <div class="tile-body">
+          <h3>HTTP Headers</h3>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Header Name</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% request.headers.each do |header_name, header_value| %>
+                <tr>
+                  <td><code><%= header_name %></code></td>
+                  <td><code><%= header_value %></code></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
