@@ -5,7 +5,6 @@ variables:
   CACHE_FALLBACK_KEY: "$CI_COMMIT_REF_SLUG"
 
 before_script:
-  - bundle config mirror.https://rubygems.org https://gems.ruby-china.com
   - gem install bundler
   - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
   - sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
