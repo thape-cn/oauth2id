@@ -17,13 +17,14 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: f162c30bc768d67bf73a395de4f6e76f262cf53d
+  revision: b510790adc99af1d96a4a76652525b2f2f7dd047
   branch: main
   specs:
     wechat (0.17.6)
       activesupport (>= 6.0, < 9)
       http (>= 1.0.4, < 6)
       nokogiri (>= 1.6.0)
+      ostruct
       rexml
       thor
       zeitwerk (~> 2.4)
