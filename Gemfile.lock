@@ -247,7 +247,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jwt (2.10.1)
       base64
-    language_server-protocol (3.17.0.3)
+    language_server-protocol (3.17.0.4)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -407,7 +407,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.11781)
+    sorbet-runtime (0.5.11784)
     spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -481,6 +481,7 @@ PLATFORMS
   aarch64-linux
   arm-linux
   arm64-darwin-23
+  arm64-darwin-24
   x86-linux
   x86_64-darwin
   x86_64-linux
