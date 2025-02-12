@@ -348,7 +348,7 @@ GEM
     pundit (2.4.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (2.2.10)
+    rack (2.2.11)
     rack-proxy (0.7.7)
       rack
     rack-session (1.0.2)
@@ -440,7 +440,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.11820)
+    sorbet-runtime (0.5.11823)
     spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
