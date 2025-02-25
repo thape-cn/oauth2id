@@ -62,12 +62,15 @@ unless ENV["NO_TINY_TDS"]
     host = Rails.application.credentials.old_sso_host!
     database = Rails.application.credentials.old_sso_database!
     client = TinyTds::Client.new username: username, password: password, host: host, database: database, timeout: 30
-    result = client.execute('select Id,NCWorkNo from [Thape_SSO].[dbo].[v_UserInfo]')
+    result = client.execute('select Id,NCWorkNo,LoginName from [Thape_SSO].[dbo].[v_UserInfo]')
     result.each do |row|
       clerk_code = row['NCWorkNo']
       pre_sso_id = row['Id']
-      profile = Profile.find_by clerk_code: clerk_code
-      if profile.present?
+      login_name = row['LoginName']&.downcase
+      if clerk_code.present? && (profile = Profile.find_by clerk_code: clerk_code)
+        profile.update(pre_sso_id: pre_sso_id)
+      elsif login_name.present? && (user = User.find_by username: login_name)
+        profile = user.profile || user.build_profile
         profile.update(pre_sso_id: pre_sso_id)
       else
         puts "Missing clert_code: #{clerk_code} ID: #{pre_sso_id}"
