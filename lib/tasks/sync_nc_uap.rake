@@ -81,6 +81,14 @@ end
 
   desc 'Link user to YxtPosition'
   task link_user_to_yxt_position: :environment do
+    # First, create YxtPosition records for all positions
+    Position.all.order(:id).find_each do |position|
+      prefix = position.functional_category
+      position_name = "#{prefix};#{position.name}"
+      YxtPosition.find_or_create_by!(prefix_paths: position_name, position_name: position.name)
+    end
+
+    # Then, link users to their YxtPositions
     User.all.order(:id).find_each do |user|
       next if user.position_users.blank?
 
@@ -88,7 +96,7 @@ end
       p = user.position_users.last&.position if p.nil?
       prefix = p.functional_category
       position_name = "#{prefix};#{p.name}"
-      yxt_position = YxtPosition.find_or_create_by!(prefix_paths: position_name, position_name: p.name)
+      yxt_position = YxtPosition.find_by!(prefix_paths: position_name, position_name: p.name)
       user.update_columns(yxt_position_id: yxt_position.id)
     end
   end
