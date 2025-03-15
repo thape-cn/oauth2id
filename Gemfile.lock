@@ -251,7 +251,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.5.0)
+    llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.6.6)
@@ -269,7 +269,7 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
-    minitest (5.25.4)
+    minitest (5.25.5)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
@@ -306,7 +306,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.1)
-    pagy (9.3.3)
+    pagy (9.3.4)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -320,7 +320,7 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.1.11)
+    rack (3.1.12)
     rack-proxy (0.7.7)
       rack
     rack-session (2.1.0)
@@ -407,7 +407,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.11888)
+    sorbet-runtime (0.5.11934)
     spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -539,4 +539,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.6.5
+   2.6.6
