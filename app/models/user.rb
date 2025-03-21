@@ -79,6 +79,7 @@ class User < ApplicationRecord
     update_columns(is_function_account: true) if is_function_account
     Rails.logger.debug "LDAP title: #{li[:title]}"
     Rails.logger.debug "LDAP mail: #{li[:mail]}"
+    Rails.logger.debug "LDAP hash: #{li.to_h}"
     return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生') || is_function_account
   end
 
