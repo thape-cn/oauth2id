@@ -68,6 +68,7 @@ class User < ApplicationRecord
     else
       self.email = li[:mail].first.to_s
     end
+    self.windows_sid = get_sid_string(li[:objectsid].first)
     errors.add(:email, 'Email is empty from AD') if email.blank?
   end
 
@@ -79,6 +80,7 @@ class User < ApplicationRecord
     update_columns(is_function_account: true) if is_function_account
     Rails.logger.debug "LDAP title: #{li[:title]}"
     Rails.logger.debug "LDAP mail: #{li[:mail]}"
+    update_columns(windows_sid: get_sid_string(li[:objectsid].first))
     return fail(:invalid) unless li[:mail].present? || li[:title].include?('司机') || li[:title].include?('驾驶员') || li[:title].include?('实习生') || is_function_account
   end
 
@@ -107,5 +109,29 @@ class User < ApplicationRecord
   def password_required?
     return false if skip_password_validation
     super
+  end
+
+  private
+
+  def get_sid_string(data)
+    sid = []
+    sid << data[0].to_s
+
+    rid = ''
+    6.downto(1) do |i|
+      rid += byte2hex(data[i, 1][0])
+    end
+    sid << rid.to_i.to_s
+
+    sid += data.unpack('bbbbbbbbV*')[8..]
+    windows_sid = "S-#{sid.join('-')}"
+    windows_sid[2] = '1'
+    windows_sid
+  end
+
+  def byte2hex(b)
+    ret = '%x' % (b.to_i & 0xff)
+    ret = '0' + ret if ret.length < 2
+    ret
   end
 end
