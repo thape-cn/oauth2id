@@ -25,6 +25,7 @@ class DoorkeeperController < ApplicationController
       id: resource_owner.username, # support https://lexiangla.com/wiki/contact/32003.html
       sub: resource_owner.id,
       name: resource_owner.username,
+      windows_sid: resource_owner.windows_sid,
       chinese_name: profile&.chinese_name || resource_owner.username,
       clerk_code: profile&.clerk_code,
       pre_sso_id: profile&.pre_sso_id,
