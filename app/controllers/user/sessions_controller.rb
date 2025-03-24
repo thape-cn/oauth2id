@@ -34,6 +34,7 @@ class User::SessionsController < Devise::SessionsController
     user_attrs = {
       white_jwts_attrs: allowlisted_jwts_attributes,
       email: self.resource.email,
+      windows_sid: self.resource.windows_sid,
       position_title: main_position&.name,
       clerk_code: self.resource.profile&.clerk_code,
       pre_sso_id: self.resource.profile&.pre_sso_id,
@@ -54,6 +55,7 @@ class User::SessionsController < Devise::SessionsController
         render json: {
           id: resource.id,
           username: resource.username,
+          windows_sid: resource.windows_sid,
           desk_phone: resource.desk_phone,
           email: resource.email,
           created_at: resource.created_at,
