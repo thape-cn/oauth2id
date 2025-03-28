@@ -125,8 +125,7 @@ class User < ApplicationRecord
 
     sid += data.unpack('bbbbbbbbV*')[8..]
     windows_sid = "S-#{sid.join('-')}"
-    windows_sid[2] = '1'
-    windows_sid
+    windows_sid[6..-1]
   end
 
   def byte2hex(b)
