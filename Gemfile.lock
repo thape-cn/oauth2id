@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 6f249c8229bcf77681377aec4e25e8fcbb3ae70d
+  revision: b30535805477bc4a2568d68968595484d6163b31
   branch: main
   specs:
-    doorkeeper (5.8.1)
+    doorkeeper (5.8.2)
       railties (>= 5)
 
 GIT
