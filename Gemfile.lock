@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 6f249c8229bcf77681377aec4e25e8fcbb3ae70d
+  revision: b30535805477bc4a2568d68968595484d6163b31
   branch: main
   specs:
-    doorkeeper (5.8.1)
+    doorkeeper (5.8.2)
       railties (>= 5)
 
 GIT
@@ -394,7 +394,7 @@ GEM
       nokogiri (~> 1)
       rubyzip (>= 1.3.0, < 3.0.0)
     rorvswild (1.9.1)
-    ruby-lsp (0.23.13)
+    ruby-lsp (0.23.14)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 4)
@@ -580,4 +580,4 @@ RUBY VERSION
    ruby 3.4.2p28
 
 BUNDLED WITH
-   2.6.6
+   2.6.7
