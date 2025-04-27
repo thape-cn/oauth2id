@@ -477,8 +477,6 @@ GEM
       bigdecimal (~> 3)
     tiny_tds (3.2.1-aarch64-linux-gnu)
       bigdecimal (~> 3)
-    tiny_tds (3.2.1-x86_64-linux-gnu)
-      bigdecimal (~> 3)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
