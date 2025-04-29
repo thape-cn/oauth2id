@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: cfff2da8cd17fa0b2c20c4ecffc4290eb883350b
+  revision: 9d436ac846ea8cd04b22a9af17003b5ef95028f5
   branch: main
   specs:
     wechat (0.17.7)
@@ -199,7 +199,7 @@ GEM
       xpath (~> 3.2)
     chronic (0.10.2)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.2)
+    connection_pool (2.5.3)
     crass (1.0.6)
     csv (3.3.4)
     dalli (3.2.8)
@@ -440,7 +440,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12042)
+    sorbet-runtime (0.5.12043)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
