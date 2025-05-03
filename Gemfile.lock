@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 9d436ac846ea8cd04b22a9af17003b5ef95028f5
+  revision: 885681aeedbb07a63445ef43379d447c6122e272
   branch: main
   specs:
     wechat (0.17.7)
@@ -311,10 +311,10 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
-    psych (5.2.3)
+    psych (5.2.4)
       date
       stringio
-    public_suffix (6.0.1)
+    public_suffix (6.0.2)
     puma (6.6.0)
       nio4r (~> 2.0)
     pundit (2.5.0)
@@ -377,13 +377,13 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
-    ruby-lsp (0.23.15)
+    ruby-lsp (0.23.16)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 4)
       sorbet-runtime (>= 0.5.10782)
-    ruby-lsp-rails (0.4.1)
-      ruby-lsp (>= 0.23.14, < 0.24.0)
+    ruby-lsp-rails (0.4.2)
+      ruby-lsp (>= 0.23.16, < 0.24.0)
     rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -407,7 +407,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12043)
+    sorbet-runtime (0.5.12053)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
