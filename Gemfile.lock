@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 9c157312df2cf1b26af5f6f22a5c24a36cb976ce
+  revision: 0d756ddd75cf011e87a5180be7e3b25c812a344e
   branch: main
   specs:
     wechat (0.17.7)
@@ -190,7 +190,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    digest (3.1.1)
+    digest (3.2.0)
     docile (1.4.1)
     drb (2.2.1)
     dry-auto_inject (1.0.1)
@@ -394,7 +394,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12070)
+    sorbet-runtime (0.5.12079)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
@@ -488,7 +488,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt!
-  digest (~> 3.1.1)
+  digest (~> 3.2)
   doorkeeper!
   doorkeeper-openid_connect!
   dry-auto_inject (~> 1.0.1)
