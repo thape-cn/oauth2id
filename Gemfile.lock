@@ -364,13 +364,13 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
-    ruby-lsp (0.23.18)
+    ruby-lsp (0.23.19)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 4)
       sorbet-runtime (>= 0.5.10782)
-    ruby-lsp-rails (0.4.2)
-      ruby-lsp (>= 0.23.16, < 0.24.0)
+    ruby-lsp-rails (0.4.3)
+      ruby-lsp (>= 0.23.18, < 0.24.0)
     rubyzip (2.4.1)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -529,4 +529,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.6.8
+   2.6.9
