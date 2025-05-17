@@ -1,6 +1,6 @@
 GIT
   remote: https://git.thape.com.cn/rails/devise-jwt.git
-  revision: 3a0ade4bdcc9e23ff407f157ea59863da8b12279
+  revision: 2a550f97faddcce9c046cf28f163891798d553be
   branch: main
   specs:
     devise-jwt (0.12.1)
@@ -257,7 +257,7 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpx (1.4.4)
+    httpx (1.5.0)
       http-2 (>= 1.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -443,7 +443,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12104)
+    sorbet-runtime (0.5.12109)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
