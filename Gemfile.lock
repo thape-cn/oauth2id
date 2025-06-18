@@ -204,7 +204,7 @@ GEM
     csv (3.3.5)
     dalli (3.2.8)
     date (3.4.1)
-    debug (1.10.0)
+    debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
@@ -293,7 +293,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    matrix (0.4.2)
+    matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.25.5)
@@ -336,7 +336,7 @@ GEM
     nokogiri (1.17.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    ostruct (0.6.1)
+    ostruct (0.6.2)
     pagy (9.3.4)
     pp (0.6.2)
       prettyprint
@@ -441,7 +441,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12176)
+    sorbet-runtime (0.5.12189)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
