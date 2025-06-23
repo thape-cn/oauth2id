@@ -184,7 +184,7 @@ GEM
       sshkit (~> 1.3)
     capistrano-yarn (2.0.2)
       capistrano (~> 3.0)
-    capistrano3-puma (6.1.0)
+    capistrano3-puma (6.2.0)
       capistrano (~> 3.7)
       capistrano-bundler
       puma (>= 5.1, < 7.0)
