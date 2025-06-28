@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: b30535805477bc4a2568d68968595484d6163b31
+  revision: d0b8a91554001de8614b978b45d478d0ea894cca
   branch: main
   specs:
     doorkeeper (5.8.2)
@@ -398,7 +398,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.12201)
+    sorbet-runtime (0.5.12210)
     spring (4.2.1)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
