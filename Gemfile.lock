@@ -300,7 +300,7 @@ GEM
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
-    multi_xml (0.7.2)
+    multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
     mysql2 (0.5.7)
