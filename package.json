@@ -18,6 +18,7 @@
     "webpack-dev-server": "^3.11.3"
   },
   "resolutions": {
+    "@types/minimatch": "~5.1.2",
     "chokidar": "^3.5.3",
     "cookie": "~0.7.2",
     "css-tree": "~1.1.2",
