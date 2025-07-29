@@ -117,7 +117,7 @@ namespace :sync_yxt do
 
         {
           id: u.id,
-          userName: (u&.profile&.wecom_id || u.username),
+          userName: u.yxt_user_name,
           password: '',
           cnName: u&.profile&.chinese_name || u.username,
           userNo: u&.profile&.clerk_code,
