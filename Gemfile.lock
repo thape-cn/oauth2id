@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: eec04df9b51d553ea6c4b8286b66476338de3d88
+  revision: ab6cf0b86265cf83ef368634537062b0c5285fb8
   branch: main
   specs:
     wechat (1.0.1)
@@ -301,7 +301,7 @@ GEM
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
-    multi_xml (0.7.1)
+    multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
     mysql2 (0.5.6)
