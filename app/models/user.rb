@@ -104,6 +104,18 @@ class User < ApplicationRecord
     departments.last&.name
   end
 
+  def yxt_user_name
+    yxt_name = profile&.wecom_id || username
+    case yxt_name
+    when 'xulutmp' # we can not change wecom_id once created
+      'xulu5'
+    when 'guojianhuatmp'
+      'guojianhua'
+    else
+      yxt_name
+    end
+  end
+
   protected
 
   def password_required?
