@@ -27,6 +27,7 @@
     "inherits": "~2.0.4",
     "mdn-data": "~2.0.33",
     "merge-descriptors": "~1.0.3",
+    "mime-db": "~1.54.0",
     "sass-loader": "~10.5.2",
     "ws": "~8.18.2",
     "semver": "^7.5.3"
