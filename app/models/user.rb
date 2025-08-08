@@ -11,7 +11,7 @@ class User < ApplicationRecord
                                 recoverable rememberable trackable validatable
                                 lockable jwt_authenticatable]
                            end
-  devise(*include_devise_modules, jwt_revocation_strategy: self)
+  devise(*include_devise_modules, jwt_revocation_strategy: self, omniauth_providers: [:wechat_qiye])
 
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
