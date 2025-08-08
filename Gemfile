@@ -82,6 +82,14 @@ gem 'xmlenc'
 
 # bundle config local.wechat /Users/$(whoami)/git/oss/wechat/
 gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
+# bundle config local.omniauth-wechat-oauth2 /Users/$(whoami)/git/oss/omniauth-wechat-oauth2
+gem 'omniauth-wechat-oauth2', git: 'https://git.thape.com.cn/rails/omniauth-wechat-oauth2.git', branch: :master
+# bundle config local.omniauth-oauth2 /Users/$(whoami)/git/oss/omniauth-oauth2
+gem 'omniauth-oauth2', git: 'https://github.com/omniauth/omniauth-oauth2.git', branch: :master
+# bundle config local.omniauth /Users/$(whoami)/git/oss/omniauth
+gem 'omniauth', git: 'https://github.com/omniauth/omniauth.git', branch: :master
+# bundle config local.oauth2 /Users/$(whoami)/git/oss/oauth2
+gem 'oauth2', git: 'https://github.com/ruby-oauth/oauth2.git', branch: :main
 gem 'nokogiri', '~> 1.17.2'
 gem 'psych', '~> 3.3.4'
 
