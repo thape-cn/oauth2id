@@ -5,4 +5,8 @@ class Profile < ApplicationRecord
   def custom_attributes
     attributes.reject { |k,v| k.in? HIDDEN_ATTRIBUTES }
   end
+
+  def self.from_omniauth(auth)
+    find_by(wecom_id: auth.uid)
+  end
 end

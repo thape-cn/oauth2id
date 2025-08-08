@@ -2,12 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
   include_devise_modules = if Rails.env.test?
-                             %i[database_authenticatable
+                             %i[database_authenticatable omniauthable
                                 registerable
                                 recoverable rememberable trackable validatable
                                 confirmable lockable jwt_authenticatable]
                            else
-                             %i[ldap_authenticatable
+                             %i[ldap_authenticatable omniauthable
                                 recoverable rememberable trackable validatable
                                 lockable jwt_authenticatable]
                            end
