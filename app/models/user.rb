@@ -2,16 +2,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable
   include_devise_modules = if Rails.env.test?
-                             %i[database_authenticatable
+                             %i[database_authenticatable omniauthable
                                 registerable
                                 recoverable rememberable trackable validatable
                                 confirmable lockable jwt_authenticatable]
                            else
-                             %i[ldap_authenticatable
+                             %i[ldap_authenticatable omniauthable
                                 recoverable rememberable trackable validatable
                                 lockable jwt_authenticatable]
                            end
-  devise(*include_devise_modules, jwt_revocation_strategy: self)
+  devise(*include_devise_modules, jwt_revocation_strategy: self, omniauth_providers: [:qiye_web])
 
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
@@ -113,6 +113,16 @@ class User < ApplicationRecord
       'guojianhua'
     else
       yxt_name
+    end
+  end
+
+  def self.from_omniauth(auth)
+    Rails.logger.info("User.from_omniauth auth=#{auth.inspect}")
+    profile = Profile.find_by(wecom_id: auth.uid)
+    if profile.present?
+      profile.user
+    else
+      User.find_by(username: auth.uid)
     end
   end
 

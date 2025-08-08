@@ -2,6 +2,18 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/guochunzhong/git/oss/omniauth-wechat-oauth2"
+		},
+		{
+			"path": "/Users/guochunzhong/git/oss/omniauth-oauth2"
+		},
+		{
+			"path": "/Users/guochunzhong/git/oss/omniauth"
+		},
+		{
+			"path": "/Users/guochunzhong/git/oss/oauth2"
 		}
 	],
 	"settings": {
@@ -11,6 +23,7 @@
 			"**/log": true,
 			"**/node_modules": true,
 			"**/storage": true,
+			"oauth2id.sublime-*": true,			
 			"**/tmp": true
 		},
 		"i18n-ally.localesPaths": [
