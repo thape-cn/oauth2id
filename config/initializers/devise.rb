@@ -311,4 +311,6 @@ Devise.setup do |config|
     jwt.algorithm = 'HS256'
     jwt.expiration_time = 3600 * 24 * 90 # (90 days)
   end
+
+  config.omniauth :qiye_web, Rails.application.credentials.wechat_corpid!, Rails.application.credentials.wechat_corpsecret!, agentid: Rails.application.credentials.wechat_agentid!
 end
