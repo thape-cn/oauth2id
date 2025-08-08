@@ -27,6 +27,7 @@ Rails.application.routes.draw do
                                     passwords: 'user/passwords',
                                     confirmations: 'user/confirmations',
                                     unlocks: 'user/unlocks',
+                                    omniauth_callbacks: 'user/omniauth_callbacks',
                                     registrations: 'user/registrations' }
 
   match '/users/sign_in', to: 'home#preflighted', via: :options
