@@ -30,11 +30,15 @@
           </div>
         </div>
         <div class="form-group btn-container">
-          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled',
+          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled', name: 'sign_in',
                          disabled: true, id: 'user-sign-in-btn', data: { disable: t('ui.doing_signing')}) do %>
             <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('user.sign_in') -%>
           <% end %>
           <p class="text-center" id="user-sign-in-hint"><%= t('ui.enable_javascript_to_login') %></p>
+          <%= button_tag(type: 'button', class: 'btn btn-success btn-block disabled', name: 'sign_in_via_qiye',
+                         disabled: true, id: 'qiye-web-login-btn', data: { disable: t('ui.doing_signing'), url: user_qiye_web_omniauth_authorize_path }) do %>
+            <i class="fa fa-weixin fa-lg fa-fw"></i><%= t('user.sign_in_via_qiye') -%>
+          <% end %>
         </div>
     <% end %>
     <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'forget-form', style: 'padding-top: 20px' }) do |f| %>
