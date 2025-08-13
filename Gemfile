@@ -88,6 +88,7 @@ gem 'omniauth-wechat-oauth2', git: 'https://git.thape.com.cn/rails/omniauth-wech
 gem 'omniauth-oauth2', git: 'https://github.com/omniauth/omniauth-oauth2.git', branch: :master
 # bundle config local.omniauth /Users/$(whoami)/git/oss/omniauth
 gem 'omniauth', git: 'https://github.com/omniauth/omniauth.git', branch: :master
+gem 'omniauth-rails_csrf_protection'
 # bundle config local.oauth2 /Users/$(whoami)/git/oss/oauth2
 gem 'oauth2', git: 'https://github.com/ruby-oauth/oauth2.git', branch: :main
 gem 'nokogiri', '~> 1.17.2'
