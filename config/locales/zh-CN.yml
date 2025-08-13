@@ -66,6 +66,7 @@ zh-CN:
     password: "开机密码"
     password_confirmation: "确认密码"
     sign_in: "登录"
+    sign_in_via_qiye: "企业微信登录"
     sign_up: "注册"
     sign_up_disabled: "用户注册当前已被禁用。"
     stay_signed_in: "保持登录"
