@@ -1,5 +1,5 @@
-# Allow GET requests for OmniAuth strategies (OmniAuth 2 defaults to POST)
-OmniAuth.config.allowed_request_methods = [:get, :post]
+# Restrict OmniAuth to POST requests for improved security
+OmniAuth.config.allowed_request_methods = [:post]
 OmniAuth.config.silence_get_warning = true
 
 
