@@ -12,8 +12,14 @@ a.app-header__logo {
   min-height: 502px !important;
 }
 
-.login-box.flipped {
-  min-height: 370px !important;
+.login-content{
+  .login-box {
+    min-height: 430px !important;
+  }
+}
+
+#qiye-web-login-btn {
+  margin-top: 8px;
 }
 
 .app-login-box {
