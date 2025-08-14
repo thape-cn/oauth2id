@@ -2,42 +2,48 @@
   <div class="logo">
     <h2 class="tianhua-font">天华单点登录系统</h2>
   </div>
-  <div class="login-box">
+  <div class="login-box" style="<%= @user_from_public ? 'min-height: 120px !important;' : '' -%>">
     <%= form_with(model: resource, as: resource_name, url: session_path(resource_name),
       id: 'user-sign-in', class: 'login-form', local: false) do |f| %>
         <h3 class="login-head">
           <i class="fa fa-lg fa-fw fa-user"></i><%= t('user.sign_in') -%>
         </h3>
-        <div class="form-group">
-          <label class="control-label"><%= t('user.samaccountname') -%></label>
-          <%= f.text_field :username, autofocus: true, class: 'form-control', id: 'input-user-name' %>
-        </div>
-        <div class="form-group">
-          <label class="control-label"><%= t('user.password') -%></label>
-          <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'input-password' %>
-        </div>
-        <div class="form-group">
-          <div class="utility">
-            <% if devise_mapping.rememberable? -%>
-              <div class="animated-checkbox">
-                <label>
-                  <%= f.check_box :remember_me, checked: true %>
-                  <span class="label-text"><%= t('user.stay_signed_in') -%></span>
-                </label>
-              </div>
-            <% end -%>
-            <p class="semibold-text mb-2"><a href="#" data-toggle="flip"><%= t('user.forgot_password') -%></a></p>
+        <% unless @user_from_public %>
+          <div class="form-group">
+            <label class="control-label"><%= t('user.samaccountname') -%></label>
+            <%= f.text_field :username, autofocus: true, class: 'form-control', id: 'input-user-name' %>
           </div>
-        </div>
+          <div class="form-group">
+            <label class="control-label"><%= t('user.password') -%></label>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: 'input-password' %>
+          </div>
+          <div class="form-group">
+            <div class="utility">
+              <% if devise_mapping.rememberable? -%>
+                <div class="animated-checkbox">
+                  <label>
+                    <%= f.check_box :remember_me, checked: true %>
+                    <span class="label-text"><%= t('user.stay_signed_in') -%></span>
+                  </label>
+                </div>
+              <% end -%>
+              <p class="semibold-text mb-2"><a href="#" data-toggle="flip"><%= t('user.forgot_password') -%></a></p>
+            </div>
+          </div>
+        <% end %>
         <div class="form-group btn-container">
-          <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled', name: 'sign_in',
-                         disabled: true, id: 'user-sign-in-btn', data: { disable: t('ui.doing_signing')}) do %>
-            <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('user.sign_in') -%>
+          <% unless @user_from_public %>
+            <%= button_tag(type: 'submit', class: 'btn btn-primary btn-block disabled', name: 'sign_in',
+                           disabled: true, id: 'user-sign-in-btn', data: { disable: t('ui.doing_signing')}) do %>
+              <i class="fa fa-sign-in fa-lg fa-fw"></i><%= t('user.sign_in') -%>
+            <% end %>
           <% end %>
           <p class="text-center" id="user-sign-in-hint"><%= t('ui.enable_javascript_to_login') %></p>
-          <%= button_tag(type: 'button', class: 'btn btn-success btn-block disabled', name: 'sign_in_via_qiye',
-                         disabled: true, id: 'qiye-web-login-btn', data: { disable: t('ui.doing_signing'), url: user_qiye_web_omniauth_authorize_path }) do %>
-            <i class="fa fa-weixin fa-lg fa-fw"></i><%= t('user.sign_in_via_qiye') -%>
+          <% if @user_from_public %>
+            <%= button_tag(type: 'button', class: 'btn btn-success btn-block disabled', name: 'sign_in_via_qiye',
+                           disabled: true, id: 'qiye-web-login-btn', data: { disable: t('ui.doing_signing'), url: user_qiye_web_omniauth_authorize_path }) do %>
+              <i class="fa fa-weixin fa-lg fa-fw"></i><%= t('user.sign_in_via_qiye') -%>
+            <% end %>
           <% end %>
         </div>
     <% end %>
