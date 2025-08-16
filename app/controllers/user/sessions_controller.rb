@@ -15,7 +15,7 @@ class User::SessionsController < Devise::SessionsController
 
   def create
     @user_from_public = request.remote_ip.start_with?('10.100.252.')
-    redirect_to new_user_session_path, alert: "外网无法使用用户名密码登录，还有问题请联系 IT 7777。" if @user_from_public
+    return redirect_to new_user_session_path, alert: "外网无法使用用户名密码登录，还有问题请联系 IT 7777。" if @user_from_public
 
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
