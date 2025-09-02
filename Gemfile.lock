@@ -532,7 +532,7 @@ GEM
     uri (1.0.3)
     uuid (2.3.9)
       macaddr (~> 1.0)
-    version_gem (1.1.8)
+    version_gem (1.1.9)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.11.0)
