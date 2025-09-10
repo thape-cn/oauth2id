@@ -6332,7 +6332,7 @@ reflect.getprototypeof@^1.0.6, reflect.getprototypeof@^1.0.9:
     get-proto "^1.0.1"
     which-builtin-type "^1.2.1"
 
-regenerate-unicode-properties@^10.2.0:
+regenerate-unicode-properties@^10.2.2:
   version "10.2.2"
   resolved "https://registry.npmmirror.com/regenerate-unicode-properties/-/regenerate-unicode-properties-10.2.2.tgz#aa113812ba899b630658c7623466be71e1f86f66"
   integrity sha512-m03P+zhBeQd1RGnYxrGyDAPpWX/epKirLrp8e3qevZdVkKtnCrjjWczIbYc8+xd6vcTStVlqfycTx1KR4LOr0g==
@@ -6370,16 +6370,16 @@ regexp.prototype.flags@^1.5.1, regexp.prototype.flags@^1.5.4:
     set-function-name "^2.0.2"
 
 regexpu-core@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmmirror.com/regexpu-core/-/regexpu-core-6.2.0.tgz#0e5190d79e542bf294955dccabae04d3c7d53826"
-  integrity sha512-H66BPQMrv+V16t8xtmq+UC0CBpiTBA60V8ibS1QVReIp8T1z8hwFxqcGzm9K6lgsN7sB5edVH8a+ze6Fqm4weA==
+  version "6.3.0"
+  resolved "https://registry.npmmirror.com/regexpu-core/-/regexpu-core-6.3.0.tgz#ebdc3ec610146d01fd64871333d34b0200e00145"
+  integrity sha512-ulzJYRb0qgR4t8eTgHeL7nnKL/4ul2yjnuTBEDIpYG7cSs8CcADE1q18RFFChXLP8WwRgPrHThGbYplvASdujw==
   dependencies:
     regenerate "^1.4.2"
-    regenerate-unicode-properties "^10.2.0"
+    regenerate-unicode-properties "^10.2.2"
     regjsgen "^0.8.0"
     regjsparser "^0.12.0"
     unicode-match-property-ecmascript "^2.0.0"
-    unicode-match-property-value-ecmascript "^2.1.0"
+    unicode-match-property-value-ecmascript "^2.2.1"
 
 regjsgen@^0.8.0:
   version "0.8.0"
@@ -7425,7 +7425,7 @@ unicode-match-property-ecmascript@^2.0.0:
     unicode-canonical-property-names-ecmascript "^2.0.0"
     unicode-property-aliases-ecmascript "^2.0.0"
 
-unicode-match-property-value-ecmascript@^2.1.0:
+unicode-match-property-value-ecmascript@^2.2.1:
   version "2.2.1"
   resolved "https://registry.npmmirror.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-2.2.1.tgz#65a7adfad8574c219890e219285ce4c64ed67eaa"
   integrity sha512-JQ84qTuMg4nVkx8ga4A16a1epI9H6uTXAknqxkGF/aFfRLw1xC/Bp24HNLaZhHSkWd3+84t8iXnp1J0kYcZHhg==
