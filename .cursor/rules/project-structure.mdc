@@ -1,0 +1,27 @@
+---
+alwaysApply: true
+---
+# Rails SSO Project Structure Guide
+
+- Main Rack entrypoint: [config.ru](mdc:config.ru)
+- App boot: [config/boot.rb](mdc:config/boot.rb), [config/application.rb](mdc:application.rb), [config/environment.rb](mdc:environment.rb)
+- Server: Puma config at [config/puma.rb](mdc:config/puma.rb)
+- Routes: [config/routes.rb](mdc:config/routes.rb)
+- Gems: [Gemfile](mdc:Gemfile)
+- Initializers: [config/initializers/*](mdc:config/initializers)
+- Database schema/migrations: [db/schema.rb](mdc:db/schema.rb), [db/migrate/*](mdc:db/migrate)
+- Models: [app/models/*](mdc:app/models)
+- Controllers: [app/controllers/*](mdc:app/controllers)
+- Views: [app/views/*](mdc:app/views)
+- Policies (Pundit): [app/policies/*](mdc:app/policies)
+- Jobs/Mailers: [app/jobs/*](mdc:app/jobs), [app/mailers/*](mdc:app/mailers)
+- Assets (Sprockets): [app/assets/*](mdc:app/assets)
+- Frontend (Webpacker + Stimulus): [app/javascript/packs/application.js](mdc:app/javascript/packs/application.js), [app/javascript/controllers/*](mdc:app/javascript/controllers)
+- Webpacker config: [config/webpacker.yml](mdc:config/webpacker.yml), [config/webpack/*](mdc:config/webpack)
+- Environments: [config/environments/*](mdc:config/environments)
+- Localization: [config/locales/*](mdc:config/locales)
+
+Notes
+- Use the pack tag in ERB to load JS: `javascript_pack_tag 'application'`.
+- Stimulus controllers auto-load via `definitionsFromContext` in `application.js`.
+- SSO endpoints live in routes for Doorkeeper, OpenID Connect, and SAML.

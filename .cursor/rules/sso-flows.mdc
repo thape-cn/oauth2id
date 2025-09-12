@@ -1,0 +1,26 @@
+---
+alwaysApply: false
+description: SSO flows (OAuth2, OpenID Connect, SAML) and key entrypoints
+---
+# SSO Flows: OAuth2 / OpenID Connect / SAML
+
+- OAuth2/OIDC is provided by Doorkeeper and doorkeeper-openid_connect.
+  - Routes: see [config/routes.rb](mdc:config/routes.rb) for `use_doorkeeper`, `use_doorkeeper_openid_connect` and OPTIONS `/oauth/authorize`.
+  - App model: [app/models/doorkeeper_application.rb](mdc:app/models/doorkeeper_application.rb)
+  - Controller glue/endpoints: [app/controllers/doorkeeper_controller.rb](mdc:app/controllers/doorkeeper_controller.rb), views under [app/views/doorkeeper/*](mdc:app/views/doorkeeper)
+  - JWT allowlist: [app/models/allowlisted_jwt.rb](mdc:app/models/allowlisted_jwt.rb)
+  - OpenID Connect config: [config/initializers/doorkeeper_openid_connect.rb](mdc:config/initializers/doorkeeper_openid_connect.rb)
+
+- SAML IdP is provided by `saml_idp`.
+  - Routes: `/saml/auth`, `/saml/metadata`, `/saml/logout` in [config/routes.rb](mdc:config/routes.rb)
+  - Controller: [app/controllers/saml_idp_controller.rb](mdc:app/controllers/saml_idp_controller.rb)
+  - Initializer: [config/initializers/saml_idp.rb](mdc:config/initializers/saml_idp.rb)
+  - Encrypted assertions require `xmlenc` gem.
+
+- Homeland SSO bridge:
+  - Route: `/homeland/sso` -> [app/controllers/homeland_sso_controller.rb](mdc:app/controllers/homeland_sso_controller.rb)
+
+Implementation guidance
+- Prefer configuring providers in initializers; do not hardcode secrets in code. Use `Rails.application.credentials` or environment variables.
+- For OPTIONS endpoints and cross-origin clients, follow the existing `options_authorize` implementation in `DoorkeeperController` and set CORS headers consistently.
+- For JWT revocation and listing, use `AllowlistedJwt` and related controllers already present; avoid custom token stores.
