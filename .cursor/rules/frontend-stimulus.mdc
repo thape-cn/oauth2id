@@ -1,0 +1,11 @@
+---
+globs: *.js
+---
+# Frontend: Stimulus + Webpacker
+
+- Entry pack: [app/javascript/packs/application.js](mdc:app/javascript/packs/application.js). Add new controllers under [app/javascript/controllers](mdc:app/javascript/controllers).
+- Auto-loading: Controllers are auto-registered via `definitionsFromContext(require.context('controllers', true, /.js$/))`.
+- Naming: Name controllers `*_controller.js` and export default class with targets/actions per Stimulus conventions.
+- View integration: Use `data-controller`, `data-action`, and `data-target` in ERB templates. Load pack with `javascript_pack_tag 'application'` in layout.
+- Polyfills: `regenerator-runtime` and `@stimulus/polyfills` are included globally in the pack. Avoid duplicating imports in individual controllers.
+- Webpacker config: Respect [config/webpacker.yml](mdc:config/webpacker.yml). Use asset imports for images/fonts to benefit from fingerprinting.

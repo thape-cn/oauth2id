@@ -1,0 +1,10 @@
+---
+globs: *test*.rb,*.yml
+---
+# Testing: Minitest + Capybara
+
+- Test layout: [test/*](mdc:test), fixtures in [test/fixtures/*](mdc:test/fixtures)
+- System tests: Use Capybara for end-to-end flows; driver configured via `selenium-webdriver` 4.26.0.
+- Controllers/models: Follow patterns in existing tests under [test/controllers/*](mdc:test/controllers) and [test/models/*](mdc:test/models).
+- CI: For coverage and CI integration, gems live in `:ci` group (`minitest-ci`, `simplecov`).
+- Seeds/fixtures: Prefer fixtures; avoid depending on `db/seeds.rb` for tests. Keep tests deterministic.

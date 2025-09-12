@@ -1,0 +1,15 @@
+---
+globs: *.rb,*.erb
+---
+# Rails Patterns and Conventions
+
+- Strong Parameters: Permit attributes in controllers; follow existing actions in `app/controllers/*`. For datatables, keep query/filtering in datatable classes under `app/datatables/*`.
+- Authorization: Use Pundit policies in `app/policies/*`. Prefer `authorize(record)` and `policy_scope(Model)` in controllers.
+- Authentication: Devise provides user auth; JWT is handled by `devise-jwt` via Warden strategies. Avoid manual JWT parsing in controllers.
+- SSO Controllers: OAuth2/OIDC endpoints are handled by Doorkeeper controllers and `DoorkeeperController` in `app/controllers/doorkeeper_controller.rb`. SAML handled by `SamlIdpController`.
+- Background jobs/mailers: Keep them idempotent and side-effect aware. Use `ApplicationJob`/`ApplicationMailer` base classes.
+- I18n: Prefer `t('key')` instead of literals; add keys to `config/locales/*`.
+- Views: Keep ERB lean. Offload heavy logic to helpers in `app/helpers/application_helper.rb` or presenters.
+- Assets: Use Sprockets for `app/assets` and Webpacker for `app/javascript`. Do not mix pipelines.
+- Security: Always use CSRF protection; for API OPTIONS endpoints (e.g., `/api/me`), follow the existing implementation in `Api::ApplicationController`.
+- Datatables: Initialize via Ajax, respond with JSON from Datatable classes; keep column mapping in the table class.
