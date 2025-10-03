@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: ab6cf0b86265cf83ef368634537062b0c5285fb8
+  revision: 343b8145c2401d0a4354a3194001c913ab8624b5
   branch: main
   specs:
     wechat (1.0.1)
@@ -262,7 +262,7 @@ GEM
       minitest (>= 5.0.6)
     msgpack (1.8.0)
     mutex_m (0.3.0)
-    net-imap (0.5.10)
+    net-imap (0.5.11)
       date
       net-protocol
     net-pop (0.1.2)
