@@ -5,6 +5,7 @@ ruby '>= 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.5'
+gem 'csv'
 gem 'rails-i18n'
 # `config/initializers/mail_starttls_patch.rb` has also been patched to
 # fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
