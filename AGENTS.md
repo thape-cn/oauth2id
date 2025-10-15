@@ -1,23 +1,19 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Core Rails code lives in `app/` (controllers, models, policies, datatables, views) with front-end packs in `app/javascript`. Configuration, credentials, and deployment hooks are under `config/`, while migrations and seeds sit in `db/`. Shared helpers belong in `lib/`. Tests mirror the app inside `test/`—`system/` hosts Capybara flows and `fixtures/` supplies sample data. Executables (`bin/rails`, `bin/setup`, webpack shims) stay in `bin/`.
+Keep Rails domain logic inside `app/`, following conventional directories for controllers, models, policies, datatables, and views. Stimulus controllers and Webpacker packs live in `app/javascript`, while shared helpers and extensions belong in `lib/`. Configuration, environment credentials, and deployment hooks sit under `config/`, and migrations plus seeds live in `db/`. Test fixtures, unit specs, and system flows mirror the app layout within `test/`, with Capybara scenarios in `test/system/`.
 
 ## Build, Test, and Development Commands
-- `bin/setup` — install gems, yarn packages, and bootstraps the database.
-- `bin/rails s` — start the server on port 3000; run alongside `bin/webpack-dev-server` for hot assets or `foreman start -f Procfile.dev` to launch both.
-- `yarn install --check-files` — sync front-end dependencies after pulling main.
-- `bin/rails test` / `bin/rails test:all` — run unit/integration suites or the full Minitest matrix including system tests.
-- `bin/setup` or `bin/rails db:migrate` — refresh schema before pushing.
+Run `bin/setup` after cloning or pulling to install Ruby gems, Yarn packages, and migrate the database. Start the Rails server via `bin/rails s`, and pair it with `bin/webpack-dev-server` or `foreman start -f Procfile.dev` for hot asset reloading. Sync front-end dependencies with `yarn install --check-files`. Execute the targeted test suite using `bin/rails test path/to/file_test.rb`, or run the full matrix through `bin/rails test:all`.
 
 ## Coding Style & Naming Conventions
-Follow Ruby two-space indentation and conventional Rails naming (`CamelCase` classes, snake_case files). `.rubocop.yml` defines strict cops; run `bundle exec rubocop` if the gem is present to catch drift. JavaScript modules target ES2015, linted with the ESLint “recommended” profile via `.eslintrc.js`. Keep Webpacker entry points in `app/javascript/packs/` and prefer kebab-case filenames for Stimulus controllers.
+Use Ruby two-space indentation and idiomatic Rails naming: `CamelCase` classes, snake_case files, and kebab-case Stimulus controllers in `app/javascript/controllers/`. Follow the cops configured in `.rubocop.yml`; run `bundle exec rubocop` before opening a pull request. JavaScript modules target ES2015 and are linted with the “recommended” ESLint profile defined in `.eslintrc.js`.
 
 ## Testing Guidelines
-Minitest backs all suites; create new files as `*_test.rb` beside the code under test. Use fixtures in `test/fixtures/` for deterministic records and trim external calls in Capybara specs. CI enables `simplecov`, so defend new behavior with meaningful assertions before you open a PR. While iterating, run the nearest scope (`bin/rails test test/models/user_test.rb`), then finish with `bin/rails test:all`.
+All suites rely on Minitest. Name files `*_test.rb` and colocate them with the code they exercise. Leverage fixtures from `test/fixtures/` for deterministic data and avoid real external calls in Capybara specs. CI enables SimpleCov, so add assertions that defend new behavior and ensure meaningful coverage before merging.
 
 ## Commit & Pull Request Guidelines
-Recent history favors concise, lower-case summaries (`gem and yarn upgrade`). Keep subjects under 50 characters, imperative when possible, and bundle related changes per commit. PRs should describe intent, list validation commands, link to issues, and attach screenshots or GIFs for UI work. Call out config or migration impacts and confirm secrets stay out of version control.
+Adopt concise, lower-case commit subjects under 50 characters (e.g., `normalize oauth redirect`). Group related changes per commit and describe intent in the body if needed. PRs should summarize the change, list validation commands run (such as `bin/rails test:all`), link to any tracked issues, and include screenshots or GIFs for UI updates. Note schema migrations, configuration impacts, and confirm secrets stay out of the repo.
 
 ## Security & Configuration Tips
-Rails credentials are required—store `config/master.key` securely and edit secrets with `bin/rails credentials:edit`. Persist uploads via the `/storage` mount when running Docker. Generate OIDC, SAML, and JWT signing keys outside the repo and reference them with environment variables. Double-check OAuth/SAML callback URLs in `config/initializers/` before deploying.
+Manage credentials with `bin/rails credentials:edit` and store `config/master.key` securely. Persist uploads via the `/storage` mount when Dockerized. Generate OIDC, SAML, and JWT signing keys outside the repository and reference them through environment variables. Verify OAuth and SAML callback URLs in `config/initializers/` before deploying to new environments.
