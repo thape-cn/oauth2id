@@ -2,18 +2,22 @@
   "name": "oauth2id",
   "private": true,
   "dependencies": {
-    "@babel/preset-env": "~7.21.4",
+    "@babel/preset-env": "~7.21.5",
     "@rails/webpacker": "^5.4.4",
     "@stimulus/polyfills": "^2.0.0",
-    "chokidar": "^3.5.3",
+    "chokidar": "^3.6.0",
     "datatables": "^1.10.18",
-    "jqtree": "=1.7.5",
-    "semver": "^7.5.3",
+    "jqtree": "1.7.5",
+    "regenerator-runtime": "^0.13.11",
+    "semver": "^7.7.3",
     "stimulus": "^2.0.0",
     "vali-admin": "^2.4.1",
-    "ws": "~8.18.2"
+    "ws": "~8.18.3"
   },
   "devDependencies": {
+    "babel-loader": "8.4.1",
+    "css-loader": "3.6.0",
+    "postcss-loader": "3.0.0",
     "webpack": "^4.47.0",
     "webpack-dev-server": "^3.11.3"
   },
@@ -32,5 +36,5 @@
     "ws": "~8.18.2",
     "semver": "^7.5.3"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "pnpm@10.18.3"
 }
