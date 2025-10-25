@@ -8,6 +8,17 @@ before_script:
   - gem install bundler
   - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
   - sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
+  - export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
+  - |
+    if command -v corepack >/dev/null; then
+      mkdir -p "$HOME/.local/bin"
+      corepack enable pnpm --install-directory "$HOME/.local/bin"
+      corepack prepare pnpm@latest --activate
+    else
+      export npm_config_prefix="$HOME/.npm-global"
+      mkdir -p "$npm_config_prefix"
+      npm install -g pnpm@8
+    fi
 
 stages:
   - test
@@ -23,12 +34,12 @@ test:
         - vendor/ruby
     - key:
         files:
-          - yarn.lock
+          - pnpm-lock.yaml
       paths:
-        - ".yarn-cache/"
+        - ".pnpm-store/"
   script:
     - bundle install -j $(nproc)
-    - yarn install --cache-folder .yarn-cache
+    - pnpm install --frozen-lockfile --store-dir .pnpm-store
     - cp config/database.yml.sample config/database.yml
     - echo $RAILS_MASTER_KEY > config/master.key
     - bundle exec rails db:migrate RAILS_ENV=test
