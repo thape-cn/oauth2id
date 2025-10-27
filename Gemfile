@@ -8,10 +8,8 @@ gem 'rails', '~> 7.1.5'
 # we can not using rack 3 as it change HTTP header like 'Authorization' into small cap 'authorization', so it will break a lot of client application login
 gem 'rack', '< 3'
 gem 'rails-i18n'
-# `config/initializers/mail_starttls_patch.rb` has also been patched to
-# fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
-# released.
-gem 'mail', '= 2.8.1'
+
+gem 'mail'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.7'
