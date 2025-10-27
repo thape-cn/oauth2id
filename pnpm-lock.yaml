@@ -17,7 +17,7 @@ overrides:
   mime-db: ~1.54.0
   sass-loader: ~10.5.2
   ws: ~8.18.2
-  semver: ^7.5.3
+  semver: ^7.7.3
 
 importers:
 
@@ -45,7 +45,7 @@ importers:
         specifier: ^0.13.11
         version: 0.13.11
       semver:
-        specifier: ^7.5.3
+        specifier: ^7.7.3
         version: 7.7.3
       stimulus:
         specifier: ^2.0.0
