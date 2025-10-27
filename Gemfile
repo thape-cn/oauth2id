@@ -7,10 +7,8 @@ ruby '>= 3.0'
 gem 'rails', '~> 7.2.2'
 gem 'csv'
 gem 'rails-i18n'
-# `config/initializers/mail_starttls_patch.rb` has also been patched to
-# fix STARTTLS handling until https://github.com/mikel/mail/pull/1536 is
-# released.
-gem 'mail', '= 2.8.1'
+
+gem 'mail'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.7'
