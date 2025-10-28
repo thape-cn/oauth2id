@@ -6,7 +6,7 @@ settings:
 
 overrides:
   '@types/minimatch': ~5.1.2
-  chokidar: ^3.5.3
+  chokidar: ^3.6.0
   cookie: ~0.7.2
   css-tree: ~1.1.2
   node-forge: ^1.3.1
@@ -16,7 +16,7 @@ overrides:
   merge-descriptors: ~1.0.3
   mime-db: ~1.54.0
   sass-loader: ~10.5.2
-  ws: ~8.18.2
+  ws: ~8.18.3
   semver: ^7.7.3
 
 importers:
@@ -33,7 +33,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       chokidar:
-        specifier: ^3.5.3
+        specifier: ^3.6.0
         version: 3.6.0
       datatables:
         specifier: ^1.10.18
@@ -54,7 +54,7 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       ws:
-        specifier: ~8.18.2
+        specifier: ~8.18.3
         version: 8.18.3
     devDependencies:
       babel-loader:
@@ -1563,8 +1563,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.240:
-    resolution: {integrity: sha512-OBwbZjWgrCOH+g6uJsA2/7Twpas2OlepS9uvByJjR2datRDuKGYeD+nP8lBBks2qnB7bGJNHDUx7c/YLaT3QMQ==}
+  electron-to-chromium@1.5.241:
+    resolution: {integrity: sha512-ILMvKX/ZV5WIJzzdtuHg8xquk2y0BOGlFOxBVwTpbiXqWIH0hamG45ddU4R3PQ0gYu+xgo0vdHXHli9sHIGb4w==}
 
   element-closest@2.0.2:
     resolution: {integrity: sha512-QCqAWP3kwj8Gz9UXncVXQGdrhnWxD8SQBSeZp5pOsyCcQ6RpL738L1/tfuwBiMi6F1fYkxqPnBrFBR4L+f49Cg==}
@@ -5385,7 +5385,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.8.20
       caniuse-lite: 1.0.30001751
-      electron-to-chromium: 1.5.240
+      electron-to-chromium: 1.5.241
       node-releases: 2.0.26
       update-browserslist-db: 1.1.4(browserslist@4.27.0)
 
@@ -5991,7 +5991,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.240: {}
+  electron-to-chromium@1.5.241: {}
 
   element-closest@2.0.2: {}
 
