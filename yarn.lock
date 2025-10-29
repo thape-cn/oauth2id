@@ -1401,9 +1401,9 @@
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
 "@types/node@*":
-  version "24.9.1"
-  resolved "https://registry.npmmirror.com/@types/node/-/node-24.9.1.tgz#b7360b3c789089e57e192695a855aa4f6981a53c"
-  integrity sha512-QoiaXANRkSXK6p0Duvt56W208du4P9Uye9hWLWgGMDTEoKPhuenzNcC4vGUmrNkiOKTlIrBoyNQYNpSwfEZXSg==
+  version "24.9.2"
+  resolved "https://registry.npmmirror.com/@types/node/-/node-24.9.2.tgz#90ded2422dbfcafcf72080f28975adc21366148d"
+  integrity sha512-uWN8YqxXxqFMX2RqGOrumsKeti4LlmIMIyV0lgut4jx7KQBcBiW6vkDtIBvHnHIquwNfJhk8v2OtmO8zXWHfPA==
   dependencies:
     undici-types "~7.16.0"
 
@@ -3034,9 +3034,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.5.238:
-  version "1.5.240"
-  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.5.240.tgz#bfd946570a723aa3754370065d02e23e30824774"
-  integrity sha512-OBwbZjWgrCOH+g6uJsA2/7Twpas2OlepS9uvByJjR2datRDuKGYeD+nP8lBBks2qnB7bGJNHDUx7c/YLaT3QMQ==
+  version "1.5.242"
+  resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.5.242.tgz#c318f37df542a04df819c6eaefc9302258cf5a98"
+  integrity sha512-msZ7SYGFpXkm/iUizlMrm/FPNeYo8uSltQccLVFO3fV4RN2JWGdG7Aatztxtw3uDWp3DkupfkrosLjUnhY+iOw==
 
 element-closest@^2.0.2:
   version "2.0.2"
