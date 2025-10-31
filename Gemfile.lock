@@ -1,6 +1,6 @@
 GIT
   remote: https://git.thape.com.cn/rails/devise-jwt.git
-  revision: 2a550f97faddcce9c046cf28f163891798d553be
+  revision: 95cbf1c19f38716b5e99f5cb7e9b516ee4d38894
   branch: main
   specs:
     devise-jwt (0.12.1)
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: d0b8a91554001de8614b978b45d478d0ea894cca
+  revision: ae2a7a53115b43906ef3ac2f03d1e5f0f927cd65
   branch: main
   specs:
     doorkeeper (5.8.2)
@@ -224,7 +224,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    digest (3.2.0)
+    digest (3.2.1)
     docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.3)
@@ -326,7 +326,7 @@ GEM
     mutex_m (0.3.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-http (0.6.0)
+    net-http (0.7.0)
       uri
     net-imap (0.5.12)
       date
@@ -538,7 +538,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.4)
+    uri (1.1.0)
     uuid (2.3.9)
       macaddr (~> 1.0)
     version_gem (1.1.9)
