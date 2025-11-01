@@ -1027,8 +1027,8 @@ packages:
     resolution: {integrity: sha512-5T6P4xPgpp0YDFvSWwEZ4NoE3aM4QBQXDzmVbraCkFj8zHM+mba8SyqB5DbZWyR7mYHo6Y7BdQo3MoA4m0TeQg==}
     engines: {node: '>=0.10.0'}
 
-  baseline-browser-mapping@2.8.21:
-    resolution: {integrity: sha512-JU0h5APyQNsHOlAM7HnQnPToSDQoEBZqzu/YBlqDnEeymPnZDREeXJA3KBMQee+dKteAxZ2AtvQEvVYdZf241Q==}
+  baseline-browser-mapping@2.8.22:
+    resolution: {integrity: sha512-/tk9kky/d8T8CTXIQYASLyhAxR5VwL3zct1oAoVTaOUHwrmsGnfbRwNdEq+vOl2BN8i3PcDdP0o4Q+jjKQoFbQ==}
     hasBin: true
 
   batch@0.6.1:
@@ -1164,8 +1164,8 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001751:
-    resolution: {integrity: sha512-A0QJhug0Ly64Ii3eIqHu5X51ebln3k4yTUkY1j8drqpWHVreg/VLijN48cZ1bYPiqOQuqpkIKnzr/Ul8V+p6Cw==}
+  caniuse-lite@1.0.30001752:
+    resolution: {integrity: sha512-vKUk7beoukxE47P5gcVNKkDRzXdVofotshHwfR9vmpeFKxmI5PBpgOMC18LUJUA/DvJ70Y7RveasIBraqsyO/g==}
 
   case-sensitive-paths-webpack-plugin@2.4.0:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
@@ -3411,8 +3411,8 @@ packages:
       sass:
         optional: true
 
-  sass@1.93.2:
-    resolution: {integrity: sha512-t+YPtOQHpGW1QWsh1CHQ5cPIr9lbbGZLZnbihP/D/qZj/yuV68m8qarcV17nvkOX81BCrvzAlq2klCQFZghyTg==}
+  sass@1.93.3:
+    resolution: {integrity: sha512-elOcIZRTM76dvxNAjqYrucTSI0teAF/L2Lv0s6f6b7FOwcwIuA357bIE871580AjHJuSvLIRUosgV+lIWx6Rgg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -4910,8 +4910,8 @@ snapshots:
       postcss-preset-env: 6.7.2
       postcss-safe-parser: 4.0.2
       regenerator-runtime: 0.13.11
-      sass: 1.93.2
-      sass-loader: 10.5.2(sass@1.93.2)(webpack@4.47.0)
+      sass: 1.93.3
+      sass-loader: 10.5.2(sass@1.93.3)(webpack@4.47.0)
       style-loader: 1.3.0(webpack@4.47.0)
       terser-webpack-plugin: 4.2.3(webpack@4.47.0)
       webpack: 4.47.0(webpack-cli@3.3.12)
@@ -5177,7 +5177,7 @@ snapshots:
   autoprefixer@9.8.8:
     dependencies:
       browserslist: 4.27.0
-      caniuse-lite: 1.0.30001751
+      caniuse-lite: 1.0.30001752
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -5269,7 +5269,7 @@ snapshots:
       mixin-deep: 1.3.2
       pascalcase: 0.1.1
 
-  baseline-browser-mapping@2.8.21: {}
+  baseline-browser-mapping@2.8.22: {}
 
   batch@0.6.1: {}
 
@@ -5383,8 +5383,8 @@ snapshots:
 
   browserslist@4.27.0:
     dependencies:
-      baseline-browser-mapping: 2.8.21
-      caniuse-lite: 1.0.30001751
+      baseline-browser-mapping: 2.8.22
+      caniuse-lite: 1.0.30001752
       electron-to-chromium: 1.5.244
       node-releases: 2.0.27
       update-browserslist-db: 1.1.4(browserslist@4.27.0)
@@ -5492,11 +5492,11 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.27.0
-      caniuse-lite: 1.0.30001751
+      caniuse-lite: 1.0.30001752
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
-  caniuse-lite@1.0.30001751: {}
+  caniuse-lite@1.0.30001752: {}
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
@@ -7733,7 +7733,7 @@ snapshots:
     dependencies:
       autoprefixer: 9.8.8
       browserslist: 4.27.0
-      caniuse-lite: 1.0.30001751
+      caniuse-lite: 1.0.30001752
       css-blank-pseudo: 0.1.4
       css-has-pseudo: 0.10.0
       css-prefers-color-scheme: 3.1.1
@@ -8090,7 +8090,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass-loader@10.5.2(sass@1.93.2)(webpack@4.47.0):
+  sass-loader@10.5.2(sass@1.93.3)(webpack@4.47.0):
     dependencies:
       klona: 2.0.6
       loader-utils: 2.0.4
@@ -8099,9 +8099,9 @@ snapshots:
       semver: 7.7.3
       webpack: 4.47.0(webpack-cli@3.3.12)
     optionalDependencies:
-      sass: 1.93.2
+      sass: 1.93.3
 
-  sass@1.93.2:
+  sass@1.93.3:
     dependencies:
       chokidar: 3.6.0
       immutable: 5.1.4
