@@ -186,7 +186,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    digest (3.2.0)
+    digest (3.2.1)
     docile (1.4.1)
     drb (2.2.3)
     dry-auto_inject (1.0.1)
@@ -272,7 +272,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     net-ssh (7.3.0)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.17.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -354,7 +354,7 @@ GEM
       ffi (~> 1.0)
     rbs (3.9.5)
       logger
-    rdoc (6.15.0)
+    rdoc (6.15.1)
       erb
       psych (>= 4.0.0)
       tsort
