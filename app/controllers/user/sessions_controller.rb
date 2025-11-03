@@ -6,15 +6,14 @@ class User::SessionsController < Devise::SessionsController
   respond_to :json, if: -> { request.format.json? }
   layout 'sessions'
 
+  before_action :set_user_from_public, only: [:new, :create]
   after_action :cors_set_access_control_headers, only: [:create]
 
   def new
-    @user_from_public = request.remote_ip.start_with?('10.100.252.')
     super
   end
 
   def create
-    @user_from_public = request.remote_ip.start_with?('10.100.252.')
     return redirect_to new_user_session_path, alert: "外网无法使用用户名密码登录，还有问题请联系 IT 7777。" if @user_from_public
 
     self.resource = warden.authenticate!(auth_options)
@@ -76,12 +75,22 @@ class User::SessionsController < Devise::SessionsController
   rescue Exception => e
     Rails.logger.debug e
     Rails.logger.debug e.class
-    redirect_to new_user_session_path, alert: "目前无法登录，请使用您的Windows邮箱做为用户名进行登录，还有问题请联系IT检查。"
+    redirect_to new_user_session_path, alert: "目前无法登录，请使用您的 Windows 邮箱做为用户名进行登录，还有问题请联系 IT 检查。"
   end
 
   def cors_set_access_control_headers
     headers['Access-Control-Allow-Origin'] = oauth2id_allow_origin
     headers['Access-Control-Allow-Methods'] = 'POST'
     headers['Access-Control-Allow-Headers'] = 'Accept, Content-Type, Authorization, Origin, Referer, User-Agent, JWT-AUD'
+  end
+
+  def set_user_from_public
+    @user_from_public = if request.remote_ip.start_with?('172.30.')
+      false
+    elsif request.remote_ip.start_with?('10.100.252.')
+      true
+    else
+      false
+    end  
   end
 end
