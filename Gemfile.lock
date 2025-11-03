@@ -281,6 +281,7 @@ GEM
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
+    ipaddr (1.2.8)
     ipip-fast (0.0.2)
     irb (1.17.0)
       pp (>= 0.6.0)
@@ -625,6 +626,7 @@ DEPENDENCIES
   ffi (~> 1.16.3)
   font-awesome-rails
   gitlab
+  ipaddr (~> 1.2)
   ipip-fast
   irb
   jbuilder
