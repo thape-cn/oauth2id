@@ -9,6 +9,52 @@ class User::SessionsController < Devise::SessionsController
   before_action :set_user_from_public, only: [:new, :create]
   after_action :cors_set_access_control_headers, only: [:create]
 
+  INTERNAL_NETWORKS = [
+    '172.18.120.0/20',
+    '172.19.0.0/16',
+    '172.20.0.0/16',
+    '172.21.0.0/16',
+    '172.22.0.0/16',
+    '172.24.0.0/16',
+    '172.28.192.0/20',
+    '172.28.208.0/20',
+    '172.28.224.0/20',
+    '172.28.240.0/20',
+    '172.28.8.0/19',
+    '172.29.0.0/16',
+    '172.29.31.0/22',
+    '172.30.0.0/20',
+    '172.30.112.0/20',
+    '172.30.16.0/20',
+    '172.30.32.0/20',
+    '172.30.48.0/20',
+    '172.30.64.0/20',
+    '172.30.80.0/20',
+    '172.30.96.0/20',
+    '172.31.0.0/16',
+    '172.32.0.0/16',
+    '172.34.0.0/16',
+    '172.35.0.0/20',
+    '172.36.0.0/16'
+  ].freeze
+
+  def internal_ip?(ip)
+    ipaddr = IPAddr.new(ip) rescue nil
+    return false unless ipaddr
+
+    return true if ipaddr.loopback?
+
+    @internal_networks ||= INTERNAL_NETWORKS.map do |cidr|
+      begin
+        IPAddr.new(cidr)
+      rescue ArgumentError
+        nil
+      end
+    end.compact
+
+    @internal_networks.any? { |net| net.include?(ipaddr) }
+  end
+
   def new
     super
   end
@@ -85,12 +131,14 @@ class User::SessionsController < Devise::SessionsController
   end
 
   def set_user_from_public
-    @user_from_public = if request.remote_ip.start_with?('172.30.')
-      false
-    elsif request.remote_ip.start_with?('10.100.252.')
-      true
-    else
-      false
-    end  
+    remote_ip = request.remote_ip
+
+    @user_from_public = if remote_ip.start_with?('10.100.252.')
+                          true
+                        elsif internal_ip?(remote_ip)
+                          false
+                        else
+                          true
+                        end
   end
 end
