@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include AccessControlAllowOrigin
+  before_action :authenticate_user!, only: :index
   skip_before_action :verify_authenticity_token, only: :preflighted
 
   def index
