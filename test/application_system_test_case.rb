@@ -1,6 +1,9 @@
 require 'test_helper'
+require 'warden/test/helpers'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  include Warden::Test::Helpers
+
   # removes noisy logs when launching tests
   Capybara.server = :puma, { Silent: true }
 
@@ -10,4 +13,14 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   driven_by(:headless_chrome)
+
+  def setup
+    super
+    Warden.test_mode!
+  end
+
+  def teardown
+    Warden.test_reset!
+    super
+  end
 end
