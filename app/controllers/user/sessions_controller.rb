@@ -10,6 +10,14 @@ class User::SessionsController < Devise::SessionsController
   after_action :cors_set_access_control_headers, only: [:create]
 
   INTERNAL_NETWORKS = [
+    '10.30.0.0/16',
+    '10.31.0.0/16',
+    '10.32.0.0/16',
+    '10.35.0.0/16',
+    '10.36.0.0/16',
+    '10.37.0.0/16',
+    '10.38.0.0/16',
+    '172.15.0.0/16',
     '172.16.0.0/16',
     '172.17.0.0/16',
     '172.18.120.0/20',
@@ -25,7 +33,6 @@ class User::SessionsController < Devise::SessionsController
     '172.28.240.0/20',
     '172.28.8.0/19',
     '172.29.0.0/16',
-    '172.29.31.0/22',
     '172.30.0.0/20',
     '172.30.112.0/20',
     '172.30.16.0/20',
