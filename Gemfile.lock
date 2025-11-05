@@ -1,6 +1,6 @@
 GIT
   remote: https://git.thape.com.cn/rails/devise-jwt.git
-  revision: 2a550f97faddcce9c046cf28f163891798d553be
+  revision: 95cbf1c19f38716b5e99f5cb7e9b516ee4d38894
   branch: main
   specs:
     devise-jwt (0.12.1)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: d0b8a91554001de8614b978b45d478d0ea894cca
+  revision: ae2a7a53115b43906ef3ac2f03d1e5f0f927cd65
   branch: main
   specs:
     doorkeeper (5.8.2)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 4f44462c5a44725c1b8703b929eae65e245a53ac
+  revision: e2e018a1ff1f314472693e99d525dfff4c7baed6
   branch: main
   specs:
     wechat (1.0.1)
@@ -215,13 +215,13 @@ GEM
     globalid (1.3.0)
       activesupport (>= 6.1)
     http-2 (1.1.1)
-    httpx (1.6.2)
+    httpx (1.6.3)
       http-2 (>= 1.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.1)
     ipip-fast (0.0.2)
-    irb (1.15.2)
+    irb (1.15.3)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -304,7 +304,7 @@ GEM
     pundit (2.5.2)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.2.3)
+    rack (3.2.4)
     rack-proxy (0.7.7)
       rack
     rack-session (2.1.1)
@@ -504,7 +504,7 @@ DEPENDENCIES
   minitest
   minitest-ci
   nokogiri (~> 1.17.2)
-  pagy
+  pagy (~> 9.4.0)
   puma
   pundit
   rails (~> 7.2.2)
