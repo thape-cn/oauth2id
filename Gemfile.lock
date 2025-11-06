@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 4f44462c5a44725c1b8703b929eae65e245a53ac
+  revision: e2e018a1ff1f314472693e99d525dfff4c7baed6
   branch: main
   specs:
     wechat (1.0.1)
@@ -274,7 +274,7 @@ GEM
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpx (1.6.2)
+    httpx (1.6.3)
       http-2 (>= 1.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
