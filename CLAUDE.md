@@ -4,320 +4,192 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Oauth2id** is a production-ready Rails 7.2.2 Single Sign-On (SSO) Portal implementing OAuth2, OpenID Connect, and SAML 2.0 authentication protocols. It's a multi-protocol identity provider suitable for enterprise authentication scenarios.
+This is a **Ruby on Rails 7.1.5** application implementing an **SSO (Single Sign-On) Portal** that supports OAuth2, OpenID Connect (OIDC), and SAML 2.0 authentication protocols. The application acts as a unified identity provider, managing user authentication across multiple client applications.
 
-### Key Technologies
-- **Backend**: Ruby 3.0+ on Rails 7.2.2 with Puma
-- **Database**: SQLite (default) - configurable to PostgreSQL/MySQL
-- **Frontend**: Stimulus controllers + Webpacker 5.4.4 + Bootstrap 4 (Vali Admin theme)
-- **Authentication**: Devise + devise-jwt, Doorkeeper, doorkeeper-openid_connect, SAML IdP
-- **Package Manager**: pnpm for Node.js dependencies
-
-## Architecture Overview
-
-### MVC Rails Application Structure
-```
-app/
-  controllers/     # Rails controllers
-  models/          # ActiveRecord models (User, Doorkeeper::Application, Department, Position, Profile, Jwt)
-  views/           # ERB templates
-  javascript/      # Stimulus controllers + Webpack packs
-  policies/        # Pundit authorization policies
-  datatables/      # AJAX data tables for admin interfaces
-
-config/
-  routes.rb        # OAuth2/OIDC/SAML routes + user admin routes
-  initializers/    # Devise, Doorkeeper, SAML, OpenID Connect configs
-  environments/    # Environment-specific configs (development/test/production)
-  credentials.yml.enc  # Encrypted credentials (managed via bin/rails credentials:edit)
-
-db/
-  migrate/         # Database migrations
-  schema.rb        # Current database schema
-  seeds.rb         # Seed data
-
-test/
-  controllers/     # Controller tests
-  models/          # Model tests
-  system/          # Capybara system tests
-  fixtures/        # Test fixtures
-```
-
-### Authentication Architecture
-
-**Multi-Protocol SSO Implementation:**
-
-1. **OAuth2 Provider** (Doorkeeper)
-   - Routes: `/oauth/authorize`, `/oauth/token`, `/oauth/authorize`, `/oauth/discovery/keys`
-   - Controller glue: `app/controllers/doorkeeper_controller.rb`
-   - App model: `app/models/doorkeeper_application.rb`
-
-2. **OpenID Connect** (doorkeeper-openid_connect)
-   - Extends OAuth2 with OIDC support
-   - Requires `openid` scope minimum
-   - Discovery endpoint: `/oauth/discovery/keys`
-   - Initializer: `config/initializers/doorkeeper_openid_connect.rb`
-
-3. **SAML 2.0 Identity Provider** (saml_idp)
-   - Routes: `/saml/auth`, `/saml/metadata`, `/saml/logout`
-   - Controller: `app/controllers/saml_idp_controller.rb`
-   - Initializer: `config/initializers/saml_idp.rb`
-
-4. **User Authentication** (Devise)
-   - Session-based authentication
-   - JWT support via devise-jwt
-   - Allowlisted JWT management: `app/models/allowlisted_jwt.rb`
+**Tech Stack:**
+- Rails 7.1.5 + Ruby >= 3.0
+- **SSO Stack:** Doorkeeper (OAuth2), doorkeeper-openid_connect (OIDC), saml_idp (SAML)
+- **Auth:** Devise + devise-jwt for JWT management
+- **Frontend:** Webpacker + Stimulus controllers, Vali-admin UI (Bootstrap 4)
+- **Database:** SQLite (development), MySQL (production), PostgreSQL (CI)
 
 ## Common Development Commands
 
-### Initial Setup
+### Setup & Bootstrapping
 ```bash
-# First-time setup (installs gems, packages, prepares DB, runs seeds)
-bin/setup
-
-# Install frontend dependencies
-pnpm install --frozen-lockfile
+bin/setup                        # Full setup: install gems, yarn, prepare database, load fixtures
+bin/rails db:prepare            # Create/migrate database as needed
+bin/rails db:fixtures:load      # Load test fixtures into dev database
 ```
 
 ### Running the Application
 ```bash
-# Standard Rails server
-bin/rails s
-
-# Hot asset reloading (two terminals)
-bin/rails s                    # Terminal 1
-bin/webpack-dev-server         # Terminal 2
-
-# Or use Foreman (both processes)
-foreman start -f Procfile.dev
-
-# Access the application
-# Development: http://localhost:3000
-# HTTPS local (with puma-dev): https://oauth2id.test
-```
-
-### Database Operations
-```bash
-# Create/migrate DB
-bin/rails db:prepare
-
-# Run migrations only
-bin/rails db:migrate
-
-# Load seed data
-bin/rails db:seed
-
-# Load fixtures
-bin/rails db:fixtures:load
+bin/rails s                     # Start Rails server on port 3000
+bin/webpack-dev-server          # Start Webpacker hot reloader (run in separate terminal)
+foreman start -f Procfile.dev   # Run both Rails and Webpack dev servers together
 ```
 
 ### Testing
 ```bash
-# Run all tests
-bin/rails test:all
-
-# Run specific test file
-bin/rails test test/models/user_test.rb
-
-# Run system tests
-bin/rails test:system
-
-# Run tests with coverage
-COVERAGE=true bin/rails test
+bin/rails test                  # Run unit/integration tests
+bin/rails test:all             # Run full test suite including system tests (parallel)
+bin/rails test test/models/user_test.rb  # Run specific test file
 ```
 
-### Linting & Formatting
+### Build & Deploy
 ```bash
-# Ruby linting
-bundle exec rubocop
-
-# Fix Ruby linting issues
-bundle exec rubocop -A
-
-# JavaScript linting
-npx eslint app/javascript/
+bin/rails assets:precompile     # Compile assets for production
+docker build --tag ericguo/oauth2id:main .  # Build Docker image
+docker run -p 3000:3000 -d --name oauth2id --env RAILS_MASTER_KEY=YourKey -v ./storage:/rails/storage ericguo/oauth2id:main
 ```
 
-### Asset Management
+### Utilities
 ```bash
-# Compile assets for production
-bin/rails assets:precompile
-
-# Build Webpack bundles
-bin/webpack
-
-# Watch mode for asset compilation
-bin/webpack --watch
+bin/rails doorkeeper:db:cleanup                  # Clean expired OAuth tokens/grants
+bin/rails gitlab:update_users                    # Sync GitLab users
+bin/rails import_export:import_from_csv[path]    # Import users from CSV
+bin/rails sync_yxt:all                          # Sync with YXT API
+bin/rails sync_nc_uap:all                       # Sync with NC UAP (Oracle database)
+yarn install --check-files                      # Sync frontend dependencies
+bundle exec rubocop                              # Lint Ruby code (if gem installed)
 ```
 
-### Docker Operations
-```bash
-# Build image
-docker build --tag ericguo/oauth2id:main .
+## Architecture Overview
 
-# Run container
-docker run -p 3000:3000 -d --restart always --name oauth2id \
-  --env RAILS_MASTER_KEY=YourMasterKey \
-  -v ./storage:/rails/storage \
-  ericguo/oauth2id:main
+### SSO Implementation
 
-# Debug container
-docker run --env RAILS_MASTER_KEY=YourMasterKey \
-  -v ./storage:/rails/storage \
-  -it ericguo/oauth2id:main bash
+**OAuth2/OIDC Flow:**
+- Routes defined via `use_doorkeeper` and `use_doorkeeper_openid_connect` in config/routes.rb:1-3
+- Application model: app/models/doorkeeper_application.rb
+- JWT allowlisting: app/models/allowlisted_jwt.rb
+- Config: config/initializers/doorkeeper_openid_connect.rb (issuer, signing key, claims)
+- Key endpoint: `/oauth/authorize` with OPTIONS preflight (config/routes.rb:78)
+- Discovery endpoint: `/oauth/discovery/keys`
 
-# Push to registry
-docker push ericguo/oauth2id:main
-```
+**SAML Flow:**
+- Routes: `/saml/auth`, `/saml/metadata`, `/saml/logout` (config/routes.rb:6-10)
+- Controller: app/controllers/saml_idp_controller.rb
+- Config: config/initializers/saml_idp.rb
+- Supports encrypted assertions (xmlenc gem)
 
-### Deployment (Capistrano)
-```bash
-# Deploy to production
-cap production deploy
+### User Management
+- User model: app/models/user.rb
+- Devise-based authentication with JWT support
+- Employee management: app/controllers/employees_controller.rb
+- Department/Position hierarchy: app/models/department.rb, app/models/position.rb
+- Policy-based authorization via Pundit: app/policies/*
 
-# Run migrations in production
-cap production deploy:migrate
-```
+### Data Architecture
+- **Oracle/MySQL Integration:** NC UAP synchronization (lib/tasks/sync_nc_uap.rake)
+- **YXT API Integration:** Position synchronization (lib/tasks/sync_yxt.rake, import_yxt_csv.rake)
+- **WeChat Integration:** WeChat OAuth and events (app/models/wechat_event_history.rb, lib/tasks/sync_wechat.rake)
+- **GitLab Integration:** User status sync (lib/tasks/gitlab.rake)
 
-### Key Generation
+### Admin Interface
+- Datatables for data listing: app/datatables/* (user_datatable.rb, department_datatable.rb, position_datatable.rb)
+- Ajax-based tables with filtering and pagination
+- UI: Vali-admin theme (Bootstrap 4)
 
-#### OIDC Keys (Required for OpenID Connect)
-```bash
-openssl genpkey -algorithm RSA -out oauth2id_oidc_private_key.pem -pkeyopt rsa_keygen_bits:2048
-openssl rsa -pubout -in oauth2id_oidc_private_key.pem -out oauth2id_oidc_public_key.pem
-# Public key available at: /oauth/discovery/keys
-```
+## Key Conventions & Patterns
 
-#### SAML 2.0 Keys
-```bash
-openssl req -x509 -sha256 -nodes -days 3650 -newkey rsa:2048 \
-  -keyout oauth2id_saml_key.key -out oauth2id_saml_cert.crt
-# View fingerprint:
-openssl x509 -in oauth2id_saml_cert.crt -noout -sha256 -fingerprint
-```
+### Controllers
+- **SSO Controllers:** app/controllers/doorkeeper_controller.rb handles OAuth2/OIDC endpoints with OPTIONS preflight support
+- **Strong Parameters:** Follow existing patterns in app/controllers/*; permit attributes explicitly
+- **CORS:** OPTIONS endpoints must set CORS headers (see app/controllers/doorkeeper_controller.rb:options_authorize)
+- **API Endpoints:** Follow pattern in app/controllers/api/application_controller.rb
 
-#### JWT RS256 Keys
-```bash
-openssl genpkey -algorithm RSA -out oauth2id_jwt_private_key.pem -pkeyopt rsa_keygen_bits:2048
-openssl rsa -pubout -in oauth2id_jwt_private_key.pem -out oauth2id_jwt_public_key.pem
-```
+### Authorization (Pundit)
+- Policies live in app/policies/*
+- Use `authorize(record)` and `policy_scope(Model)` in controllers
+- Common policies: user_policy.rb, profile_policy.rb, application_policy.rb, doorkeeper_application_policy.rb
 
-## Development Patterns & Conventions
-
-### Rails Conventions
-- **Strong Parameters**: Permit attributes in controllers following existing patterns
-- **Authorization**: Use Pundit policies in `app/policies/*` with `authorize(record)` and `policy_scope(Model)`
-- **Authentication**: Devise handles user auth; JWT via devise-jwt and Warden strategies
-- **I18n**: Use `t('key')` instead of literals; add keys to `config/locales/*`
-- **Controllers**: Keep lean; offload logic to helpers (`app/helpers/application_helper.rb`) or presenters
+### Models & Data
+- ApplicationRecord base class: app/models/application_record.rb
+- Concerns: app/models/concerns/* (shared model logic)
+- JWT tokens: AllowlistedJwt model for token management and revocation
 
 ### Frontend (Stimulus + Webpacker)
-- **Entry pack**: `app/javascript/packs/application.js`
-- **Controllers**: Auto-loaded from `app/javascript/controllers/*`
-- **Naming**: Controllers named `*_controller.js`, export default class with targets/actions
-- **View integration**: Use `data-controller`, `data-action`, `data-target` in ERB
-- **Pack loading**: Include via `javascript_pack_tag 'application'` in layouts
-- **Auto-loading**: Controllers auto-registered via `definitionsFromContext(require.context('controllers', true, /.js$/))`
-- **Polyfills**: `regenerator-runtime` and `@stimulus/polyfills` included globally
+- Entry pack: app/javascript/packs/application.js
+- Controllers: app/javascript/controllers/* (auto-registered)
+- Naming: `*_controller.js` with Stimulus conventions
+- View integration: Use `data-controller`, `data-action`, `data-target` in ERB
+- Load JS: `javascript_pack_tag 'application'` in layouts
+- Webpacker config: config/webpacker.yml, config/webpack/*
 
-### DataTables
-- AJAX-powered data tables for admin interfaces
-- Keep query/filtering logic in datatable classes under `app/datatables/*`
-- Initialize via Ajax, respond with JSON from Datatable classes
-- Column mapping kept in the table class
-
-### Security
-- **CSRF Protection**: Always enabled for web endpoints
-- **API OPTIONS endpoints** (e.g., `/api/me`): Follow existing implementation in `Api::ApplicationController`
-- **Credentials**: Use `Rails.application.credentials` or environment variables (never hardcode secrets)
-
-### Background Jobs & Mailers
-- Extend `ApplicationJob` and `ApplicationMailer` base classes
-- Keep idempotent and side-effect aware
+### Background Jobs
+- Base class: app/jobs/application_job.rb
+- Keep jobs idempotent and side-effect aware
 
 ### Testing
-- **Framework**: Minitest + Capybara
-- **System tests**: Capybara with selenium-webdriver
-- **Fixtures**: Prefer fixtures; avoid depending on `db/seeds.rb` for tests
-- **CI integration**: `minitest-ci`, `simplecov` in `:ci` gem group
-- Layout: `test/*` with fixtures in `test/fixtures/*`
+- Framework: Minitest with fixtures in test/fixtures/*
+- System tests: Capybara + Selenium 4.26.0
+- Test structure mirrors app/ structure
+- CI integration: simplecov, minitest-ci (group :ci)
+- Avoid db/seeds.rb dependencies in tests
 
-## Key Configuration Files
+## Configuration & Environment
 
-### Core Application
-- `config/application.rb` - Main Rails config (i18n: zh-CN, ActiveStorage/ActionCable/ActionMailbox/ActionText disabled)
-- `config/routes.rb` - SSO routes (Doorkeeper, SAML) + admin routes
-- `config/database.yml` - Database configuration (SQLite default)
+### Credentials
+- Use `bin/rails credentials:edit` to manage secrets
+- Store Rails master.key securely (not in repo)
+- OIDC signing keys generated externally (see README.md:101-129)
+- SAML certificates generated externally (README.md:118-122)
 
-### Authentication & Security
-- `config/initializers/devise.rb` - Devise authentication
-- `config/initializers/doorkeeper.rb` - OAuth2 provider config
-- `config/initializers/doorkeeper_openid_connect.rb` - OIDC config
-- `config/initializers/saml_idp.rb` - SAML IdP configuration
-- `config/credentials.yml.enc` - Encrypted credentials (managed via `bin/rails credentials:edit`)
-- `config/master.key` - Encryption key (NOT in repo!)
+### Development HTTPS Setup
+- Use puma-dev for local HTTPS: `puma-dev -install` then symlink in ~/.puma-dev
+- Visit https://oauth2id.test after setup
+- Requires Puma-dev CA certificate trust setup (README.md:60-86)
+- HTTP clients (Faraday, httpclient) need CA certificate configured
 
-### Frontend
-- `config/webpacker.yml` - Webpacker configuration
-- `package.json` - Node.js dependencies
-- `.eslintrc.js` - ESLint configuration
+### Database Configuration
+- Development: SQLite (config/database.yml.sample)
+- Production: MySQL (see Gemfile:19)
+- CI: PostgreSQL (see .circleci/config.yml:29)
+- Migrations: db/migrate/*, db/schema.rb
 
-### Deployment
-- `Dockerfile` - Multi-stage Docker build
-- `Capfile` + `config/deploy.rb` - Capistrano deployment config
-- `Procfile.dev` - Foreman process definitions
-- `.gitlab-ci.yml` - GitLab CI pipeline
-- `.circleci/config.yml` - CircleCI configuration
+### Important Initializers
+- doorkeeper.rb (21KB): OAuth2 provider configuration
+- doorkeeper_openid_connect.rb: OIDC settings (issuer, claims, subject types)
+- saml_idp.rb: SAML IdP configuration
+- devise.rb (15KB): Authentication settings
+- omniauth.rb: OAuth provider setup (WeChat, etc.)
+- gitlab.rb: GitLab API configuration
+- feature_toggles.rb: Feature flags
 
-## Critical Routes & Endpoints
+### Storage
+- Persistent storage: mount `./storage:/rails/storage` in Docker
+- Stores uploads and database files
 
-### OAuth2 / OpenID Connect
-- Authorization: `GET /oauth/authorize`
-- Token: `POST /oauth/token`
-- Discovery Keys: `GET /oauth/discovery/keys`
-- User info: `GET /oauth/userinfo` (OIDC only)
+## Critical Files to Know
 
-### SAML 2.0
-- Auth: `GET /saml/auth`
-- Metadata: `GET /saml/metadata`
-- Logout: `GET /saml/logout`
+- config/routes.rb - SSO routes (Doorkeeper, SAML), user routes, API routes
+- app/controllers/doorkeeper_controller.rb - OAuth2/OIDC endpoint glue
+- app/controllers/saml_idp_controller.rb - SAML IdP controller
+- app/models/user.rb - User model with Devise + JWT
+- app/models/doorkeeper_application.rb - OAuth2 client applications
+- app/models/allowlisted_jwt.rb - JWT allowlist and revocation
+- config/initializers/doorkeeper_openid_connect.rb - OIDC configuration
+- lib/tasks/*.rake - Sync jobs (NC UAP, YXT, GitLab, WeChat)
 
-### Admin & Management
-- Users: `/users` (Devise-managed)
-- Applications: `/oauth/applications` (Doorkeeper)
-- JWT Management: `/jwt` endpoints
-- Departments/Positions: `/departments`, `/positions`
+## Development Notes
 
-## Environment Setup Notes
+- **Rack Version:** gem 'rack', '< 3' required - Rack 3+ breaks HTTP Authorization headers
+- **Gems from Git:** Several gems use git sources (devise-jwt, doorkeeper, wechat, saml_idp, yxt-api, omniauth-wechat-oauth2)
+- **Asset Pipeline:** Sprockets for app/assets, Webpacker for app/javascript - don't mix
+- **I18n:** Use `t('key')` and add to config/locales/* instead of literals
+- **Ruby LSP:** ruby-lsp and ruby-lsp-rails gems installed for IDE support
 
-### puma-dev (HTTPS Local Development)
+## Common Tasks & Troubleshooting
+
+**Reset Development Environment:**
 ```bash
-brew install puma/puma/puma/puma-dev
-sudo puma-dev -setup
-puma-dev -install
-cd ~/.puma-dev
-ln -s /path/to/oauth2id oauth2id
-# Visit: https://oauth2id.test
+bin/rails db:drop db:create db:migrate db:fixtures:load
+bin/rails assets:clobber
+yarn install --check-files
 ```
 
-**Known Issues:**
-- For newer MacOS: Add Puma-dev CA to System keychain and restart browser
-- For Faraday: Add CA to OpenSSL cert list using openssl-osx-ca
-- For httpclient: Copy cert.pem to httpclient gem directory
+**Generate OIDC/SAML Keys:** See README.md sections "Generate signing key" and "SAML 2.0"
 
-### Database Migration (MySQL → PostgreSQL)
-Use mysql-postgresql-converter:
-```bash
-mysqldump --set-gtid-purged=OFF --no-tablespaces --compatible=postgresql --default-character-set=utf8 -r db.mysql -u user pass dbname
-python ./db_converter.py db.mysql db.psql
-psql -d new_db -f db.psql
-# Replace ' datetime(6) ' with ' timestamp(6) without time zone '
-```
+**CI Pipeline:** .circleci/config.yml - runs build, then test (PostgreSQL, parallel 3x, Chrome)
 
-## Important Notes
-
-- **Storage**: SQLite databases stored in `storage/*.sqlite3` (mounted in Docker)
-- **UI Theme**: Vali Admin v2.4.1 based on Bootstrap 4, supports IE 11
-- **Locales**: Chinese (zh-CN) configured in `config/locales/*`
-- **Master Key**: Required for encrypted credentials; never commit `config/master.key`
-- **Production Data**: Users may need `u.confirm` to enable sign-in
+**Production Deployment:** Capistrano + Puma (config/deploy.rb, Capfile) with Docker images
