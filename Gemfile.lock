@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: ae2a7a53115b43906ef3ac2f03d1e5f0f927cd65
+  revision: 57edd55e854bfb130287faae3585d65f7a469597
   branch: main
   specs:
     doorkeeper (5.8.2)
@@ -34,10 +34,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 343b8145c2401d0a4354a3194001c913ab8624b5
+  revision: 84e1e9c376e091212022e02d5f23db38e2f2abf2
   branch: main
   specs:
-    wechat (1.0.1)
+    wechat (1.1.0)
       activesupport (>= 6.0, < 9)
       httpx (>= 1.3.4)
       nokogiri (>= 1.6.0)
@@ -161,30 +161,28 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
-    airbrussh (1.5.3)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
+    airbrussh (1.6.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ajax-datatables-rails (1.5.0)
       rails (>= 6.0)
       zeitwerk
-    base64 (0.2.0)
-    bcrypt (3.1.20)
-    bcrypt_pbkdf (1.1.1)
-    bcrypt_pbkdf (1.1.1-arm64-darwin)
-    bcrypt_pbkdf (1.1.1-x86_64-darwin)
+    base64 (0.3.0)
+    bcrypt (3.1.21)
+    bcrypt_pbkdf (1.1.2)
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.18.6)
+    bootsnap (1.20.1)
       msgpack (~> 1.2)
     builder (3.3.0)
-    capistrano (3.19.2)
+    capistrano (3.20.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (2.1.1)
+    capistrano-bundler (2.2.0)
       capistrano (~> 3.1)
     capistrano-rails (1.7.0)
       capistrano (~> 3.1)
@@ -207,15 +205,15 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.5.0)
+    cgi (0.5.1)
     chronic (0.10.2)
-    concurrent-ruby (1.3.5)
-    connection_pool (2.5.4)
+    concurrent-ruby (1.3.6)
+    connection_pool (2.5.5)
     crass (1.0.6)
     csv (3.3.5)
     dalli (3.2.8)
-    date (3.5.0)
-    debug (1.11.0)
+    date (3.5.1)
+    debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
@@ -234,7 +232,7 @@ GEM
     dry-configurable (1.3.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
-    dry-core (1.1.0)
+    dry-core (1.2.0)
       concurrent-ruby (~> 1.0)
       logger
       zeitwerk (~> 2.6)
@@ -245,8 +243,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.4.1)
-      net-http (>= 0.5.0)
+    faraday-net_http (3.4.2)
+      net-http (~> 0.5)
     ffaker (2.25.0)
     ffi (1.16.3)
     ffi-compiler (1.3.2)
@@ -254,13 +252,14 @@ GEM
       rake
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
-    gitlab (6.0.0)
-      base64 (~> 0.2.0)
+    gitlab (6.1.0)
+      base64
       httparty (~> 0.20)
       terminal-table (>= 1.5.1)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    hashie (5.0.0)
+    hashie (5.1.0)
+      logger
     http-2 (1.1.1)
     http (5.3.1)
       addressable (~> 2.8)
@@ -270,18 +269,18 @@ GEM
     http-cookie (1.1.0)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httparty (0.23.2)
+    httparty (0.24.0)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpx (1.6.2)
+    httpx (1.7.0)
       http-2 (>= 1.0.0)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    io-console (0.8.1)
-    ipaddr (1.2.7)
+    io-console (0.8.2)
+    ipaddr (1.2.8)
     ipip-fast (0.0.2)
-    irb (1.15.3)
+    irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -292,7 +291,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.15.2)
+    json (2.18.0)
     jwt (3.1.2)
       base64
     language_server-protocol (3.17.0.5)
@@ -303,7 +302,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.7.0)
-    loofah (2.24.1)
+    loofah (2.25.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     macaddr (1.7.2)
@@ -318,18 +317,19 @@ GEM
     matrix (0.4.3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.0)
+    minitest (6.0.1)
+      prism (~> 1.5)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
-    multi_xml (0.7.2)
-      bigdecimal (~> 3.1)
+    multi_xml (0.8.0)
+      bigdecimal (>= 3.1, < 5)
     mutex_m (0.3.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-http (0.7.0)
-      uri
-    net-imap (0.5.12)
+    net-http (0.9.1)
+      uri (>= 0.11.1)
+    net-imap (0.6.2)
       date
       net-protocol
     net-ldap (0.20.0)
@@ -362,7 +362,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.17.2-x86_64-linux)
       racc (~> 1.4)
-    oauth2 (2.0.17)
+    oauth2 (2.0.18)
       faraday (>= 0.17.3, < 4.0)
       jwt (>= 1.0, < 4.0)
       logger (~> 1.2)
@@ -375,10 +375,10 @@ GEM
       logger
       rack (>= 2.2.3)
       rack-protection
-    omniauth-oauth2 (1.8.0)
-      oauth2 (>= 1.4, < 3)
+    omniauth-oauth2 (1.9.0)
+      oauth2 (>= 2.0.2, < 3)
       omniauth (~> 2.0)
-    omniauth-rails_csrf_protection (1.0.2)
+    omniauth-rails_csrf_protection (2.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
@@ -387,7 +387,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.6.0)
+    prism (1.7.0)
     psych (3.3.4)
     public_suffix (6.0.2)
     puma (6.6.1)
@@ -450,7 +450,7 @@ GEM
       logger
     rdoc (6.3.4.1)
     regexp_parser (2.11.3)
-    reline (0.6.2)
+    reline (0.6.3)
       io-console (~> 0.5)
     responders (3.2.0)
       actionpack (>= 7.0)
@@ -459,8 +459,8 @@ GEM
     roo (2.10.1)
       nokogiri (~> 1)
       rubyzip (>= 1.3.0, < 3.0.0)
-    rorvswild (1.10.0)
-    ruby-lsp (0.26.2)
+    rorvswild (1.10.1)
+    ruby-lsp (0.26.4)
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 5)
@@ -511,7 +511,7 @@ GEM
     sqlite3 (1.7.3-x86-linux)
     sqlite3 (1.7.3-x86_64-darwin)
     sqlite3 (1.7.3-x86_64-linux)
-    sshkit (1.24.0)
+    sshkit (1.25.0)
       base64
       logger
       net-scp (>= 1.1.2)
@@ -538,7 +538,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     uri (1.1.1)
     uuid (2.3.9)
       macaddr (~> 1.0)
@@ -560,13 +560,13 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
-    webrick (1.9.1)
+    webrick (1.9.2)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (1.0.0)
+    whenever (1.1.1)
       chronic (>= 0.6.3)
     xmlenc (0.8.0)
       activemodel (>= 3.0.0)
