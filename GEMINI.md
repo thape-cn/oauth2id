@@ -1,103 +1,63 @@
-# Gemini Code Assistant Context
+# Project Overview
 
-This document provides context for the Gemini code assistant to understand the `oauth2id` project.
+This project is a Single Sign-On (SSO) portal based on the OAuth2 protocol, built with Ruby on Rails. It also supports SAML and Homeland SSO. The backend is a Rails application, and the frontend uses JavaScript with the Stimulus framework and the vali-admin theme.
 
-## Project Overview
+## Key Technologies
 
-`oauth2id` is a single sign-on (SSO) portal based on the OAuth 2.0 and OpenID Connect (OIDC) protocols. It is a Ruby on Rails application that also supports SAML 2.0. The application serves as a central identity provider.
+*   **Backend:** Ruby on Rails
+*   **Frontend:** JavaScript, Stimulus, Webpacker, vali-admin
+*   **Authentication:** Devise, Doorkeeper (for OAuth2), SAML, JWT
+*   **Database:** Primarily uses MySQL in production, with support for SQLite3 and Oracle.
+*   **Web Server:** Puma
+*   **Deployment:** Docker
 
-The frontend uses JavaScript with the Stimulus framework and is managed by Webpacker. The UI is based on the `vali-admin` theme (Bootstrap 4). The project uses `pnpm` as its JavaScript package manager.
+# Building and Running
 
-The backend is a Ruby on Rails 7.2 application. Key technologies include:
-- **Web Server:** Puma
-- **Authentication:** Devise and `devise-jwt`
-- **Authorization:** Pundit
-- **OAuth2/OIDC:** Doorkeeper and `doorkeeper-openid_connect`
-- **SAML:** `saml_idp`
-- **Database:** The default setup uses SQLite3 for development, but the project is configured to support MySQL and PostgreSQL.
-- **Deployment:** Capistrano is used for deployment.
+## Docker
 
-## Building and Running
+The project is designed to be run with Docker.
 
-The project can be run locally for development or as a Docker container.
+**Build the Docker image:**
 
-### Running with Docker
+```bash
+docker build --tag ericguo/oauth2id:main .
+```
 
-1.  **Build the image:**
-    ```bash
-    docker build --tag ericguo/oauth2id:main .
-    ```
-2.  **Run the container:**
-    ```bash
-    docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=<YourMasterKey> -v ./storage:/rails/storage ericguo/oauth2id:main
-    ```
-    (Replace `<YourMasterKey>` with the actual Rails master key).
+**Run the Docker container:**
 
-### Running Locally (Development)
+```bash
+docker run -p 3000:3000 -d --restart always --name oauth2id --env RAILS_MASTER_KEY=YourMasterKey -v ./storage:/rails/storage ericguo/oauth2id:main
+```
+
+## Development
 
 1.  **Install dependencies:**
     ```bash
-    # Install Ruby gems
     bundle install
-
-    # Install Node.js packages
-    pnpm install
+    yarn install
     ```
 
-2.  **Setup database:**
+2.  **Set up the database:**
     ```bash
-    # Copy database configuration
     cp config/database.yml.sample config/database.yml
-
-    # Create and migrate the database
-    bin/rails db:create
-    bin/rails db:migrate
+    bin/rails db:setup
     ```
 
-3.  **Setup credentials:**
-    ```bash
-    # Create the credentials file if it doesn't exist
-    bin/rails credentials:edit
-    ```
-
-4.  **Run the development servers:**
-    The `Procfile.dev` defines the processes to run. Use a tool like `foreman` or run them in separate terminals.
-    ```bash
-    # Run Rails server
-    bin/rails s -p 3000
-
-    # Run Webpack dev server
-    bin/webpack-dev-server
-    ```
-    The `README.md` also contains instructions for setting up `puma-dev` for local HTTPS development.
-
-## Testing
-
-The test suite is run using Minitest.
-
-1.  **Setup the test environment:**
-    ```bash
-    # Install dependencies (if not already done)
-    bundle install
-    pnpm install
-
-    # Copy database configuration
-    cp config/database.yml.sample config/database.yml
-
-    # Migrate the test database
-    bin/rails db:migrate RAILS_ENV=test
-    ```
-
-2.  **Run the tests:**
-    The CI configuration uses `bin/rails test:all`.
+3.  **Run the tests:**
     ```bash
     bin/rails test:all
     ```
 
-## Development Conventions
+4.  **Start the development server:**
+    ```bash
+    bin/webpack-dev-server &
+    bin/rails s
+    ```
 
-*   **Linting:**
-    *   Ruby code is linted with RuboCop (see `.rubocop.yml`).
-    *   JavaScript code is linted with ESLint (see `.eslintrc.js`).
-*   **CI/CD:** The project uses GitLab CI (see `.gitlab-ci.yml`) for running tests and deploying to staging.
-*   **Package Management:** Ruby gems are managed with Bundler. JavaScript packages are managed with `pnpm`.
+# Development Conventions
+
+*   The project uses `rubocop` for Ruby code style enforcement.
+*   Frontend assets are managed with `webpacker`.
+*   Tests are written with Minitest.
+*   The application follows standard Rails conventions for models, views, and controllers.
+*   The project uses `pundit` for authorization.
