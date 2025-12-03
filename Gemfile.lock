@@ -163,7 +163,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.8)
       public_suffix (>= 2.0.2, < 8.0)
-    airbrussh (1.5.3)
+    airbrussh (1.6.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ajax-datatables-rails (1.5.0)
       rails (>= 6.0)
