@@ -67,10 +67,8 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    @user.skip_confirmation_notification!
     respond_to do |format|
       if @user.update(user_params)
-        @user.confirm
         format.html { redirect_to employee_path(id: @user.id), notice: I18n.t('ui.update_success') }
       else
         format.html { render :edit }
