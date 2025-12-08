@@ -564,7 +564,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    whenever (1.1.0)
+    whenever (1.1.1)
       chronic (>= 0.6.3)
     xmlenc (0.8.0)
       activemodel (>= 3.0.0)
