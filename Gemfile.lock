@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: ae2a7a53115b43906ef3ac2f03d1e5f0f927cd65
+  revision: 57edd55e854bfb130287faae3585d65f7a469597
   branch: main
   specs:
     doorkeeper (5.8.2)
@@ -276,7 +276,7 @@ GEM
       http-2 (>= 1.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    io-console (0.8.1)
+    io-console (0.8.2)
     ipaddr (1.2.7)
     ipip-fast (0.0.2)
     irb (1.15.3)
@@ -659,7 +659,7 @@ DEPENDENCIES
   yxt-api!
 
 RUBY VERSION
-  ruby 3.2.2p53
+   ruby 3.2.2p53
 
 BUNDLED WITH
-  2.6.9
+   2.6.9
