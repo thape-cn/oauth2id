@@ -277,7 +277,7 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
-    ipaddr (1.2.7)
+    ipaddr (1.2.8)
     ipip-fast (0.0.2)
     irb (1.16.0)
       pp (>= 0.6.0)
@@ -327,7 +327,7 @@ GEM
       bigdecimal
     net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.6.0)
+    net-imap (0.6.2)
       date
       net-protocol
     net-ldap (0.20.0)
@@ -536,7 +536,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     uri (1.1.1)
     uuid (2.3.9)
       macaddr (~> 1.0)
