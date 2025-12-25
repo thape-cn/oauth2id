@@ -9,6 +9,7 @@ module API
       profile = u.profile
       render json: {
         chinese_name: profile&.chinese_name || u.username,
+        clerk_code: profile&.clerk_code,
         email: u.email
       }
     end
