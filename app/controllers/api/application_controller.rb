@@ -6,7 +6,9 @@ module API
 
     def user_info
       u = current_user
+      profile = u.profile
       render json: {
+        chinese_name: profile&.chinese_name || u.username,
         email: u.email
       }
     end
