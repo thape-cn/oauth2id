@@ -1,3 +1,0 @@
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - core-js
