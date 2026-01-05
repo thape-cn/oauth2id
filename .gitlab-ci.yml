@@ -10,17 +10,6 @@ before_script:
   - gem install bundler
   - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
   - sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
-  - export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
-  - |
-    if command -v corepack >/dev/null; then
-      mkdir -p "$HOME/.local/bin"
-      corepack enable pnpm --install-directory "$HOME/.local/bin"
-      corepack prepare pnpm@latest --activate
-    else
-      export npm_config_prefix="$HOME/.npm-global"
-      mkdir -p "$npm_config_prefix"
-      npm install -g pnpm@8
-    fi
 
 stages:
   - test
@@ -36,12 +25,12 @@ test:
         - vendor/ruby
     - key:
         files:
-          - pnpm-lock.yaml
+          - yarn.lock
       paths:
-        - ".pnpm-store/"
+        - ".yarn-cache/"
   script:
     - bundle install -j $(nproc)
-    - pnpm install --frozen-lockfile --store-dir .pnpm-store
+    - yarn install --cache-folder .yarn-cache
     - cp config/database.yml.sample config/database.yml
     - export RAILS_MASTER_KEY=$PRODUCTION_MASTER_KEY
     - echo $PRODUCTION_MASTER_KEY > config/master.key
