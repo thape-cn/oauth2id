@@ -101,6 +101,11 @@ zh-CN:
       title: "管理应用程序及其JWT授权"
       your_jwts_list: "您的JWT授权列表"
       clean_expired_jwts: "清理已经过期的JWT"
+      token_title: "新的JWT令牌"
+      token_help: "请立即复制该令牌，它只会显示一次。"
+      token_label: "JWT 令牌"
+      token_copy: "复制令牌"
+      token_copied: "已复制"
       form:
         aud: "Audience"
         exp_hours: "过期时间(小时)"

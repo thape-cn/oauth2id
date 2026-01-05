@@ -14,6 +14,7 @@ class JwtsController < ApplicationController
     jwt = Warden::JWTAuth::TokenEncoder.new.call(payload)
     Rails.logger.debug "jwt: #{jwt}"
     if @user.allowlisted_jwts.create(jti: payload['jti'], aud: payload['aud'], exp: Time.at(payload['exp']))
+      flash[:jwt] = jwt
       redirect_to jwts_path, alert: t('.created', jwt: jwt)
     else
       render :index

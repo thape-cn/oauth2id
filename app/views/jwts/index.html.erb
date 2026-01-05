@@ -31,6 +31,21 @@
             </div>
             <div><%= submit_tag t(".actions.create"), class: 'btn btn-primary' %></div>
           <% end -%>
+          <% if flash[:jwt].present? %>
+            <div class="alert alert-info mt-3" role="alert">
+              <h4 class="alert-heading"><%= t(".token_title") %></h4>
+              <p><%= t(".token_help") %></p>
+              <div class="form-group">
+                <label for="new-jwt-token"><%= t(".token_label") %></label>
+                <textarea id="new-jwt-token" class="form-control" rows="3" readonly style="font-family: monospace;"><%= flash[:jwt] %></textarea>
+              </div>
+              <p class="mb-0">
+                <button type="button" class="btn btn-secondary icon-btn" data-copy-target="new-jwt-token" data-copied-text="<%= t(".token_copied") %>">
+                  <i class="fa fa-clipboard"></i> <span><%= t(".token_copy") %></span>
+                </button>
+              </p>
+            </div>
+          <% end %>
           <table class="table table-hover table-bordered mt-3">
             <thead>
             <tr>
