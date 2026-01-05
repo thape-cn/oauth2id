@@ -101,6 +101,11 @@ en:
       title: "Management application and its JWT authorization"
       your_jwts_list: "Your JWT authorization list"
       clean_expired_jwts: "Clean expired JWTs"
+      token_title: "New JWT token"
+      token_help: "Copy this token now. It will only be shown once."
+      token_label: "JWT token"
+      token_copy: "Copy token"
+      token_copied: "Copied"
       form:
         aud: "Audience"
         exp_hours: "Expiration hours"
