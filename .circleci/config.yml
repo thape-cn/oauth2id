@@ -16,10 +16,12 @@ jobs:
     steps:
       - checkout # pull down our git code.
       - ruby/install-deps # use the ruby orb to install dependencies
-      # use the node orb to install our packages with pnpm and cache using pnpm-lock.yaml
+      # use the node orb to install our packages
+      # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
+      # learn more: https://circleci.com/docs/2.0/caching/
       - node/install-packages:
-          pkg-manager: pnpm
-          cache-key: "pnpm-lock.yaml"
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
 
   test:  # our next job, called "test"
     docker:
@@ -49,8 +51,8 @@ jobs:
       - browser-tools/install-chrome
       - ruby/install-deps
       - node/install-packages:
-          pkg-manager: pnpm
-          cache-key: "pnpm-lock.yaml"
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
       - run:
           name: Check browser install
           command: |

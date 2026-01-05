@@ -1,18 +1,17 @@
 #!/usr/bin/env ruby
 APP_ROOT = File.expand_path('..', __dir__)
 Dir.chdir(APP_ROOT) do
-  pnpm = ENV.fetch("PATH", "").split(File::PATH_SEPARATOR).
-    reject { |dir| File.expand_path(dir) == __dir__ }.
-    product(["pnpm", "pnpm.cmd", "pnpm.ps1"]).
+  yarn = ENV["PATH"].split(File::PATH_SEPARATOR).
+    select { |dir| File.expand_path(dir) != __dir__ }.
+    product(["yarn", "yarn.cmd", "yarn.ps1"]).
     map { |dir, file| File.expand_path(file, dir) }.
     find { |file| File.executable?(file) }
 
-  if pnpm
-    warn "Deprecated: bin/yarn now proxies to pnpm. Update scripts to use bin/pnpm." unless ENV["PNPM_PROXY_SILENT"]
-    exec pnpm, *ARGV
+  if yarn
+    exec yarn, *ARGV
   else
-    $stderr.puts "pnpm executable was not detected in the system."
-    $stderr.puts "Install pnpm via https://pnpm.io/installation"
+    $stderr.puts "Yarn executable was not detected in the system."
+    $stderr.puts "Download Yarn at https://yarnpkg.com/en/docs/install"
     exit 1
   end
 end
