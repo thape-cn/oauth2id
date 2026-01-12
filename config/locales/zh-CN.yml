@@ -34,6 +34,7 @@ zh-CN:
     female: "女"
     phone: "电话"
     phone_placeholder: "手机或者座机？"
+    opencode_api_key: "OpenCode API Key"
     logout: "登出"
     admin_action: "管理员操作"
     overview: "概览"

@@ -11,7 +11,7 @@ module API
         render json: {
           chinese_name: profile&.chinese_name || u.username,
           clerk_code: profile&.clerk_code,
-          opencode_api_key: Rails.application.credentials.opencode_api_key,
+          opencode_api_key: profile&.opencode_api_key || Rails.application.credentials.opencode_api_key,
           kimi_api_key: Rails.application.credentials.kimi_api_key,
           moonshot_api_key: Rails.application.credentials.moonshot_api_key,
           exa_api_key: Rails.application.credentials.exa_api_key,
