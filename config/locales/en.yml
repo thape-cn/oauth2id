@@ -34,6 +34,7 @@ en:
     female: "Female"
     phone: "Phone"
     phone_placeholder: "Phone as here"
+    opencode_api_key: "OpenCode API Key"
     logout: "Logout"
     admin_action: "Admin action"
     overview: "Overview"

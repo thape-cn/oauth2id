@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_24_064208) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_12_115900) do
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_24_064208) do
     t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
-  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
     t.string "title"
     t.boolean "gender"
