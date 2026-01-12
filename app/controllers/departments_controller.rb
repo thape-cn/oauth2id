@@ -23,10 +23,14 @@ class DepartmentsController < ApplicationController
 
   def data
     managed_by_department_id = params[:node]
-    departments = policy_scope(Department).where(managed_by_department_id: managed_by_department_id).collect do |d|
-      { name: d.name, id: d.id, load_on_demand: d.managed_departments.count.positive? }
-    end
-    render json: departments
+    departments = policy_scope(Department).where(managed_by_department_id: managed_by_department_id)
+    managed_counts = Department.where(managed_by_department_id: departments.select(:id))
+                               .group(:managed_by_department_id)
+                               .count
+
+    render json: departments.map { |d|
+      { name: d.name, id: d.id, load_on_demand: managed_counts[d.id].to_i.positive? }
+    }
   end
 
   private
