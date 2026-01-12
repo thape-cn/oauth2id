@@ -1,19 +1,37 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Keep Rails domain logic inside `app/`, following conventional directories for controllers, models, policies, datatables, and views. Stimulus controllers and Webpacker packs live in `app/javascript`, while shared helpers and extensions belong in `lib/`. Configuration, environment credentials, and deployment hooks sit under `config/`, and migrations plus seeds live in `db/`. Test fixtures, unit specs, and system flows mirror the app layout within `test/`, with Capybara scenarios in `test/system/`.
+- `app/`: Rails MVC code (controllers, models, views) plus `app/javascript/` for Stimulus controllers and Webpacker packs (`app/javascript/packs/application.js`).
+- `config/`: routes, environment settings, and initializers for Devise, Doorkeeper, OIDC, and SAML.
+- `db/`: migrations, schema, and seeds; SQLite files live under `storage/` in dev.
+- `test/`: Minitest suites (`models/`, `controllers/`, `system/`) and fixtures in `test/fixtures/`.
+- `bin/`, `lib/`, `public/`: scripts, shared Ruby modules, and static assets.
 
 ## Build, Test, and Development Commands
-Run `bin/setup` after cloning or pulling to install Ruby gems, PNPM packages, and migrate the database. Start the Rails server via `bin/rails s`, and pair it with `bin/webpack-dev-server` or `foreman start -f Procfile.dev` for hot asset reloading. Sync front-end dependencies with `pnpm install --frozen-lockfile`. Execute the targeted test suite using `bin/rails test path/to/file_test.rb`, or run the full matrix through `bin/rails test:all`.
+- `bin/setup`: install gems, set up the database, run seeds.
+- `pnpm install --frozen-lockfile`: install frontend dependencies.
+- `bin/rails s`: run the Rails server at `http://localhost:3000`.
+- `bin/webpack-dev-server`: run the asset dev server (pair with `bin/rails s`).
+- `foreman start -f Procfile.dev`: run Rails + Webpacker together.
+- `bin/rails db:prepare`: create and migrate the database.
+- `bin/rails test:all`: run the full test suite.
+- `bin/rails test test/models/user_test.rb`: run a single test file.
+- `docker build --tag ericguo/oauth2id:main .`: build the container image.
 
 ## Coding Style & Naming Conventions
-Use Ruby two-space indentation and idiomatic Rails naming: `CamelCase` classes, snake_case files, and kebab-case Stimulus controllers in `app/javascript/controllers/`. Follow the cops configured in `.rubocop.yml`; run `bundle exec rubocop` before opening a pull request. JavaScript modules target ES2015 and are linted with the “recommended” ESLint profile defined in `.eslintrc.js`.
+- Ruby uses standard Rails conventions (2-space indentation, snake_case files, CamelCase classes). Enforced via RuboCop (`.rubocop.yml`, 115-char line limit).
+- JavaScript follows ESLint’s recommended rules (`.eslintrc.js`). Stimulus controllers live in `app/javascript/controllers/` and are named `*_controller.js`.
+- Prefer `t('key')` for UI strings and add entries under `config/locales/`.
 
 ## Testing Guidelines
-All suites rely on Minitest. Name files `*_test.rb` and colocate them with the code they exercise. Leverage fixtures from `test/fixtures/` for deterministic data and avoid real external calls in Capybara specs. CI enables SimpleCov, so add assertions that defend new behavior and ensure meaningful coverage before merging.
+- Framework: Minitest + Capybara system tests.
+- Naming: files end in `*_test.rb`; system tests live in `test/system/`.
+- Coverage (optional): `COVERAGE=true bin/rails test`.
 
 ## Commit & Pull Request Guidelines
-Adopt concise, lower-case commit subjects under 50 characters (e.g., `normalize oauth redirect`). Group related changes per commit and describe intent in the body if needed. PRs should summarize the change, list validation commands run (such as `bin/rails test:all`), link to any tracked issues, and include screenshots or GIFs for UI updates. Note schema migrations, configuration impacts, and confirm secrets stay out of the repo.
+- Commit messages are short and descriptive; recent history uses lowercase with occasional emoji. Match that style and keep subjects action-focused.
+- PRs should include a concise description, linked issues, and test results. Add UI screenshots for view changes.
 
 ## Security & Configuration Tips
-Manage credentials with `bin/rails credentials:edit` and store `config/master.key` securely. Persist uploads via the `/storage` mount when Dockerized. Generate OIDC, SAML, and JWT signing keys outside the repository and reference them through environment variables. Verify OAuth and SAML callback URLs in `config/initializers/` before deploying to new environments.
+- Secrets live in `config/credentials.yml.enc`; never commit `config/master.key`. For containers, pass `RAILS_MASTER_KEY`.
+- OAuth/OIDC/SAML keys are stored outside the repo; see `README.md` for generation commands.
