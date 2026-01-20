@@ -113,7 +113,6 @@ gem 'bootsnap', '>= 1.18.4', require: false
 group :production, :staging do
   gem 'dalli'
   gem 'minitest'
-  gem 'rorvswild'
 end
 
 group :development, :test do
