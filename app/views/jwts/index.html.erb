@@ -23,11 +23,11 @@
           <%= form_tag jwts_path, class: 'form-inline' do -%>
             <div class="form-group mx-2">
               <label class="mr-1"><%= t(".form.aud") -%>：</label>
-              <%= text_field_tag "aud", nil, class: 'form-control' %>
+              <%= text_field_tag "aud", params[:audience].presence || params[:aud], class: 'form-control' %>
             </div>
             <div class="form-group mx-2">
               <label class="mr-1"><%= t(".form.exp_hours") -%>：</label>
-              <%= text_field_tag "exp_hours", nil, class: 'form-control' %>
+              <%= text_field_tag "exp_hours", params[:exp_hours], class: 'form-control' %>
             </div>
             <div><%= submit_tag t(".actions.create"), class: 'btn btn-primary' %></div>
           <% end -%>
