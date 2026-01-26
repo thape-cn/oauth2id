@@ -12,11 +12,12 @@ module API
           chinese_name: profile&.chinese_name || u.username,
           clerk_code: profile&.clerk_code,
           opencode_api_key: profile&.opencode_api_key.presence || Rails.application.credentials.opencode_api_key,
-          kimi_api_key: Rails.application.credentials.kimi_api_key,
-          siliconflow_cn_api_key: Rails.application.credentials.siliconflow_cn_api_key,
-          moonshot_api_key: Rails.application.credentials.moonshot_api_key,
-          exa_api_key: Rails.application.credentials.exa_api_key,
-          deepseek_api_key: Rails.application.credentials.deepseek_api_key,
+          kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
+          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
+          moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
+          exa_api_key: profile&.exa_api_key.presence || Rails.application.credentials.exa_api_key,
+          deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
+          cerebras_api_key: profile&.cerebras_api_key.presence || Rails.application.credentials.cerebras_api_key,
           email: u.email
         }
       else
