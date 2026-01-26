@@ -19,7 +19,18 @@ class SettingsController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:title, :gender, :phone, :opencode_api_key)
+    params.require(:profile).permit(
+      :title,
+      :gender,
+      :phone,
+      :opencode_api_key,
+      :kimi_api_key,
+      :siliconflow_cn_api_key,
+      :moonshot_api_key,
+      :exa_api_key,
+      :deepseek_api_key,
+      :cerebras_api_key
+    )
   end
 
   def update_profile
