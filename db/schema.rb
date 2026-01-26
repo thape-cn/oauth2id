@@ -164,10 +164,17 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_12_115900) do
     t.string "major_name"
     t.date "leave_company_date"
     t.string "th_code"
+    t.string "opencode_api_key"
+    t.string "kimi_api_key"
+    t.string "siliconflow_cn_api_key"
+    t.string "moonshot_api_key"
+    t.string "exa_api_key"
+    t.string "deepseek_api_key"
+    t.string "cerebras_api_key"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "user_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "user_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "oauth_application_id"
     t.boolean "enable", default: true
