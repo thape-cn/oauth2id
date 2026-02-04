@@ -33,15 +33,15 @@ module API
       else
         render json: {
           chinese_name: profile&.chinese_name || u.username,
-          clerk_code: 'No access',
+          clerk_code: 'No Zen',
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
-          opencode_api_key: nil,
+          opencode_api_key: profile&.opencode_api_key.presence,
           kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
-          siliconflow_cn_api_key: nil,
-          moonshot_api_key: nil,
-          exa_api_key: nil,
+          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
+          moonshot_api_key: profile&.moonshot_api_key.presence,
+          exa_api_key: profile&.exa_api_key.presence,
           deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
-          cerebras_api_key: nil,
+          cerebras_api_key: profile&.cerebras_api_key.presence,
           email: u.email
         }
       end
