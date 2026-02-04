@@ -11,7 +11,7 @@ module API
       u = current_user
       profile = u.profile
       has_access = u.user_allowed_applications.find_by(oauth_application_id: 60, enable: true) && (request.headers['JWT-AUD'] == THAPE_SSO_BEARER_AUDIENCE || request.headers['JWT-AUD'] == 'CAD')
-      should_issue_thape_sso_token = has_access && request_sigma_agents_token?
+      should_issue_thape_sso_token = request_sigma_agents_token?
       thape_sso_bearer_api_key = if should_issue_thape_sso_token
                                    issue_thape_sso_bearer_api_key(u)
                                  end
