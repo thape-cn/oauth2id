@@ -36,11 +36,11 @@ module API
           clerk_code: 'No access',
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: nil,
-          kimi_api_key: nil,
+          kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
           siliconflow_cn_api_key: nil,
           moonshot_api_key: nil,
           exa_api_key: nil,
-          deepseek_api_key: nil,
+          deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
           cerebras_api_key: nil,
           email: u.email
         }
