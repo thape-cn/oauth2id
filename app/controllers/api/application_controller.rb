@@ -38,7 +38,7 @@ module API
           opencode_api_key: profile&.opencode_api_key.presence,
           kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
-          moonshot_api_key: profile&.moonshot_api_key.presence,
+          moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence,
           deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
           cerebras_api_key: profile&.cerebras_api_key.presence,
