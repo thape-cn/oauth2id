@@ -9,7 +9,7 @@
     "datatables": "^1.10.18",
     "jqtree": "1.7.5",
     "regenerator-runtime": "^0.13.11",
-    "semver": "^7.7.3",
+    "semver": "^7.7.4",
     "stimulus": "^2.0.0",
     "vali-admin": "^2.4.1",
     "ws": "~8.18.3"
@@ -34,7 +34,7 @@
     "mime-db": "~1.54.0",
     "sass-loader": "~10.5.2",
     "ws": "~8.18.3",
-    "semver": "^7.7.3"
+    "semver": "^7.7.4"
   },
-  "packageManager": "pnpm@10.28.1"
+  "packageManager": "pnpm@10.30.2"
 }
