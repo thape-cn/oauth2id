@@ -58,11 +58,11 @@ Doorkeeper::OpenidConnect.configure do
       end
     end
 
-    normal_claim :clerk_code, scope: :clerk_code do |resource_owner|
+    claim :clerk_code, scope: :clerk_code, response: %i[user_info id_token] do |resource_owner|
       resource_owner.profile&.clerk_code
     end
 
-    normal_claim :chinese_name, scope: :chinese_name do |resource_owner|
+    claim :chinese_name, scope: :chinese_name, response: %i[user_info id_token] do |resource_owner|
       resource_owner.profile&.chinese_name
     end
 
