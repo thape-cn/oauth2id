@@ -1,8 +1,8 @@
 namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
-    :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4nd_level_departments,
-    :sync_5nd_level_departments, :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
+    :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4th_level_departments,
+    :sync_5th_level_departments, :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -39,7 +39,7 @@ namespace :sync_yxt do
   end
 
   desc 'Sync the 4nd level departments'
-  task sync_4nd_level_departments: :environment do
+  task sync_4th_level_departments: :environment do
     puts 'Sync the 4nd level departments'
     root_department_ids = Department.where(managed_by_department_id: nil).pluck(:id)
     first_level_department_ids = Department.where(managed_by_department_id: root_department_ids).pluck(:id)
@@ -50,7 +50,7 @@ namespace :sync_yxt do
   end
 
   desc 'Sync the 5nd level departments'
-  task sync_5nd_level_departments: :environment do
+  task sync_5th_level_departments: :environment do
     puts 'Sync the 5nd level departments'
     root_department_ids = Department.where(managed_by_department_id: nil).pluck(:id)
     first_level_department_ids = Department.where(managed_by_department_id: root_department_ids).pluck(:id)
