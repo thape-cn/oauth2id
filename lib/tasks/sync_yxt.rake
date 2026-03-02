@@ -8,8 +8,7 @@ namespace :sync_yxt do
   task sync_departments_with_no_parent: :environment do
     puts 'Sync the no parent departments'
     root_departments = yxt_department(nil)
-    res = Yxt.sync_ous(root_departments)
-    puts res.body.to_s
+    sync_yxt_departments(root_departments)
   end
 
   desc 'Sync the 1st level departments'
@@ -17,8 +16,7 @@ namespace :sync_yxt do
     puts 'Sync the 1st level departments'
     root_department_ids = Department.where(managed_by_department_id: nil).pluck(:id)
     first_level_departments = yxt_department(root_department_ids)
-    res = Yxt.sync_ous(first_level_departments)
-    puts res.body.to_s
+    sync_yxt_departments(first_level_departments)
   end
 
   desc 'Sync the 2nd level departments'
@@ -27,8 +25,7 @@ namespace :sync_yxt do
     root_department_ids = Department.where(managed_by_department_id: nil).pluck(:id)
     first_level_department_ids = Department.where(managed_by_department_id: root_department_ids).pluck(:id)
     second_level_departments = yxt_department(first_level_department_ids)
-    res = Yxt.sync_ous(second_level_departments)
-    puts res.body.to_s
+    sync_yxt_departments(second_level_departments)
   end
 
   desc 'Sync the 3rd level departments'
@@ -38,8 +35,7 @@ namespace :sync_yxt do
     first_level_department_ids = Department.where(managed_by_department_id: root_department_ids).pluck(:id)
     second_level_department_ids = Department.where(managed_by_department_id: first_level_department_ids).pluck(:id)
     third_level_departments = yxt_department(second_level_department_ids)
-    res = Yxt.sync_ous(third_level_departments)
-    puts res.body.to_s
+    sync_yxt_departments(third_level_departments)
   end
 
   desc 'Sync the 4nd level departments'
@@ -50,8 +46,7 @@ namespace :sync_yxt do
     second_level_department_ids = Department.where(managed_by_department_id: first_level_department_ids).pluck(:id)
     third_level_department_ids = Department.where(managed_by_department_id: second_level_department_ids).pluck(:id)
     fourth_level_departments = yxt_department(third_level_department_ids)
-    res = Yxt.sync_ous(fourth_level_departments)
-    puts res.body.to_s
+    sync_yxt_departments(fourth_level_departments)
   end
 
   desc 'Sync the 5nd level departments'
@@ -63,8 +58,7 @@ namespace :sync_yxt do
     third_level_department_ids = Department.where(managed_by_department_id: second_level_department_ids).pluck(:id)
     fourth_level_department_ids = Department.where(managed_by_department_id: third_level_department_ids).pluck(:id)
     fifth_level_departments = yxt_department(fourth_level_department_ids)
-    res = Yxt.sync_ous(fifth_level_departments)
-    puts res.body.to_s
+    sync_yxt_departments(fifth_level_departments)
   end
 
   desc 'Sync the position to YXT'
@@ -156,14 +150,25 @@ namespace :sync_yxt do
 
   def yxt_department(managed_by_department_ids)
     Department.where(managed_by_department_id: managed_by_department_ids).collect do |d|
-      {
-        id: d.id,
-        parentId: d.managed_by_department_id,
-        ouName: d.name,
-        orderIndex: d.dept_code.gsub(/[^0-9,.]/, ""),
-        description: d.dept_code,
-        users: []
+      dept_hash = {
+        thirdId: d.id.to_s,
+        name: d.name,
+        description: d.company_name,
+        code: d.dept_code
       }
+
+      dept_hash[:parentThirdId] = d.managed_by_department_id.to_s if d.managed_by_department_id.present?
+
+      order_index = d.dept_code.to_s.gsub(/[^0-9]/, '')
+      dept_hash[:orderIndex] = order_index.to_i if order_index.present?
+      dept_hash
+    end
+  end
+
+  def sync_yxt_departments(departments)
+    departments.each do |department|
+      res = Yxt.depts_sync(department)
+      puts res.body.to_s
     end
   end
 
