@@ -194,13 +194,14 @@ WHERE ISMAINJOB = 'Y' and WORK_ENDDATE is null
 
   def self.nc_positions
     NcUap.connection.select_rows("
-select om_post.postname，om_post.pk_post, om_postseries.postseriesname, om_post.pk_DEPT,
+select om_post.postname, om_post.pk_post, om_postseries.postseriesname, om_postseries.pk_postseries,
+       om_post.pk_DEPT,
        om_post.pk_poststd, om_post1.postcode AS b_postcode, om_post1.postname AS b_postname,
        NC6337.bd_defdoc.code AS classify_post, NC6337.om_joblevel.name AS joblevelname
 FROM NC6337.om_post om_post
 INNER JOIN NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
 INNER JOIN NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
-LEFT JOIN NC6337.bd_defdoc ON NC6337.om_post1.worktype = bd_defdoc.pk_defdoc
+LEFT JOIN NC6337.bd_defdoc ON om_post1.worktype = bd_defdoc.pk_defdoc
 LEFT JOIN NC6337.om_joblevel ON NC6337.om_joblevel.pk_joblevel = om_post.glbdef3
 WHERE om_post.postname <> '发薪人员'
 ") # 跳过导入发薪人员
@@ -212,16 +213,18 @@ WHERE om_post.postname <> '发薪人员'
       post_name = p[0]
       pk_post = p[1]
       postseriesname = p[2]
-      pk_dept = p[3]
-      pk_poststd = p[4]
-      b_postcode = p[5]
-      b_postname = p[6]
-      classify_post = p[7]
-      job_level_name = p[8]
+      postseries_id = p[3]
+      pk_dept = p[4]
+      pk_poststd = p[5]
+      b_postcode = p[6]
+      b_postname = p[7]
+      classify_post = p[8]
+      job_level_name = p[9]
 
       position = Position.find_or_create_by!(nc_pk_post: pk_post) do |pos|
         pos.name = post_name
         pos.functional_category = postseriesname
+        pos.functional_category_id = postseries_id
         pos.nc_pk_post = pk_post
         pos.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
         pos.pk_poststd = pk_poststd
@@ -232,6 +235,7 @@ WHERE om_post.postname <> '发薪人员'
       end
       position.name = post_name
       position.functional_category = postseriesname
+      position.functional_category_id = postseries_id
       position.nc_pk_post = pk_post
       position.department_id = Department.find_by(nc_pk_dept: pk_dept)&.id
       position.pk_poststd = pk_poststd
