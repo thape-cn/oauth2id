@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
-  create_table "department_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "department_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "department_id", null: false
     t.bigint "oauth_application_id", null: false
     t.datetime "created_at", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["oauth_application_id"], name: "index_department_allowed_applications_on_oauth_application_id"
   end
 
-  create_table "department_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "department_users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "department_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: nil, null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["user_id"], name: "index_department_users_on_user_id"
   end
 
-  create_table "departments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "departments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.integer "position"
     t.integer "managed_by_department_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.string "dept_category"
   end
 
-  create_table "oauth_access_grants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "oauth_access_grants", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "resource_owner_id", null: false
     t.bigint "application_id", null: false
     t.string "token", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
-  create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "resource_owner_id"
     t.bigint "application_id"
     t.string "token", null: false
@@ -86,7 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
   end
 
-  create_table "oauth_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "oauth_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "uid", null: false
     t.string "secret", null: false
@@ -104,13 +104,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
-  create_table "oauth_openid_requests", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "oauth_openid_requests", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "access_grant_id", null: false
     t.string "nonce", null: false
     t.index ["access_grant_id"], name: "fk_rails_77114b3b09"
   end
 
-  create_table "position_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "position_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "position_id", null: false
     t.bigint "oauth_application_id", null: false
     t.datetime "created_at", null: false
@@ -119,7 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["position_id"], name: "index_position_allowed_applications_on_position_id"
   end
 
-  create_table "position_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "position_users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "position_id", null: false
     t.bigint "user_id", null: false
     t.boolean "main_position", default: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["user_id"], name: "index_position_users_on_user_id"
   end
 
-  create_table "positions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "positions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "name"
     t.string "functional_category"
     t.datetime "created_at", precision: nil, null: false
@@ -183,7 +183,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
   end
 
-  create_table "user_sign_in_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "user_sign_in_histories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "sign_in_at", precision: nil
     t.text "user_agent"
@@ -191,7 +191,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -225,7 +225,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.index ["yxt_position_id"], name: "index_users_on_yxt_position_id"
   end
 
-  create_table "wechat_event_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "wechat_event_histories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.integer "create_time"
     t.string "event"
     t.string "change_type"
@@ -238,7 +238,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_26_094500) do
     t.datetime "updated_at", precision: nil, null: false
   end
 
-  create_table "yxt_positions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "yxt_positions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "position_name"
     t.string "prefix_paths"
     t.datetime "created_at", null: false
