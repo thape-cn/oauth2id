@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/yxt-api
-  revision: add83ab7bab7d45d045db2ab74ea932d7fc90200
+  revision: ce636d165ea4388ac58333481defac90d596a76c
   branch: master
   specs:
     yxt-api (0.1.0)
