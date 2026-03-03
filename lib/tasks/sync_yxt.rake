@@ -62,9 +62,9 @@ namespace :sync_yxt do
     sync_yxt_departments(fifth_level_departments)
   end
 
-  desc 'Sync the position_grade to YXT'
-  task sync_position_grade: :environment do
-    puts 'Sync the yxt_position_grades'
+  desc 'Sync the position_catalog to YXT'
+  task sync_position_catalog: :environment do
+    puts 'Sync the yxt_position_catalogs'
     Position.where.not(functional_category_id: nil)
             .where.not(functional_category: [nil, ''])
             .select(:functional_category_id, :functional_category)
@@ -77,12 +77,12 @@ namespace :sync_yxt do
         name: functional_category,
         thirdId: functional_category_id
       }
-      puts "Yxt.positiongrades_sync(pos): #{pos}"
-      res = Yxt.positiongrades_sync(pos)
+      puts "Yxt.positioncatalogs_sync(pos): #{pos}"
+      res = Yxt.positioncatalogs_sync(pos)
       if res.respond_to?(:body)
         puts res.body.to_s
       else
-        puts "Yxt.positiongrades_sync error response: #{res.inspect}"
+        puts "Yxt.positioncatalogs_sync error response: #{res.inspect}"
       end
     end
   end
