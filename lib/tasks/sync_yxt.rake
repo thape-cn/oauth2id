@@ -2,7 +2,8 @@ namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
     :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4th_level_departments,
-    :sync_5th_level_departments, :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
+    :sync_5th_level_departments, :sync_position_grade,
+    :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -59,6 +60,31 @@ namespace :sync_yxt do
     fourth_level_department_ids = Department.where(managed_by_department_id: third_level_department_ids).pluck(:id)
     fifth_level_departments = yxt_department(fourth_level_department_ids)
     sync_yxt_departments(fifth_level_departments)
+  end
+
+  desc 'Sync the position_grade to YXT'
+  task sync_position_grade: :environment do
+    puts 'Sync the yxt_position_grades'
+    Position.where.not(functional_category_id: nil)
+            .where.not(functional_category: [nil, ''])
+            .select(:functional_category_id, :functional_category)
+            .distinct
+            .order(:functional_category_id, :functional_category)
+            .pluck(:functional_category_id, :functional_category)
+            .each do |functional_category_id, functional_category|
+      puts "position_grade: #{functional_category_id} - #{functional_category}"
+      pos = {
+        name: functional_category,
+        thirdId: functional_category_id
+      }
+      puts "Yxt.positiongrades_sync(pos): #{pos}"
+      res = Yxt.positiongrades_sync(pos)
+      if res.respond_to?(:body)
+        puts res.body.to_s
+      else
+        puts "Yxt.positiongrades_sync error response: #{res.inspect}"
+      end
+    end
   end
 
   desc 'Sync the position to YXT'
