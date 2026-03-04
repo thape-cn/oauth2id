@@ -119,10 +119,8 @@ namespace :sync_yxt do
       next if p.users.blank?
 
       puts "positions: #{p.id}"
-      prefix = p.functional_category
-      position_name = "#{prefix}—#{p.name}"
       pos = {
-        name: position_name,
+        name: p.name,
         thirdId: "#{p.id}",
         catalogThirdId: p.functional_category_id,
         gradeThirdId: p.b_postcode,
