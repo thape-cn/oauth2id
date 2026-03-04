@@ -120,7 +120,7 @@ namespace :sync_yxt do
 
       puts "positions: #{p.id}"
       prefix = p.functional_category
-      position_name = "#{prefix}-#{p.name}"
+      position_name = "#{prefix}—#{p.name}"
       pos = {
         name: position_name,
         thirdId: "#{p.id}",
