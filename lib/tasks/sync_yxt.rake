@@ -115,16 +115,21 @@ namespace :sync_yxt do
   desc 'Sync the position to YXT'
   task sync_yxt_positions: :environment do
     puts 'Sync the yxt_positions'
-    YxtPosition.order(:id).find_in_batches(batch_size: 20) do |positions|
-      puts "positions: #{positions.pluck(:id)}"
-      pos = positions.collect do |p|
-        {
-          pNames: p.prefix_paths,
-          pNo: p.id
-        }
-      end
-      puts "Yxt.insert_positions(pos): #{pos}"
-      res = Yxt.insert_positions(pos)
+    Position.order(:id).find_each do |p|
+      next if p.users.blank?
+
+      puts "positions: #{p.id}"
+      prefix = p.functional_category
+      position_name = "#{prefix};#{p.name}"
+      pos = {
+        name: position_name,
+        thirdId: p.id,
+        catalogThirdId: p.functional_category_id,
+        gradeThirdId: p.b_postcode,
+        code: p.post_level,
+      }
+      puts "Yxt.positions_sync(pos): #{pos}"
+      res = Yxt.positions_sync(pos)
       puts res.body.to_s
     end
   end
