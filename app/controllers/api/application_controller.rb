@@ -33,7 +33,7 @@ module API
       else
         render json: {
           chinese_name: profile&.chinese_name || u.username,
-          clerk_code: 'No Zen',
+          clerk_code: (profile&.opencode_api_key.present? ? "🔑#{profile&.clerk_code}" : 'No Zen'),
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence,
           kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
