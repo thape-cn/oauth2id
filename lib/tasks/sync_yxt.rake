@@ -1,3 +1,5 @@
+require 'json'
+
 namespace :sync_yxt do
   desc "Sync department, positions and users data with NC UAP"
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
@@ -79,11 +81,7 @@ namespace :sync_yxt do
       }
       puts "Yxt.positioncatalogs_sync(pos): #{pos}"
       res = Yxt.positioncatalogs_sync(pos)
-      if res.respond_to?(:body)
-        puts res.body.to_s
-      else
-        puts "Yxt.positioncatalogs_sync error response: #{res.inspect}"
-      end
+      print_yxt_response(res, context: 'Yxt.positioncatalogs_sync')
     end
   end
 
@@ -104,11 +102,7 @@ namespace :sync_yxt do
       }
       puts "Yxt.positiongrades_sync(pos): #{pos}"
       res = Yxt.positiongrades_sync(pos)
-      if res.respond_to?(:body)
-        puts res.body.to_s
-      else
-        puts "Yxt.positiongrades_sync error response: #{res.inspect}"
-      end
+      print_yxt_response(res, context: 'Yxt.positiongrades_sync')
     end
   end
 
@@ -123,12 +117,12 @@ namespace :sync_yxt do
         name: p.name,
         thirdId: "#{p.id}",
         catalogThirdId: p.functional_category_id,
-        gradeThirdId: p.b_postcode,
-        code: p.post_level,
+        gradeThirdId: "#{p.b_postcode}",
+        code: p.post_level
       }
       puts "Yxt.positions_sync(pos): #{pos}"
       res = Yxt.positions_sync(pos)
-      puts res.body.to_s
+      print_yxt_response(res, context: 'Yxt.positions_sync')
     end
   end
 
@@ -179,7 +173,7 @@ namespace :sync_yxt do
         }
       end
       res = Yxt.sync_users(yxt_users)
-      puts res.body.to_s
+      print_yxt_response(res, context: 'Yxt.sync_users')
     end
   end
 
@@ -190,7 +184,7 @@ namespace :sync_yxt do
       puts "users: #{users.pluck(:id)}"
       user_names = users.pluck(:username)
       res = Yxt.disable_users(user_names)
-      puts res.body.to_s
+      print_yxt_response(res, context: 'Yxt.disable_users')
     end
   end
 
@@ -214,7 +208,7 @@ namespace :sync_yxt do
   def sync_yxt_departments(departments)
     departments.each do |department|
       res = Yxt.depts_sync(department)
-      puts res.body.to_s
+      print_yxt_response(res, context: 'Yxt.depts_sync')
     end
   end
 
@@ -223,7 +217,28 @@ namespace :sync_yxt do
     User.all.order(:id).find_in_batches(batch_size: 100) do |users|
       user_names = users.pluck(:username)
       res = Yxt.enable_users(user_names)
-      puts res.body.to_s
+      print_yxt_response(res, context: 'Yxt.enable_users')
     end
+  end
+
+  def print_yxt_response(response, context: nil)
+    unless response.respond_to?(:body)
+      puts "#{context} error response: #{response.inspect}"
+      return
+    end
+
+    body = response.body.to_s
+    return if yxt_response_success?(body)
+
+    puts body
+  end
+
+  def yxt_response_success?(body)
+    payload = JSON.parse(body)
+    return false unless payload.is_a?(Hash)
+
+    payload['msg'].to_s.casecmp('success').zero? && payload['subMsg'].to_s.casecmp('success').zero?
+  rescue JSON::ParserError
+    false
   end
 end
