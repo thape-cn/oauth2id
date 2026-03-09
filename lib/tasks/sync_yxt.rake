@@ -127,51 +127,37 @@ namespace :sync_yxt do
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
-    User.where(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
-      puts "users: #{users.pluck(:id)}"
-      yxt_users = users.collect do |u|
-        main_position = u.position_users.find_by(main_position: true)&.position
-        main_position = u.position_users.last&.position if main_position.nil?
+    User.where(locked_at: nil).order(:id).find_each do |u|
+      main_position = u.position_users.find_by(main_position: true)&.position
+      main_position = u.position_users.last&.position if main_position.nil?
 
-        dept = if main_position.present? && main_position.department.present?
-                 main_position.department
-               else
-                 u.departments.first
-               end
+      dept = if main_position.present? && main_position.department.present?
+               main_position.department
+             else
+               u.departments.first
+             end
 
-        department_name = if dept.present? && dept.managed_by_department&.name&.end_with?('有限公司')
-                            dept.name
-                          elsif dept.present?
-                            "#{dept.managed_by_department&.name}-#{dept.name}"
-                          else
-                            puts "User id: #{u.id} name: #{u.username} no department"
-                          end
+      yxt_user = {
+        thirdUserId: u.id,
+        username: u.yxt_user_name,
+        fullname: u&.profile&.chinese_name || u.username,
+        userNo: u&.profile&.clerk_code,
+        email: u.email,
+        mobile: u&.profile&.phone,
+        birthday: yxt_date(u&.profile&.birthdate),
+        deptThirdId: dept.id.to_s,
+        parttimeDeptThirdIds: (u.departments.collect { |d| d.id.to_s } - [dept.id.to_s]).join(','),
+        positionThirdId: main_position.id.to_s,
+        parttimePositionThirdIds: (u.positions.collect { |p| p.id.to_s } - [main_position.id.to_s]).join(','),
+        gradeThirdId: main_position.b_postcode,
+        hireDate: yxt_date(u&.profile&.entry_company_date),
+        gender: (u&.profile.blank? ? '0' : (u&.profile.gender ? '1' : '2')),
+        distinctType: 1, # 用户唯一标识判断 thirdUserId
+      }
 
-        {
-          id: u.id,
-          userName: u.yxt_user_name,
-          password: '',
-          cnName: u&.profile&.chinese_name || u.username,
-          userNo: u&.profile&.clerk_code,
-          sex: u.profile.present? ? (u.profile.gender ? '男' : '女') : '',
-          mobile: u&.profile&.phone,
-          isMobileValidated: 1,
-          mail: u.email,
-          orgOuCode: u.departments.last&.id,
-          postionNo: u.yxt_position_id,
-          birthday: u&.profile&.birthdate,
-          entrytime: u&.profile&.entry_company_date,
-          spare1: main_position&.functional_category,
-          spare2: main_position&.b_postname,
-          spare3: dept&.company_name,
-          spare4: department_name,
-          spare5: u&.profile&.th_code,
-          spare6: u&.profile&.leave_company_date,
-          gradeName: u&.profile&.job_level
-        }
-      end
-      res = Yxt.sync_users(yxt_users)
-      print_yxt_response(res, context: 'Yxt.sync_users')
+      puts "Yxt.users_recoversync(yxt_user): #{yxt_user}"
+      res = Yxt.users_recoversync(yxt_user)
+      print_yxt_response(res, context: 'Yxt.users_recoversync')
     end
   end
 
@@ -238,5 +224,11 @@ namespace :sync_yxt do
     payload['msg'].to_s.casecmp('success').zero? && payload['subMsg'].to_s.casecmp('success').zero?
   rescue JSON::ParserError
     false
+  end
+
+  def yxt_date(value)
+    return if value.blank?
+
+    value.strftime("%F")
   end
 end
