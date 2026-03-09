@@ -111,7 +111,6 @@ namespace :sync_yxt do
     Position.order(:id).find_each do |p|
       next if p.users.blank?
 
-      puts "positions: #{p.id}"
       pos = {
         name: p.name,
         thirdId: "#{p.id}",
