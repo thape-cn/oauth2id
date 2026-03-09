@@ -96,7 +96,7 @@ namespace :sync_yxt do
             .pluck(:b_postcode, :b_postname)
             .each do |b_postcode, b_postname|
       pos = {
-        name: b_postname,
+        name: "#{b_postname}-#{b_postcode}",
         thirdId: b_postcode
       }
       puts "Yxt.positiongrades_sync(pos): #{pos}"
