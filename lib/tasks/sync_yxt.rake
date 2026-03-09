@@ -112,7 +112,7 @@ namespace :sync_yxt do
       next if p.users.blank?
 
       pos = {
-        name: p.name,
+        name: "#{p.name}-#{p.id}",
         thirdId: "#{p.id}",
         catalogThirdId: p.functional_category_id,
         gradeThirdId: "#{p.b_postcode}",
