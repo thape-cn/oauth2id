@@ -69,11 +69,11 @@ GIT
 
 GIT
   remote: https://github.com/thape-cn/yxt-api
-  revision: 99b80c87d0213c7aaa447ccae03e696bced6e500
+  revision: 8f6a2d31a343f61e1433090f67b3adb4b19901a9
   branch: master
   specs:
     yxt-api (0.1.0)
-      httpx (= 1.7.2)
+      httpx (~> 1.7.3)
 
 GEM
   remote: https://rubygems.org/
@@ -224,7 +224,6 @@ GEM
       warden (~> 1.2.3)
     digest (3.2.1)
     docile (1.4.1)
-    domain_name (0.6.20240107)
     drb (2.2.3)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -247,9 +246,6 @@ GEM
       net-http (~> 0.5)
     ffaker (2.25.0)
     ffi (1.16.3)
-    ffi-compiler (1.3.2)
-      ffi (>= 1.15.5)
-      rake
     font-awesome-rails (4.7.0.9)
       railties (>= 3.2, < 9.0)
     gitlab (6.1.0)
@@ -261,14 +257,6 @@ GEM
     hashie (5.1.0)
       logger
     http-2 (1.1.3)
-    http (5.3.1)
-      addressable (~> 2.8)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
-    http-cookie (1.1.0)
-      domain_name (~> 0.5)
-    http-form_data (2.3.0)
     httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
@@ -300,9 +288,6 @@ GEM
       logger
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    llhttp-ffi (0.5.1)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
     logger (1.7.0)
     loofah (2.25.0)
       crass (~> 1.0.2)
