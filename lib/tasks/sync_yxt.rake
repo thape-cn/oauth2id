@@ -135,6 +135,8 @@ namespace :sync_yxt do
              else
                u.departments.first
              end
+      next if dept.blank?
+      next if main_position.blank?
 
       yxt_user = {
         thirdUserId: u.id,
