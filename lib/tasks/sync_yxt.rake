@@ -116,7 +116,6 @@ namespace :sync_yxt do
         thirdId: "#{p.id}",
         catalogThirdId: p.functional_category_id,
         gradeThirdId: "#{p.b_postcode}",
-        code: p.post_level
       }
       puts "Yxt.positions_sync(pos): #{pos}"
       res = Yxt.positions_sync(pos)
