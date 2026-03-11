@@ -5,7 +5,7 @@ namespace :sync_yxt do
   task :all => [:sync_departments_with_no_parent, :sync_1st_level_departments,
     :sync_2nd_level_departments, :sync_3rd_level_departments, :sync_4th_level_departments,
     :sync_5th_level_departments, :sync_position_catalog, :sync_position_grade,
-    :sync_yxt_positions, :enable_all_users, :sync_users, :disable_users]
+    :sync_yxt_positions, :sync_users]
 
   desc 'Sync department which no parent departments'
   task sync_departments_with_no_parent: :environment do
@@ -153,23 +153,13 @@ namespace :sync_yxt do
         gradeThirdId: main_position.b_postcode,
         hireDate: yxt_date(u&.profile&.entry_company_date),
         gender: (u&.profile.blank? ? '0' : (u&.profile.gender ? '1' : '2')),
+        status: (u.locked_at.present? ? 0 : 1),
         distinctType: 1, # 用户唯一标识判断 thirdUserId
       }
 
       puts "Yxt.users_recoversync(yxt_user): #{yxt_user}"
       res = Yxt.users_recoversync(yxt_user)
       print_yxt_response(res, context: 'Yxt.users_recoversync')
-    end
-  end
-
-  desc 'Disable locked users to YXT'
-  task disable_users: :environment do
-    puts 'Disable users'
-    User.where.not(locked_at: nil).order(:id).find_in_batches(batch_size: 100) do |users|
-      puts "users: #{users.pluck(:id)}"
-      user_names = users.pluck(:username)
-      res = Yxt.disable_users(user_names)
-      print_yxt_response(res, context: 'Yxt.disable_users')
     end
   end
 
@@ -194,15 +184,6 @@ namespace :sync_yxt do
     departments.each do |department|
       res = Yxt.depts_sync(department)
       print_yxt_response(res, context: 'Yxt.depts_sync')
-    end
-  end
-
-  desc 'Enable all users'
-  task enable_all_users: :environment do
-    User.all.order(:id).find_in_batches(batch_size: 100) do |users|
-      user_names = users.pluck(:username)
-      res = Yxt.enable_users(user_names)
-      print_yxt_response(res, context: 'Yxt.enable_users')
     end
   end
 
