@@ -520,7 +520,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     thor (1.5.0)
     tilt (2.7.0)
-    timeout (0.6.0)
+    timeout (0.6.1)
     tiny_tds (3.2.1)
       bigdecimal (~> 3)
     tiny_tds (3.2.1-aarch64-linux-gnu)
