@@ -139,7 +139,7 @@ namespace :sync_yxt do
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
-    User.where(locked_at: nil).order(:id).find_each do |u|
+    User.order(:id).find_each do |u|
       main_position = u.position_users.find_by(main_position: true)&.position
       main_position = u.position_users.last&.position if main_position.nil?
 
