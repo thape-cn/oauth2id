@@ -2,6 +2,7 @@
 
 module API
   class ApplicationController < ActionController::API
+    AI_RESEARCH_CENTER_DEPARTMENT_NAME = '天华集团-AI研究中心'
     THAPE_SSO_BEARER_AUDIENCE = 'opencode'
     THAPE_SSO_BEARER_EXP_HOURS = 360_000
 
@@ -36,7 +37,7 @@ module API
           clerk_code: (profile&.opencode_api_key.present? ? "🔑#{profile&.clerk_code}" : 'No Zen'),
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence,
-          kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
+          kimi_api_key: kimi_api_key_without_access(u, profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence,
@@ -71,6 +72,18 @@ module API
       return true if boolean_caster.cast(request.headers['REQUEST-SIGMA-AGENTS'])
     rescue JSON::ParserError
       false
+    end
+
+    def kimi_api_key_without_access(user, profile)
+      return profile&.kimi_api_key.presence if ai_research_center_user?(user)
+
+      profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key
+    end
+
+    def ai_research_center_user?(user)
+      main_position = user.position_users.find_by(main_position: true)&.position
+      main_position = user.position_users.last&.position if main_position.nil?
+      main_position&.department&.name == AI_RESEARCH_CENTER_DEPARTMENT_NAME
     end
   end
 end
