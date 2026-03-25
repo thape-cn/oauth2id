@@ -628,7 +628,7 @@ DEPENDENCIES
   nokogiri (~> 1.17.2)
   omniauth-rails_csrf_protection
   omniauth-wechat-oauth2!
-  pagy (~> 9.4.0)
+  pagy
   psych (~> 3.3.4)
   puma
   pundit
