@@ -203,8 +203,7 @@ GEM
     connection_pool (2.5.5)
     crass (1.0.6)
     csv (3.3.5)
-    dalli (5.0.2)
-      logger
+    dalli (3.2.8)
     date (3.5.1)
     debug (1.11.1)
       irb (~> 1.10)
