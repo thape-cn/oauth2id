@@ -155,10 +155,11 @@ namespace :sync_yxt do
              end
       next if dept.blank?
       next if main_position.blank?
-      next if main_position.name.start_with?('实习生')
-      next if main_position.name.end_with?('实习生')
       position_company_names = ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
-      next if (position_company_names & yxt_excluded_company_names).any?
+      yxt_disabled = u.locked_at.present? ||
+                     main_position.name.start_with?('实习生') ||
+                     main_position.name.end_with?('实习生') ||
+                     (position_company_names & yxt_excluded_company_names).any?
 
       yxt_user = {
         thirdUserId: u.id,
@@ -175,7 +176,7 @@ namespace :sync_yxt do
         gradeThirdId: main_position.post_level,
         hireDate: yxt_date(u&.profile&.entry_company_date),
         gender: (u&.profile.blank? ? '0' : (u&.profile.gender ? '1' : '2')),
-        status: (u.locked_at.present? ? 0 : 1),
+        status: (yxt_disabled ? 0 : 1),
         distinctType: 1, # 用户唯一标识判断 thirdUserId
       }
 
