@@ -122,16 +122,17 @@ namespace :sync_yxt do
   task sync_yxt_positions: :environment do
     puts 'Sync the yxt_positions'
     Position.where.not(b_postcode: nil)
+            .where.not(functional_category_id: nil)
             .where.not(b_postname: [nil, ''])
-            .select(:b_postcode, :b_postname, :post_level)
+            .select(:b_postcode, :b_postname, :post_level, :functional_category_id)
             .distinct
-            .order(:b_postcode, :b_postname, :post_level)
-            .pluck(:b_postcode, :b_postname, :post_level)
-            .each do |b_postcode, b_postname, post_level|
+            .order(:b_postcode, :b_postname, :post_level, :functional_category_id)
+            .pluck(:b_postcode, :b_postname, :post_level, :functional_category_id)
+            .each do |b_postcode, b_postname, post_level, functional_category_id|
       pos = {
         name: b_postname,
         thirdId: b_postcode,
-        catalogThirdId: p.functional_category_id,
+        catalogThirdId: functional_category_id,
         gradeThirdId: post_level,
       }
       puts "Yxt.positions_sync(pos): #{pos}"
