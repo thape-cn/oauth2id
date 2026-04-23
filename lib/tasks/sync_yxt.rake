@@ -103,14 +103,14 @@ namespace :sync_yxt do
     puts 'Sync the yxt_position_grade'
     Position.where.not(b_postcode: nil)
             .where.not(b_postname: [nil, ''])
-            .select(:b_postcode, :b_postname)
+            .select(:post_level)
             .distinct
-            .order(:b_postcode, :b_postname)
-            .pluck(:b_postcode, :b_postname)
-            .each do |b_postcode, b_postname|
+            .order(:post_level)
+            .pluck(:post_level)
+            .each do |post_level|
       pos = {
-        name: "#{b_postname}-#{b_postcode}",
-        thirdId: b_postcode
+        name: post_level,
+        thirdId: post_level
       }
       puts "Yxt.positiongrades_sync(pos): #{pos}"
       res = Yxt.positiongrades_sync(pos)
