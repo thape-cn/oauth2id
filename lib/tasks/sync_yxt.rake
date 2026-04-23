@@ -155,6 +155,8 @@ namespace :sync_yxt do
              end
       next if dept.blank?
       next if main_position.blank?
+      next if main_position.name.start_with?('实习生')
+      next if main_position.name.end_with?('实习生')
 
       yxt_user = {
         thirdUserId: u.id,
