@@ -157,6 +157,8 @@ namespace :sync_yxt do
       next if main_position.blank?
       next if main_position.name.start_with?('实习生')
       next if main_position.name.end_with?('实习生')
+      position_company_names = ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
+      next if (position_company_names & yxt_excluded_company_names).any?
 
       yxt_user = {
         thirdUserId: u.id,
@@ -205,6 +207,21 @@ namespace :sync_yxt do
       res = Yxt.depts_sync(department)
       print_yxt_response(res, context: 'Yxt.depts_sync')
     end
+  end
+
+  def yxt_excluded_company_names
+    [
+      '舟山易衡光伏科技有限公司',
+      '上海天华易衡节能科技有限公司',
+      '上海天华迈卓管理咨询有限公司',
+      '天华迈卓（上海）资产管理有限公司',
+      '上海天华易衡光伏科技有限公司',
+      '上海易湃富得环保科技有限公司',
+      '上海环境研究中心有限公司',
+      '上海易湃环境工程技术有限公司',
+      '山东易衡节能科技有限公司',
+      '天华测试组织'
+    ]
   end
 
   def print_yxt_response(response, context: nil)
