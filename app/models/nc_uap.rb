@@ -194,16 +194,27 @@ WHERE ISMAINJOB = 'Y' and WORK_ENDDATE is null
 
   def self.nc_positions
     NcUap.connection.select_rows("
-select om_post.postname, om_post.pk_post, om_postseries.postseriesname, om_postseries.pk_postseries,
+select om_post.postname,
+       om_post.pk_post,
+       om_postseries.postseriesname,
+       om_postseries.pk_postseries,
        om_post.pk_DEPT,
-       om_post.pk_poststd, om_post1.postcode AS b_postcode, om_post1.postname AS b_postname,
-       NC6337.bd_defdoc.code AS classify_post, NC6337.om_joblevel.name AS joblevelname
-FROM NC6337.om_post om_post
-INNER JOIN NC6337.om_postseries om_postseries ON om_post.pk_postseries = om_postseries.pk_postseries
-INNER JOIN NC6337.om_post om_post1 ON om_post.pk_poststd = om_post1.pk_post
-LEFT JOIN NC6337.bd_defdoc ON om_post1.worktype = bd_defdoc.pk_defdoc
-LEFT JOIN NC6337.om_joblevel ON NC6337.om_joblevel.pk_joblevel = om_post.glbdef3
-WHERE om_post.postname <> '发薪人员'
+       om_post.pk_poststd,
+       om_post1.postcode            AS b_postcode,
+       om_post1.postname            AS b_postname,
+       NC6337.bd_defdoc.code        AS classify_post,
+       NC6337.om_joblevel.name      AS joblevelname,
+       om_post1.enablestate
+  FROM NC6337.om_post om_post
+  INNER JOIN NC6337.om_post om_post1
+    ON om_post.pk_poststd = om_post1.pk_post
+ INNER JOIN NC6337.om_postseries om_postseries
+    ON om_post1.pk_postseries = om_postseries.pk_postseries
+  LEFT JOIN NC6337.bd_defdoc
+    ON om_post1.worktype = bd_defdoc.pk_defdoc
+  LEFT JOIN NC6337.om_joblevel
+    ON NC6337.om_joblevel.pk_joblevel = om_post.glbdef3
+ WHERE om_post.postname <> '发薪人员'
 ") # 跳过导入发薪人员
   end
 
