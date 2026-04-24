@@ -157,6 +157,7 @@ namespace :sync_yxt do
       next if main_position.blank?
       position_company_names = ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
       yxt_disabled = u.locked_at.present? ||
+                     u.positions.blank? ||
                      main_position.name.start_with?('实习生') ||
                      main_position.name.end_with?('实习生') ||
                      (position_company_names & yxt_excluded_company_names).any?
