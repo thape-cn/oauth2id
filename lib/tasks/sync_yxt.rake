@@ -153,9 +153,11 @@ namespace :sync_yxt do
              else
                u.departments.first
              end
-      next if dept.blank?
-      next if main_position.blank?
-      position_company_names = ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
+      position_company_names = if main_position.nil?
+        nil
+      else
+        ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
+      end
       yxt_disabled = u.locked_at.present? ||
                      u.positions.blank? ||
                      main_position.name.start_with?('实习生') ||
@@ -170,11 +172,11 @@ namespace :sync_yxt do
         email: u.email,
         mobile: u&.profile&.phone,
         birthday: yxt_date(u&.profile&.birthdate),
-        deptThirdId: dept.id.to_s,
-        parttimeDeptThirdIds: (u.departments.collect { |d| d.id.to_s } - [dept.id.to_s]).join(','),
-        positionThirdId: main_position.b_postcode,
-        parttimePositionThirdIds: (u.positions.collect { |p| p.b_postcode } - [main_position.b_postcode]).join(','),
-        gradeThirdId: main_position.post_level,
+        deptThirdId: dept&.id.to_s,
+        parttimeDeptThirdIds: (u.departments.collect { |d| d.id.to_s } - [dept&.id.to_s]).join(','),
+        positionThirdId: main_position&.b_postcode,
+        parttimePositionThirdIds: (u.positions.collect { |p| p.b_postcode } - [main_position&.b_postcode]).join(','),
+        gradeThirdId: main_position&.post_level,
         hireDate: yxt_date(u&.profile&.entry_company_date),
         gender: (u&.profile.blank? ? '0' : (u&.profile.gender ? '1' : '2')),
         status: (yxt_disabled ? 0 : 1),
