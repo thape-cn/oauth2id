@@ -324,20 +324,23 @@ namespace :sync_yxt do
 
   def yxt_open_id_from_hash(data, wecom_id)
     open_id = data['openId'] || data[:openId] || data['openid'] || data[:openid] ||
+              data['open_userid'] || data[:open_userid] ||
               data['encryptedUserId'] || data[:encryptedUserId] || data['encryptUserId'] || data[:encryptUserId]
     return open_id if open_id.present?
 
     mapped_value = data[wecom_id] || data[wecom_id.to_sym]
     return yxt_open_id_from_data(mapped_value, wecom_id) if mapped_value.present?
 
-    list = data['userIds'] || data[:userIds] || data['users'] || data[:users] || data['list'] || data[:list]
+    list = data['open_userid_list'] || data[:open_userid_list] ||
+           data['userIds'] || data[:userIds] || data['users'] || data[:users] || data['list'] || data[:list]
     yxt_open_id_from_data(list, wecom_id)
   end
 
   def yxt_open_id_from_array(data, wecom_id)
     matched_item = data.find do |item|
       item.is_a?(Hash) && [
-        item['userId'], item[:userId], item['userid'], item[:userid], item['wecomId'], item[:wecomId]
+        item['userId'], item[:userId], item['userid'], item[:userid], item['wecomId'], item[:wecomId],
+        item['user_id'], item[:user_id]
       ].compact.map(&:to_s).include?(wecom_id.to_s)
     end
     return yxt_open_id_from_data(matched_item, wecom_id) if matched_item.present?
