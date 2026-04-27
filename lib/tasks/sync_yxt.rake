@@ -346,7 +346,7 @@ namespace :sync_yxt do
   end
 
   def yxt_wechat_agent_id
-    Rails.application.credentials.wechat_agentid!.to_s
+    Rails.application.credentials.yxt_wecom_agent_id!.to_s
   end
 
   def yxt_wechat_corp_id
