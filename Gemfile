@@ -23,7 +23,7 @@ unless ENV["NO_ORACLE_ENHANCED"]
   gem 'activerecord-oracle_enhanced-adapter'
 end
 unless ENV["NO_TINY_TDS"]
-  gem 'tiny_tds', require: false
+  gem 'tiny_tds', '3.2.1', require: false
 end
 gem 'irb'
 
