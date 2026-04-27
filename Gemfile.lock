@@ -174,7 +174,7 @@ GEM
     bcrypt_pbkdf (1.1.2-arm64-darwin)
     bcrypt_pbkdf (1.1.2-x86_64-darwin)
     benchmark (0.5.0)
-    bigdecimal (4.1.2)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.24.0)
       msgpack (~> 1.2)
@@ -517,6 +517,8 @@ GEM
     timeout (0.6.1)
     tiny_tds (3.2.1)
       bigdecimal (~> 3)
+    tiny_tds (3.2.1-aarch64-linux-gnu)
+      bigdecimal (~> 3)
     tsort (0.2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -647,7 +649,7 @@ DEPENDENCIES
   yxt-api!
 
 RUBY VERSION
-   ruby 3.2.2p53
+  ruby 3.2.2p53
 
 BUNDLED WITH
-   2.6.9
+  4.0.10
