@@ -186,7 +186,8 @@ namespace :sync_yxt do
       puts "Yxt.users_recoversync(yxt_user): #{yxt_user}"
       res = Yxt.users_recoversync(yxt_user)
       yxt_response = print_yxt_response(res, context: 'Yxt.users_recoversync')
-      sync_yxt_user_id(u, yxt_response)
+      yxt_user_id = sync_yxt_user_id(u, yxt_response)
+      sync_yxt_wecom_auth_bund(u, yxt_user_id) if yxt_response.present?
     end
   end
 
@@ -252,10 +253,46 @@ namespace :sync_yxt do
 
   def sync_yxt_user_id(user, yxt_response)
     yxt_user_id = yxt_response&.dig('data', 'id')
-    return if yxt_user_id.blank?
+    return user.profile&.yxt_user_id if yxt_user_id.blank?
 
     profile = user.profile || user.build_profile
     profile.update!(yxt_user_id: yxt_user_id)
+    profile.yxt_user_id
+  end
+
+  def sync_yxt_wecom_auth_bund(user, yxt_user_id)
+    wecom_id = user.profile&.wecom_id
+    if wecom_id.blank? || yxt_user_id.blank?
+      puts "Skip YXT WeCom auth bund: user_id=#{user.id}, " \
+           "wecom_id=#{wecom_id.inspect}, yxt_user_id=#{yxt_user_id.inspect}"
+      return
+    end
+
+    encrypt_payload = {
+      userIds: [wecom_id],
+      type: 0,
+      agentId: yxt_wechat_agent_id,
+      corpId: yxt_wechat_corp_id
+    }
+    puts "Yxt.openuser_userid_encrypt(encrypt_payload): #{encrypt_payload}"
+    encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
+    encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
+    open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
+
+    if open_id.blank?
+      puts "Skip YXT WeCom auth bund: encrypted openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
+      return
+    end
+
+    bund_payload = {
+      agentId: yxt_wechat_agent_id,
+      openId: open_id,
+      type: 1,
+      userId: yxt_user_id
+    }
+    puts "Yxt.auth_bund(bund_payload): #{bund_payload}"
+    bund_res = Yxt.auth_bund(bund_payload)
+    print_yxt_response(bund_res, context: 'Yxt.auth_bund')
   end
 
   def yxt_response_payload(body)
@@ -268,6 +305,52 @@ namespace :sync_yxt do
     return false unless payload.is_a?(Hash)
 
     payload['msg'].to_s.casecmp('success').zero? && payload['subMsg'].to_s.casecmp('success').zero?
+  end
+
+  def yxt_encrypt_open_id(response, wecom_id)
+    yxt_open_id_from_data(response&.dig('data'), wecom_id)
+  end
+
+  def yxt_open_id_from_data(data, wecom_id)
+    case data
+    when Hash
+      yxt_open_id_from_hash(data, wecom_id)
+    when Array
+      yxt_open_id_from_array(data, wecom_id)
+    when String
+      data
+    end
+  end
+
+  def yxt_open_id_from_hash(data, wecom_id)
+    open_id = data['openId'] || data[:openId] || data['openid'] || data[:openid] ||
+              data['encryptedUserId'] || data[:encryptedUserId] || data['encryptUserId'] || data[:encryptUserId]
+    return open_id if open_id.present?
+
+    mapped_value = data[wecom_id] || data[wecom_id.to_sym]
+    return yxt_open_id_from_data(mapped_value, wecom_id) if mapped_value.present?
+
+    list = data['userIds'] || data[:userIds] || data['users'] || data[:users] || data['list'] || data[:list]
+    yxt_open_id_from_data(list, wecom_id)
+  end
+
+  def yxt_open_id_from_array(data, wecom_id)
+    matched_item = data.find do |item|
+      item.is_a?(Hash) && [
+        item['userId'], item[:userId], item['userid'], item[:userid], item['wecomId'], item[:wecomId]
+      ].compact.map(&:to_s).include?(wecom_id.to_s)
+    end
+    return yxt_open_id_from_data(matched_item, wecom_id) if matched_item.present?
+
+    return data.first if data.one? && data.first.is_a?(String)
+  end
+
+  def yxt_wechat_agent_id
+    Rails.application.credentials.wechat_agentid!.to_s
+  end
+
+  def yxt_wechat_corp_id
+    Rails.application.credentials.wechat_corpid!.to_s
   end
 
   def yxt_date(value)
