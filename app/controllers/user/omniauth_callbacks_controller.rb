@@ -46,7 +46,8 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           departments: combine_deparments
         }
         Rails.logger.debug "user_attrs: #{user_attrs}"
-        response1 = HTTP.timeout(4).options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
+        response1 = HTTPX.with(timeout: { request_timeout: 4 })
+                         .options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
         Rails.logger.debug "response1: #{response1}"
       rescue Exception => e
         Rails.logger.debug e
