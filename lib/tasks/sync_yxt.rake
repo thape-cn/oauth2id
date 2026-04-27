@@ -144,7 +144,7 @@ namespace :sync_yxt do
   desc 'Sync the users to YXT'
   task sync_users: :environment do
     puts 'Sync the users'
-    User.order(:id).find_each do |u|
+    User.where(id: 4431).order(:id).find_each do |u|
       main_position = u.position_users.find_by(main_position: true)&.position
       main_position = u.position_users.last&.position if main_position.nil?
 
@@ -185,7 +185,8 @@ namespace :sync_yxt do
 
       puts "Yxt.users_recoversync(yxt_user): #{yxt_user}"
       res = Yxt.users_recoversync(yxt_user)
-      print_yxt_response(res, context: 'Yxt.users_recoversync')
+      yxt_response = print_yxt_response(res, context: 'Yxt.users_recoversync')
+      sync_yxt_user_id(u, yxt_response)
     end
   end
 
@@ -243,18 +244,30 @@ namespace :sync_yxt do
     end
 
     body = response.body.to_s
-    return if yxt_response_success?(body)
+    payload = yxt_response_payload(body)
+    return payload if yxt_response_success?(payload)
 
     puts body
   end
 
-  def yxt_response_success?(body)
-    payload = JSON.parse(body)
+  def sync_yxt_user_id(user, yxt_response)
+    yxt_user_id = yxt_response&.dig('data', 'id')
+    return if yxt_user_id.blank?
+
+    profile = user.profile || user.build_profile
+    profile.update!(yxt_user_id: yxt_user_id)
+  end
+
+  def yxt_response_payload(body)
+    JSON.parse(body)
+  rescue JSON::ParserError
+    nil
+  end
+
+  def yxt_response_success?(payload)
     return false unless payload.is_a?(Hash)
 
     payload['msg'].to_s.casecmp('success').zero? && payload['subMsg'].to_s.casecmp('success').zero?
-  rescue JSON::ParserError
-    false
   end
 
   def yxt_date(value)
