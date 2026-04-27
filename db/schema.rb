@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_02_070000) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_27_000000) do
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "jti", null: false
     t.string "aud", null: false
@@ -171,6 +171,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_02_070000) do
     t.string "exa_api_key"
     t.string "deepseek_api_key"
     t.string "cerebras_api_key"
+    t.string "yxt_user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
