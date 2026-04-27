@@ -109,7 +109,8 @@ class User::SessionsController < Devise::SessionsController
       departments: combine_deparments
     }
     Rails.logger.debug "user_attrs: #{user_attrs}"
-    response1 = HTTP.timeout(4).options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
+    response1 = HTTPX.with(timeout: { request_timeout: 4 })
+                     .options(Rails.application.credentials.sync_white_jwts_url1!, json: user_attrs)
     Rails.logger.debug "response1: #{response1}"
 
     jwt_token = request.env['warden-jwt_auth.token']

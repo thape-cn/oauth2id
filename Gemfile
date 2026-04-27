@@ -10,6 +10,7 @@ gem 'rack', '< 3'
 gem 'rails-i18n'
 
 gem 'mail'
+gem 'httpx'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.7'

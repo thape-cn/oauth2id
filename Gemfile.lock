@@ -616,6 +616,7 @@ DEPENDENCIES
   ffi (~> 1.16.3)
   font-awesome-rails
   gitlab
+  httpx
   ipaddr (~> 1.2)
   ipip-fast
   irb
