@@ -317,7 +317,9 @@ WHERE org_dept.enablestate = '2'
       if parent_department.blank? && department.company_name != '天华集团' # pk_org: '0001A110000000007I8I'
         parent_department = Department.find_by(name: department.company_name)
       end
-      if department.id != parent_department&.id
+      if department.name.start_with?('上海天华结构（')
+        department.update(managed_by_department_id: 464) # 天华集团 id
+      elsif department.id != parent_department&.id
         department.update(managed_by_department_id: parent_department&.id)
       end
     end
