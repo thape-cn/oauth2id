@@ -166,7 +166,7 @@ namespace :sync_yxt do
 
       yxt_user = {
         thirdUserId: u.id,
-        username: u.yxt_user_name,
+        username: u.yxt_wecom_user_name,
         fullname: u&.profile&.chinese_name || u.username,
         userNo: u&.profile&.clerk_code,
         email: u.email,
@@ -261,7 +261,7 @@ namespace :sync_yxt do
   end
 
   def sync_yxt_wecom_auth_bund(user, yxt_user_id)
-    wecom_id = user.profile&.wecom_id
+    wecom_id = user.yxt_wecom_user_name
     if wecom_id.blank? || yxt_user_id.blank?
       puts "Skip YXT WeCom auth bund: user_id=#{user.id}, " \
            "wecom_id=#{wecom_id.inspect}, yxt_user_id=#{yxt_user_id.inspect}"
