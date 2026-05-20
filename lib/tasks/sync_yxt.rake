@@ -278,9 +278,10 @@ namespace :sync_yxt do
     encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
     encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
     open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
+    open_id = yxt_wecom_open_id(user) if open_id.blank?
 
     if open_id.blank?
-      puts "Skip YXT WeCom auth bund: encrypted openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
+      puts "Skip YXT WeCom auth bund: openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
       return
     end
 
@@ -309,6 +310,32 @@ namespace :sync_yxt do
 
   def yxt_encrypt_open_id(response, wecom_id)
     yxt_open_id_from_data(response&.dig('data'), wecom_id)
+  end
+
+  def yxt_wecom_open_id(user)
+    mobile = user.profile&.phone.to_s.strip
+    if mobile.blank?
+      puts "Skip WeCom openid fallback: mobile is blank for user_id=#{user.id}"
+      return
+    end
+
+    puts "Wechat.api.getuserid(mobile): #{mobile}"
+    userid_response = Wechat.api.getuserid(mobile)
+    userid = userid_response&.[]('userid') || userid_response&.[](:userid)
+    if userid.blank?
+      puts "Skip WeCom openid fallback: userid is blank for user_id=#{user.id}, response=#{userid_response}"
+      return
+    end
+
+    puts "Wechat.api.convert_to_openid(userid): #{userid}"
+    openid_response = Wechat.api.convert_to_openid(userid)
+    openid = openid_response&.[]('openid') || openid_response&.[](:openid)
+    if openid.blank?
+      puts "Skip WeCom openid fallback: openid is blank for user_id=#{user.id}, response=#{openid_response}"
+      return
+    end
+
+    openid
   end
 
   def yxt_open_id_from_data(data, wecom_id)
