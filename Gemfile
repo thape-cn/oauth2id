@@ -5,6 +5,8 @@ ruby '>= 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.5'
+gem 'connection_pool', '~> 2.5.5'
+gem 'zeitwerk', '~> 2.6.18'
 # we can not using rack 3 as it change HTTP header like 'Authorization' into small cap 'authorization', so it will break a lot of client application login
 gem 'rack', '< 3'
 gem 'rails-i18n'
@@ -41,7 +43,7 @@ gem 'sprockets'
 
 # Host ourself instead of relay on CDN
 gem 'font-awesome-rails'
-gem 'pagy'
+gem 'pagy', '~> 9.4.0'
 
 gem 'terser'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -62,6 +64,7 @@ gem 'devise'
 # bundle config local.devise-jwt /Users/$(whoami)/git/oss/devise-jwt/
 gem 'devise-jwt', git: 'https://git.thape.com.cn/rails/devise-jwt.git', branch: :main
 gem 'dry-auto_inject', '~> 1.0.1'
+gem 'dry-configurable', '~> 1.3.0'
 gem 'digest', '~> 3.2'
 
 # bundle config local.doorkeeper /Users/$(whoami)/git/oss/doorkeeper/
@@ -112,7 +115,7 @@ gem 'roo', require: false
 gem 'bootsnap', '>= 1.18.4', require: false
 
 group :production, :staging do
-  gem 'dalli'
+  gem 'dalli', '~> 3.2.8'
   gem 'minitest'
 end
 
@@ -142,6 +145,8 @@ group :development do
   # Support cursor / vs code
   gem "ruby-lsp", require: false
   gem "ruby-lsp-rails", require: false
+
+  gem "tidewave"
 end
 
 group :test do
