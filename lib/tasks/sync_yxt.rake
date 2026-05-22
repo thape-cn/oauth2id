@@ -336,6 +336,9 @@ namespace :sync_yxt do
     end
 
     openid
+  rescue Wechat::ResponseError => e
+    puts "Skip WeCom openid fallback: user_id=#{user.id}, error=#{e.message}"
+    nil
   end
 
   def yxt_open_id_from_data(data, wecom_id)
