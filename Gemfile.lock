@@ -34,10 +34,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/wechat
-  revision: 42dce1ab715dcc117e3420641913ab85bcb58901
+  revision: e60a4b2d95659b32ea001c28205456eec5059fd6
   branch: main
   specs:
-    wechat (1.1.0)
+    wechat (1.2.0)
       activesupport (>= 6.0, < 9)
       httpx (>= 1.3.4)
       nokogiri (>= 1.6.0)
@@ -178,7 +178,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.24.4)
+    bootsnap (1.24.5)
       msgpack (~> 1.2)
     builder (3.3.0)
     capistrano (3.20.1)
@@ -306,7 +306,7 @@ GEM
       prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    jbuilder (2.15.0)
+    jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
     jquery-rails (4.6.1)
