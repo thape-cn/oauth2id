@@ -115,7 +115,8 @@ gem 'bootsnap', '>= 1.18.4', require: false
 
 group :production, :staging do
   gem 'dalli', '~> 3.2.8'
-  gem 'minitest'
+  # Rails 7.1's test runner is not compatible with Minitest 6's run signature.
+  gem 'minitest', '< 6'
 end
 
 group :development, :test do

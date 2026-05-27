@@ -341,9 +341,7 @@ GEM
     mime-types-data (3.2026.0414)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.6)
-      drb (~> 2.0)
-      prism (~> 1.5)
+    minitest (5.27.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
     msgpack (1.8.0)
@@ -651,7 +649,7 @@ DEPENDENCIES
   jquery-rails
   listen
   mail
-  minitest
+  minitest (< 6)
   minitest-ci
   mysql2
   net-imap
