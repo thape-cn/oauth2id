@@ -278,7 +278,7 @@ namespace :sync_yxt do
     encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
     encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
     open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
-    open_id = yxt_wecom_open_id(user) if open_id.blank?
+    open_id = yxt_wecom_open_id(user) if open_id.blank? && user.locked_at.blank?
 
     if open_id.blank?
       puts "Skip YXT WeCom auth bund: openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
