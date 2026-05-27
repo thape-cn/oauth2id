@@ -1,5 +1,5 @@
 ---
-image: circleci/ruby:3.0.3-node-browsers
+image: ruby:3.2.9-bookworm
 
 variables:
   NO_ORACLE_ENHANCED: "true"
@@ -7,6 +7,10 @@ variables:
   CACHE_FALLBACK_KEY: "$CI_COMMIT_REF_SLUG"
 
 before_script:
+  - find /etc/apt -type f \( -name '*.list' -o -name '*.sources' \) -exec sed -i 's|http://deb.debian.org|https://deb.debian.org|g' {} +
+  - apt-get update -qq
+  - apt-get install --no-install-recommends -y nodejs npm chromium chromium-driver openssh-client
+  - npm install --global yarn@1.22.22
   - gem install bundler
   - bundle config set path 'vendor'  # Install dependencies into ./vendor/ruby
   - sed -i 's/mutex_m (0.2.0)/mutex_m (0.1.1)/g' Gemfile.lock
