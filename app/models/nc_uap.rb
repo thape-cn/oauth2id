@@ -1,4 +1,35 @@
 class NcUap < ApplicationRecord
+  DEPARTMENT_PARENT_RULES = [
+    {
+      parent_name: '天华建筑',
+      names: [
+        '济南天华建筑设计有限公司',
+        '昆明天华建筑设计有限公司',
+        '贵阳天华建筑设计有限公司',
+        '福州天华建筑设计有限公司',
+        '长沙天华建筑设计有限公司',
+        '爱坤（深圳）建筑设计有限公司',
+        '上海天华医养建筑设计有限公司'
+      ],
+      prefixes: ['上海天华结构（']
+    },
+    {
+      parent_name: '天华室内',
+      names: [],
+      prefixes: ['爱坤（上海）室内']
+    },
+    {
+      parent_name: '其他',
+      names: [],
+      prefixes: [
+        '上海环境',
+        '上海易湃环境工程',
+        '上海环境研究中心',
+        '山东易衡节能科技'
+      ]
+    }
+  ].freeze
+
   # No corresponding table in the DB.
   self.abstract_class = true
   establish_connection :nc_uap unless Rails.env.test?
@@ -313,13 +344,8 @@ WHERE org_dept.enablestate = '2'
 
   def self.sync_managed_by_department_with_fatherorg
     Department.all.each do |department|
-      parent_department = Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
-      if parent_department.blank? && department.company_name != '天华集团' # pk_org: '0001A110000000007I8I'
-        parent_department = Department.find_by(name: department.company_name)
-      end
-      if department.name.start_with?('上海天华结构（')
-        department.update(managed_by_department_id: 464) # 天华集团 id
-      elsif department.id != parent_department&.id
+      parent_department = managed_by_parent_department_for(department)
+      if department.managed_by_department_id != parent_department&.id
         department.update(managed_by_department_id: parent_department&.id)
       end
     end
@@ -399,5 +425,34 @@ where org_orgs.pk_org != '0001A110000000007I8I'
 
   def self.get_need_import_company_name
     Department.where(nc_pk_fatherorg: '~', managed_by_department_id: nil).pluck(:company_name) - ['天华集团']
+  end
+
+  def self.managed_by_parent_department_for(department)
+    classified_parent_department_for(department) ||
+      father_org_parent_department_for(department) ||
+      company_parent_department_for(department)
+  end
+
+  def self.father_org_parent_department_for(department)
+    return if department.nc_pk_fatherorg.blank?
+
+    Department.find_by(nc_pk_dept: department.nc_pk_fatherorg)
+  end
+
+  def self.classified_parent_department_for(department)
+    rule = DEPARTMENT_PARENT_RULES.find do |department_parent_rule|
+      department_parent_rule[:names].include?(department.name) ||
+        department_parent_rule[:prefixes].any? { |prefix| department.name.start_with?(prefix) }
+    end
+    return if rule.blank?
+
+    Department.find_by(name: rule[:parent_name], managed_by_department_id: nil)
+  end
+
+  def self.company_parent_department_for(department)
+    return if department.company_name == '天华集团' # pk_org: '0001A110000000007I8I'
+
+    parent_department = Department.find_by(name: department.company_name)
+    parent_department if parent_department&.id != department.id
   end
 end
