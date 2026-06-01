@@ -153,16 +153,14 @@ namespace :sync_yxt do
              else
                u.departments.first
              end
-      position_company_names = if main_position.nil?
-        nil
-      else
-        ([main_position.company_name] + u.positions.collect(&:company_name)).compact.uniq
-      end
+      position_company_names = u.positions.collect(&:company_name).uniq
+      yxt_excluded_company_user = position_company_names.present? &&
+                                  position_company_names.all? { |name| yxt_excluded_company_names.include?(name) }
       yxt_disabled = u.locked_at.present? ||
                      u.positions.blank? ||
-                     main_position.name.start_with?('实习生') ||
-                     main_position.name.end_with?('实习生') ||
-                     (position_company_names & yxt_excluded_company_names).any?
+                     main_position&.name&.start_with?('实习生') ||
+                     main_position&.name&.end_with?('实习生') ||
+                     yxt_excluded_company_user
 
       yxt_user = {
         thirdUserId: u.id,
