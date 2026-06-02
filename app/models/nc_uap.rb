@@ -16,7 +16,9 @@ class NcUap < ApplicationRecord
     },
     {
       parent_name: '天华室内',
-      names: [],
+      names: [
+        '上海天华室内设计有限公司'
+      ],
       prefixes: ['爱坤（上海）室内']
     },
     {
