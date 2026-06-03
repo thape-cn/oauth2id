@@ -277,8 +277,10 @@ namespace :sync_yxt do
     puts "Yxt.openuser_userid_encrypt(encrypt_payload): #{encrypt_payload}"
     encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
     encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
-    open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
-    open_id = yxt_wecom_open_id(user) if open_id.blank? && user.locked_at.blank?
+    yxt_open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
+    wecom_yxt_open_id = yxt_wecom_open_id(user) if yxt_open_id.blank? && user.locked_at.blank?
+    sync_yxt_open_ids(user, yxt_open_id, wecom_yxt_open_id)
+    open_id = yxt_open_id.presence || wecom_yxt_open_id
 
     if open_id.blank?
       puts "Skip YXT WeCom auth bund: openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
@@ -294,6 +296,16 @@ namespace :sync_yxt do
     puts "Yxt.auth_bund(bund_payload): #{bund_payload}"
     bund_res = Yxt.auth_bund(bund_payload)
     print_yxt_response(bund_res, context: 'Yxt.auth_bund')
+  end
+
+  def sync_yxt_open_ids(user, yxt_open_id, wecom_yxt_open_id)
+    return if user.profile.blank? && yxt_open_id.blank? && wecom_yxt_open_id.blank?
+
+    profile = user.profile || user.build_profile
+    profile.update!(
+      yxt_open_id: yxt_open_id.presence,
+      wecom_yxt_open_id: wecom_yxt_open_id.presence
+    )
   end
 
   def yxt_response_payload(body)
