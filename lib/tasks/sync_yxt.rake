@@ -184,8 +184,10 @@ namespace :sync_yxt do
       puts "Yxt.users_recoversync(yxt_user): #{yxt_user}"
       res = Yxt.users_recoversync(yxt_user)
       yxt_response = print_yxt_response(res, context: 'Yxt.users_recoversync')
-      yxt_user_id = sync_yxt_user_id(u, yxt_response)
-      sync_yxt_wecom_auth_bund(u, yxt_user_id) if yxt_response.present?
+      if not yxt_disabled
+        yxt_user_id = sync_yxt_user_id(u, yxt_response)
+        sync_yxt_wecom_auth_bund(u, yxt_user_id) if yxt_response.present?
+      end
     end
   end
 
