@@ -268,18 +268,21 @@ namespace :sync_yxt do
       return
     end
 
-    encrypt_payload = {
-      userIds: [wecom_id],
-      type: 0,
-      agentId: yxt_wechat_agent_id,
-      corpId: yxt_wechat_corp_id
-    }
-    puts "Yxt.openuser_userid_encrypt(encrypt_payload): #{encrypt_payload}"
-    encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
-    encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
-    yxt_open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
-    sync_yxt_open_id(user, yxt_open_id)
-    open_id = yxt_open_id.presence
+    open_id = user.profile&.yxt_open_id.presence
+    if open_id.blank?
+      encrypt_payload = {
+        userIds: [wecom_id],
+        type: 0,
+        agentId: yxt_wechat_agent_id,
+        corpId: yxt_wechat_corp_id
+      }
+      puts "Yxt.openuser_userid_encrypt(encrypt_payload): #{encrypt_payload}"
+      encrypt_res = Yxt.openuser_userid_encrypt(encrypt_payload)
+      encrypt_response = print_yxt_response(encrypt_res, context: 'Yxt.openuser_userid_encrypt')
+      yxt_open_id = yxt_encrypt_open_id(encrypt_response, wecom_id)
+      sync_yxt_open_id(user, yxt_open_id)
+      open_id = yxt_open_id.presence
+    end
 
     if open_id.blank?
       puts "Skip YXT WeCom auth bund: encrypted openId is blank for user_id=#{user.id}, wecom_id=#{wecom_id}"
