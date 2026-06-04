@@ -36,4 +36,25 @@ class Department < ApplicationRecord
     end
     all_ids.flatten.uniq
   end
+
+  def self.refresh_people_totals!
+    department_people_counts = PositionUser.joins(position: :department)
+                                           .group('departments.id')
+                                           .distinct
+                                           .count(:user_id)
+    company_people_counts = PositionUser.joins(position: :department)
+                                        .where.not(departments: { company_name: [nil, ''] })
+                                        .group('departments.company_name')
+                                        .distinct
+                                        .count(:user_id)
+    now = Time.current
+
+    find_each do |department|
+      department.update_columns(
+        company_total_people: company_people_counts[department.company_name].to_i,
+        department_total_people: department_people_counts[department.id].to_i,
+        updated_at: now
+      )
+    end
+  end
 end
