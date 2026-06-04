@@ -71,4 +71,37 @@ class DepartmentTest < ActiveSupport::TestCase
     assert_equal other, easybalance.reload.managed_by_department
     assert_equal interior, interior_company.reload.managed_by_department
   end
+
+  test 'refresh people totals counts distinct users from position users' do
+    company_a_department = Department.create!(name: 'Company A Department', company_name: 'Company A')
+    company_a_other_department = Department.create!(name: 'Company A Other Department', company_name: 'Company A')
+    company_b_department = Department.create!(name: 'Company B Department', company_name: 'Company B')
+    empty_department = Department.create!(name: 'Empty Department', company_name: 'Company C')
+
+    user = users(:user_eric)
+    other_user = users(:user_demo)
+    first_position = Position.create!(name: 'First Position', department: company_a_department)
+    second_position = Position.create!(name: 'Second Position', department: company_a_department)
+    other_department_position = Position.create!(
+      name: 'Other Department Position',
+      department: company_a_other_department
+    )
+    other_company_position = Position.create!(name: 'Other Company Position', department: company_b_department)
+
+    PositionUser.create!(user: user, position: first_position)
+    PositionUser.create!(user: user, position: second_position)
+    PositionUser.create!(user: user, position: other_department_position)
+    PositionUser.create!(user: other_user, position: other_company_position)
+
+    Department.refresh_people_totals!
+
+    assert_equal 1, company_a_department.reload.department_total_people
+    assert_equal 1, company_a_other_department.reload.department_total_people
+    assert_equal 1, company_b_department.reload.department_total_people
+    assert_equal 0, empty_department.reload.department_total_people
+    assert_equal 1, company_a_department.company_total_people
+    assert_equal 1, company_a_other_department.company_total_people
+    assert_equal 1, company_b_department.company_total_people
+    assert_equal 0, empty_department.company_total_people
+  end
 end

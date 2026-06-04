@@ -8,9 +8,15 @@ namespace :sync_nc_uap do
   end
 
   desc "Sync department, positions and users data with NC UAP"
-  task :all => [:sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
+  task :all => [
+    :sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id,
+    :link_user_to_yxt_position, :sync_department_people_totals
+  ]
 
-  task :all_with_day_one => [:clean_position_department_on_month_day_one, :sync_orgs, :sync_departments, :sync_positions, :sync_users, :sync_old_sso_id, :link_user_to_yxt_position]
+  task :all_with_day_one => [
+    :clean_position_department_on_month_day_one, :sync_orgs, :sync_departments, :sync_positions,
+    :sync_users, :sync_old_sso_id, :link_user_to_yxt_position, :sync_department_people_totals
+  ]
 
   task clean_position_department_on_month_day_one: :environment do
     if Time.now.day == 1
@@ -99,5 +105,11 @@ end
       yxt_position = YxtPosition.find_by!(prefix_paths: position_name, position_name: p.name)
       user.update_columns(yxt_position_id: yxt_position.id)
     end
+  end
+
+  desc 'Refresh department and company people totals from position users'
+  task sync_department_people_totals: :environment do
+    puts 'Refresh department and company people totals'
+    Department.refresh_people_totals!
   end
 end
