@@ -3,33 +3,107 @@ class NcUap < ApplicationRecord
     {
       parent_name: '天华建筑',
       names: [
+        '上海天华建筑设计有限公司',
+        '天津天华北方建筑设计有限公司',
+        '沈阳天华建筑设计有限公司',
+        '北京天华北方建筑设计有限公司',
+        '深圳市天华建筑设计有限公司',
+        '武汉天华华中建筑设计有限公司',
+        '成都天华西南建筑设计有限公司',
+        '西安天华建筑设计有限公司',
+        '重庆天华建筑设计有限公司',
+        '厦门天华建筑设计有限公司',
+        '青岛天华易境建筑设计有限公司',
+        '南京天华江南建筑设计有限公司',
+        '郑州天华建筑设计有限公司',
+        '杭州天华建筑设计有限公司',
+        '广州天华建筑设计有限公司',
+        '合肥天华嘉易建筑设计有限公司',
+        '长沙天华建筑设计有限公司',
+        '上海天华医养建筑设计有限公司',
+        '上海天华嘉易建筑设计有限公司',
+        '上海天华室内设计有限公司',
+        '上海天华城市规划设计有限公司',
+        '上海天华领筑低碳科技有限公司',
+        '上海天华智建科技有限公司',
+        '上海天华室内设计有限公司（嘉易工程）',
+        '深圳天华易筑室内设计有限公司',
+        '武汉天华易筑室内设计有限公司',
+        '上海天华园林景观有限公司',
+        '北京规划',
+        '武汉天华嘉易建筑设计有限公司',
+        '上海易术家互娱科技有限公司',
         '济南天华建筑设计有限公司',
         '昆明天华建筑设计有限公司',
         '贵阳天华建筑设计有限公司',
         '福州天华建筑设计有限公司',
-        '长沙天华建筑设计有限公司',
-        '爱坤（深圳）建筑设计有限公司',
-        '合肥天华嘉易建筑设计有限公司',
-        '上海天华医养建筑设计有限公司'
+        '深圳天华城市规划设计有限公司',
+        '易爱迪（上海）建筑设计有限公司',
+        'EID GROUP LIMITED'
       ],
-      prefixes: ['上海天华结构（']
+      prefixes: [
+        '上海天华结构（',
+        '上海天华机电（'
+      ]
     },
     {
-      parent_name: '天华室内',
+      parent_name: 'AICO',
       names: [
-        '上海天华室内设计有限公司'
-      ],
-      prefixes: ['爱坤（上海）室内']
+        '爱坤（上海）建筑设计有限公司',
+        '爱坤（上海）室内设计咨询有限公司',
+        '爱坤（深圳）建筑设计有限公司'
+      ]
+    },
+    {
+      parent_name: '新业务',
+      names: [
+        '上海易湃富得环保科技有限公司',
+        '上海天华易衡光伏科技有限公司',
+        '上海虹核工程审图有限公司',
+        '上海环境研究中心有限公司',
+        '上海环境',
+        '上海易湃',
+        '上海易湃环境工程',
+        '上海易湃环境工程技术有限公司',
+        '山东易衡节能科技有限公司',
+        '上海天华易衡节能科技有限公司',
+        '上海天华迈卓管理咨询有限公司',
+        '天华迈卓（上海）资产管理有限公司',
+        '舟山易衡光伏科技有限公司',
+        '广德易衡生物能源有限公司'
+      ]
     },
     {
       parent_name: '其他',
-      names: [],
-      prefixes: [
-        '上海环境',
-        '上海易湃环境工程',
-        '上海环境研究中心',
-        '山东易衡节能科技'
-      ]
+      names: [
+        '天华测试组织'
+      ],
+      scoped_names: {
+        '天华总部' => [
+          '总经理办公室',
+          '战略管理部',
+          '财务中心',
+          '人力资源部',
+          '天华教育学院',
+          '流程与信息化部',
+          '综合管理中心',
+          '品牌与公关部',
+          '市场运营中心',
+          '审计委员会',
+          '创新委员会',
+          '科技委员会',
+          '建筑委员会',
+          '结构委员会',
+          '机电委员会',
+          '校企合作委员会',
+          '技术专项中心',
+          '卓越设计中心',
+          '低碳城市发展研究中心',
+          '设计工作室',
+          '住宅产品研究中心',
+          '其他-虚拟（财务成本归结）'
+        ]
+      }
     }
   ].freeze
 
@@ -346,6 +420,7 @@ WHERE org_dept.enablestate = '2'
   end
 
   def self.sync_managed_by_department_with_fatherorg
+    ensure_classification_parent_departments!
     Department.all.each do |department|
       parent_department = managed_by_parent_department_for(department)
       if department.managed_by_department_id != parent_department&.id
@@ -430,6 +505,14 @@ where org_orgs.pk_org != '0001A110000000007I8I'
     Department.where(nc_pk_fatherorg: '~', managed_by_department_id: nil).pluck(:company_name) - ['天华集团']
   end
 
+  def self.ensure_classification_parent_departments!
+    DEPARTMENT_PARENT_RULES.map { |rule| rule[:parent_name] }.uniq.each do |parent_name|
+      Department.find_or_create_by!(name: parent_name, managed_by_department_id: nil) do |department|
+        department.company_name = "#{parent_name}-二级分类"
+      end
+    end
+  end
+
   def self.managed_by_parent_department_for(department)
     classified_parent_department_for(department) ||
       father_org_parent_department_for(department) ||
@@ -444,12 +527,19 @@ where org_orgs.pk_org != '0001A110000000007I8I'
 
   def self.classified_parent_department_for(department)
     rule = DEPARTMENT_PARENT_RULES.find do |department_parent_rule|
-      department_parent_rule[:names].include?(department.name) ||
-        department_parent_rule[:prefixes].any? { |prefix| department.name.start_with?(prefix) }
+      department_matches_parent_rule?(department, department_parent_rule)
     end
     return if rule.blank?
 
     Department.find_by(name: rule[:parent_name], managed_by_department_id: nil)
+  end
+
+  def self.department_matches_parent_rule?(department, rule)
+    rule.fetch(:names, []).include?(department.name) ||
+      rule.fetch(:prefixes, []).any? { |prefix| department.name.start_with?(prefix) } ||
+      rule.fetch(:scoped_names, {}).any? do |company_name, names|
+        department.company_name == company_name && names.include?(department.name)
+      end
   end
 
   def self.company_parent_department_for(department)
