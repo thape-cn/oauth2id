@@ -16,14 +16,13 @@ class DepartmentTest < ActiveSupport::TestCase
       company_name: '天华建筑-二级分类',
       nc_pk_dept: 'architecture'
     )
-    interior = Department.create!(name: '天华室内', company_name: '天华室内-二级分类')
     other = Department.create!(name: '其他', company_name: '其他-二级分类')
     group = Department.create!(name: '天华集团')
-    shanghai_tianhua = Department.create!(
-      name: '上海天华建筑设计有限公司',
-      managed_by_department: architecture
+    guangzhou = Department.create!(
+      name: '广州天华建筑设计有限公司',
+      company_name: '广州天华建筑设计有限公司',
+      managed_by_department: group
     )
-    eid = Department.create!(name: '易爱迪')
 
     structure_company = Department.create!(
       name: '上海天华结构（北方）事业部',
@@ -39,37 +38,46 @@ class DepartmentTest < ActiveSupport::TestCase
       name: '济南天华建筑设计有限公司',
       company_name: '济南天华建筑设计有限公司'
     )
-    shanghai_environment = Department.create!(
-      name: '上海环境',
-      company_name: '上海环境研究中心有限公司',
-      nc_pk_fatherorg: 'architecture',
-      managed_by_department: architecture
-    )
     environment_center = Department.create!(
       name: '上海环境研究中心有限公司',
       company_name: '上海天华建筑设计有限公司',
-      managed_by_department: shanghai_tianhua
+      managed_by_department: architecture
     )
-    easybalance = Department.create!(
-      name: '山东易衡节能科技有限公司',
-      company_name: '上海天华建筑设计有限公司',
-      managed_by_department: shanghai_tianhua
-    )
-    interior_company = Department.create!(
+    aico_company = Department.create!(
       name: '爱坤（上海）室内设计咨询有限公司',
       company_name: '爱坤（上海）室内设计咨询有限公司',
-      managed_by_department: eid
+      managed_by_department: group
+    )
+    new_business_company = Department.create!(
+      name: '上海天华易衡光伏科技有限公司',
+      company_name: '上海天华易衡光伏科技有限公司',
+      managed_by_department: group
+    )
+    hq_department = Department.create!(
+      name: '人力资源部',
+      company_name: '天华总部',
+      managed_by_department: group
+    )
+    branch_department = Department.create!(
+      name: '人力资源部',
+      company_name: '广州天华建筑设计有限公司',
+      managed_by_department: group
     )
 
     NcUap.sync_managed_by_department_with_fatherorg
 
+    aico = Department.find_by!(name: 'AICO', managed_by_department_id: nil)
+    new_business = Department.find_by!(name: '新业务', managed_by_department_id: nil)
+
+    assert_equal architecture, guangzhou.reload.managed_by_department
     assert_equal architecture, structure_company.reload.managed_by_department
     assert_equal structure_company, structure_child.reload.managed_by_department
     assert_equal architecture, jinan.reload.managed_by_department
-    assert_equal other, shanghai_environment.reload.managed_by_department
-    assert_equal other, environment_center.reload.managed_by_department
-    assert_equal other, easybalance.reload.managed_by_department
-    assert_equal interior, interior_company.reload.managed_by_department
+    assert_equal aico, aico_company.reload.managed_by_department
+    assert_equal new_business, new_business_company.reload.managed_by_department
+    assert_equal new_business, environment_center.reload.managed_by_department
+    assert_equal other, hq_department.reload.managed_by_department
+    assert_equal guangzhou, branch_department.reload.managed_by_department
   end
 
   test 'refresh people totals counts distinct users from position users' do
