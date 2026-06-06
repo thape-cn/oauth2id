@@ -76,7 +76,7 @@ deploy_production:
   stage: deploy
   script:
     - bundle install -j $(nproc)
-    - mkdir ~/.ssh
+    - mkdir -p ~/.ssh
     - mv "$SSH_ID_RSA" ~/.ssh/id_rsa
     - mv "$SSH_CONFIG_FILE" ~/.ssh/config
     - bundle exec cap production deploy
