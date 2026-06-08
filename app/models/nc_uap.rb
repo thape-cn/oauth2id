@@ -43,7 +43,7 @@ class NcUap < ApplicationRecord
       ],
       prefixes: [
         '上海天华结构（',
-        '上海天华机电（'
+        '上海天华机电'
       ]
     },
     {
