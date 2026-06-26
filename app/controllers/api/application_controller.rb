@@ -41,7 +41,7 @@ module API
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence,
-          deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
+          deepseek_api_key: deepseek_api_key_without_access(u, profile),
           cerebras_api_key: profile&.cerebras_api_key.presence,
           email: u.email
         }
@@ -78,6 +78,12 @@ module API
       return profile&.kimi_api_key.presence if ai_research_center_user?(user)
 
       profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key
+    end
+
+    def deepseek_api_key_without_access(user, profile)
+      return profile&.deepseek_api_key.presence if ai_research_center_user?(user)
+
+      profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key
     end
 
     def ai_research_center_user?(user)
