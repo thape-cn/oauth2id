@@ -1,0 +1,3 @@
+[mcp_servers.Tidewave]
+url = "http://localhost:3000/tidewave/mcp"
+enabled = true
