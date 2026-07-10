@@ -4,6 +4,22 @@ require 'minitest/mock'
 Rails.application.load_tasks
 
 class SyncYxtTaskTest < ActiveSupport::TestCase
+  test 'uses a non-intern main position and excludes intern positions from YXT sync' do
+    user = users(:user_shin)
+    intern_position = Position.create!(name: '建筑实习生', b_postcode: 'intern-position')
+    primary_position = Position.create!(name: '建筑师', b_postcode: 'primary-position')
+    PositionUser.create!(user: user, position: intern_position, main_position: true)
+    PositionUser.create!(user: user, position: primary_position, main_position: true)
+
+    helper = Object.new
+    main_position, yxt_positions = helper.send(:yxt_user_positions, user)
+
+    assert_equal primary_position, main_position
+    assert_equal [primary_position], yxt_positions
+    assert_not helper.send(:yxt_intern_position?, main_position)
+    assert_not helper.send(:yxt_user_disabled?, user, main_position, yxt_positions)
+  end
+
   test 'wecom auth bund reuses saved yxt open id without encrypt lookup' do
     user = users(:user_eric)
     user.profile.update!(yxt_open_id: 'saved-open-id')

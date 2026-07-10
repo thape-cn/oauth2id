@@ -145,22 +145,14 @@ namespace :sync_yxt do
   task sync_users: :environment do
     puts 'Sync the users'
     User.order(:id).find_each do |u|
-      main_position = u.position_users.find_by(main_position: true)&.position
-      main_position = u.position_users.last&.position if main_position.nil?
+      main_position, yxt_positions = yxt_user_positions(u)
 
       dept = if main_position.present? && main_position.department.present?
                main_position.department
              else
                u.departments.first
              end
-      position_company_names = u.positions.collect(&:company_name).uniq
-      yxt_excluded_company_user = position_company_names.present? &&
-                                  position_company_names.all? { |name| yxt_excluded_company_names.include?(name) }
-      yxt_disabled = u.locked_at.present? ||
-                     u.positions.blank? ||
-                     main_position&.name&.start_with?('实习生') ||
-                     main_position&.name&.end_with?('实习生') ||
-                     yxt_excluded_company_user
+      yxt_disabled = yxt_user_disabled?(u, main_position, yxt_positions)
 
       yxt_user = {
         thirdUserId: u.id,
@@ -173,7 +165,7 @@ namespace :sync_yxt do
         deptThirdId: dept&.id.to_s,
         parttimeDeptThirdIds: (u.departments.collect { |d| d.id.to_s } - [dept&.id.to_s]).join(','),
         positionThirdId: main_position&.b_postcode,
-        parttimePositionThirdIds: (u.positions.collect { |p| p.b_postcode } - [main_position&.b_postcode]).join(','),
+        parttimePositionThirdIds: (yxt_positions.collect { |p| p.b_postcode } - [main_position&.b_postcode]).join(','),
         gradeThirdId: main_position&.post_level,
         hireDate: yxt_date(u&.profile&.entry_company_date),
         gender: (u&.profile.blank? ? '0' : (u&.profile.gender ? '1' : '2')),
@@ -236,6 +228,33 @@ namespace :sync_yxt do
       '福州天华建筑设计有限公司',
       '舟山易衡光伏科技有限公司',
     ]
+  end
+
+  def yxt_user_positions(user)
+    position_users = user.position_users.includes(:position).order(:id).to_a
+    positions = position_users.map(&:position)
+    main_position_users = position_users.select(&:main_position)
+    non_intern_main_position_users = main_position_users.reject { |position_user| yxt_intern_position?(position_user.position) }
+
+    if main_position_users.many? && non_intern_main_position_users.present?
+      main_position = non_intern_main_position_users.first.position
+      return [main_position, positions.reject { |position| yxt_intern_position?(position) }]
+    end
+
+    main_position = main_position_users.first&.position || position_users.last&.position
+    [main_position, positions]
+  end
+
+  def yxt_intern_position?(position)
+    position&.name.to_s.include?('实习生')
+  end
+
+  def yxt_user_disabled?(user, main_position, positions)
+    position_company_names = positions.collect(&:company_name).uniq
+    yxt_excluded_company_user = position_company_names.present? &&
+                                position_company_names.all? { |name| yxt_excluded_company_names.include?(name) }
+
+    user.locked_at.present? || positions.blank? || yxt_intern_position?(main_position) || yxt_excluded_company_user
   end
 
   def print_yxt_response(response, context: nil)
