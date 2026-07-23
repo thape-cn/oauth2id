@@ -3,7 +3,7 @@
     <h1>Oauth2 Install</h1>
   </div>
   <div class="login-box login-box-signup">
-  <%= form_with(model: @new_user, url: install_step2_path, method: :post, html: { class: 'p-4' }) do |f| %>
+  <%= form_with(url: install_step2_path, method: :post, html: { class: 'p-4' }) do |f| %>
       <h3><i class="fa fa-solid fa-users"></i> Import users</h3>
       <div class="form-group">
         <label class="control-label">CSV file</label>
