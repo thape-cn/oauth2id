@@ -1,15 +1,17 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 3.0'
+ruby '>= 3.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 8.1.3'
 gem 'connection_pool', '~> 2.5.5'
 gem 'zeitwerk', '~> 2.6.18'
-# we can not using rack 3 as it change HTTP header like 'Authorization' into small cap 'authorization', so it will break a lot of client application login
-gem 'rack', '< 3'
-gem 'rails-i18n'
+# Temporary: legacy clients perform case-sensitive lookup of the Authorization
+# response header emitted by devise-jwt. Incoming request headers continue to use
+# Rack's CGI-style HTTP_AUTHORIZATION environment key.
+gem 'rack', '~> 2.2.23'
+gem 'rails-i18n', '>= 8.0', '< 9'
 
 gem 'mail'
 gem 'httpx'
@@ -22,7 +24,7 @@ gem 'mysql2'
 unless ENV["NO_ORACLE_ENHANCED"]
   # Use Oracle to fetch NC data
   gem 'ruby-oci8'
-  gem 'activerecord-oracle_enhanced-adapter'
+  gem 'activerecord-oracle_enhanced-adapter', '~> 8.1.4'
 end
 unless ENV["NO_TINY_TDS"]
   gem 'tiny_tds', '3.2.1', require: false
