@@ -595,7 +595,6 @@ DEPENDENCIES
   dry-auto_inject (~> 1.0.1)
   ed25519
   ffaker
-  ffi (~> 1.16.3)
   font-awesome-rails
   gitlab
   httpx
@@ -634,7 +633,6 @@ DEPENDENCIES
   simplecov
   spring (~> 4.2.1)
   sprockets
-  sqlite3 (~> 2.1)
   terser
   tidewave
   tiny_tds (= 3.2.1)
