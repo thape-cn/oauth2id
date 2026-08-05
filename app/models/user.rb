@@ -111,6 +111,8 @@ class User < ApplicationRecord
       'xulu5'
     when 'guojianhuatmp'
       'guojianhua'
+    when 'x'
+      'xuxiaohong'
     else
       yxt_name
     end
