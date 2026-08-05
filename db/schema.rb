@@ -10,78 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_06_04_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_04_000000) do
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "jti", null: false
     t.string "aud", null: false
     t.datetime "exp", precision: nil, null: false
+    t.string "jti", null: false
     t.bigint "user_id", null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
   create_table "department_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "department_id", null: false
     t.bigint "oauth_application_id", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_department_allowed_applications_on_department_id"
     t.index ["oauth_application_id"], name: "index_department_allowed_applications_on_oauth_application_id"
   end
 
   create_table "department_users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "department_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.bigint "department_id", null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "user_id", null: false
     t.index ["department_id"], name: "index_department_users_on_department_id"
     t.index ["user_id"], name: "index_department_users_on_user_id"
   end
 
   create_table "departments", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "position"
-    t.integer "managed_by_department_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "dept_code"
-    t.string "nc_pk_dept"
-    t.string "nc_pk_fatherorg"
+    t.string "company_code"
     t.string "company_name"
+    t.integer "company_total_people", default: 0, null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.integer "department_total_people", default: 0, null: false
+    t.string "dept_category"
+    t.string "dept_code"
     t.integer "enablestate"
     t.string "hrcanceled", limit: 1
-    t.string "company_code"
-    t.string "dept_category"
-    t.integer "company_total_people", default: 0, null: false
-    t.integer "department_total_people", default: 0, null: false
+    t.integer "managed_by_department_id"
+    t.string "name", null: false
+    t.string "nc_pk_dept"
+    t.string "nc_pk_fatherorg"
+    t.integer "position"
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "oauth_access_grants", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "resource_owner_id", null: false
     t.bigint "application_id", null: false
-    t.string "token", null: false
-    t.integer "expires_in", null: false
-    t.text "redirect_uri", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "revoked_at", precision: nil
-    t.string "scopes"
     t.string "code_challenge"
     t.string "code_challenge_method"
+    t.datetime "created_at", precision: nil, null: false
+    t.integer "expires_in", null: false
+    t.text "redirect_uri", null: false
+    t.bigint "resource_owner_id", null: false
+    t.datetime "revoked_at", precision: nil
+    t.string "scopes"
+    t.string "token", null: false
     t.index ["application_id"], name: "index_oauth_access_grants_on_application_id"
     t.index ["resource_owner_id"], name: "index_oauth_access_grants_on_resource_owner_id"
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true
   end
 
   create_table "oauth_access_tokens", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "resource_owner_id"
     t.bigint "application_id"
-    t.string "token", null: false
-    t.string "refresh_token"
-    t.integer "expires_in"
-    t.datetime "revoked_at", precision: nil
     t.datetime "created_at", precision: nil, null: false
-    t.string "scopes"
+    t.integer "expires_in"
     t.string "previous_refresh_token", default: "", null: false
+    t.string "refresh_token"
+    t.bigint "resource_owner_id"
+    t.datetime "revoked_at", precision: nil
+    t.string "scopes"
+    t.string "token", null: false
     t.index ["application_id"], name: "index_oauth_access_tokens_on_application_id"
     t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
     t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
@@ -89,20 +89,20 @@ ActiveRecord::Schema[7.1].define(version: 2026_06_04_000000) do
   end
 
   create_table "oauth_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "uid", null: false
-    t.string "secret", null: false
-    t.text "redirect_uri", null: false
-    t.string "scopes", default: "", null: false
+    t.boolean "allow_function_account_login", default: false
+    t.boolean "allow_login_by_default", default: false
     t.boolean "confidential", default: true, null: false
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "icon", default: "fa-star"
     t.string "div_class", default: "primary"
+    t.string "icon", default: "fa-star"
     t.string "login_url"
-    t.boolean "allow_login_by_default", default: false
+    t.string "name", null: false
+    t.text "redirect_uri", null: false
+    t.string "scopes", default: "", null: false
+    t.string "secret", null: false
     t.boolean "superapp", default: false
-    t.boolean "allow_function_account_login", default: false
+    t.string "uid", null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
@@ -113,117 +113,117 @@ ActiveRecord::Schema[7.1].define(version: 2026_06_04_000000) do
   end
 
   create_table "position_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "position_id", null: false
-    t.bigint "oauth_application_id", null: false
     t.datetime "created_at", null: false
+    t.bigint "oauth_application_id", null: false
+    t.bigint "position_id", null: false
     t.datetime "updated_at", null: false
     t.index ["oauth_application_id"], name: "index_position_allowed_applications_on_oauth_application_id"
     t.index ["position_id"], name: "index_position_allowed_applications_on_position_id"
   end
 
   create_table "position_users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "position_id", null: false
-    t.bigint "user_id", null: false
-    t.boolean "main_position", default: false
     t.datetime "created_at", precision: nil, null: false
+    t.boolean "main_position", default: false
+    t.bigint "position_id", null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "user_id", null: false
     t.index ["position_id"], name: "index_position_users_on_position_id"
     t.index ["user_id"], name: "index_position_users_on_user_id"
   end
 
   create_table "positions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "name"
-    t.string "functional_category"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "nc_pk_post"
-    t.bigint "department_id"
-    t.string "company_name"
-    t.string "pk_poststd"
     t.string "b_postcode"
     t.string "b_postname"
-    t.string "job_type_code"
-    t.string "post_level"
+    t.string "company_name"
+    t.datetime "created_at", precision: nil, null: false
+    t.bigint "department_id"
+    t.string "functional_category"
     t.string "functional_category_id"
+    t.string "job_type_code"
+    t.string "name"
+    t.string "nc_pk_post"
+    t.string "pk_poststd"
+    t.string "post_level"
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["department_id"], name: "index_positions_on_department_id"
   end
 
   create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "title"
-    t.boolean "gender"
-    t.string "phone"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "clerk_code"
-    t.string "chinese_name"
-    t.integer "job_level"
     t.date "birthdate"
+    t.string "cerebras_api_key"
+    t.string "chinese_name"
+    t.string "clerk_code"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "deepseek_api_key"
     t.date "entry_company_date"
-    t.string "pre_sso_id"
-    t.string "wecom_id"
+    t.string "exa_api_key"
+    t.boolean "gender"
+    t.integer "job_level"
+    t.string "kimi_api_key"
+    t.date "leave_company_date"
     t.string "major_code"
     t.string "major_name"
-    t.date "leave_company_date"
-    t.string "th_code"
-    t.string "opencode_api_key"
-    t.string "kimi_api_key"
-    t.string "siliconflow_cn_api_key"
     t.string "moonshot_api_key"
-    t.string "exa_api_key"
-    t.string "deepseek_api_key"
-    t.string "cerebras_api_key"
-    t.string "yxt_user_id"
-    t.string "yxt_open_id"
+    t.string "opencode_api_key"
+    t.string "phone"
+    t.string "pre_sso_id"
+    t.string "siliconflow_cn_api_key"
+    t.string "th_code"
+    t.string "title"
+    t.datetime "updated_at", precision: nil, null: false
+    t.bigint "user_id"
+    t.string "wecom_id"
     t.string "wecom_yxt_open_id"
+    t.string "yxt_open_id"
+    t.string "yxt_user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "user_allowed_applications", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "oauth_application_id"
-    t.boolean "enable", default: true
     t.datetime "created_at", precision: nil, null: false
+    t.boolean "enable", default: true
+    t.bigint "oauth_application_id"
     t.datetime "updated_at", precision: nil, null: false
+    t.bigint "user_id"
     t.index ["oauth_application_id"], name: "index_user_allowed_applications_on_oauth_application_id"
     t.index ["user_id"], name: "index_user_allowed_applications_on_user_id"
   end
 
   create_table "user_sign_in_histories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "sign_in_at", precision: nil
-    t.text "user_agent"
     t.string "sign_in_ip"
+    t.text "user_agent"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_user_sign_in_histories_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at", precision: nil
-    t.datetime "last_sign_in_at", precision: nil
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
+    t.boolean "admin"
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "confirmation_token"
     t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
-    t.string "unconfirmed_email"
-    t.integer "failed_attempts", default: 0, null: false
-    t.string "unlock_token"
-    t.datetime "locked_at", precision: nil
     t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.boolean "admin"
-    t.string "username"
-    t.string "remember_token"
+    t.datetime "current_sign_in_at", precision: nil
+    t.string "current_sign_in_ip"
     t.string "desk_phone"
-    t.bigint "yxt_position_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.integer "failed_attempts", default: 0, null: false
     t.boolean "is_function_account", default: false
+    t.datetime "last_sign_in_at", precision: nil
+    t.string "last_sign_in_ip"
+    t.datetime "locked_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.string "remember_token"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.string "reset_password_token"
+    t.integer "sign_in_count", default: 0, null: false
+    t.string "unconfirmed_email"
+    t.string "unlock_token"
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "username"
     t.string "windows_sid"
+    t.bigint "yxt_position_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -232,22 +232,22 @@ ActiveRecord::Schema[7.1].define(version: 2026_06_04_000000) do
   end
 
   create_table "wechat_event_histories", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
-    t.integer "create_time"
-    t.string "event"
     t.string "change_type"
+    t.integer "create_time"
+    t.datetime "created_at", precision: nil, null: false
+    t.string "event"
     t.string "job_id"
-    t.string "user_id"
+    t.text "message"
     t.string "party_id"
     t.string "tag_id"
-    t.text "message"
-    t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
+    t.string "user_id"
   end
 
   create_table "yxt_positions", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.string "position_name"
     t.string "prefix_paths"
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
