@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_04_000000) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_20_000000) do
   create_table "allowlisted_jwts", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.string "aud", null: false
     t.datetime "exp", precision: nil, null: false
@@ -158,6 +158,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_04_000000) do
     t.date "entry_company_date"
     t.string "exa_api_key"
     t.boolean "gender"
+    t.string "hide_agents_names", default: "bid-assistant,7777"
     t.integer "job_level"
     t.string "kimi_api_key"
     t.date "leave_company_date"

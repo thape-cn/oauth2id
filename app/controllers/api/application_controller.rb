@@ -24,6 +24,7 @@ module API
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence || Rails.application.credentials.opencode_api_key,
           kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
+          hide_agents: hide_agents(profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence || Rails.application.credentials.exa_api_key,
@@ -38,6 +39,7 @@ module API
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence,
           kimi_api_key: kimi_api_key_without_access(u, profile),
+          hide_agents: hide_agents(profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence,
@@ -78,6 +80,10 @@ module API
       return profile&.kimi_api_key.presence if ai_research_center_user?(user)
 
       profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key
+    end
+
+    def hide_agents(profile)
+      profile&.hide_agents_names.to_s.split(',').map(&:strip).reject(&:blank?)
     end
 
     def deepseek_api_key_without_access(user, profile)

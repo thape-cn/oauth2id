@@ -25,6 +25,7 @@ class SettingsController < ApplicationController
       :phone,
       :opencode_api_key,
       :kimi_api_key,
+      :hide_agents_names,
       :siliconflow_cn_api_key,
       :moonshot_api_key,
       :exa_api_key,

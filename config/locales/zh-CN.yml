@@ -36,6 +36,7 @@ zh-CN:
     phone_placeholder: "手机或者座机？"
     opencode_api_key: "OpenCode API Key"
     kimi_api_key: "Kimi API Key"
+    hide_agents_names: "隐藏的 Agent 名称"
     siliconflow_cn_api_key: "SiliconFlow.cn API Key"
     moonshot_api_key: "Moonshot API Key"
     exa_api_key: "Exa API Key"

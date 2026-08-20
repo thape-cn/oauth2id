@@ -5,7 +5,8 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     user = users(:user_eric)
     department = Department.create!(name: '天华集团-AI研究中心')
     user.position_users.find_by(main_position: true).position.update!(department: department)
-    user.profile.update!(opencode_api_key: 'user-opencode-key', kimi_api_key: nil, deepseek_api_key: nil)
+    user.profile.update!(opencode_api_key: 'user-opencode-key', kimi_api_key: nil, deepseek_api_key: nil,
+                         hide_agents_names: ' bid-assistant, 7777, ,custom-agent ')
     sign_in user
 
     options api_me_url, headers: { 'HTTP_JWT_AUD': 'opencode' }
@@ -16,6 +17,7 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'user-opencode-key', payload['opencode_api_key']
     assert_nil payload['kimi_api_key']
     assert_nil payload['deepseek_api_key']
+    assert_equal ['bid-assistant', '7777', 'custom-agent'], payload['hide_agents']
   end
 
   test 'user_info keeps shared ai fallbacks for non ai research center users without opencode access' do
@@ -33,5 +35,6 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'user-opencode-key', payload['opencode_api_key']
     assert_equal Rails.application.credentials.kimi_api_key, payload['kimi_api_key']
     assert_equal Rails.application.credentials.deepseek_api_key, payload['deepseek_api_key']
+    assert_equal ['bid-assistant', '7777'], payload['hide_agents']
   end
 end
