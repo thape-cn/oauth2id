@@ -36,6 +36,7 @@ en:
     phone_placeholder: "Phone as here"
     opencode_api_key: "OpenCode API Key"
     kimi_api_key: "Kimi API Key"
+    hide_agents_names: "Hide Agents Names"
     siliconflow_cn_api_key: "SiliconFlow.cn API Key"
     moonshot_api_key: "Moonshot API Key"
     exa_api_key: "Exa API Key"
