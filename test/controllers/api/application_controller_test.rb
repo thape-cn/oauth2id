@@ -17,7 +17,7 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'user-opencode-key', payload['opencode_api_key']
     assert_nil payload['kimi_api_key']
     assert_nil payload['deepseek_api_key']
-    assert_equal ['bid-assistant', '7777', 'custom-agent'], payload['hide_agents']
+    assert_equal ['bid-assistant', '7777', 'custom-agent', 'scheme-assistant'], payload['hide_agents']
   end
 
   test 'user_info keeps shared ai fallbacks for non ai research center users without opencode access' do

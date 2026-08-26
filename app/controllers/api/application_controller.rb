@@ -25,7 +25,7 @@ module API
           opencode_api_key: profile&.opencode_api_key.presence || Rails.application.credentials.opencode_api_key,
           kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
           kimi_api_key_2: Rails.application.credentials.kimi_api_key_2,
-          hide_agents: hide_agents(profile),
+          hide_agents: hide_agents(u, profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence || Rails.application.credentials.exa_api_key,
@@ -42,7 +42,7 @@ module API
           opencode_api_key: profile&.opencode_api_key.presence,
           kimi_api_key: kimi_api_key_without_access(u, profile),
           kimi_api_key_2: kimi_api_key_2_without_access(u, profile),
-          hide_agents: hide_agents(profile),
+          hide_agents: hide_agents(u, profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
           moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
           exa_api_key: profile&.exa_api_key.presence,
@@ -92,8 +92,10 @@ module API
       Rails.application.credentials.kimi_api_key_2
     end
 
-    def hide_agents(profile)
-      profile&.hide_agents_names.to_s.split(',').map(&:strip).reject(&:blank?)
+    def hide_agents(user, profile)
+      agents = profile&.hide_agents_names.to_s.split(',').map(&:strip).reject(&:blank?)
+      agents |= %w[bid-assistant scheme-assistant] if ai_research_center_user?(user)
+      agents
     end
 
     def deepseek_api_key_without_access(user, profile)
