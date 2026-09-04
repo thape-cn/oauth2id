@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://rubygems.org/'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>= 3.2.0'
@@ -15,9 +15,6 @@ gem 'rails-i18n', '>= 8.0', '< 9'
 
 gem 'mail'
 gem 'httpx'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '= 1.4.2' # Server still at CentOS 7
 
 # Thape using mysql as production
 gem 'mysql2'
