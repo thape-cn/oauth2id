@@ -33,7 +33,7 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
 
     payload = JSON.parse(response.body)
     assert_equal 'user-opencode-key', payload['opencode_api_key']
-    assert_equal Rails.application.credentials.kimi_api_key, payload['kimi_api_key']
+    assert_equal Rails.application.credentials.kimi_api_key_1, payload['kimi_api_key']
     assert_equal Rails.application.credentials.deepseek_api_key, payload['deepseek_api_key']
     assert_equal ['bid-assistant', '7777'], payload['hide_agents']
   end
