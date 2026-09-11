@@ -23,8 +23,8 @@ module API
           clerk_code: profile&.clerk_code,
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence || Rails.application.credentials.opencode_api_key,
-          kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
-          kimi_api_key_1: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key,
+          kimi_api_key: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key_1,
+          kimi_api_key_1: profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key_1,
           kimi_api_key_2: Rails.application.credentials.kimi_api_key_2,
           hide_agents: hide_agents(u, profile),
           siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
@@ -85,7 +85,7 @@ module API
     def kimi_api_key_without_access(user, profile)
       return profile&.kimi_api_key.presence if ai_research_center_user?(user)
 
-      profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key
+      profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key_1
     end
 
     def kimi_api_key_2_without_access(user, profile)
