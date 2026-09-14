@@ -145,6 +145,8 @@ namespace :sync_yxt do
   task sync_users: :environment do
     puts 'Sync the users'
     User.order(:id).find_each do |u|
+      next if u.email == "training@thape.com.cn"
+
       main_position, yxt_positions = yxt_user_positions(u)
 
       dept = if main_position.present? && main_position.department.present?
