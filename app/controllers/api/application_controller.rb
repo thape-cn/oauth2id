@@ -50,7 +50,7 @@ module API
           exa_api_key: profile&.exa_api_key.presence,
           deepseek_api_key: deepseek_api_key_without_access(u, profile),
           cerebras_api_key: profile&.cerebras_api_key.presence,
-          vipai_api_key: nil,
+          vipai_api_key: Rails.application.credentials.vipai_api_key,
           email: u.email
         }
       end
