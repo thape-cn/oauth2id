@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: https://github.com/Eric-Guo/doorkeeper
-  revision: 57edd55e854bfb130287faae3585d65f7a469597
-  branch: main
+  revision: 6f65d41550f63928898f488991b2f3a559d2e803
+  branch: v5.9-stable
   specs:
-    doorkeeper (5.8.2)
+    doorkeeper (5.9.9)
       railties (>= 5)
 
 GIT
@@ -45,16 +45,6 @@ GIT
       rexml
       thor
       zeitwerk (~> 2.4)
-
-GIT
-  remote: https://github.com/thape-cn/doorkeeper-openid_connect
-  revision: e2ac95897dcb9fb1a1a08ea9df558845084c2f69
-  branch: master
-  specs:
-    doorkeeper-openid_connect (1.8.10)
-      doorkeeper (>= 5.5, < 5.9)
-      jwt (>= 2.5)
-      ostruct (>= 0.5)
 
 GIT
   remote: https://github.com/thape-cn/saml_idp
@@ -223,6 +213,10 @@ GEM
       responders
       warden (~> 1.2.3)
     digest (3.2.1)
+    doorkeeper-openid_connect (1.10.5)
+      doorkeeper (>= 5.5, < 6.0)
+      jwt (>= 2.5)
+      ostruct (>= 0.5)
     drb (2.2.3)
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
@@ -587,7 +581,7 @@ DEPENDENCIES
   devise_ldap_authenticatable!
   digest (~> 3.2)
   doorkeeper!
-  doorkeeper-openid_connect!
+  doorkeeper-openid_connect (~> 1.10.5)
   dry-auto_inject (~> 1.0.1)
   ed25519
   ffaker
