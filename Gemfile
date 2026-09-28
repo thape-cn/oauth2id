@@ -65,9 +65,8 @@ gem 'dry-auto_inject', '~> 1.0.1'
 gem 'digest', '~> 3.2'
 
 # bundle config local.doorkeeper /Users/$(whoami)/git/oss/doorkeeper/
-gem 'doorkeeper', git: 'https://github.com/Eric-Guo/doorkeeper', branch: :main
-# bundle config local.doorkeeper-openid_connect /Users/$(whoami)/git/oss/doorkeeper-openid_connect/
-gem 'doorkeeper-openid_connect', git: 'https://github.com/thape-cn/doorkeeper-openid_connect', branch: :master
+gem 'doorkeeper', git: 'https://github.com/Eric-Guo/doorkeeper', branch: 'v5.9-stable'
+gem 'doorkeeper-openid_connect', '~> 1.10.5'
 
 # bundle config local.devise_ldap_authenticatable /Users/guochunzhong/git/oss/devise_ldap_authenticatable/
 gem 'devise_ldap_authenticatable', git: 'https://github.com/Eric-Guo/devise_ldap_authenticatable', branch: :search_by_ldap_attr
