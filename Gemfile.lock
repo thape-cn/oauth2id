@@ -200,7 +200,7 @@ GEM
     connection_pool (2.5.5)
     crass (1.0.7)
     csv (3.3.6)
-    dalli (3.2.11)
+    dalli (3.2.13)
       logger
     date (3.5.1)
     debug (1.11.1)
@@ -325,7 +325,7 @@ GEM
       net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.2)
       net-protocol
-    net-ssh (7.3.3)
+    net-ssh (7.3.6)
     nio4r (2.7.5)
     nokogiri (1.17.2)
       mini_portile2 (~> 2.8.2)
