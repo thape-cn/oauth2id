@@ -86,8 +86,7 @@ module API
       [
         profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key_1,
         Rails.application.credentials.kimi_api_key_3,
-        Rails.application.credentials.kimi_api_key_2,
-        Rails.application.credentials.kimi_api_key_4
+        Rails.application.credentials.kimi_api_key_2
       ].compact
     end
 
