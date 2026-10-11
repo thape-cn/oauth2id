@@ -202,7 +202,7 @@ GEM
     csv (3.3.6)
     dalli (3.2.13)
       logger
-    date (3.5.1)
+    date (3.6.0)
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -212,7 +212,7 @@ GEM
       railties (>= 7.0)
       responders
       warden (~> 1.2.3)
-    digest (3.2.1)
+    digest (3.3.0)
     doorkeeper-openid_connect (1.10.5)
       doorkeeper (>= 5.5, < 6.0)
       jwt (>= 2.5)
@@ -307,12 +307,13 @@ GEM
       bigdecimal (>= 3.1, < 5)
     mysql2 (0.5.7)
       bigdecimal
-    net-http (0.9.1)
+    net-http (0.10.0)
+      net-protocol (>= 0.3.0)
       uri (>= 0.11.1)
     net-imap (0.6.7)
       date
       net-protocol
-    net-ldap (0.20.0)
+    net-ldap (0.21.0)
       base64
       ostruct
     net-pop (0.1.2)
@@ -366,7 +367,7 @@ GEM
     pagy (9.4.0)
     pp (0.6.4)
       prettyprint
-    prettyprint (0.2.0)
+    prettyprint (0.2.1)
     prism (1.9.0)
     psych (3.3.4)
     public_suffix (7.0.5)
@@ -513,7 +514,7 @@ GEM
     unicode-display_width (3.3.0)
       unicode-emoji (~> 4.3)
     unicode-emoji (4.3.0)
-    uri (1.1.1)
+    uri (1.1.2)
     useragent (0.16.11)
     uuid (2.3.9)
       macaddr (~> 1.0)
