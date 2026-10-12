@@ -6,7 +6,7 @@ module API
     THAPE_SSO_BEARER_AUDIENCE = 'opencode'
     THAPE_SSO_BEARER_EXP_HOURS = 360_000
 
-    before_action :authenticate_user!
+    before_action :authenticate_jwt_user!
 
     def user_info
       u = current_user
@@ -57,6 +57,15 @@ module API
     end
 
     private
+
+    def authenticate_jwt_user!
+      # Warden otherwise accepts the session user before running the JWT strategy.
+      strategy = Warden::JWTAuth::Strategy.new(request.env, :user)
+      strategy.authenticate! if strategy.valid?
+      return head :unauthorized unless strategy.successful?
+
+      warden.set_user(strategy.user, scope: :user, store: false, event: :authentication)
+    end
 
     def issue_thape_sso_bearer_api_key(user)
       exp_seconds = THAPE_SSO_BEARER_EXP_HOURS.hours
