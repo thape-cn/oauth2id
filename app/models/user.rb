@@ -119,12 +119,14 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    Rails.logger.info("User.from_omniauth auth=#{auth.inspect}")
-    profile = Profile.find_by(wecom_id: auth.uid)
+    uid = auth&.uid
+    return unless uid.is_a?(String) && uid.present?
+
+    profile = Profile.find_by(wecom_id: uid)
     if profile.present?
       profile.user
     else
-      User.find_by(username: auth.uid)
+      User.find_by(username: uid)
     end
   end
 
