@@ -2,6 +2,7 @@ source 'https://rubygems.org/'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>= 3.2.0'
+gem 'openssl', '< 4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 8.1.4'

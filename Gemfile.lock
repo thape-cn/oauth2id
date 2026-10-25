@@ -364,7 +364,7 @@ GEM
     omniauth-rails_csrf_protection (2.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
-    openssl (4.0.2)
+    openssl (3.3.3)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
     pagy (9.4.0)
@@ -609,6 +609,7 @@ DEPENDENCIES
   nokogiri (~> 1.17.2)
   omniauth-rails_csrf_protection
   omniauth-wechat-oauth2!
+  openssl (< 4)
   pagy
   psych (~> 3.3.4)
   puma
