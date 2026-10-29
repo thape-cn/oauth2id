@@ -1,6 +1,6 @@
 GIT
   remote: https://git.thape.com.cn/rails/devise-jwt.git
-  revision: 12e162d895b7f9eec739fec32f285dc1ea0b0b72
+  revision: 22c9ec2ec52a4edfd6d51ad185a02d68d146039a
   branch: main
   specs:
     devise-jwt (0.13.0)
@@ -199,8 +199,8 @@ GEM
     concurrent-ruby (1.3.8)
     connection_pool (2.5.5)
     crass (1.0.8)
-    csv (3.3.6)
-    dalli (3.2.13)
+    csv (3.3.7)
+    dalli (3.2.15)
       logger
     date (3.6.0)
     debug (1.11.1)
@@ -260,7 +260,7 @@ GEM
       http-2 (>= 1.1.3)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    io-console (0.9.4)
+    io-console (0.9.5)
     ipaddr (1.3.0)
     ipip-fast (0.0.2)
     irb (1.18.0)
@@ -302,7 +302,7 @@ GEM
     minitest (5.27.0)
     minitest-ci (3.4.0)
       minitest (>= 5.0.6)
-    msgpack (1.8.5)
+    msgpack (1.8.6)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
     mysql2 (0.5.7)
@@ -320,9 +320,9 @@ GEM
       net-protocol
     net-protocol (0.4.0)
       timeout
-    net-scp (4.1.2)
+    net-scp (4.1.3)
       net-ssh (>= 2.6.5, < 9.0.0)
-    net-sftp (4.0.2)
+    net-sftp (4.1.0)
       net-ssh (>= 5.0.0, < 9.0.0)
     net-smtp (0.5.2)
       net-protocol
