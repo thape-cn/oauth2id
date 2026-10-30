@@ -322,7 +322,7 @@ GEM
       timeout
     net-scp (4.2.0)
       net-ssh (>= 2.6.5, < 9.0.0)
-    net-sftp (4.1.0)
+    net-sftp (4.1.1)
       net-ssh (>= 5.0.0, < 9.0.0)
     net-smtp (0.5.2)
       net-protocol
@@ -379,7 +379,7 @@ GEM
     pundit (2.5.2)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (2.2.24)
+    rack (2.2.25)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
