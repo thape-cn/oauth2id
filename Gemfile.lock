@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://git.thape.com.cn/rails/omniauth-wechat-oauth2.git
-  revision: bc2d99933f01b180efe0177684c93c0cf4056bea
+  revision: 25684ff50ca42d52a4794f2f30d3975671cfdfd8
   branch: master
   specs:
     omniauth-wechat-oauth2 (0.3.0)
