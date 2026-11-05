@@ -5,7 +5,7 @@ ruby '>= 3.2.0'
 gem 'openssl', '< 4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 8.1.4'
+gem 'rails', '~> 8.1.4.1'
 gem 'connection_pool', '~> 2.5.5'
 gem 'zeitwerk', '~> 2.6.18'
 # Temporary: legacy clients perform case-sensitive lookup of the Authorization
@@ -84,7 +84,6 @@ gem 'wechat', git: 'https://github.com/Eric-Guo/wechat', branch: :main
 # bundle config local.omniauth-wechat-oauth2 /Users/$(whoami)/git/oss/omniauth-wechat-oauth2
 gem 'omniauth-wechat-oauth2', git: 'https://git.thape.com.cn/rails/omniauth-wechat-oauth2.git', branch: :master
 gem 'omniauth-rails_csrf_protection'
-gem 'nokogiri', '~> 1.17.2'
 gem 'psych', '~> 3.3.4'
 
 gem 'ipip-fast'
