@@ -56,7 +56,6 @@ module API
     def kimi_api_keys(profile, shared_credentials)
       [
         profile&.kimi_api_key.presence || shared_credentials&.kimi_api_key_1,
-        shared_credentials&.kimi_api_key_2,
         shared_credentials&.kimi_api_key_3
       ].compact
     end
