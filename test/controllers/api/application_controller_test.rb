@@ -89,6 +89,18 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
+  test 'user_info does not issue a token when the sigma agents header is set' do
+    user = users(:user_eric)
+    headers = jwt_headers(user).merge(HTTP_REQUEST_SIGMA_AGENTS: 'true')
+
+    assert_no_difference -> { user.allowlisted_jwts.count } do
+      options api_me_url, headers: headers
+    end
+
+    assert_response :success
+    refute response.parsed_body.key?('thape_sso_bearer_api_key')
+  end
+
   %w[opencode CAD].each do |audience|
     test "user_info returns no api keys without access for #{audience}" do
       request_user_info(users(:user_demo), audience: audience)
@@ -225,6 +237,7 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :success
+    refute response.parsed_body.key?('thape_sso_bearer_api_key')
   end
 
   def assert_no_api_keys
