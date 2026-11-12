@@ -114,6 +114,8 @@ module API
     end
 
     def ai_research_center_user?(user)
+      return false if user.username == 'fengqiaorong'
+
       main_position = user.position_users.find_by(main_position: true)&.position
       main_position = user.position_users.last&.position if main_position.nil?
       main_position&.department&.name == AI_RESEARCH_CENTER_DEPARTMENT_NAME
