@@ -9,39 +9,31 @@ module API
     def user_info
       u = current_user
       profile = u.profile
-      has_access = u.user_allowed_applications.find_by(oauth_application_id: 60, enable: true) && (request.headers['JWT-AUD'] == 'opencode' || request.headers['JWT-AUD'] == 'CAD')
+      has_access = %w[opencode CAD].include?(request.headers['JWT-AUD']) &&
+                   u.user_allowed_applications.exists?(oauth_application_id: 60, enable: true)
+      shared_credentials = Rails.application.credentials if has_access
+      clerk_code = if has_access
+                     profile&.clerk_code
+                   elsif profile&.opencode_api_key.present?
+                     "🔑#{profile.clerk_code}"
+                   else
+                     'No Zen'
+                   end
 
-      if has_access
-        render json: {
-          chinese_name: profile&.chinese_name || u.username,
-          clerk_code: profile&.clerk_code,
-          opencode_api_key: profile&.opencode_api_key.presence || Rails.application.credentials.opencode_api_key,
-          kimi_api_keys: kimi_api_keys(profile),
-          hide_agents: hide_agents(u, profile),
-          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
-          moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
-          exa_api_key: profile&.exa_api_key.presence || Rails.application.credentials.exa_api_key,
-          deepseek_api_key: profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key,
-          cerebras_api_key: profile&.cerebras_api_key.presence || Rails.application.credentials.cerebras_api_key,
-          vipai_api_key: Rails.application.credentials.vipai_api_key,
-          email: u.email
-        }
-      else
-        render json: {
-          chinese_name: profile&.chinese_name || u.username,
-          clerk_code: (profile&.opencode_api_key.present? ? "🔑#{profile&.clerk_code}" : 'No Zen'),
-          opencode_api_key: profile&.opencode_api_key.presence,
-          kimi_api_keys: [profile&.kimi_api_key.presence].compact,
-          hide_agents: hide_agents(u, profile),
-          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
-          moonshot_api_key: profile&.moonshot_api_key.presence,
-          exa_api_key: profile&.exa_api_key.presence,
-          deepseek_api_key: profile&.deepseek_api_key.presence,
-          cerebras_api_key: profile&.cerebras_api_key.presence,
-          vipai_api_key: nil,
-          email: u.email
-        }
-      end
+      render json: {
+        chinese_name: profile&.chinese_name || u.username,
+        clerk_code: clerk_code,
+        opencode_api_key: profile&.opencode_api_key.presence || shared_credentials&.opencode_api_key,
+        kimi_api_keys: kimi_api_keys(profile, shared_credentials),
+        hide_agents: hide_agents(u, profile),
+        siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || shared_credentials&.siliconflow_cn_api_key,
+        moonshot_api_key: profile&.moonshot_api_key.presence || shared_credentials&.moonshot_api_key,
+        exa_api_key: profile&.exa_api_key.presence || shared_credentials&.exa_api_key,
+        deepseek_api_key: profile&.deepseek_api_key.presence || shared_credentials&.deepseek_api_key,
+        cerebras_api_key: profile&.cerebras_api_key.presence || shared_credentials&.cerebras_api_key,
+        vipai_api_key: shared_credentials&.vipai_api_key,
+        email: u.email
+      }
     end
 
     private
@@ -55,11 +47,11 @@ module API
       warden.set_user(strategy.user, scope: :user, store: false, event: :authentication)
     end
 
-    def kimi_api_keys(profile)
+    def kimi_api_keys(profile, shared_credentials)
       [
-        profile&.kimi_api_key.presence || Rails.application.credentials.kimi_api_key_1,
-        Rails.application.credentials.kimi_api_key_2,
-        Rails.application.credentials.kimi_api_key_3
+        profile&.kimi_api_key.presence || shared_credentials&.kimi_api_key_1,
+        shared_credentials&.kimi_api_key_2,
+        shared_credentials&.kimi_api_key_3
       ].compact
     end
 
