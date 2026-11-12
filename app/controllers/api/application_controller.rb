@@ -17,7 +17,7 @@ module API
                                    issue_thape_sso_bearer_api_key(u)
                                  end
 
-      if has_access && request.headers['JWT-AUD'] == THAPE_SSO_BEARER_AUDIENCE
+      if has_access
         render json: {
           chinese_name: profile&.chinese_name || u.username,
           clerk_code: profile&.clerk_code,
@@ -39,14 +39,14 @@ module API
           clerk_code: (profile&.opencode_api_key.present? ? "🔑#{profile&.clerk_code}" : 'No Zen'),
           thape_sso_bearer_api_key: thape_sso_bearer_api_key,
           opencode_api_key: profile&.opencode_api_key.presence,
-          kimi_api_keys: kimi_api_keys_without_access(u, profile),
+          kimi_api_keys: [profile&.kimi_api_key.presence].compact,
           hide_agents: hide_agents(u, profile),
-          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence || Rails.application.credentials.siliconflow_cn_api_key,
-          moonshot_api_key: profile&.moonshot_api_key.presence || Rails.application.credentials.moonshot_api_key,
+          siliconflow_cn_api_key: profile&.siliconflow_cn_api_key.presence,
+          moonshot_api_key: profile&.moonshot_api_key.presence,
           exa_api_key: profile&.exa_api_key.presence,
-          deepseek_api_key: deepseek_api_key_without_access(u, profile),
+          deepseek_api_key: profile&.deepseek_api_key.presence,
           cerebras_api_key: profile&.cerebras_api_key.presence,
-          vipai_api_key: Rails.application.credentials.vipai_api_key,
+          vipai_api_key: nil,
           email: u.email
         }
       end
@@ -95,22 +95,10 @@ module API
       ].compact
     end
 
-    def kimi_api_keys_without_access(user, profile)
-      return [profile&.kimi_api_key.presence].compact if ai_research_center_user?(user)
-
-      kimi_api_keys(profile)
-    end
-
     def hide_agents(user, profile)
       agents = profile&.hide_agents_names.to_s.split(',').map(&:strip).reject(&:blank?)
       agents |= %w[bid-assistant scheme-assistant] if ai_research_center_user?(user)
       agents
-    end
-
-    def deepseek_api_key_without_access(user, profile)
-      return profile&.deepseek_api_key.presence if ai_research_center_user?(user)
-
-      profile&.deepseek_api_key.presence || Rails.application.credentials.deepseek_api_key
     end
 
     def ai_research_center_user?(user)

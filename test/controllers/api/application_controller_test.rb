@@ -3,7 +3,10 @@ require 'minitest/mock'
 
 class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @shared_kimi_api_keys = %w[shared-kimi-key-1 shared-kimi-key-2 shared-kimi-key-3 shared-kimi-key-4]
+    @profile_api_keys = %i[opencode_api_key kimi_api_key siliconflow_cn_api_key moonshot_api_key
+                           exa_api_key deepseek_api_key cerebras_api_key].index_with { |key| "user-#{key}" }
+    @shared_api_keys = (@profile_api_keys.keys - [:kimi_api_key] + [:vipai_api_key]).index_with { |key| "shared-#{key}" }
+    @shared_kimi_api_keys = %w[shared-kimi-key-1 shared-kimi-key-2 shared-kimi-key-3]
   end
 
   test 'user_info rejects requests without a jwt' do
@@ -86,85 +89,109 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
-  test 'user_info does not fall back to shared ai keys for ai research center users without opencode access' do
+  %w[opencode CAD].each do |audience|
+    test "user_info returns no api keys without access for #{audience}" do
+      request_user_info(users(:user_demo), audience: audience)
+
+      assert_no_api_keys
+      assert_equal 'No Zen', response.parsed_body['clerk_code']
+      assert_equal ['bid-assistant', '7777'], response.parsed_body['hide_agents']
+    end
+
+    test "user_info returns only profile api keys without access for #{audience}" do
+      user = users(:user_demo)
+      user.profile.update!(@profile_api_keys)
+
+      request_user_info(user, audience: audience)
+
+      @profile_api_keys.except(:kimi_api_key).each do |key, value|
+        assert_equal value, response.parsed_body[key.to_s], key.to_s
+      end
+      assert_equal [@profile_api_keys[:kimi_api_key]], response.parsed_body['kimi_api_keys']
+      assert_nil response.parsed_body['vipai_api_key']
+      assert_equal "🔑#{user.profile.clerk_code}", response.parsed_body['clerk_code']
+    end
+
+    test "user_info returns shared api keys with access for #{audience}" do
+      user = users(:user_eric)
+      allow_opencode_access(user)
+
+      request_user_info(user, audience: audience)
+
+      @shared_api_keys.each do |key, value|
+        assert_equal value, response.parsed_body[key.to_s], key.to_s
+      end
+      assert_equal @shared_kimi_api_keys, response.parsed_body['kimi_api_keys']
+      assert_equal user.profile.clerk_code, response.parsed_body['clerk_code']
+    end
+
+    test "user_info returns no shared api keys with disabled access for #{audience}" do
+      user = users(:user_eric)
+      allow_opencode_access(user, enable: false)
+
+      request_user_info(user, audience: audience)
+
+      assert_no_api_keys
+    end
+  end
+
+  test 'user_info prefers profile api keys over shared api keys with access' do
+    user = users(:user_eric)
+    allow_opencode_access(user)
+    user.profile.update!(@profile_api_keys)
+
+    request_user_info(user)
+
+    @profile_api_keys.except(:kimi_api_key).each do |key, value|
+      assert_equal value, response.parsed_body[key.to_s], key.to_s
+    end
+    assert_equal [@profile_api_keys[:kimi_api_key], *@shared_kimi_api_keys.drop(1)], response.parsed_body['kimi_api_keys']
+    assert_equal @shared_api_keys[:vipai_api_key], response.parsed_body['vipai_api_key']
+  end
+
+  test 'user_info returns no shared api keys for other audiences even with an enabled application' do
+    user = users(:user_eric)
+    allow_opencode_access(user)
+
+    request_user_info(user, audience: 'other')
+
+    assert_no_api_keys
+  end
+
+  test 'user_info returns no api keys for blank profile keys without access' do
+    user = users(:user_demo)
+    user.profile.update!(@profile_api_keys.transform_values { '  ' })
+
+    request_user_info(user)
+
+    assert_no_api_keys
+  end
+
+  test 'user_info returns no api keys without a profile or access' do
+    user = users(:user_demo)
+    user.profile.destroy!
+
+    request_user_info(user)
+
+    assert_no_api_keys
+    assert_equal user.username, response.parsed_body['chinese_name']
+  end
+
+  test 'user_info returns only profile api keys and hides agents for ai research center users without access' do
     user = users(:user_eric)
     department = Department.create!(name: '天华集团-AI研究中心')
     user.position_users.find_by(main_position: true).position.update!(department: department)
-    user.profile.update!(opencode_api_key: 'user-opencode-key', kimi_api_key: nil, deepseek_api_key: nil,
+    user.profile.update!(kimi_api_key: 'user-kimi-key', deepseek_api_key: 'user-deepseek-key',
                          hide_agents_names: ' bid-assistant, 7777, ,custom-agent ')
 
     request_user_info(user)
 
-    assert_response :success
-
-    payload = JSON.parse(response.body)
-    assert_equal 'user-opencode-key', payload['opencode_api_key']
-    assert_equal [], payload['kimi_api_keys']
-    assert_nil payload['kimi_api_key_1']
-    assert_nil payload['kimi_api_key_2']
-    assert_nil payload['deepseek_api_key']
-    assert_equal ['bid-assistant', '7777', 'custom-agent', 'scheme-assistant'], payload['hide_agents']
-  end
-
-  test 'user_info keeps shared ai fallbacks for non ai research center users without opencode access' do
-    user = users(:user_demo)
-    department = Department.create!(name: '普通部门')
-    user.position_users.find_by(main_position: true).position.update!(department: department)
-    user.profile.update!(opencode_api_key: 'user-opencode-key', kimi_api_key: nil, deepseek_api_key: nil)
-
-    request_user_info(user)
-
-    assert_response :success
-
-    payload = JSON.parse(response.body)
-    assert_equal 'user-opencode-key', payload['opencode_api_key']
-    assert_equal @shared_kimi_api_keys, payload['kimi_api_keys']
-    assert_equal 'shared-kimi-key-1', payload['kimi_api_key_1']
-    assert_equal 'shared-kimi-key-2', payload['kimi_api_key_2']
-    assert_equal Rails.application.credentials.deepseek_api_key, payload['deepseek_api_key']
-    assert_equal ['bid-assistant', '7777'], payload['hide_agents']
-  end
-
-  test 'user_info returns all four kimi keys for users with opencode access' do
-    user = users(:user_eric)
-    application = DoorkeeperApplication.create!(id: 60, name: 'opencode', redirect_uri: 'https://example.com/callback')
-    user.user_allowed_applications.create!(oauth_application: application, enable: true)
-    user.profile.update!(kimi_api_key: nil)
-
-    request_user_info(user)
-
-    assert_response :success
-    assert_equal @shared_kimi_api_keys, response.parsed_body['kimi_api_keys']
-    assert_equal 'shared-kimi-key-1', response.parsed_body['kimi_api_key_1']
-    assert_equal 'shared-kimi-key-2', response.parsed_body['kimi_api_key_2']
-  end
-
-  test 'user_info replaces the first shared kimi key with the profile key' do
-    user = users(:user_demo)
-    department = Department.create!(name: '普通部门')
-    user.position_users.find_by(main_position: true).position.update!(department: department)
-    user.profile.update!(kimi_api_key: 'user-kimi-key')
-
-    request_user_info(user)
-
-    assert_response :success
-    assert_equal ['user-kimi-key', *@shared_kimi_api_keys.drop(1)], response.parsed_body['kimi_api_keys']
-    assert_equal 'user-kimi-key', response.parsed_body['kimi_api_key_1']
-    assert_equal 'shared-kimi-key-2', response.parsed_body['kimi_api_key_2']
-  end
-
-  test 'user_info returns only the profile kimi key for ai research center users without opencode access' do
-    user = users(:user_eric)
-    department = Department.create!(name: '天华集团-AI研究中心')
-    user.position_users.find_by(main_position: true).position.update!(department: department)
-    user.profile.update!(kimi_api_key: 'user-kimi-key')
-
-    request_user_info(user)
-
-    assert_response :success
     assert_equal ['user-kimi-key'], response.parsed_body['kimi_api_keys']
-    assert_equal 'user-kimi-key', response.parsed_body['kimi_api_key_1']
-    assert_equal 'user-kimi-key', response.parsed_body['kimi_api_key_2']
+    assert_equal 'user-deepseek-key', response.parsed_body['deepseek_api_key']
+    @shared_api_keys.except(:deepseek_api_key).each_key do |key|
+      assert_nil response.parsed_body[key.to_s], key.to_s
+    end
+    assert_equal ['bid-assistant', '7777', 'custom-agent', 'scheme-assistant'], response.parsed_body['hide_agents']
   end
 
   private
@@ -176,24 +203,34 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     assert cookies[Rails.application.config.session_options[:key]].present?
   end
 
-  def jwt_headers(user)
-    token, payload = Warden::JWTAuth::UserEncoder.new.call(user, :user, 'opencode')
+  def jwt_headers(user, audience: 'opencode')
+    token, payload = Warden::JWTAuth::UserEncoder.new.call(user, :user, audience)
     user.on_jwt_dispatch(token, payload)
-    { HTTP_AUTHORIZATION: "Bearer #{token}", HTTP_JWT_AUD: 'opencode' }
+    { HTTP_AUTHORIZATION: "Bearer #{token}", HTTP_JWT_AUD: audience }
   end
 
-  def request_user_info(user)
-    credentials = ActiveSupport::OrderedOptions.new.merge!(Rails.application.credentials.config)
+  def allow_opencode_access(user, enable: true)
+    application = DoorkeeperApplication.create!(id: 60, name: 'opencode', redirect_uri: 'https://example.com/callback')
+    user.user_allowed_applications.create!(oauth_application: application, enable: enable)
+  end
+
+  def request_user_info(user, audience: 'opencode')
+    credentials = ActiveSupport::OrderedOptions.new.merge!(Rails.application.credentials.config).merge!(@shared_api_keys)
     @shared_kimi_api_keys.each_with_index do |key, index|
       credentials["kimi_api_key_#{index + 1}"] = key
     end
 
     Rails.application.stub(:credentials, -> { credentials }) do
-      options api_me_url, headers: jwt_headers(user)
+      options api_me_url, headers: jwt_headers(user, audience: audience)
     end
 
-    refute response.parsed_body.key?('kimi_api_key')
-    assert response.parsed_body.key?('kimi_api_key_1')
-    assert response.parsed_body.key?('kimi_api_key_2')
+    assert_response :success
+  end
+
+  def assert_no_api_keys
+    @shared_api_keys.each_key do |key|
+      assert_nil response.parsed_body[key.to_s], key.to_s
+    end
+    assert_empty response.parsed_body['kimi_api_keys']
   end
 end
