@@ -9,6 +9,67 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     @shared_kimi_api_keys = %w[shared-kimi-key-1 shared-kimi-key-2 shared-kimi-key-3]
   end
 
+  test 'sigma_agents returns the same credentials and agent settings as user_info with OpenCode access' do
+    user = users(:user_eric)
+    allow_opencode_access(user)
+    user.profile.update!(kimi_api_key: 'profile-kimi-key', hide_agents_names: 'custom-agent')
+
+    request_user_info(user)
+    expected = response.parsed_body
+
+    with_shared_credentials do
+      post api_sigma_agents_url(format: :json), headers: jwt_headers(user)
+    end
+
+    assert_response :success
+    assert_equal expected, response.parsed_body
+    assert_equal @shared_api_keys[:opencode_api_key], response.parsed_body['opencode_api_key']
+    assert_equal ['profile-kimi-key', *@shared_kimi_api_keys.drop(1)], response.parsed_body['kimi_api_keys']
+    assert_includes response.parsed_body['hide_agents'], 'custom-agent'
+  end
+
+  test 'sigma_agents returns only profile keys without OpenCode access' do
+    user = users(:user_demo)
+    user.profile.update!(kimi_api_key: 'profile-kimi-key')
+
+    with_shared_credentials do
+      post api_sigma_agents_url(format: :json), headers: jwt_headers(user)
+    end
+
+    assert_response :success
+    assert_equal user.email, response.parsed_body['email']
+    assert_equal ['profile-kimi-key'], response.parsed_body['kimi_api_keys']
+    @shared_api_keys.each_key { |key| assert_nil response.parsed_body[key.to_s], key.to_s }
+  end
+
+  test 'sigma_agents rejects a valid CAD jwt' do
+    user = users(:user_eric)
+    allow_opencode_access(user)
+
+    post api_sigma_agents_url(format: :json), headers: jwt_headers(user, audience: 'CAD')
+
+    assert_response :unauthorized
+    assert_empty response.body
+  end
+
+  test 'sigma_agents rejects a CAD jwt presented with an OpenCode audience header' do
+    headers = jwt_headers(users(:user_eric), audience: 'CAD').merge(HTTP_JWT_AUD: 'opencode')
+
+    post api_sigma_agents_url(format: :json), headers: headers
+
+    assert_response :unauthorized
+    assert_empty response.body
+  end
+
+  test 'sigma_agents rejects session cookies without a jwt' do
+    sign_in_with_cookie users(:user_eric)
+
+    post api_sigma_agents_url(format: :json), headers: { HTTP_JWT_AUD: 'opencode' }
+
+    assert_response :unauthorized
+    assert_empty response.body
+  end
+
   test 'user_info rejects requests without a jwt' do
     options api_me_url, headers: { HTTP_JWT_AUD: 'opencode' }
 
@@ -227,17 +288,21 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
   end
 
   def request_user_info(user, audience: 'opencode')
-    credentials = ActiveSupport::OrderedOptions.new.merge!(Rails.application.credentials.config).merge!(@shared_api_keys)
-    @shared_kimi_api_keys.each_with_index do |key, index|
-      credentials["kimi_api_key_#{index + 1}"] = key
-    end
-
-    Rails.application.stub(:credentials, -> { credentials }) do
+    with_shared_credentials do
       options api_me_url, headers: jwt_headers(user, audience: audience)
     end
 
     assert_response :success
     refute response.parsed_body.key?('thape_sso_bearer_api_key')
+  end
+
+  def with_shared_credentials(&block)
+    credentials = ActiveSupport::OrderedOptions.new.merge!(Rails.application.credentials.config).merge!(@shared_api_keys)
+    @shared_kimi_api_keys.each_with_index do |key, index|
+      credentials["kimi_api_key_#{index + 1}"] = key
+    end
+
+    Rails.application.stub(:credentials, -> { credentials }, &block)
   end
 
   def assert_no_api_keys

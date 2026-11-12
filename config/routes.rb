@@ -72,6 +72,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     match 'me' => 'application#user_info', via: :options
+    post 'sigma_agents' => 'application#sigma_agents'
   end
 
   # To make turbolink still works in client app

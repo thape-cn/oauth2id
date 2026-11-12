@@ -6,6 +6,12 @@ module API
 
     before_action :authenticate_jwt_user!
 
+    def sigma_agents
+      return head :unauthorized unless request.headers['JWT-AUD'] == 'opencode'
+
+      user_info
+    end
+
     def user_info
       u = current_user
       profile = u.profile
