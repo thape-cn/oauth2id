@@ -9,10 +9,16 @@ module API
     def sigma_agents
       return head :unauthorized unless request.headers['JWT-AUD'] == 'opencode'
 
-      user_info
+      render json: { data: AesEncryptDecrypt.encryption(user_info_payload.to_json) }
     end
 
     def user_info
+      render json: user_info_payload
+    end
+
+    private
+
+    def user_info_payload
       u = current_user
       profile = u.profile
       has_access = %w[opencode CAD].include?(request.headers['JWT-AUD']) &&
@@ -26,7 +32,7 @@ module API
                      'No Zen'
                    end
 
-      render json: {
+      {
         chinese_name: profile&.chinese_name || u.username,
         clerk_code: clerk_code,
         opencode_api_key: profile&.opencode_api_key.presence || shared_credentials&.opencode_api_key,
@@ -41,8 +47,6 @@ module API
         email: u.email
       }
     end
-
-    private
 
     def authenticate_jwt_user!
       # Warden otherwise accepts the session user before running the JWT strategy.

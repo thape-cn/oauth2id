@@ -40,3 +40,5 @@ module Oauth2id
     config.i18n.available_locales = [:'zh-CN']
   end
 end
+
+require Rails.root.join("lib", "aes_encrypt_decrypt.rb")
