@@ -10,6 +10,8 @@ module API
       return head :unauthorized unless request.headers['JWT-AUD'] == 'opencode'
 
       render json: { data: AesEncryptDecrypt.encryption(user_info_payload.to_json) }
+    rescue AesEncryptDecrypt::Error
+      render json: { error: 'encryption_failed' }, status: :internal_server_error
     end
 
     def user_info

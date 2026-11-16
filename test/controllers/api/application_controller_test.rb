@@ -51,6 +51,35 @@ class ApiApplicationControllerTest < ActionDispatch::IntegrationTest
     @shared_api_keys.each_key { |key| assert_nil payload[key.to_s], key.to_s }
   end
 
+  { missing: nil, invalid_length: 'too-short' }.each do |name, key|
+    test "sigma_agents fails safely with #{name} encryption key" do
+      user = users(:user_eric)
+      allow_opencode_access(user)
+      user.profile.update!(@profile_api_keys)
+      headers = jwt_headers(user)
+      log = StringIO.new
+
+      stdout, stderr = capture_io do
+        Rails.stub(:logger, ActiveSupport::Logger.new(log)) do
+          stub_const(AesEncryptDecrypt, :KEY, key) do
+            with_shared_credentials do
+              post api_sigma_agents_url(format: :json), headers: headers
+            end
+          end
+        end
+      end
+
+      assert_response :internal_server_error
+      assert_equal({ 'error' => 'encryption_failed' }, response.parsed_body)
+      assert_empty stdout
+      assert_empty stderr
+      [*@profile_api_keys.values, *@shared_api_keys.values, *@shared_kimi_api_keys].each do |secret|
+        refute_includes log.string, secret
+        refute_includes response.body, secret
+      end
+    end
+  end
+
   test 'sigma_agents rejects a valid CAD jwt' do
     user = users(:user_eric)
     allow_opencode_access(user)

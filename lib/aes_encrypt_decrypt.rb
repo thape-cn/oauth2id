@@ -4,6 +4,8 @@ require "openssl"
 require "base64"
 
 class AesEncryptDecrypt
+  class Error < StandardError; end
+
   KEY = Rails.application.credentials.aes_128_ecb_key
   ALGORITHM = "AES-128-ECB"
 
@@ -13,8 +15,8 @@ class AesEncryptDecrypt
     cipher.key = KEY
     crypt = cipher.update(msg) + cipher.final
     Base64.encode64(crypt)
-  rescue Exception => exc
-    puts("Message for the encryption log file for message #{msg} = #{exc.message}")
+  rescue OpenSSL::Cipher::CipherError, ArgumentError, TypeError
+    raise Error, "Encryption failed", cause: nil
   end
 
   def self.decryption(msg)
@@ -25,7 +27,7 @@ class AesEncryptDecrypt
     crypt = cipher.update(tempkey)
     crypt << cipher.final
     crypt
-  rescue Exception => exc
-    puts("Message for the decryption log file for message #{msg} = #{exc.message}")
+  rescue OpenSSL::Cipher::CipherError, ArgumentError, TypeError
+    raise Error, "Decryption failed", cause: nil
   end
 end
