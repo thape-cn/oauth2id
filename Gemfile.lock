@@ -252,7 +252,7 @@ GEM
     hashie (5.2.0)
       logger
     http-2 (1.3.0)
-    httparty (0.24.3)
+    httparty (0.25.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -379,7 +379,7 @@ GEM
     pundit (2.5.2)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (2.2.25)
+    rack (2.2.26)
     rack-protection (3.2.0)
       base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
